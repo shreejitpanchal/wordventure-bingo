@@ -1,0 +1,81 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  gap: var(--space-3);
+}
+
+.topBar {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.exitButton {
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-soft);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.categoryLabel {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.progressTrack {
+  width: 100%;
+  max-width: 480px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cell);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent);
+  width: 100%;
+  transform-origin: left;
+  animation-name: drain;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.progressFillStatic {
+  height: 100%;
+  background: var(--color-accent);
+  width: 100%;
+}
+
+@keyframes drain {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.cardsSingle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  width: 100%;
+}

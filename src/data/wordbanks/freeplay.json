@@ -1,0 +1,30 @@
+{
+  "category": "freeplay",
+  "label": "Free Play (editable)",
+  "words": [
+    { "word": "APPLE", "difficulty": "easy", "definition": "A round fruit that can be red, green, or yellow, and grows on trees." },
+    { "word": "BICYCLE", "difficulty": "easy", "definition": "A two-wheeled vehicle you pedal with your feet to move forward." },
+    { "word": "DINOSAUR", "difficulty": "easy", "definition": "A type of reptile that lived millions of years ago, before humans existed." },
+    { "word": "ROBOT", "difficulty": "easy", "definition": "A machine that can be programmed to do tasks, sometimes looking or acting like a person." },
+    { "word": "RAINBOW", "difficulty": "easy", "definition": "An arc of colors that appears in the sky when sunlight shines through rain." },
+    { "word": "ROCKET", "difficulty": "easy", "definition": "A vehicle that uses powerful engines to travel into space." },
+    { "word": "CASTLE", "difficulty": "easy", "definition": "A large building with thick walls and towers, built long ago to protect the people inside." },
+    { "word": "DRAGON", "difficulty": "easy", "definition": "A mythical creature often shown as a huge, fire-breathing, winged reptile." },
+    { "word": "WIZARD", "difficulty": "easy", "definition": "A person in stories who can perform magic spells." },
+    { "word": "GUITAR", "difficulty": "easy", "definition": "A musical instrument with strings that you pluck or strum." },
+    { "word": "PENCIL", "difficulty": "easy", "definition": "A tool used for writing or drawing, usually with a wooden case around a graphite core." },
+    { "word": "BUTTERFLY", "difficulty": "easy", "definition": "A flying insect with large, colorful wings that starts life as a caterpillar." },
+    { "word": "TREASURE", "difficulty": "easy", "definition": "Valuable things like gold, jewels, or coins, often hidden or hard to find." },
+    { "word": "SANDWICH", "difficulty": "easy", "definition": "Food made by putting fillings like meat or cheese between two slices of bread." },
+    { "word": "UMBRELLA", "difficulty": "easy", "definition": "A folding device you hold over your head to stay dry in the rain." },
+    { "word": "BACKPACK", "difficulty": "easy", "definition": "A bag with straps that you carry on your back to hold your things." },
+    { "word": "SNOWMAN", "difficulty": "easy", "definition": "A figure made of packed snow, usually shaped to look like a person." },
+    { "word": "CAMPFIRE", "difficulty": "easy", "definition": "An outdoor fire built for warmth, cooking, or light, often while camping." },
+    { "word": "LIGHTHOUSE", "difficulty": "easy", "definition": "A tower with a bright light at the top, built to guide ships safely along the coast." },
+    { "word": "WATERFALL", "difficulty": "easy", "definition": "A place where a stream or river flows over a steep drop, falling straight down." },
+    { "word": "TRAMPOLINE", "difficulty": "easy", "definition": "A tough piece of fabric stretched over a frame with springs, used for jumping and bouncing." },
+    { "word": "SKATEBOARD", "difficulty": "easy", "definition": "A short board on four wheels that you stand on and ride." },
+    { "word": "POPCORN", "difficulty": "easy", "definition": "A snack food made from corn kernels that puff up into fluffy pieces when heated." },
+    { "word": "BALLOON", "difficulty": "easy", "definition": "A rubber bag that stretches when filled with air or gas, often used for parties." }
+  ]
+}

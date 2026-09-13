@@ -1,0 +1,2433 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "tag_yml_release_pipeline",
+        "label": "Tag-triggered release pipeline (plan -> gates -> image/binaries -> release)",
+        "nodes": [
+          "github_workflows_tag_plan_job",
+          "github_workflows_tag_gates_job",
+          "github_workflows_tag_image_job",
+          "github_workflows_tag_binaries_job",
+          "github_workflows_tag_release_job"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": ".github/workflows/tag.yml"
+      },
+      {
+        "id": "supply_chain_hardening_rationale_cluster",
+        "label": "Supply-chain hardening rationale cluster (pinning, OS drift, double scanning)",
+        "nodes": [
+          "github_dependabot_sha_pinned_actions",
+          "github_workflows_ci_os_pinning_rationale",
+          "github_workflows_tag_trivy_double_scan_rationale"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.75,
+        "source_file": ".github/workflows/tag.yml"
+      },
+      {
+        "id": "dependabot_ci_verification_loop",
+        "label": "Dependabot action bumps verified by narrow-triggered CI",
+        "nodes": [
+          "github_dependabot",
+          "github_dependabot_actions_minor_group",
+          "github_workflows_ci"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": ".github/dependabot.yml"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "scripts_dev_c",
+      "label": "c()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "c()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L16"
+    },
+    {
+      "id": "scripts_dev_expand",
+      "label": "expand()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "expand()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L169"
+    },
+    {
+      "id": "scripts_dev_finish",
+      "label": "finish()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "finish()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L30"
+    },
+    {
+      "id": "scripts_dev_host_arch",
+      "label": "host_arch()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "host_arch()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L51"
+    },
+    {
+      "id": "scripts_dev_host_os",
+      "label": "host_os()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "host_os()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L50"
+    },
+    {
+      "id": "scripts_dev_log_begin",
+      "label": "log_begin()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "log_begin()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L25"
+    },
+    {
+      "id": "scripts_dev_no_color",
+      "label": "NO_COLOR",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "norm_label": "no_color",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L13"
+    },
+    {
+      "id": "scripts_dev_now",
+      "label": "now()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "now()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L22"
+    },
+    {
+      "id": "scripts_dev_sh__entry",
+      "label": "dev.sh script",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "dev.sh script",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev",
+      "label": "dev.sh",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "dev.sh",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_die",
+      "label": "die()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "die()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L20"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_ok",
+      "label": "ok()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "ok()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L18"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_step",
+      "label": "step()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "step()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L17"
+    },
+    {
+      "id": "scripts_dev_usage",
+      "label": "usage()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "dev.sh Output & Dispatch Helpers",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "usage()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L159"
+    },
+    {
+      "id": "scripts_dev_run",
+      "label": "run()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "run()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L41"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_build",
+      "label": "task_build()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_build()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L64"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_cov",
+      "label": "task_cov()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_cov()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L98"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_down",
+      "label": "task_down()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_down()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L137"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_graphify",
+      "label": "task_graphify()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_graphify()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L144"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_test",
+      "label": "task_test()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_test()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L94"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_up",
+      "label": "task_up()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_up()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L132"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_vet",
+      "label": "task_vet()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_vet()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L89"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_warn",
+      "label": "warn()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "warn()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L19"
+    },
+    {
+      "id": "scripts_dev_strip_csi",
+      "label": "strip_csi()",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "dev.sh Task Implementations",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "strip_csi()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L38"
+    },
+    {
+      "id": "scripts_dev_get_hostarch",
+      "label": "Get-HostArch()",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "get-hostarch()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L55"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev",
+      "label": "dev.ps1",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "dev.ps1",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_die",
+      "label": "Die()",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "die()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L20"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_ok",
+      "label": "Ok()",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "ok()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L18"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_step",
+      "label": "Step()",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "step()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L17"
+    },
+    {
+      "id": "scripts_dev_show_usage",
+      "label": "Show-Usage()",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "dev.ps1 Output & Dispatch Helpers",
+      "file_type": "code",
+      "norm_label": "show-usage()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L163"
+    },
+    {
+      "id": "scripts_dev_invoke_logged",
+      "label": "Invoke-Logged()",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "dev.ps1 Task Implementations",
+      "file_type": "code",
+      "norm_label": "invoke-logged()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L42"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_build",
+      "label": "Task-build()",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "dev.ps1 Task Implementations",
+      "file_type": "code",
+      "norm_label": "task-build()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L75"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_cov",
+      "label": "Task-cov()",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "dev.ps1 Task Implementations",
+      "file_type": "code",
+      "norm_label": "task-cov()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L90"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_test",
+      "label": "Task-test()",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "dev.ps1 Task Implementations",
+      "file_type": "code",
+      "norm_label": "task-test()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L86"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_vet",
+      "label": "Task-vet()",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "dev.ps1 Task Implementations",
+      "file_type": "code",
+      "norm_label": "task-vet()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L81"
+    },
+    {
+      "id": "scripts_dev_get_log",
+      "label": "Get-Log()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "dev.ps1 Log Capture Helpers",
+      "file_type": "code",
+      "norm_label": "get-log()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L23"
+    },
+    {
+      "id": "scripts_dev_get_now",
+      "label": "Get-Now()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "dev.ps1 Log Capture Helpers",
+      "file_type": "code",
+      "norm_label": "get-now()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L22"
+    },
+    {
+      "id": "scripts_dev_start_tasklog",
+      "label": "Start-TaskLog()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "dev.ps1 Log Capture Helpers",
+      "file_type": "code",
+      "norm_label": "start-tasklog()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L25"
+    },
+    {
+      "id": "scripts_dev_write_finish",
+      "label": "Write-Finish()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "dev.ps1 Log Capture Helpers",
+      "file_type": "code",
+      "norm_label": "write-finish()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L31"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_down",
+      "label": "Task-down()",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dev.ps1 Compose & Graphify Tasks",
+      "file_type": "code",
+      "norm_label": "task-down()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L137"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_graphify",
+      "label": "Task-graphify()",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dev.ps1 Compose & Graphify Tasks",
+      "file_type": "code",
+      "norm_label": "task-graphify()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L145"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_up",
+      "label": "Task-up()",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dev.ps1 Compose & Graphify Tasks",
+      "file_type": "code",
+      "norm_label": "task-up()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L130"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_warn",
+      "label": "Warn()",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "dev.ps1 Compose & Graphify Tasks",
+      "file_type": "code",
+      "norm_label": "warn()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L19"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_build_image",
+      "label": "Build-Image()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "dev.ps1 Image & Scan Tasks",
+      "file_type": "code",
+      "norm_label": "build-image()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L99"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_image",
+      "label": "Task-image()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "dev.ps1 Image & Scan Tasks",
+      "file_type": "code",
+      "norm_label": "task-image()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L105"
+    },
+    {
+      "id": "scripts_dev_ps1_scripts_dev_task_scan",
+      "label": "Task-scan()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "dev.ps1 Image & Scan Tasks",
+      "file_type": "code",
+      "norm_label": "task-scan()",
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L113"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_build_image",
+      "label": "build_image()",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dev.sh Image & Scan Tasks",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "build_image()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L107"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_image",
+      "label": "task_image()",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dev.sh Image & Scan Tasks",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_image()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L111"
+    },
+    {
+      "id": "scripts_dev_sh_scripts_dev_task_scan",
+      "label": "task_scan()",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dev.sh Image & Scan Tasks",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "norm_label": "task_scan()",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L117"
+    },
+    {
+      "id": "dev_scripts_task_runner",
+      "label": "scripts/dev.sh & dev.ps1 mirrored task runner",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "scripts/dev.sh & dev.ps1 mirrored task runner",
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_dependabot_actions_minor_group",
+      "label": "Dependabot actions-minor grouping (minor/patch bumps, auto-mergeable)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "dependabot actions-minor grouping (minor/patch bumps, auto-mergeable)",
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_ci_gates_job",
+      "label": "ci.yml gates job (build/vet/test/cov/scan matrix)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "ci.yml gates job (build/vet/test/cov/scan matrix)",
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_binaries_job",
+      "label": "tag.yml binaries job (cross-compile matrix per BUILD_TARGETS)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "tag.yml binaries job (cross-compile matrix per build_targets)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_gates_job",
+      "label": "tag.yml gates job (reuses ci.yml via workflow_call)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "tag.yml gates job (reuses ci.yml via workflow_call)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_image_job",
+      "label": "tag.yml image job (multi-arch build, GHCR push, Trivy gate)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "tag.yml image job (multi-arch build, ghcr push, trivy gate)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_plan_job",
+      "label": "tag.yml plan job (resolve image/binaries shape)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "tag.yml plan job (resolve image/binaries shape)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_release_job",
+      "label": "tag.yml release job (creates GitHub release, checksums, notes)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "tag.yml release job (creates github release, checksums, notes)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_dependabot",
+      "label": "dependabot.yml",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "dependabot.yml",
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_ci",
+      "label": "ci.yml workflow",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "ci.yml workflow",
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag",
+      "label": "tag.yml workflow",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "tag.yml workflow",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_dependabot_sha_pinned_actions",
+      "label": "SHA-pinned GitHub Actions convention",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "sha-pinned github actions convention",
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_ci_no_auto_triggers_rationale",
+      "label": "No automatic push/PR triggers by design (tag-only pipeline)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "no automatic push/pr triggers by design (tag-only pipeline)",
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_ci_os_pinning_rationale",
+      "label": "Runner OS version pinning vs. -latest label drift rationale",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "runner os version pinning vs. -latest label drift rationale",
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_release_idempotency_rationale",
+      "label": "Idempotent release creation (safe workflow re-run)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "idempotent release creation (safe workflow re-run)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "github_workflows_tag_trivy_double_scan_rationale",
+      "label": "Double Trivy scan rationale (pre-push gate + post-push pushed-digest gate)",
+      "author": null,
+      "captured_at": null,
+      "community": 0,
+      "community_name": "CI & Release Workflows",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "double trivy scan rationale (pre-push gate + post-push pushed-digest gate)",
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "readme_wordventure_bingo_project",
+      "label": "wordventure-bingo project (kid-friendly word bingo PWA)",
+      "author": null,
+      "captured_at": null,
+      "community": 10,
+      "community_name": "Project README",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "wordventure-bingo project (kid-friendly word bingo pwa)",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "readme",
+      "label": "README.md",
+      "author": null,
+      "captured_at": null,
+      "community": 10,
+      "community_name": "Project README",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "readme.md",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "claude_graphify_workflow",
+      "label": "graphify query/path/explain/update workflow",
+      "author": null,
+      "captured_at": null,
+      "community": 9,
+      "community_name": "graphify CLAUDE.md Integration",
+      "contributor": null,
+      "file_type": "concept",
+      "norm_label": "graphify query/path/explain/update workflow",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "claude",
+      "label": "CLAUDE.md",
+      "author": null,
+      "captured_at": null,
+      "community": 9,
+      "community_name": "graphify CLAUDE.md Integration",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "claude.md",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null
+    }
+  ],
+  "links": [
+    {
+      "source": "scripts_dev_run",
+      "target": "scripts_dev_strip_csi",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_usage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L177",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_expand",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_sh_scripts_dev_die",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_sh_scripts_dev_step",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_log_begin",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_finish",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_sh_scripts_dev_ok",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_host_os",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh__entry",
+      "target": "scripts_dev_host_arch",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_build_image",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_die",
+      "target": "scripts_dev_c",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_ok",
+      "target": "scripts_dev_c",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_step",
+      "target": "scripts_dev_c",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_build",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_build",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_cov",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_down",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_down",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_graphify",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_graphify",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_image",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_image",
+      "target": "scripts_dev_sh_scripts_dev_build_image",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_scan",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_scan",
+      "target": "scripts_dev_sh_scripts_dev_build_image",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_test",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_up",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_up",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_task_vet",
+      "target": "scripts_dev_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev_warn",
+      "target": "scripts_dev_c",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "scripts/dev.sh",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_invoke_logged",
+      "target": "scripts_dev_get_log",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_build_image",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_build",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_cov",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_down",
+      "target": "scripts_dev_ps1_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_down",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_graphify",
+      "target": "scripts_dev_ps1_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_graphify",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_image",
+      "target": "scripts_dev_ps1_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_image",
+      "target": "scripts_dev_ps1_scripts_dev_build_image",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_scan",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_scan",
+      "target": "scripts_dev_ps1_scripts_dev_build_image",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_test",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_up",
+      "target": "scripts_dev_ps1_scripts_dev_warn",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_up",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev_task_vet",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_start_tasklog",
+      "target": "scripts_dev_get_log",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_start_tasklog",
+      "target": "scripts_dev_get_now",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_write_finish",
+      "target": "scripts_dev_get_now",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_write_finish",
+      "target": "scripts_dev_get_log",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_image",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_scan",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_up",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_down",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_graphify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_show_usage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L163",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_step",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_ok",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_warn",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_die",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_get_now",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_get_log",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_start_tasklog",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_write_finish",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_invoke_logged",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_get_hostarch",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_build",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_vet",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_test",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_task_cov",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_ps1_scripts_dev",
+      "target": "scripts_dev_ps1_scripts_dev_build_image",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.ps1",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_build_image",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_image",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_scan",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_no_color",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_up",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_down",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_graphify",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_usage",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_c",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_expand",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L169",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_step",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_ok",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_warn",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_die",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_now",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_log_begin",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_finish",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_strip_csi",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_run",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_host_os",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_host_arch",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_build",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_vet",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_test",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_dev_sh_scripts_dev",
+      "target": "scripts_dev_sh_scripts_dev_task_cov",
+      "relation": "defines",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/dev.sh",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_wordventure_bingo_project",
+      "target": "github_workflows_tag",
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 0.2
+    },
+    {
+      "source": "claude",
+      "target": "claude_graphify_workflow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_dependabot",
+      "target": "github_dependabot_actions_minor_group",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_dependabot",
+      "target": "github_dependabot_sha_pinned_actions",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_dependabot",
+      "target": "github_workflows_ci",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/dependabot.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_ci",
+      "target": "github_workflows_ci_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_ci",
+      "target": "github_workflows_ci_no_auto_triggers_rationale",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_ci",
+      "target": "github_workflows_ci_os_pinning_rationale",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_ci_gates_job",
+      "target": "dev_scripts_task_runner",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/ci.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag",
+      "target": "github_workflows_tag_binaries_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag",
+      "target": "github_workflows_tag_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag",
+      "target": "github_workflows_tag_image_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag",
+      "target": "github_workflows_tag_plan_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag",
+      "target": "github_workflows_tag_release_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_binaries_job",
+      "target": "dev_scripts_task_runner",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_binaries_job",
+      "target": "github_workflows_tag_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_binaries_job",
+      "target": "github_workflows_tag_plan_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_gates_job",
+      "target": "github_workflows_ci",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_image_job",
+      "target": "github_workflows_tag_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_image_job",
+      "target": "github_workflows_tag_plan_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_image_job",
+      "target": "github_workflows_tag_trivy_double_scan_rationale",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_plan_job",
+      "target": "github_workflows_tag_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_release_job",
+      "target": "github_workflows_tag_binaries_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_release_job",
+      "target": "github_workflows_tag_gates_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_release_job",
+      "target": "github_workflows_tag_image_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_release_job",
+      "target": "github_workflows_tag_plan_job",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_workflows_tag_release_job",
+      "target": "github_workflows_tag_release_idempotency_rationale",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme",
+      "target": "readme_wordventure_bingo_project",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_dependabot_actions_minor_group",
+      "target": "github_workflows_tag_release_idempotency_rationale",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "github_dependabot_sha_pinned_actions",
+      "target": "github_workflows_tag_trivy_double_scan_rationale",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": ".github/workflows/tag.yml",
+      "source_location": null,
+      "weight": 0.75
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "tag_yml_release_pipeline",
+      "label": "Tag-triggered release pipeline (plan -> gates -> image/binaries -> release)",
+      "nodes": [
+        "github_workflows_tag_plan_job",
+        "github_workflows_tag_gates_job",
+        "github_workflows_tag_image_job",
+        "github_workflows_tag_binaries_job",
+        "github_workflows_tag_release_job"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/tag.yml"
+    },
+    {
+      "id": "supply_chain_hardening_rationale_cluster",
+      "label": "Supply-chain hardening rationale cluster (pinning, OS drift, double scanning)",
+      "nodes": [
+        "github_dependabot_sha_pinned_actions",
+        "github_workflows_ci_os_pinning_rationale",
+        "github_workflows_tag_trivy_double_scan_rationale"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": ".github/workflows/tag.yml"
+    },
+    {
+      "id": "dependabot_ci_verification_loop",
+      "label": "Dependabot action bumps verified by narrow-triggered CI",
+      "nodes": [
+        "github_dependabot",
+        "github_dependabot_actions_minor_group",
+        "github_workflows_ci"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".github/dependabot.yml"
+    }
+  ],
+  "built_at_commit": "168b89bf31c6cf379b0efd7563fced3625258b87"
+}

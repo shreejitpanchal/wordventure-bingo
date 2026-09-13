@@ -1,0 +1,49 @@
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--color-cell);
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: clamp(0.55rem, 2.4vw, 0.85rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.word {
+  word-break: break-word;
+  line-height: 1.15;
+}
+
+.free {
+  background: var(--color-accent);
+  color: white;
+  cursor: default;
+}
+
+.marked:not(.free) {
+  background: var(--color-cell-marked);
+  color: white;
+}
+
+.highlighted {
+  box-shadow: 0 0 0 3px var(--color-success), var(--shadow-lift);
+}
+
+.stamp {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 1.1rem;
+  color: white;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+}

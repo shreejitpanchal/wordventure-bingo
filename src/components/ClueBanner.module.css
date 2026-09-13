@@ -1,0 +1,36 @@
+.banner {
+  width: 100%;
+  max-width: 480px;
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  background: var(--color-card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  background: var(--color-cell);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-1);
+}
+
+.text {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}

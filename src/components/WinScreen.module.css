@@ -1,0 +1,71 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.bingo {
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  margin: 0;
+  color: var(--color-accent);
+  text-shadow: 0 4px 0 var(--color-accent-dark);
+}
+
+.winner {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.patterns {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin: 0;
+}
+
+.stats {
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.primaryButton {
+  min-width: 160px;
+  min-height: 56px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-accent);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lift);
+  cursor: pointer;
+}
+
+.secondaryButton {
+  min-width: 120px;
+  min-height: 56px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-border);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
