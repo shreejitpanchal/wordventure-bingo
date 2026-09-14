@@ -1,9 +1,21 @@
 # Wordventure Bingo
 
-A kid-friendly word bingo/puzzle game for ages 10+, with PowerPoint-style animations,
+A kid-friendly word game app for ages 10+, with PowerPoint-style animations,
 built as an offline-capable Progressive Web App (PWA). Playable on a Windows laptop
 (Chrome/Edge) and installable to the home screen on Android — no login, no ads, no
 backend. 🎯📝
+
+Two modes, picked from the main menu:
+- **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
+  The menu's **Call Speed** setting picks how many seconds the auto-caller
+  waits between clues (10-60s, default 20s) — independent of difficulty, so
+  picking "Hard" words doesn't also speed up the clock.
+- **Wordscapes** — a word-connect crossword puzzle: swipe letters on a wheel
+  to spell words that fill an interlocking grid, in the style of PeopleFun's
+  Wordscapes/Word Cross. Puzzles are procedurally generated from the same
+  word banks Bingo uses — no separate content to author. (Note: "Wordscapes"
+  is used here only as an in-app label; it's a third party's trademark and
+  must not be used in any app-store listing or published branding.)
 
 ## Tech stack
 
@@ -99,6 +111,55 @@ To add a brand-new category:
 The **Free Play** category (`src/data/wordbanks/freeplay.json`) additionally
 merges in whatever a parent adds through the in-app Settings → Free Play Word
 List editor (stored in `localStorage`, no difficulty tiers).
+
+## How Wordscapes puzzles are generated
+
+Wordscapes has no fixed level list — every puzzle is built on the fly by
+[src/lib/wordscapes/gridGeneration.ts](src/lib/wordscapes/gridGeneration.ts)
+from the *same* word banks above (whichever category/difficulty you pick in
+the menu):
+
+1. Sample words from the pool (capped to the puzzle's word-count setting,
+   3-10, chosen in the menu) and try to fit as many as possible into an
+   interlocking crossword grid (longest words first, one at a time, each new
+   word placed wherever it can cross an already-placed one).
+2. Build the letter wheel from the placed words — one tile per letter,
+   sized to the most copies any single word needs (tiles are reused across
+   words, not consumed). Tiles lay out in a wrapping straight row so the
+   wheel stays readable no matter how many tiles a puzzle needs.
+3. Any sampled word that couldn't be placed geometrically, plus any other
+   word in the category whose letters happen to fit the wheel, becomes an
+   optional **bonus word** — findable for extra points but not required to
+   finish the puzzle.
+4. One random letter of every word is auto-revealed as a free hint, and
+   tapping any grid cell shows the definition clue(s) for the word(s) that
+   pass through it.
+
+Spell a word either by dragging continuously across its letters (like a
+swipe) or by tapping them one at a time, confirming with the ✓ button
+(✕ clears your current selection).
+
+Stuck? **💡 Reveal a Letter** reveals one random hidden letter and lets you
+keep playing — press it as many times as you like. **🏳️ Give Up** reveals
+the whole grid at once. Either way, once everything's visible, **Continue**
+moves on. Using either button means the puzzle doesn't count toward your
+"puzzles completed" stat, even if you finish the rest yourself — any bonus
+words you'd already found still do.
+
+**Difficulty here means something different than in Bingo.** Bingo's
+easy/medium/hard tags are about vocabulary/reading level. Wordscapes
+additionally caps word *length* per difficulty (easy ≤5 letters, medium ≤8,
+hard uncapped) so the puzzle and wheel stay a manageable size — an "easy"
+Bingo word like ELEPHANT is simple to read but too long for an easy
+Wordscapes puzzle. Each category's easy tier includes a set of short (3-5
+letter) words added specifically to make this work.
+
+Because it draws on the existing word banks, almost no separate Wordscapes
+content needed authoring — but a category/difficulty/word-count combo that's
+too sparse or too letter-diverse could theoretically fail to produce a
+puzzle (`generateLevel` throws loudly rather than rendering a broken one).
+All shipped categories were checked to generate reliably across every word
+count (3-10); re-check if you significantly change a word bank's contents.
 
 ## Installing the PWA
 

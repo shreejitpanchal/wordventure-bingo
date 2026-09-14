@@ -1,13 +1,15 @@
-import type { Settings, Streaks, WordEntry } from '../types';
+import type { Settings, Streaks, WordEntry, WordscapesStats } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
   streaks: 'wordventure:streaks',
   freeplayWords: 'wordventure:freeplayWords',
+  wordscapesStats: 'wordventure:wordscapesStats',
 } as const;
 
 const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false };
 const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
+const DEFAULT_WORDSCAPES_STATS: WordscapesStats = { puzzlesCompleted: {}, bonusWordsFound: {} };
 
 /**
  * localStorage can throw (private browsing, disabled storage, quota) or
@@ -59,6 +61,28 @@ export function recordGameResult(category: string, won: boolean): Streaks {
   }
   writeJSON(KEYS.streaks, streaks);
   return streaks;
+}
+
+export function getWordscapesStats(): WordscapesStats {
+  return { ...DEFAULT_WORDSCAPES_STATS, ...readJSON(KEYS.wordscapesStats, DEFAULT_WORDSCAPES_STATS) };
+}
+
+/**
+ * `solved` gates the "puzzles completed" counter only -- a puzzle given up
+ * on (grid revealed via the give-up button, not actually solved) still
+ * credits any bonus words genuinely found first, it just doesn't count as
+ * a completion.
+ */
+export function recordWordscapesCompletion(category: string, bonusWordsFoundCount: number, solved: boolean): WordscapesStats {
+  const stats = getWordscapesStats();
+  if (solved) {
+    stats.puzzlesCompleted[category] = (stats.puzzlesCompleted[category] ?? 0) + 1;
+  }
+  if (bonusWordsFoundCount > 0) {
+    stats.bonusWordsFound[category] = (stats.bonusWordsFound[category] ?? 0) + bonusWordsFoundCount;
+  }
+  writeJSON(KEYS.wordscapesStats, stats);
+  return stats;
 }
 
 export function getFreeplayWords(): WordEntry[] {

@@ -45,7 +45,9 @@ export interface WinResult {
   cellIndices: number[];
 }
 
-export type ScreenName = 'menu' | 'game' | 'win' | 'settings';
+export type ScreenName = 'menu' | 'game' | 'win' | 'settings' | 'wordscapes-game' | 'wordscapes-win';
+
+export type GameMode = 'bingo' | 'wordscapes';
 
 export interface Settings {
   soundEnabled: boolean;
@@ -68,4 +70,57 @@ export interface GameConfig {
   difficulty: Difficulty;
   /** Pass-and-play: 1 = solo vs. computer caller, 2 = two players share one device. */
   players: 1 | 2;
+  /** Seconds between auto-caller clues -- a menu setting, independent of difficulty. */
+  callSeconds: number;
+}
+
+// --- Wordscapes (word-connect crossword mode) ---------------------------
+
+export interface WordscapesConfig {
+  category: CategoryId;
+  difficulty: Difficulty;
+  /** How many words the generated puzzle should target (3-10). */
+  wordCount: number;
+}
+
+export type GridDirection = 'across' | 'down';
+
+/** A word's placement on the crossword grid. */
+export interface PlacedWord {
+  word: string;
+  row: number;
+  col: number;
+  direction: GridDirection;
+}
+
+export interface GridCellData {
+  letter: string;
+  revealed: boolean;
+}
+
+export interface WordscapesGrid {
+  placedWords: PlacedWord[];
+  /** Sparse, keyed by `"row,col"`, cropped so the used area starts at (0,0). */
+  cells: Map<string, GridCellData>;
+  rows: number;
+  cols: number;
+}
+
+/** One drag-able letter tile on the wheel. Duplicate letters get separate
+ * tile ids (e.g. a level needing two Ls gets two distinct L tiles). */
+export interface WheelTile {
+  id: number;
+  letter: string;
+}
+
+export interface WordscapesLevel {
+  grid: WordscapesGrid;
+  wheel: WheelTile[];
+  /** Extra words spellable from the wheel that aren't in the grid -- optional, for bonus points. */
+  bonusWords: string[];
+}
+
+export interface WordscapesStats {
+  puzzlesCompleted: Record<string, number>;
+  bonusWordsFound: Record<string, number>;
 }

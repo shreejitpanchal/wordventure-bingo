@@ -1,21 +1,20 @@
 import type { BingoCard, Clue, Difficulty, WordEntry } from '../types';
 import { getClue } from './clueMatching';
+import { shuffle } from './random';
 
-/** Milliseconds between auto-caller clues, tuned to the age/difficulty tiers. */
-export const CALL_PACE_MS: Record<Difficulty, number> = {
-  easy: 7000,
-  medium: 5500,
-  hard: 4000,
-};
-
-function shuffle<T>(items: T[], rng: () => number): T[] {
-  const arr = [...items];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
+/**
+ * Auto-caller pace is a separate, explicit menu setting (seconds between
+ * clues), not derived from difficulty -- an earlier version tied pace to
+ * difficulty (4-7s), which read as "too fast" regardless of vocabulary
+ * level for a kid still reading the clue and scanning a 5x5 card. Letting
+ * players pick their own pace decouples "how hard the words are" from
+ * "how much time I get," the same way Wordscapes' word-length cap and
+ * word-count setting are independent knobs.
+ */
+export const CALL_SECONDS_OPTIONS = [10, 15, 20, 30, 45, 60] as const;
+export const MIN_CALL_SECONDS = CALL_SECONDS_OPTIONS[0];
+export const MAX_CALL_SECONDS = CALL_SECONDS_OPTIONS[CALL_SECONDS_OPTIONS.length - 1];
+export const DEFAULT_CALL_SECONDS = 20;
 
 /**
  * The call pool is every non-FREE word appearing on any card in play, not

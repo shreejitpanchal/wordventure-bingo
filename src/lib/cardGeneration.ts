@@ -1,4 +1,5 @@
 import type { BingoCard, CardCell, Difficulty, WordEntry } from '../types';
+import { shuffle } from './random';
 
 export const CARD_SIZE = 5;
 export const TOTAL_CELLS = CARD_SIZE * CARD_SIZE;
@@ -12,15 +13,6 @@ export const WORDS_NEEDED = TOTAL_CELLS - 1; // every cell except FREE
 export function selectWordPool(words: WordEntry[], category: string, difficulty: Difficulty): WordEntry[] {
   if (category === 'freeplay') return words;
   return words.filter((w) => w.difficulty === difficulty);
-}
-
-function shuffle<T>(items: T[], rng: () => number): T[] {
-  const arr = [...items];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
 }
 
 /**

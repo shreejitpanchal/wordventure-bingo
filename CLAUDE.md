@@ -1,8 +1,13 @@
 # Wordventure Bingo
 
-A kid-friendly word bingo/puzzle game (ages 10+) delivered as an offline-capable
+A kid-friendly word game app (ages 10+) delivered as an offline-capable
 PWA — Windows (Chrome/Edge) and Android (installed to home screen). No backend,
-no accounts, no ads, no network calls after first load.
+no accounts, no ads, no network calls after first load. Two modes, chosen from
+the main menu: **Bingo** (the original word-bingo game) and **Wordscapes**
+(a word-connect crossword puzzle, in the style of PeopleFun's Wordscapes/Word
+Cross — named "Wordscapes" as an in-app mode label only; that name is a
+third party's trademark, so it must not appear in any app-store listing,
+package id, or branding if this is ever published).
 
 ## Stack & architecture
 
@@ -10,15 +15,20 @@ no accounts, no ads, no network calls after first load.
   Modules for styling (no Tailwind, no UI framework).
 - `vite-plugin-pwa` owns the manifest + service worker (`vite.config.ts`).
 - No router: `src/App.tsx` is a single explicit screen state machine
-  (`menu | game | win | settings`) swapped via `AnimatePresence`. Don't
-  introduce React Router or similar for what is a 4-screen app.
+  (`menu | game | win | settings | wordscapes-game | wordscapes-win`) swapped
+  via `AnimatePresence`. Don't introduce React Router or similar for what is
+  a handful of screens. Mode selection (Bingo vs. Wordscapes) happens inside
+  `MenuScreen`, not as a separate screen.
 - No backend, no global state library: all persistence is `localStorage`
-  behind `src/lib/storage.ts` (settings, streaks, the Free Play custom word
-  list). That file is the only place allowed to touch `localStorage` directly.
+  behind `src/lib/storage.ts` (settings, Bingo streaks, Wordscapes stats, the
+  Free Play custom word list). That file is the only place allowed to touch
+  `localStorage` directly.
 - Game logic is framework-free and colocated in `src/lib/` (`cardGeneration`,
-  `winDetection`, `clueMatching`, `caller`) — pure functions taking an
-  injectable `rng` parameter so they stay unit-testable without mocking
-  `Math.random`. Keep new game-rule logic there, not inside components.
+  `winDetection`, `clueMatching`, `caller` for Bingo; `wordscapes/gridGeneration`
+  for Wordscapes) — pure functions taking an injectable `rng` parameter so
+  they stay unit-testable without mocking `Math.random`. Keep new game-rule
+  logic there, not inside components. Shared utilities (e.g. `shuffle`) live
+  in `src/lib/random.ts` — reuse it rather than re-implementing per module.
 
 ## Word banks
 
@@ -32,15 +42,145 @@ no accounts, no ads, no network calls after first load.
 - `anagram` is never authored; it's derived from `word` at runtime
   (`clueMatching.ts`). Only add `synonym`/`fillBlank`/`riddle` where they
   read naturally — `definition` is the only required clue field.
+- Each easy tier additionally carries a set of short (3-5 letter) words,
+  added specifically so Wordscapes-easy has enough material — see
+  "Wordscapes mode" below for why. They're ordinary `easy`-tagged entries,
+  so Bingo's easy cards can draw them too (harmless — more variety, still
+  easy vocabulary); don't remove them thinking they're Wordscapes-only.
+
+## Bingo mode
+
+- Auto-caller pace (`GameScreen.tsx`'s `paceMs`) is `config.callSeconds *
+  1000`, a **menu setting** (`GameConfig.callSeconds`, options in
+  `CALL_SECONDS_OPTIONS`, `src/lib/caller.ts`) — not derived from
+  difficulty. It used to be a difficulty-keyed lookup (`CALL_PACE_MS`,
+  4-7s), which read as "too fast" for a kid reading a clue and scanning a
+  5x5 card regardless of how easy the vocabulary was. Difficulty still
+  controls word/vocabulary difficulty only; pace is independent, the same
+  way Wordscapes decoupled word length from Bingo's difficulty tags. Only
+  `MenuScreen` constructs a `GameConfig`, so `callSeconds` is always one of
+  `CALL_SECONDS_OPTIONS` in practice — no runtime clamping needed the way
+  Wordscapes' `wordCount` needs it in `generateLevel`.
+
+## Wordscapes mode
+
+- Puzzles are **procedurally generated**, not hand-authored levels — there is
+  no level map/tree. `generateLevel` (`src/lib/wordscapes/gridGeneration.ts`)
+  samples words from the *same* category/difficulty word banks Bingo uses
+  (no separate dictionary asset), greedily fits up to `wordCount` (a menu
+  option, 3-10) into an interlocking crossword grid, and derives the letter
+  wheel from the max per-letter count any single placed word needs (tiles
+  are reused across words by re-tracing them, never consumed). Words that
+  don't fit geometrically can still surface as optional "bonus words" if
+  their letters are a sub-multiset of the wheel.
+- **Wordscapes has its own difficulty axis, separate from Bingo's.** Bingo's
+  `easy`/`medium`/`hard` tags mean vocabulary/reading difficulty — "easy"
+  Bingo words like ELEPHANT or KANGAROO are simple to *read*, not short.
+  Wordscapes additionally needs puzzles that are short enough for a legible
+  wheel, so `selectWordscapesPool` layers a **word-length cap on top of**
+  the existing category/difficulty filter (`easy` ≤5 letters, `medium` ≤8,
+  `hard` uncapped) — never call `selectWordPool` directly for Wordscapes,
+  always go through `selectWordscapesPool`. The existing word banks didn't
+  have enough ≤5-letter words to make `easy` viable on their own (only 2-4
+  per category), which is why each easy tier got ~24 new short words added.
+  Two categories (`spelling`, `freeplay`) initially got only 4-5 letter
+  words, which produced same-length-only puzzles — every easy tier needs a
+  genuine spread across 3/4/5 letters, not just "short," or generation will
+  cluster on whichever length is best represented.
+- **`generateLevel` deliberately samples and places across a mix of word
+  lengths (`stratifiedSample`), not just randomly.** A random sample skews
+  toward whatever length the pool happens to have most of, and even a
+  length-diverse sample still produces same-length puzzles if placement
+  attempts go strictly longest-first (the first `wordCount` acceptances
+  cluster on the first-tried, usually-longest, group). Only the anchor (the
+  unconditional first placement) is chosen for length; everything else
+  attempts in the sample's length-interleaved order.
+- This reuse is why Wordscapes needed (almost) no new content authoring —
+  but a category/difficulty/word-count combo that's too sparse or too
+  letter-diverse could still fail to generate. `generateLevel` throws loudly
+  rather than render a broken puzzle; verified (via a standalone script, not
+  the test suite) that every shipped category/difficulty combo reliably
+  generates across word counts 3-10 and many random seeds. Re-verify this
+  if you significantly change a word bank's contents.
+- The wheel (`LetterWheel.tsx`) lays tiles out in a **wrapping straight
+  row, not a circle** — a circle has a fixed radius while tile count varies
+  per puzzle, so a bigger puzzle used to overlap into an unreadable ring.
+  Flex-wrap sizes itself to however many tiles there are, so this scales to
+  any word count/difficulty without layout bugs. It supports both a
+  continuous drag (2+ tiles visited in one press submits on release, like a
+  swipe) and tapping tiles one at a time (a simple click adds a tile and
+  waits, confirmed via the ✓ button or cleared via ✕) — a plain click and a
+  1-tile drag are otherwise indistinguishable, so without this a click
+  submitted instantly as a 1-letter word. Tapping an already-selected tile
+  again is a no-op, **not** an undo/toggle — an earlier version removed the
+  tile on re-tap, which silently ate letters whenever a kid tapped a tile
+  twice (double-tap, re-confirming a tap that looked like it hadn't
+  registered), producing a confusingly wrong short word with no visible
+  cause. ✕ is the only way to remove a letter; don't reintroduce a
+  tap-to-undo shortcut without a much more deliberate, visible affordance
+  than "tap it again." Hit-testing uses
+  `document.elementFromPoint` against a `data-tile-index` attribute (the
+  standard technique for drag-select UIs) rather than manually tracked DOM
+  rects, which stay correct through Framer Motion's tap-scale animation.
+  Uses the Pointer Events API with container-level pointer capture (not
+  per-tile) so a drag keeps tracking across mouse (Windows) and touch
+  (Android) alike.
+- Every puzzle **auto-reveals one random letter of each placed word** as a
+  free hint (`revealHintLetters`, always applied inside `generateLevel` —
+  not optional/difficulty-gated). This is deliberately *not* always index 0
+  (the first letter): an earlier version always revealed index 0, which
+  made every puzzle predictable in the same way, and made longer words
+  disproportionately likely to show a *second*, coincidental reveal
+  whenever a later word's own index-0 happened to land on an intersection
+  with an earlier one. Fixed by picking a random index per word, preferring
+  one of that word's own exclusive (non-intersection) cells so revealing it
+  can't also hand a free hint to whatever crosses it, and skipping a word
+  that already inherited a reveal from an intersecting word rather than
+  adding a redundant second one. Verified via a standalone script: ~99.9%
+  of 5+ letter words now get exactly one reveal (was 100% getting two
+  before the fix). Tapping any grid cell also shows the definition clue(s)
+  for the word(s) through it (reusing `WordEntry.definition`, the same data
+  Bingo's clues come from) — without either, Wordscapes gave no indication
+  at all of what to spell.
+- **Two reveal-help mechanisms, both non-navigating (no screen jump):**
+  `revealRandomLetter` (the repeatable "💡 Reveal a Letter" button) reveals
+  one random still-hidden cell and lets the player keep playing; `revealAll`
+  ("🏳️ Give Up") reveals everything at once. Neither jumps straight to a
+  win screen — a kid who's stuck should get to actually read the real
+  words, not just skip past them. `WordscapesGameScreen` shows the wheel +
+  both buttons whenever `isLevelComplete(level.grid)` is false, and a
+  "Continue" panel over the fully-revealed grid once it's true — this is
+  **derived from grid state**, not tracked as a separate flag, so it stays
+  correct no matter which path completed it: the player's own last word,
+  enough single-letter reveals to finish it, or Give Up. `handleWordTraced`
+  must NOT call `onComplete` directly when the player's own last word
+  finishes the grid — an earlier version did, which skipped the review
+  panel only on that path (Give Up/hints already rendered it, since they
+  don't call `onComplete` at all) and dropped the player straight onto the
+  win screen with no chance to see their finished grid. Let `complete` flip
+  true and re-render instead; `onComplete` only fires from the panel's own
+  "Continue" button.
+- **`assisted` (was named `gaveUp`) is sticky for the rest of the puzzle**:
+  it becomes `true` the moment *any* reveal help is used — even a single
+  hint — and stays `true` even if the player goes on to finish the rest
+  themselves. Threads through `onComplete(bonusWordsFound, assisted)` →
+  `App.tsx` → `recordWordscapesCompletion(category, bonusWords, solved)`:
+  `solved` (`= !assisted`) gates only the "puzzles completed" counter (an
+  assisted finish isn't a real solve), while bonus words found are still
+  credited either way — don't conflate those two independent stat updates
+  again by skipping the whole storage call when `assisted` is true.
+  `WordscapesWinScreen` also reads `assisted` to skip the confetti and
+  swap the heading to "NICE TRY!".
 
 ## Testing
 
 - Unit tests are colocated as `*.test.ts` next to the module they cover in
-  `src/lib/`, using Vitest. They cover the correctness-critical logic only
-  (card generation, win detection, clue selection/formatting) per the
-  original spec — UI and animation are verified manually in-browser, not
-  with component tests. Don't add `@testing-library/*`/`jsdom` back unless a
-  future change actually needs DOM-level testing.
+  `src/lib/` (including `src/lib/wordscapes/`), using Vitest. They cover the
+  correctness-critical logic only (card generation, win detection, clue
+  selection/formatting, Wordscapes grid generation) per the original spec —
+  UI and animation are verified manually in-browser, not with component
+  tests. Don't add `@testing-library/*`/`jsdom` back unless a future change
+  actually needs DOM-level testing.
 - Use the `sequenceRng`/`seededRng` helpers in `src/test/rng.ts` for
   deterministic tests instead of mocking `Math.random`.
 

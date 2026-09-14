@@ -4,7 +4,7 @@ import type { BingoCard as BingoCardType, GameConfig, WinPattern } from '../type
 import { WORD_BANKS } from '../data/wordBanks';
 import { generateCard, markWord, selectWordPool } from '../lib/cardGeneration';
 import { checkWin } from '../lib/winDetection';
-import { buildCallQueue, clueForWord, CALL_PACE_MS } from '../lib/caller';
+import { buildCallQueue, clueForWord } from '../lib/caller';
 import { getFreeplayWords } from '../lib/storage';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import BingoCard from './BingoCard';
@@ -46,7 +46,7 @@ export default function GameScreen({ config, onWin, onExit, reduceMotion, soundE
     [callQueue, callIndex, pool, config.difficulty],
   );
 
-  const paceMs = CALL_PACE_MS[config.difficulty];
+  const paceMs = config.callSeconds * 1000;
 
   // Auto-caller: advances to the next clue on a timer. A correct tap also
   // advances callIndex directly, which resets this effect's timeout too --

@@ -1,0 +1,141 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  gap: var(--space-4);
+}
+
+.topBar {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.exitButton {
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-soft);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.categoryLabel {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: capitalize;
+  flex: 1;
+  text-align: center;
+}
+
+.bonusCount {
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.feedbackSlot {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback {
+  margin: 0;
+  font-weight: 700;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.correct {
+  color: white;
+  background: var(--color-success);
+}
+
+.bonus {
+  color: white;
+  background: var(--color-accent);
+}
+
+.invalid {
+  color: var(--color-text-muted);
+  background: var(--color-cell);
+}
+
+.hintSlot {
+  width: 100%;
+  max-width: 420px;
+  min-height: 24px;
+}
+
+.hint {
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+}
+
+.hintLine {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.hintLine + .hintLine {
+  margin-top: var(--space-1);
+  padding-top: var(--space-1);
+  border-top: 1px solid var(--color-border);
+}
+
+.assistRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.assistButton {
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.revealedPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 420px;
+  text-align: center;
+}
+
+.revealedMessage {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.continueButton {
+  min-width: 180px;
+  min-height: 56px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lift);
+  cursor: pointer;
+}
