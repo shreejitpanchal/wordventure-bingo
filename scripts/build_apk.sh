@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
-# Builds an Android APK from the deployed PWA using Bubblewrap (Google's
-# official PWA -> Trusted Web Activity tool). This wraps the *hosted* site
-# in a native shell -- it does not bundle dist/ into the APK -- so it
-# reuses the exact same manifest + service worker as the browser/home-screen
-# install, with no separate native build to keep in sync. Windows
-# equivalent: build_apk.ps1.
+# Builds a local, installable Android APK from this repo's own `dist/`
+# build using Capacitor -- no deployed/hosted URL required. Capacitor
+# bundles the built web app directly into the native project (as local
+# WebView assets) rather than pointing a Trusted Web Activity at a live
+# site, so this works fully offline from a checkout with no prior
+# deployment step. Windows equivalent: build_apk.ps1.
 #
-# Hard prerequisite: the app must already be deployed to a real public
-# HTTPS URL (GitHub Pages/Netlify/Vercel -- see the "Known open item" in
-# CLAUDE.md, still unresolved as of this script's authoring). A TWA loads
-# that URL at runtime and Android verifies ownership of the domain via a
-# Digital Asset Links file Bubblewrap generates
-# (https://developers.google.com/digital-asset-links) -- there is no way to
-# point this at localhost for a real build.
+# This replaced an earlier Bubblewrap/TWA-based script: Bubblewrap wraps a
+# *deployed* PWA and verifies domain ownership via Digital Asset Links,
+# which has no localhost/offline escape hatch -- it hard-blocked every APK
+# build until hosting existed (see CLAUDE.md's former "Known open item").
+# Capacitor trades that for two build artifacts to keep loosely in sync
+# (the live site, if one ever exists, and this native bundle) -- acceptable
+# here since the actual goal is a local test APK, not shipping the exact
+# hosted PWA verbatim.
 #
-# First run: `bubblewrap init` scaffolds android/twa-manifest.json and an
-# Android project, generating a signing keystore and prompting for its
-# password interactively (never pass --password on the command line or set
-# it as a plain env var here -- that would put a secret in shell history /
-# process listings). Subsequent runs reuse that project and just rebuild.
+# Ships a DEBUG-signed APK (Android's auto-generated debug keystore) --
+# installable straight onto a device/emulator for testing, but not eligible
+# for a Play Store release. A release-signed build (your own keystore, kept
+# safe forever) is a separate concern to add later if/when this is actually
+# published; don't add that complexity ahead of needing it.
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -26,9 +27,9 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$REPO_ROOT"
 
 ANDROID_DIR="$REPO_ROOT/android"
-TWA_MANIFEST="$ANDROID_DIR/twa-manifest.json"
 OUT_DIR="$REPO_ROOT/dist-apk"
 BUILD_NUMBER_FILE="$REPO_ROOT/BUILD_NUMBER"
+GRADLE_FILE="$ANDROID_DIR/app/build.gradle"
 
 if ! command -v npm >/dev/null 2>&1; then
     echo "Node.js/npm was not found on this computer."
@@ -36,82 +37,101 @@ if ! command -v npm >/dev/null 2>&1; then
     exit 1
 fi
 
-if [ -z "${WORDVENTURE_HOSTED_URL:-}" ]; then
-    echo "WORDVENTURE_HOSTED_URL is not set."
-    echo
-    echo "Bubblewrap wraps the LIVE, publicly hosted PWA -- it cannot"
-    echo "package a local dev server. Deploy dist/ (GitHub Pages,"
-    echo "Netlify, or Vercel), then set the URL and re-run, e.g.:"
-    echo
-    echo '  WORDVENTURE_HOSTED_URL="https://you.github.io/wordventure-bingo" ./scripts/build_apk.sh'
+if ! command -v java >/dev/null 2>&1; then
+    echo "Java (a JDK, 17+) was not found on PATH."
+    echo "Installing Android Studio (https://developer.android.com/studio) is the"
+    echo "easiest way to get one, or use https://adoptium.net directly. Re-run"
+    echo "after it's on PATH."
     exit 1
 fi
-SITE_URL="${WORDVENTURE_HOSTED_URL%/}"
-MANIFEST_URL="$SITE_URL/manifest.webmanifest"
-PACKAGE_ID="${WORDVENTURE_ANDROID_PACKAGE_ID:-com.wordventurebingo.app}"
 
-npm install --no-audit --no-fund --quiet
-
-if [ ! -f "$TWA_MANIFEST" ]; then
-    echo "============================================"
-    echo "  First-time Bubblewrap setup for"
-    echo "  Wordventure Bingo. This scaffolds the"
-    echo "  Android project and a NEW signing keystore."
-    echo "============================================"
-    echo
-    echo "Manifest:  $MANIFEST_URL"
-    echo "Package:   $PACKAGE_ID"
-    echo
-    echo "You will be prompted to choose a keystore password -- write it down"
-    echo "somewhere safe. Every future update APK must be signed with the same"
-    echo "key, and android/android.keystore is gitignored on purpose (it is a"
-    echo "secret, never commit it). Losing it means you can never publish an"
-    echo "update to an existing Play Store listing under this package ID."
-    echo
-
-    npx --yes @bubblewrap/cli init --manifest "$MANIFEST_URL" --directory "$ANDROID_DIR" --packageId "$PACKAGE_ID"
+# The Android SDK isn't a project dependency -- Gradle just needs
+# ANDROID_HOME to point at a real local install. Trust an explicitly set
+# env var only if it actually resolves (a stale/wrong export, like pointing
+# at a Sdk directory that was never created, shouldn't silently pass and
+# then fail confusingly deep inside the Gradle build); otherwise fall back
+# to this machine's known SDK location as a last resort, the same way
+# coding-adventure's build_apk.sh falls back to a known Flutter install
+# path when FLUTTER_HOME isn't set.
+KNOWN_SDK_FALLBACK="$HOME/Android/sdk"
+if [ -n "${ANDROID_HOME:-}" ] && [ -d "$ANDROID_HOME" ]; then
+    :
+elif [ -n "${ANDROID_SDK_ROOT:-}" ] && [ -d "$ANDROID_SDK_ROOT" ]; then
+    export ANDROID_HOME="$ANDROID_SDK_ROOT"
+elif [ -d "$KNOWN_SDK_FALLBACK" ]; then
+    export ANDROID_HOME="$KNOWN_SDK_FALLBACK"
 else
-    # Re-sync twa-manifest.json with the live manifest (icon/theme-color/name
-    # changes since the last build) before compiling.
-    (cd "$ANDROID_DIR" && npx --yes @bubblewrap/cli update --manifest "$MANIFEST_URL")
+    echo "ANDROID_HOME (or ANDROID_SDK_ROOT) isn't set to a real directory."
+    echo
+    echo "The build needs a local Android SDK. Install Android Studio"
+    echo "(https://developer.android.com/studio), open its SDK Manager once to"
+    echo "download the SDK, then point the env var at it, e.g.:"
+    echo
+    echo '  export ANDROID_HOME="$HOME/AppData/Local/Android/Sdk"   # typical Windows path'
+    echo '  export ANDROID_HOME="$HOME/Library/Android/sdk"         # typical macOS path'
+    echo
+    echo "and re-run."
+    exit 1
 fi
 
+# On Git Bash/MSYS, a POSIX-style path (e.g. /c/Users/...) in ANDROID_HOME
+# is invisible to Gradle -- it runs as a native Windows java.exe process
+# that doesn't understand MSYS paths, and Gradle doesn't get the usual
+# MSYS argument path-mangling since this is an environment variable *value*,
+# not a command-line argument. Without this, the build fails deep inside
+# Gradle with a misleading "SDK location not found" even though
+# ANDROID_HOME is correctly set and the directory genuinely exists.
+if command -v cygpath >/dev/null 2>&1; then
+    export ANDROID_HOME="$(cygpath -w "$ANDROID_HOME")"
+fi
+
+npm install --no-audit --no-fund --quiet
+npm run icons
+npm run build
+
+if [ ! -d "$ANDROID_DIR" ]; then
+    echo "First-time Capacitor Android setup for Wordventure Bingo..."
+    npx cap add android
+fi
+npx cap sync android
+chmod +x "$ANDROID_DIR/gradlew" 2>/dev/null || true
+
+# Regenerates the native launcher icon (mipmap-* + adaptive icon XML) from
+# assets/icon.png every build -- android/ is gitignored and fully
+# regenerated by `cap add`, so the default Capacitor icon would otherwise
+# silently come back on a clean checkout.
+npx @capacitor/assets generate --android
+
 # Android requires versionCode to strictly increase between installs of the
-# same package -- BUILD_NUMBER is a plain repo-root counter (same convention
-# as this app's original devops scaffold), bumped here and written into
-# twa-manifest.json before every build.
+# same package -- BUILD_NUMBER is a plain repo-root counter (tracked in git,
+# same convention this app's other build scripts use), bumped here and
+# written into android/app/build.gradle before every build. versionName
+# tracks package.json's "version" so the two never drift.
 PREV_BUILD=0
 [ -f "$BUILD_NUMBER_FILE" ] && PREV_BUILD="$(cat "$BUILD_NUMBER_FILE")"
 NEW_BUILD=$((PREV_BUILD + 1))
 echo "$NEW_BUILD" > "$BUILD_NUMBER_FILE"
 
-node -e "
-const fs = require('fs');
-const path = '$TWA_MANIFEST';
-const m = JSON.parse(fs.readFileSync(path, 'utf8'));
-m.appVersionCode = $NEW_BUILD;
-fs.writeFileSync(path, JSON.stringify(m, null, 2));
-console.log(m.appVersionName);
-" > /tmp/wordventure-apk-version.txt
-APP_VERSION="$(cat /tmp/wordventure-apk-version.txt)"
-rm -f /tmp/wordventure-apk-version.txt
+APP_VERSION="$(node -p "require('./package.json').version")"
+sed -i -E "s/versionCode [0-9]+/versionCode $NEW_BUILD/" "$GRADLE_FILE"
+sed -i -E "s/versionName \"[^\"]*\"/versionName \"$APP_VERSION\"/" "$GRADLE_FILE"
 
 echo
 echo "Building Android APK (v$APP_VERSION build $NEW_BUILD)..."
 echo
 
-(cd "$ANDROID_DIR" && npx --yes @bubblewrap/cli build)
+(cd "$ANDROID_DIR" && ./gradlew assembleDebug)
 
 mkdir -p "$OUT_DIR"
-BUILT_APK="$ANDROID_DIR/app-release-signed.apk"
-TAGGED_APK="$OUT_DIR/wordventure-bingo-v${APP_VERSION}-build${NEW_BUILD}.apk"
+BUILT_APK="$ANDROID_DIR/app/build/outputs/apk/debug/app-debug.apk"
+TAGGED_APK="$OUT_DIR/wordventure-bingo-v${APP_VERSION}-build${NEW_BUILD}-debug.apk"
 if [ -f "$BUILT_APK" ]; then
     mv "$BUILT_APK" "$TAGGED_APK"
     echo
     echo "Done -- APK at $TAGGED_APK"
+    echo "Install it with: adb install \"$TAGGED_APK\""
 else
     echo
-    echo "bubblewrap reported success but $BUILT_APK wasn't found."
-    echo "Check android/app/build/outputs/apk/ for the actual output path"
-    echo "-- Bubblewrap's output filename has changed between versions before."
+    echo "Gradle reported success but $BUILT_APK wasn't found."
+    echo "Check android/app/build/outputs/apk/ for the actual output path."
 fi

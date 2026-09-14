@@ -4,9 +4,9 @@ dev-dist/
 scripts/logs/
 coverage/
 
-# Bubblewrap's generated Android/Gradle project -- fully regenerable via
-# `bubblewrap init`/`update` from the live PWA manifest (scripts/build_apk.ps1).
-# Includes android/android.keystore, the APK signing key -- never commit that,
-# back it up somewhere safe instead; losing it blocks future Play Store updates.
+# Capacitor's generated Android/Gradle project -- fully regenerable via
+# `npx cap add android`/`sync` from capacitor.config.ts + dist/
+# (scripts/build_apk.ps1). Debug builds are auto-signed by Android's own
+# throwaway debug keystore, so there's nothing here worth keeping.
 android/
 dist-apk/

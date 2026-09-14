@@ -196,17 +196,38 @@ package id, or branding if this is ever published).
 ## Known open items
 
 - **Hosting isn't deployed yet.** Nothing serves the PWA at a public HTTPS
-  URL (GitHub Pages/Netlify/Vercel — still undecided). This blocks
-  `scripts/build_apk.ps1` (Bubblewrap needs a live manifest URL, not a local
-  dev server) and the PWA-install docs in the README, which assume the app
-  has a real URL to open. Resolve this before either matters in practice.
+  URL (GitHub Pages/Netlify/Vercel — still undecided). This no longer blocks
+  Android APK builds (see below), but still blocks the PWA-install docs in
+  the README (which assume the app has a real URL to open in a browser) and
+  any future proper Play-Store release. Resolve this before either matters
+  in practice.
 - **Android packaging is decided; Windows packaging is not.** Android ships
-  via Bubblewrap/TWA (`scripts/build_apk.ps1`), wrapping the deployed PWA
-  rather than bundling `dist/` — deliberately chosen over Capacitor so there's
-  one build artifact (the live site) instead of two. Windows has no
-  equivalent: `.github/workflows/tag.yml`'s `BUILD_TARGETS` repo variable and
-  `task_build`'s `windows` branch in `scripts/dev.sh`/`dev.ps1` are still
-  TODO stubs from the original devops scaffold, which assumed a distributable
+  via **Capacitor** (`scripts/build_apk.ps1`/`.sh`, `capacitor.config.ts`),
+  which bundles `dist/` directly into the native project as local WebView
+  assets — not Bubblewrap/TWA, which was tried first and rejected: it wraps
+  a *deployed* PWA and verifies domain ownership via Digital Asset Links,
+  which has no localhost/offline path, so it hard-blocked every APK build
+  until hosting existed. That's a real requirement for local test builds
+  (the actual ask), so the earlier "one build artifact instead of two"
+  reasoning for preferring Bubblewrap no longer wins — Capacitor accepts a
+  second artifact (this native bundle, alongside the PWA if one is ever
+  hosted) in exchange for not needing hosting at all. The build ships a
+  **debug**-signed APK (Android's own throwaway debug keystore) — good
+  enough to sideload/test, but not for a Play Store release; that needs a
+  proper release keystore, deliberately not set up until actually needed.
+  `build_apk.sh` resolves `ANDROID_HOME` itself (env var if it points at a
+  real directory, else `ANDROID_SDK_ROOT`, else this machine's known SDK
+  install at `~/Android/sdk`) rather than trusting a possibly-stale export,
+  and — Git Bash/MSYS only — runs the result through `cygpath -w` before
+  exporting it: Gradle's `java.exe` is a native Windows process that can't
+  resolve a POSIX-style path like `/c/Users/.../sdk`, and (unlike a
+  command-line argument) MSYS doesn't path-mangle environment variable
+  *values* for you, so a POSIX `ANDROID_HOME` fails deep inside Gradle with
+  a misleading "SDK location not found" even though the directory is real.
+  Windows has no packaging equivalent: `.github/workflows/tag.yml`'s
+  `BUILD_TARGETS` repo variable and `task_build`'s `windows` branch in
+  `scripts/dev.sh`/`dev.ps1` are still TODO stubs from the original devops
+  scaffold, which assumed a distributable
   Windows package (MSIX/Electron/etc.) that was never decided on. The
   Windows *user experience* is already fully covered without one — browser
   tab (`scripts/run_web.ps1`), app window (`scripts/run_window_mode.ps1`), or
@@ -214,6 +235,22 @@ package id, or branding if this is ever published).
   binary packaging unless a Play-Store-style distribution need actually
   comes up. If it does, revisit `BUILD_TARGETS`/`SHIP_IMAGE` before the
   first `git tag`.
+- **The app icon has one source of truth: `assets/main-icon.jpg`.** Every
+  other icon file is derived from it, never hand-edited — `npm run icons`
+  (`scripts/generate_icons.mjs`, using `sharp`) letterboxes it onto a white
+  1024x1024 canvas at `assets/icon.png` (the square master; `main-icon.jpg`
+  itself is a 588x340 banner with lettering running edge-to-edge, so a
+  center-crop-to-square — which `@capacitor/assets` does to any non-square
+  source — would slice into it) and renders the PWA manifest icons
+  (`public/icons/icon-*.png`, `maskable-*.png` — the maskable pair gets an
+  extra ~80% safe-zone shrink so adaptive-icon masks don't clip them).
+  `scripts/build_apk.sh`/`.ps1` run `npm run icons` and then
+  `npx @capacitor/assets generate --android` (scoped to Android only — this
+  repo has no `ios/` project) on every build, since `android/` is
+  regenerated from scratch each time and would otherwise silently revert to
+  Capacitor's default launcher icon. To change the app icon, replace
+  `assets/main-icon.jpg` and re-run `npm run icons`; don't edit the
+  generated files directly.
 
 ## graphify
 

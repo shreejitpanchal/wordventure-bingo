@@ -1,32 +1,34 @@
 #requires -Version 5.1
-# Builds an Android APK from the deployed PWA using Bubblewrap (Google's
-# official PWA -> Trusted Web Activity tool). This wraps the *hosted* site
-# in a native shell -- it does not bundle dist/ into the APK -- so it
-# reuses the exact same manifest + service worker as the browser/home-screen
-# install, with no separate native build to keep in sync.
+# Builds a local, installable Android APK from this repo's own `dist/`
+# build using Capacitor -- no deployed/hosted URL required. Capacitor
+# bundles the built web app directly into the native project (as local
+# WebView assets) rather than pointing a Trusted Web Activity at a live
+# site, so this works fully offline from a checkout with no prior
+# deployment step. macOS/Linux/Git Bash equivalent: build_apk.sh.
 #
-# Hard prerequisite: the app must already be deployed to a real public
-# HTTPS URL (GitHub Pages/Netlify/Vercel -- see the "Known open item" in
-# CLAUDE.md, still unresolved as of this script's authoring). A TWA loads
-# that URL at runtime and Android verifies ownership of the domain via a
-# Digital Asset Links file Bubblewrap generates
-# (https://developers.google.com/digital-asset-links) -- there is no way to
-# point this at localhost for a real build.
+# This replaced an earlier Bubblewrap/TWA-based script: Bubblewrap wraps a
+# *deployed* PWA and verifies domain ownership via Digital Asset Links,
+# which has no localhost/offline escape hatch -- it hard-blocked every APK
+# build until hosting existed (see CLAUDE.md's former "Known open item").
+# Capacitor trades that for two build artifacts to keep loosely in sync
+# (the live site, if one ever exists, and this native bundle) -- acceptable
+# here since the actual goal is a local test APK, not shipping the exact
+# hosted PWA verbatim.
 #
-# First run: `bubblewrap init` scaffolds android/twa-manifest.json and an
-# Android project, generating a signing keystore and prompting for its
-# password interactively (never pass --password on the command line or set
-# it as a plain env var here -- that would put a secret in shell history /
-# process listings). Subsequent runs reuse that project and just rebuild.
+# Ships a DEBUG-signed APK (Android's auto-generated debug keystore) --
+# installable straight onto a device/emulator for testing, but not eligible
+# for a Play Store release. A release-signed build (your own keystore, kept
+# safe forever) is a separate concern to add later if/when this is actually
+# published; don't add that complexity ahead of needing it.
 
 $ErrorActionPreference = 'Stop'
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $RepoRoot
 
 $AndroidDir = Join-Path $RepoRoot 'android'
-$TwaManifest = Join-Path $AndroidDir 'twa-manifest.json'
 $OutDir = Join-Path $RepoRoot 'dist-apk'
 $BuildNumberFile = Join-Path $RepoRoot 'BUILD_NUMBER'
+$GradleFile = Join-Path $AndroidDir 'app\build.gradle'
 
 if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
     Write-Host 'Node.js/npm was not found on this computer.' -ForegroundColor Red
@@ -34,20 +36,40 @@ if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-if (-not $env:WORDVENTURE_HOSTED_URL) {
-    Write-Host 'WORDVENTURE_HOSTED_URL is not set.' -ForegroundColor Red
-    Write-Host ''
-    Write-Host 'Bubblewrap wraps the LIVE, publicly hosted PWA -- it cannot' -ForegroundColor Red
-    Write-Host 'package a local dev server. Deploy dist/ (GitHub Pages,'    -ForegroundColor Red
-    Write-Host 'Netlify, or Vercel), then set the URL and re-run, e.g.:'   -ForegroundColor Red
-    Write-Host ''
-    Write-Host '  $env:WORDVENTURE_HOSTED_URL = "https://you.github.io/wordventure-bingo"'
-    Write-Host '  .\scripts\build_apk.ps1'
+if (-not (Get-Command java -ErrorAction SilentlyContinue)) {
+    Write-Host 'Java (a JDK, 17+) was not found on PATH.' -ForegroundColor Red
+    Write-Host 'Installing Android Studio (https://developer.android.com/studio) is the'
+    Write-Host 'easiest way to get one, or use https://adoptium.net directly. Re-run'
+    Write-Host "after it's on PATH."
     exit 1
 }
-$SiteUrl = $env:WORDVENTURE_HOSTED_URL.TrimEnd('/')
-$ManifestUrl = "$SiteUrl/manifest.webmanifest"
-$PackageId = if ($env:WORDVENTURE_ANDROID_PACKAGE_ID) { $env:WORDVENTURE_ANDROID_PACKAGE_ID } else { 'com.wordventurebingo.app' }
+
+# The Android SDK isn't a project dependency -- Gradle just needs
+# ANDROID_HOME to point at a real local install. Trust an explicitly set
+# env var only if it actually resolves (a stale/wrong value shouldn't
+# silently pass and then fail confusingly deep inside the Gradle build);
+# otherwise fall back to this machine's known SDK location as a last
+# resort, the same way coding-adventure's build_apk.sh falls back to a
+# known Flutter install path when FLUTTER_HOME isn't set.
+$KnownSdkFallback = "$env:USERPROFILE\Android\sdk"
+if ($env:ANDROID_HOME -and (Test-Path $env:ANDROID_HOME)) {
+    # use as-is
+} elseif ($env:ANDROID_SDK_ROOT -and (Test-Path $env:ANDROID_SDK_ROOT)) {
+    $env:ANDROID_HOME = $env:ANDROID_SDK_ROOT
+} elseif (Test-Path $KnownSdkFallback) {
+    $env:ANDROID_HOME = $KnownSdkFallback
+} else {
+    Write-Host "ANDROID_HOME (or ANDROID_SDK_ROOT) isn't set to a real directory." -ForegroundColor Red
+    Write-Host ''
+    Write-Host 'The build needs a local Android SDK. Install Android Studio'
+    Write-Host '(https://developer.android.com/studio), open its SDK Manager once to'
+    Write-Host 'download the SDK, then point the env var at it, e.g.:'
+    Write-Host ''
+    Write-Host '  $env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"'
+    Write-Host ''
+    Write-Host 'and re-run.'
+    exit 1
+}
 
 npm install --no-audit --no-fund --quiet
 if ($LASTEXITCODE -ne 0) {
@@ -55,55 +77,57 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-if (-not (Test-Path $TwaManifest)) {
-    Write-Host '============================================' -ForegroundColor Cyan
-    Write-Host '  First-time Bubblewrap setup for'             -ForegroundColor Cyan
-    Write-Host '  Wordventure Bingo. This scaffolds the'       -ForegroundColor Cyan
-    Write-Host '  Android project and a NEW signing keystore.' -ForegroundColor Cyan
-    Write-Host '============================================' -ForegroundColor Cyan
-    Write-Host ''
-    Write-Host "Manifest:  $ManifestUrl"
-    Write-Host "Package:   $PackageId"
-    Write-Host ''
-    Write-Host 'You will be prompted to choose a keystore password -- write it down' -ForegroundColor Yellow
-    Write-Host 'somewhere safe. Every future update APK must be signed with the same' -ForegroundColor Yellow
-    Write-Host 'key, and android/android.keystore is gitignored on purpose (it is a' -ForegroundColor Yellow
-    Write-Host 'secret, never commit it). Losing it means you can never publish an' -ForegroundColor Yellow
-    Write-Host 'update to an existing Play Store listing under this package ID.' -ForegroundColor Yellow
-    Write-Host ''
+npm run icons
+if ($LASTEXITCODE -ne 0) {
+    Write-Host 'npm run icons failed -- fix that before building.' -ForegroundColor Red
+    exit 1
+}
 
-    npx --yes @bubblewrap/cli init --manifest $ManifestUrl --directory $AndroidDir --packageId $PackageId
+npm run build
+if ($LASTEXITCODE -ne 0) {
+    Write-Host 'npm run build failed -- fix that before building.' -ForegroundColor Red
+    exit 1
+}
+
+if (-not (Test-Path $AndroidDir)) {
+    Write-Host 'First-time Capacitor Android setup for Wordventure Bingo...' -ForegroundColor Cyan
+    npx cap add android
     if ($LASTEXITCODE -ne 0) {
-        Write-Host 'bubblewrap init failed -- see the errors above.' -ForegroundColor Red
+        Write-Host 'cap add android failed -- see the errors above.' -ForegroundColor Red
         exit 1
     }
-} else {
-    # Re-sync twa-manifest.json with the live manifest (icon/theme-color/name
-    # changes since the last build) before compiling.
-    Push-Location $AndroidDir
-    try {
-        npx --yes @bubblewrap/cli update --manifest $ManifestUrl
-        if ($LASTEXITCODE -ne 0) {
-            Write-Host 'bubblewrap update failed -- see the errors above.' -ForegroundColor Red
-            exit 1
-        }
-    } finally {
-        Pop-Location
-    }
+}
+npx cap sync android
+if ($LASTEXITCODE -ne 0) {
+    Write-Host 'cap sync android failed -- see the errors above.' -ForegroundColor Red
+    exit 1
+}
+
+# Regenerates the native launcher icon (mipmap-* + adaptive icon XML) from
+# assets/icon.png every build -- android/ is gitignored and fully
+# regenerated by `cap add`, so the default Capacitor icon would otherwise
+# silently come back on a clean checkout.
+npx @capacitor/assets generate --android
+if ($LASTEXITCODE -ne 0) {
+    Write-Host '@capacitor/assets generate failed -- see the errors above.' -ForegroundColor Red
+    exit 1
 }
 
 # Android requires versionCode to strictly increase between installs of the
-# same package -- BUILD_NUMBER is a plain repo-root counter (same convention
-# as this app's original devops scaffold), bumped here and written into
-# twa-manifest.json before every build.
+# same package -- BUILD_NUMBER is a plain repo-root counter (tracked in git,
+# same convention this app's other build scripts use), bumped here and
+# written into android/app/build.gradle before every build. versionName
+# tracks package.json's "version" so the two never drift.
 $prevBuild = if (Test-Path $BuildNumberFile) { [int](Get-Content $BuildNumberFile -Raw) } else { 0 }
 $newBuild = $prevBuild + 1
 Set-Content -Path $BuildNumberFile -Value $newBuild -NoNewline
 
-$manifestJson = Get-Content $TwaManifest -Raw | ConvertFrom-Json
-$manifestJson.appVersionCode = $newBuild
-$manifestJson | ConvertTo-Json -Depth 20 | Set-Content -Path $TwaManifest -Encoding utf8
-$appVersion = $manifestJson.appVersionName
+$appVersion = (Get-Content (Join-Path $RepoRoot 'package.json') -Raw | ConvertFrom-Json).version
+
+$gradleContent = Get-Content $GradleFile -Raw
+$gradleContent = $gradleContent -replace 'versionCode \d+', "versionCode $newBuild"
+$gradleContent = $gradleContent -replace 'versionName "[^"]*"', "versionName `"$appVersion`""
+Set-Content -Path $GradleFile -Value $gradleContent -NoNewline
 
 Write-Host ''
 Write-Host "Building Android APK (v$appVersion build $newBuild)..." -ForegroundColor Cyan
@@ -111,26 +135,26 @@ Write-Host ''
 
 Push-Location $AndroidDir
 try {
-    npx --yes @bubblewrap/cli build
+    & .\gradlew.bat assembleDebug
     $buildExit = $LASTEXITCODE
 } finally {
     Pop-Location
 }
 if ($buildExit -ne 0) {
-    Write-Host 'bubblewrap build failed -- see the errors above.' -ForegroundColor Red
+    Write-Host 'Gradle build failed -- see the errors above.' -ForegroundColor Red
     exit 1
 }
 
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-$builtApk = Join-Path $AndroidDir 'app-release-signed.apk'
-$taggedApk = Join-Path $OutDir "wordventure-bingo-v$appVersion-build$newBuild.apk"
+$builtApk = Join-Path $AndroidDir 'app\build\outputs\apk\debug\app-debug.apk'
+$taggedApk = Join-Path $OutDir "wordventure-bingo-v$appVersion-build$newBuild-debug.apk"
 if (Test-Path $builtApk) {
     Move-Item -Path $builtApk -Destination $taggedApk -Force
     Write-Host ''
     Write-Host "Done -- APK at $taggedApk" -ForegroundColor Green
+    Write-Host "Install it with: adb install `"$taggedApk`""
 } else {
     Write-Host ''
-    Write-Host "bubblewrap reported success but $builtApk wasn't found." -ForegroundColor Yellow
-    Write-Host "Check android/app/build/outputs/apk/ for the actual output path" -ForegroundColor Yellow
-    Write-Host "-- Bubblewrap's output filename has changed between versions before." -ForegroundColor Yellow
+    Write-Host "Gradle reported success but $builtApk wasn't found." -ForegroundColor Yellow
+    Write-Host 'Check android\app\build\outputs\apk\ for the actual output path.' -ForegroundColor Yellow
 }

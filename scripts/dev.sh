@@ -68,10 +68,11 @@ task_build() {
 
   case "$T_OS" in
     android)
-      # TODO: package the Vite output (dist/) into an Android APK/AAB once a
-      # tool is chosen (Capacitor + Gradle, or Bubblewrap/TWA). Land the
-      # result at "$DIST/$BIN_NAME.apk" and remove the raw web files from
-      # dist/ so the release artifact is just the package.
+      # TODO: wire the release pipeline to package an APK/AAB the same way
+      # scripts/build_apk.sh does (Capacitor + Gradle -- already the decided
+      # tool, see CLAUDE.md). Land the result at "$DIST/$BIN_NAME.apk" and
+      # remove the raw web files from dist/ so the release artifact is just
+      # the package.
       warn "android packaging not implemented (TARGET_OS=android)"; return 1
       ;;
     windows)

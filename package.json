@@ -11,15 +11,19 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "icons": "node scripts/generate_icons.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/core": "^8.5.1",
     "framer-motion": "^11.11.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@bubblewrap/cli": "^1.23.1",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.5.1",
     "@eslint/js": "^9.15.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
@@ -30,6 +34,7 @@
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
+    "sharp": "^0.35.4",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
     "vite-plugin-pwa": "^0.20.5",

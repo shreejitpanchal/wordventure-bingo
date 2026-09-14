@@ -177,38 +177,43 @@ working with no network connection.
 ## Building an Android APK
 
 `scripts/build_apk.ps1` (Windows) / `build_apk.sh` (macOS/Linux/Git Bash)
-wraps the **deployed** PWA in a native Android shell using
-[Bubblewrap](https://github.com/GoogleChromeLabs/bubblewrap) (Google's
-official PWA→Trusted Web Activity tool). It reuses the live manifest and
-service worker as-is — there's no separate native codebase to keep in sync.
+builds a local, installable APK using [Capacitor](https://capacitorjs.com/),
+which bundles this repo's own `dist/` build straight into the native Android
+project as local WebView assets. **No hosting/deployment needed** — it works
+from a plain checkout, offline.
 
 Prerequisites:
-- The app must already be deployed to a real public HTTPS URL (GitHub Pages,
-  Netlify, or Vercel — hosting isn't set up yet, see `CLAUDE.md`'s "Known
-  open item"). A TWA can't point at a local dev server.
-- A JDK and the Android SDK — Bubblewrap's first run offers to download both
-  automatically if missing.
+- A JDK (17+) — install via [Android Studio](https://developer.android.com/studio)
+  or [Adoptium](https://adoptium.net).
+- The Android SDK, with `ANDROID_HOME` (or `ANDROID_SDK_ROOT`) pointing at
+  it — Android Studio's SDK Manager installs this. The script also falls
+  back to `~/Android/sdk` if neither env var resolves to a real directory,
+  so it needs no manual setup on a machine that already has an SDK there
+  (e.g. installed by another project's toolchain).
 
 ```powershell
-$env:WORDVENTURE_HOSTED_URL = "https://you.github.io/wordventure-bingo"
 .\scripts\build_apk.ps1
 ```
 
 ```bash
-WORDVENTURE_HOSTED_URL="https://you.github.io/wordventure-bingo" ./scripts/build_apk.sh
+./scripts/build_apk.sh
 ```
 
-The first run scaffolds `android/` and a signing keystore, prompting for a
-keystore password interactively — **write that password down somewhere
-safe**. Every future update APK must be signed with the same key, and
-`android/` (including the keystore) is gitignored on purpose: losing that
-key means you can never publish an update to an existing Play Store listing
-under the same package ID. Back the keystore up outside of git.
+The first run scaffolds `android/` via Capacitor (fully regenerable, and
+gitignored — nothing there is worth keeping by hand). Every run bumps the
+repo-root `BUILD_NUMBER` file (tracked in git) so `versionCode` keeps
+strictly increasing, as Android requires, and syncs `versionName` from
+`package.json`. The launcher icon is regenerated on every build from
+`assets/main-icon.jpg` (via `npm run icons` + `@capacitor/assets`) — to
+change it, replace that file and rebuild, don't edit the generated
+`assets/icon.png`/`public/icons/*.png` by hand. The APK lands in
+`dist-apk/`, ready to install with `adb install <path>`.
 
-Later runs re-sync from the live manifest and rebuild; each build increments
-the repo-root `BUILD_NUMBER` file (tracked in git) so `versionCode` keeps
-strictly increasing, as Android requires. The signed APK lands in
-`dist-apk/`.
+This produces a **debug**-signed build (Android's own throwaway debug
+keystore) — fine for testing on a device/emulator, but not eligible for a
+Play Store release. A release build needs its own signing keystore, which
+isn't set up yet (see `CLAUDE.md`'s "Known open items") — add that if/when
+actually publishing.
 
 ## Testing
 
