@@ -5,6 +5,9 @@ built as an offline-capable Progressive Web App (PWA). Playable on a Windows lap
 (Chrome/Edge) and installable to the home screen on Android — no login, no ads, no
 backend. 🎯📝
 
+For a map of how the codebase fits together (module boundaries, data flow,
+the screen state machine), see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 First launch asks "Who's playing?" — pick a name (or add a new one). This
 isn't a login: it's just a local label so siblings/family sharing one
 device/tablet each keep their own Bingo streaks and Wordscapes stats, all
@@ -29,7 +32,10 @@ Two modes, picked from the main menu:
 - Framer Motion for all transitions/animations
 - CSS Modules for styling
 - `vite-plugin-pwa` for the offline service worker + install manifest
-- `localStorage` for settings, streaks, and the custom Free Play word list
+- `localStorage` for settings, player profiles, per-profile streaks/stats,
+  and the (device-wide) custom Free Play word list
+- Capacitor for local Android APK builds — see "Building an Android APK"
+  below
 - Vitest for unit tests
 
 ## Running locally
@@ -230,5 +236,6 @@ npm run test:coverage # with coverage report
 ```
 
 Unit tests cover the correctness-critical logic — card generation, win
-detection, and clue selection/formatting (`src/lib/*.test.ts`). UI and
-animation behavior is verified manually in-browser (desktop + Android).
+detection, clue selection/formatting, and Wordscapes grid generation
+(`src/lib/*.test.ts`, including `src/lib/wordscapes/`). UI and animation
+behavior is verified manually in-browser (desktop + Android).

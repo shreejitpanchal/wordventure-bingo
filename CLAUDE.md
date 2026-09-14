@@ -12,6 +12,11 @@ Cross — named "Wordscapes" as an in-app mode label only; that name is a
 third party's trademark, so it must not appear in any app-store listing,
 package id, or branding if this is ever published).
 
+For a diagram-first map of module boundaries, data flow, and the screen
+state machine, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — this file
+stays the detailed per-feature record of *why* things are shaped the way
+they are; keep both in sync when either changes.
+
 ## Stack & architecture
 
 - React + Vite + TypeScript, Framer Motion for all transitions/animations, CSS
@@ -84,6 +89,37 @@ package id, or branding if this is ever published).
   "Wordscapes mode" below for why. They're ordinary `easy`-tagged entries,
   so Bingo's easy cards can draw them too (harmless — more variety, still
   easy vocabulary); don't remove them thinking they're Wordscapes-only.
+- **Easy short-word pool sizes per category** (words of length 3-5 —
+  `selectWordscapesPool`'s effective easy pool): spelling 169, animals 55,
+  geography 46, science 45, freeplay 181 (started at 36/29/28/26/36; grew to
+  62/../../../58 in one round of additions, then spelling/freeplay grew far
+  further — see below). Grown specifically because a small pool +
+  `wordCount: 3` visibly repeats words within a handful of games — a pool
+  this size keeps any single word's chance of appearing in a given
+  wordCount=3 puzzle under ~8% (was ~14% before, verified via a standalone
+  script sampling 1000 generations). If repetition complaints come back at
+  a low word count, the fix is more words here, not a generation-algorithm
+  change — the algorithm already samples/places without bias (see
+  "Wordscapes mode" below); repetition is a pure pool-size symptom.
+  Keep new additions **balanced across 3/4/5 letters** and **free of
+  duplicate `word` values within the same category file** (a repeated word
+  string across difficulty tiers would let a card/puzzle draw two entries
+  for the same word) — re-run the pool-size/duplicate check after editing
+  any word bank.
+- **`spelling` and `freeplay` additionally got a general vocabulary
+  expansion** (not just short Wordscapes words): +450 words each, spread
+  ~200 easy / ~125 medium / ~125 hard, bringing `spelling` to 582 total and
+  `freeplay` to 530. `freeplay` had no `medium`/`hard` entries before this —
+  it now does, purely for data-model consistency and clue-weighting/
+  Wordscapes-length-cap purposes; **Bingo's `selectWordPool` still ignores
+  `freeplay`'s difficulty tag entirely and always draws from the whole
+  list** (`cardGeneration.ts`), so adding these tiers doesn't gate which
+  words a `freeplay` game can show at a given difficulty setting the way it
+  does for every other category — don't assume it does if you touch this
+  later. Both files' additions were drafted by an agent per category, then
+  independently re-verified (not just trusted) via the same duplicate/
+  JSON-validity/generation-reliability checks used for every other word-bank
+  change in this project.
 
 ## Bingo mode
 
