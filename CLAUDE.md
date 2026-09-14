@@ -2,7 +2,10 @@
 
 A kid-friendly word game app (ages 10+) delivered as an offline-capable
 PWA — Windows (Chrome/Edge) and Android (installed to home screen). No backend,
-no accounts, no ads, no network calls after first load. Two modes, chosen from
+no accounts, no ads, no network calls after first load. (Named local player
+profiles exist — see "Player profiles" below — but they're just labeled
+localStorage buckets on-device, not accounts: no auth, no network, nothing
+that leaves the device.) Two modes, chosen from
 the main menu: **Bingo** (the original word-bingo game) and **Wordscapes**
 (a word-connect crossword puzzle, in the style of PeopleFun's Wordscapes/Word
 Cross — named "Wordscapes" as an in-app mode label only; that name is a
@@ -15,20 +18,54 @@ package id, or branding if this is ever published).
   Modules for styling (no Tailwind, no UI framework).
 - `vite-plugin-pwa` owns the manifest + service worker (`vite.config.ts`).
 - No router: `src/App.tsx` is a single explicit screen state machine
-  (`menu | game | win | settings | wordscapes-game | wordscapes-win`) swapped
-  via `AnimatePresence`. Don't introduce React Router or similar for what is
-  a handful of screens. Mode selection (Bingo vs. Wordscapes) happens inside
-  `MenuScreen`, not as a separate screen.
+  (`profile | menu | game | win | settings | wordscapes-game |
+  wordscapes-win`) swapped via `AnimatePresence`. Don't introduce React
+  Router or similar for what is a handful of screens. Mode selection (Bingo
+  vs. Wordscapes) happens inside `MenuScreen`, not as a separate screen.
 - No backend, no global state library: all persistence is `localStorage`
-  behind `src/lib/storage.ts` (settings, Bingo streaks, Wordscapes stats, the
-  Free Play custom word list). That file is the only place allowed to touch
-  `localStorage` directly.
+  behind `src/lib/storage.ts` (settings, player profiles, Bingo streaks,
+  Wordscapes stats, the Free Play custom word list). That file is the only
+  place allowed to touch `localStorage` directly. `App.tsx` holds the
+  active profile name and the loaded streaks/stats in React state and
+  passes them down explicitly as props — components never re-read "the
+  current profile" from storage themselves, so who a given render's data
+  belongs to is always traceable through props, not an implicit global.
 - Game logic is framework-free and colocated in `src/lib/` (`cardGeneration`,
   `winDetection`, `clueMatching`, `caller` for Bingo; `wordscapes/gridGeneration`
   for Wordscapes) — pure functions taking an injectable `rng` parameter so
   they stay unit-testable without mocking `Math.random`. Keep new game-rule
   logic there, not inside components. Shared utilities (e.g. `shuffle`) live
   in `src/lib/random.ts` — reuse it rather than re-implementing per module.
+
+## Player profiles
+
+- **Named local profiles, not accounts.** `ProfileScreen` asks "Who's
+  playing?" before the menu is reachable at all (`App.tsx`'s `screen`
+  starts at `'profile'` whenever `getCurrentProfile()` is `null`) — pick an
+  existing name or type a new one, both go through the same
+  `createProfile`/`onChoose` path since creating is idempotent for a name
+  already in the list. There's no password, no server, nothing that
+  identifies a real person beyond whatever string they typed; it exists
+  purely so siblings/family sharing one device/tablet don't have to see
+  each other's streaks. A small `👋 {name}` button on `MenuScreen` (mirrors
+  the settings gear, opposite corner) re-opens the picker to switch.
+- **Only Bingo streaks and Wordscapes stats are scoped per profile**
+  (`streaksKey`/`wordscapesStatsKey` in `storage.ts`, suffixed by name) —
+  Settings and the Free Play word list stay device-wide. Those are a
+  device/accessibility preference and shared content respectively, not
+  per-player statistics, so scoping them per profile wasn't warranted; if
+  that changes, thread the profile name into `WordListEditor`/`useSettings`
+  the same explicit-prop way `App.tsx` already does for streaks/stats,
+  don't have `storage.ts` reach for "the current profile" internally.
+- **First-ever profile inherits pre-profile-era progress.** This feature
+  shipped after the app already had real device-wide streaks/stats
+  (unscoped `wordventure:streaks`/`wordventure:wordscapesStats` keys) — 
+  `createProfile` copies those legacy keys into the new profile's scoped
+  keys, but only when `getProfiles()` was empty (i.e. this is the very
+  first name anyone's picked on this device), so upgrading doesn't
+  silently zero out an existing player's progress. There's no way to know
+  whose progress it was, so whoever picks a name first gets it; every
+  profile created after that starts empty, correctly.
 
 ## Word banks
 

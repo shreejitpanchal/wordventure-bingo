@@ -45,7 +45,7 @@ export interface WinResult {
   cellIndices: number[];
 }
 
-export type ScreenName = 'menu' | 'game' | 'win' | 'settings' | 'wordscapes-game' | 'wordscapes-win';
+export type ScreenName = 'profile' | 'menu' | 'game' | 'win' | 'settings' | 'wordscapes-game' | 'wordscapes-win';
 
 export type GameMode = 'bingo' | 'wordscapes';
 

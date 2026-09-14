@@ -5,6 +5,12 @@ built as an offline-capable Progressive Web App (PWA). Playable on a Windows lap
 (Chrome/Edge) and installable to the home screen on Android — no login, no ads, no
 backend. 🎯📝
 
+First launch asks "Who's playing?" — pick a name (or add a new one). This
+isn't a login: it's just a local label so siblings/family sharing one
+device/tablet each keep their own Bingo streaks and Wordscapes stats, all
+still stored only on-device. Tap the name button on the main menu (next to
+the settings gear) to switch player at any time.
+
 Two modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
   The menu's **Call Speed** setting picks how many seconds the auto-caller

@@ -8,11 +8,13 @@ import { CALL_SECONDS_OPTIONS, DEFAULT_CALL_SECONDS } from '../lib/caller';
 import styles from './MenuScreen.module.css';
 
 interface Props {
+  playerName: string;
   streaks: Streaks;
   wordscapesStats: WordscapesStats;
   onStartBingo: (config: GameConfig) => void;
   onStartWordscapes: (config: WordscapesConfig) => void;
   onOpenSettings: () => void;
+  onSwitchProfile: () => void;
   reduceMotion: boolean;
 }
 
@@ -27,7 +29,16 @@ const MODES: { id: GameMode; label: string; emoji: string }[] = [
   { id: 'wordscapes', label: 'Wordscapes', emoji: '🧩' },
 ];
 
-export default function MenuScreen({ streaks, wordscapesStats, onStartBingo, onStartWordscapes, onOpenSettings, reduceMotion }: Props) {
+export default function MenuScreen({
+  playerName,
+  streaks,
+  wordscapesStats,
+  onStartBingo,
+  onStartWordscapes,
+  onOpenSettings,
+  onSwitchProfile,
+  reduceMotion,
+}: Props) {
   const [mode, setMode] = useState<GameMode>('bingo');
   const [category, setCategory] = useState<CategoryId>('spelling');
   const [difficulty, setDifficulty] = useState<Difficulty>('easy');
@@ -48,6 +59,9 @@ export default function MenuScreen({ streaks, wordscapesStats, onStartBingo, onS
     >
       <button className={styles.settingsButton} onClick={onOpenSettings} aria-label="Settings">
         ⚙️
+      </button>
+      <button className={styles.profileButton} onClick={onSwitchProfile}>
+        👋 {playerName}
       </button>
 
       <h1 className={styles.title}>Wordventure Bingo</h1>

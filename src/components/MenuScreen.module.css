@@ -21,6 +21,21 @@
   cursor: pointer;
 }
 
+.profileButton {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-soft);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .title {
   font-size: clamp(1.8rem, 5vw, 2.6rem);
   color: var(--color-primary);

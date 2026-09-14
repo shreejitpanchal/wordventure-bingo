@@ -2,10 +2,25 @@ import type { Settings, Streaks, WordEntry, WordscapesStats } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
-  streaks: 'wordventure:streaks',
   freeplayWords: 'wordventure:freeplayWords',
+  profiles: 'wordventure:profiles',
+  currentProfile: 'wordventure:currentProfile',
+} as const;
+
+// Pre-profile-era keys: the device-wide stats this app used before named
+// local profiles existed. Read only once, by createProfile's migration.
+const LEGACY_KEYS = {
+  streaks: 'wordventure:streaks',
   wordscapesStats: 'wordventure:wordscapesStats',
 } as const;
+
+function streaksKey(profile: string): string {
+  return `wordventure:streaks:${profile}`;
+}
+
+function wordscapesStatsKey(profile: string): string {
+  return `wordventure:wordscapesStats:${profile}`;
+}
 
 const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false };
 const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
@@ -42,12 +57,58 @@ export function saveSettings(settings: Settings): void {
   writeJSON(KEYS.settings, settings);
 }
 
-export function getStreaks(): Streaks {
-  return { ...DEFAULT_STREAKS, ...readJSON(KEYS.streaks, DEFAULT_STREAKS) };
+// --- Profiles --------------------------------------------------------------
+//
+// Named local profiles, not accounts: no auth, no network, just separate
+// localStorage buckets on this device so siblings/family sharing one
+// device/tablet each keep their own Bingo streaks and Wordscapes stats.
+// Everything else (settings, the Free Play word list) stays device-wide --
+// those are device/accessibility preferences and shared content, not
+// per-player statistics, so scoping them per profile isn't warranted.
+
+export function getProfiles(): string[] {
+  return readJSON<string[]>(KEYS.profiles, []);
 }
 
-export function recordGameResult(category: string, won: boolean): Streaks {
-  const streaks = getStreaks();
+export function getCurrentProfile(): string | null {
+  return readJSON<string | null>(KEYS.currentProfile, null);
+}
+
+/**
+ * Selects `name` as the active profile, adding it to the known-profiles
+ * list if it's new. If this is the very first profile ever created on this
+ * device, it also inherits any pre-profile-era streaks/stats so upgrading
+ * doesn't silently reset an existing player's progress to zero -- there's
+ * no way to know whose progress that was, so the first person to pick a
+ * name gets it.
+ */
+export function createProfile(name: string): void {
+  const trimmed = name.trim();
+  if (!trimmed) return;
+
+  const profiles = getProfiles();
+  const isFirstEverProfile = profiles.length === 0;
+  if (!profiles.includes(trimmed)) {
+    writeJSON(KEYS.profiles, [...profiles, trimmed]);
+  }
+  writeJSON(KEYS.currentProfile, trimmed);
+
+  if (isFirstEverProfile) {
+    const legacyStreaks = readJSON<Streaks | null>(LEGACY_KEYS.streaks, null);
+    const legacyStats = readJSON<WordscapesStats | null>(LEGACY_KEYS.wordscapesStats, null);
+    if (legacyStreaks) writeJSON(streaksKey(trimmed), legacyStreaks);
+    if (legacyStats) writeJSON(wordscapesStatsKey(trimmed), legacyStats);
+  }
+}
+
+// --- Bingo streaks (per profile) -------------------------------------------
+
+export function getStreaks(profile: string): Streaks {
+  return { ...DEFAULT_STREAKS, ...readJSON(streaksKey(profile), DEFAULT_STREAKS) };
+}
+
+export function recordGameResult(profile: string, category: string, won: boolean): Streaks {
+  const streaks = getStreaks(profile);
   streaks.gamesPlayed[category] = (streaks.gamesPlayed[category] ?? 0) + 1;
   if (won) {
     streaks.wins[category] = (streaks.wins[category] ?? 0) + 1;
@@ -59,12 +120,14 @@ export function recordGameResult(category: string, won: boolean): Streaks {
   } else {
     streaks.currentStreak[category] = 0;
   }
-  writeJSON(KEYS.streaks, streaks);
+  writeJSON(streaksKey(profile), streaks);
   return streaks;
 }
 
-export function getWordscapesStats(): WordscapesStats {
-  return { ...DEFAULT_WORDSCAPES_STATS, ...readJSON(KEYS.wordscapesStats, DEFAULT_WORDSCAPES_STATS) };
+// --- Wordscapes stats (per profile) -----------------------------------------
+
+export function getWordscapesStats(profile: string): WordscapesStats {
+  return { ...DEFAULT_WORDSCAPES_STATS, ...readJSON(wordscapesStatsKey(profile), DEFAULT_WORDSCAPES_STATS) };
 }
 
 /**
@@ -73,17 +136,24 @@ export function getWordscapesStats(): WordscapesStats {
  * credits any bonus words genuinely found first, it just doesn't count as
  * a completion.
  */
-export function recordWordscapesCompletion(category: string, bonusWordsFoundCount: number, solved: boolean): WordscapesStats {
-  const stats = getWordscapesStats();
+export function recordWordscapesCompletion(
+  profile: string,
+  category: string,
+  bonusWordsFoundCount: number,
+  solved: boolean,
+): WordscapesStats {
+  const stats = getWordscapesStats(profile);
   if (solved) {
     stats.puzzlesCompleted[category] = (stats.puzzlesCompleted[category] ?? 0) + 1;
   }
   if (bonusWordsFoundCount > 0) {
     stats.bonusWordsFound[category] = (stats.bonusWordsFound[category] ?? 0) + bonusWordsFoundCount;
   }
-  writeJSON(KEYS.wordscapesStats, stats);
+  writeJSON(wordscapesStatsKey(profile), stats);
   return stats;
 }
+
+// --- Free Play word list (device-wide) --------------------------------------
 
 export function getFreeplayWords(): WordEntry[] {
   return readJSON<WordEntry[]>(KEYS.freeplayWords, []);

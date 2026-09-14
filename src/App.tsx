@@ -3,7 +3,16 @@ import { AnimatePresence } from 'framer-motion';
 import type { GameConfig, ScreenName, WinPattern, WordscapesConfig } from './types';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
-import { getStreaks, getWordscapesStats, recordGameResult, recordWordscapesCompletion } from './lib/storage';
+import {
+  createProfile,
+  getCurrentProfile,
+  getProfiles,
+  getStreaks,
+  getWordscapesStats,
+  recordGameResult,
+  recordWordscapesCompletion,
+} from './lib/storage';
+import ProfileScreen from './components/ProfileScreen';
 import MenuScreen from './components/MenuScreen';
 import GameScreen from './components/GameScreen';
 import WinScreen from './components/WinScreen';
@@ -27,18 +36,39 @@ interface WordscapesWinInfo {
 }
 
 export default function App() {
-  const [screen, setScreen] = useState<ScreenName>('menu');
+  // Named local profiles, not accounts -- see storage.ts. No profile yet
+  // forces the picker screen before the menu; an existing one skips
+  // straight to it.
+  const [currentProfile, setCurrentProfile] = useState<string | null>(() => getCurrentProfile());
+  const [profiles, setProfiles] = useState<string[]>(() => getProfiles());
+  const [screen, setScreen] = useState<ScreenName>(() => (getCurrentProfile() ? 'menu' : 'profile'));
   const [previousScreen, setPreviousScreen] = useState<ScreenName>('menu');
   const [gameConfig, setGameConfig] = useState<GameConfig | null>(null);
   const [winInfo, setWinInfo] = useState<WinInfo | null>(null);
-  const [streaks, setStreaks] = useState(() => getStreaks());
+  const [streaks, setStreaks] = useState(() => getStreaks(currentProfile ?? ''));
 
   const [wordscapesConfig, setWordscapesConfig] = useState<WordscapesConfig | null>(null);
   const [wordscapesWinInfo, setWordscapesWinInfo] = useState<WordscapesWinInfo | null>(null);
-  const [wordscapesStats, setWordscapesStats] = useState(() => getWordscapesStats());
+  const [wordscapesStats, setWordscapesStats] = useState(() => getWordscapesStats(currentProfile ?? ''));
 
   const { settings, updateSettings } = useSettings();
   const reduceMotion = useReducedMotion(settings.reduceMotion);
+
+  // Handles both picking an existing profile and creating a new one --
+  // createProfile is idempotent for a name already in the list, so
+  // ProfileScreen doesn't need to distinguish the two cases.
+  const chooseProfile = useCallback((name: string) => {
+    createProfile(name);
+    setCurrentProfile(name);
+    setProfiles(getProfiles());
+    setStreaks(getStreaks(name));
+    setWordscapesStats(getWordscapesStats(name));
+    setScreen('menu');
+  }, []);
+
+  const switchProfile = useCallback(() => {
+    setScreen('profile');
+  }, []);
 
   const startGame = useCallback((config: GameConfig) => {
     setGameConfig(config);
@@ -46,11 +76,11 @@ export default function App() {
   }, []);
 
   const handleWin = useCallback((patterns: WinPattern[], winnerLabel?: string) => {
-    if (!gameConfig) return;
-    setStreaks(recordGameResult(gameConfig.category, true));
+    if (!gameConfig || !currentProfile) return;
+    setStreaks(recordGameResult(currentProfile, gameConfig.category, true));
     setWinInfo({ config: gameConfig, patterns, winnerLabel });
     setScreen('win');
-  }, [gameConfig]);
+  }, [gameConfig, currentProfile]);
 
   const playAgain = useCallback(() => {
     if (!winInfo) return;
@@ -64,14 +94,14 @@ export default function App() {
   }, []);
 
   const handleWordscapesComplete = useCallback((bonusWordsFound: number, assisted: boolean) => {
-    if (!wordscapesConfig) return;
+    if (!wordscapesConfig || !currentProfile) return;
     // An assisted puzzle (any hint used, or Give Up) isn't a real solve --
     // `solved: !assisted` keeps it out of the "puzzles completed" stat, but
     // bonus words genuinely found are credited either way.
-    setWordscapesStats(recordWordscapesCompletion(wordscapesConfig.category, bonusWordsFound, !assisted));
+    setWordscapesStats(recordWordscapesCompletion(currentProfile, wordscapesConfig.category, bonusWordsFound, !assisted));
     setWordscapesWinInfo({ config: wordscapesConfig, bonusWordsFound, assisted });
     setScreen('wordscapes-win');
-  }, [wordscapesConfig]);
+  }, [wordscapesConfig, currentProfile]);
 
   const nextWordscapesPuzzle = useCallback(() => {
     if (!wordscapesWinInfo) return;
@@ -98,14 +128,25 @@ export default function App() {
 
   return (
     <AnimatePresence mode="wait">
-      {screen === 'menu' && (
+      {screen === 'profile' && (
+        <ProfileScreen
+          key="profile"
+          profiles={profiles}
+          onChoose={chooseProfile}
+          onCancel={currentProfile ? () => setScreen('menu') : undefined}
+          reduceMotion={reduceMotion}
+        />
+      )}
+      {screen === 'menu' && currentProfile && (
         <MenuScreen
           key="menu"
+          playerName={currentProfile}
           streaks={streaks}
           wordscapesStats={wordscapesStats}
           onStartBingo={startGame}
           onStartWordscapes={startWordscapes}
           onOpenSettings={openSettings}
+          onSwitchProfile={switchProfile}
           reduceMotion={reduceMotion}
         />
       )}
