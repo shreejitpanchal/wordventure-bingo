@@ -49,9 +49,19 @@ export type ScreenName = 'profile' | 'menu' | 'game' | 'win' | 'settings' | 'wor
 
 export type GameMode = 'bingo' | 'wordscapes';
 
+/** 'system' follows the OS/browser's own light/dark preference; 'light'/'dark'
+ * force it regardless -- see theme.css's [data-theme] selectors. */
+export type ThemePreference = 'system' | 'light' | 'dark';
+
+/** Scales the whole app's rem-based type via html's root font-size -- see
+ * theme.css's [data-font-size] selectors. */
+export type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
+
 export interface Settings {
   soundEnabled: boolean;
   reduceMotion: boolean;
+  theme: ThemePreference;
+  fontSize: FontSize;
 }
 
 export interface Streaks {

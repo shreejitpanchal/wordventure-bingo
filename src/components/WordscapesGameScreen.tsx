@@ -207,7 +207,9 @@ export default function WordscapesGameScreen({ config, onComplete, onExit, reduc
         </AnimatePresence>
       </div>
 
-      <CrosswordGrid grid={level.grid} reduceMotion={reduceMotion} onCellClick={handleCellClick} />
+      <div className={styles.gridBox}>
+        <CrosswordGrid grid={level.grid} reduceMotion={reduceMotion} onCellClick={handleCellClick} />
+      </div>
 
       {complete ? (
         <div className={styles.revealedPanel}>
@@ -222,7 +224,7 @@ export default function WordscapesGameScreen({ config, onComplete, onExit, reduc
           </motion.button>
         </div>
       ) : (
-        <>
+        <div className={styles.bottomControls}>
           <LetterWheel tiles={level.wheel} onWordTraced={handleWordTraced} reduceMotion={reduceMotion} />
           <div className={styles.assistRow}>
             <button className={styles.assistButton} onClick={handleRevealLetter}>
@@ -232,7 +234,7 @@ export default function WordscapesGameScreen({ config, onComplete, onExit, reduc
               🏳️ Give Up
             </button>
           </div>
-        </>
+        </div>
       )}
     </motion.main>
   );

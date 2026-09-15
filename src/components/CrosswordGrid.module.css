@@ -1,9 +1,41 @@
+/* Sized by aspect-ratio (cols/rows, set inline per puzzle) constrained to
+   BOTH max-width and max-height -- the old fixed `max-width: 380px` only
+   ever capped width, so a grid taller than it is wide (a plus/zigzag
+   shape, which a small word count can produce just as easily as a large
+   one) still overflowed vertically no matter the word count. `width: auto;
+   height: auto` alongside the max-* constraints lets the browser solve
+   for the largest size that fits both axes and keeps the aspect ratio --
+   the same technique used to letterbox a responsive video/image.
+   `max-width: min(100%, 480px)` matters just as much as the height fix:
+   a hardcoded ceiling here silently wastes whatever extra *height*
+   .gridBox has to offer too, since the browser picks the largest size
+   that fits both axes -- with width artificially capped small, that
+   "largest size" stays small even on a tall phone with plenty of vertical
+   room, leaving the puzzle looking tiny with empty space above and below
+   it. The 480px ceiling itself exists for the OTHER form factor this app
+   targets: on a phone, `min(100%, 480px)` always resolves to `100%`
+   (every phone's content width is under 480px once .screen's own padding
+   is subtracted), so phones still get the full fix above -- but on a
+   tablet, `.gridBox` can easily be 700px+ wide, and a puzzle stretched to
+   fill that isn't "bigger," it's oversized and harder to scan. 480px
+   matches this app's existing comfortable-content-width convention
+   (MenuScreen/ProfileScreen's own `max-width: 480px` sections), so a
+   tablet gets a puzzle sized like a large phone's, centered with room
+   around it, rather than one stretched edge-to-edge.
+   None of this is a device check -- there's no phone-vs-tablet branching
+   anywhere, no JS reading screen/window size, no media-query tiers to
+   keep in sync. `min()`/`max-height: 100%` are resolved by the browser at
+   layout time against whatever `.gridBox`'s *actual* computed size is on
+   the real device in front of the player, recalculated live on rotation
+   too -- that live recalculation against real values is exactly what
+   makes this correct for any phone or tablet without listing any of them. */
 .grid {
   display: grid;
   gap: 3px;
-  width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
+  max-width: min(100%, 480px);
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .cell {
@@ -15,7 +47,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+  font-size: clamp(0.9rem, 6vw, 2rem);
   font-family: inherit;
   color: var(--color-text);
   padding: 0;

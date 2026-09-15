@@ -12,7 +12,11 @@ export default function CrosswordGrid({ grid, reduceMotion, onCellClick }: Props
   return (
     <div
       className={styles.grid}
-      style={{ gridTemplateColumns: `repeat(${grid.cols}, 1fr)`, gridTemplateRows: `repeat(${grid.rows}, 1fr)` }}
+      style={{
+        gridTemplateColumns: `repeat(${grid.cols}, 1fr)`,
+        gridTemplateRows: `repeat(${grid.rows}, 1fr)`,
+        aspectRatio: `${grid.cols} / ${grid.rows}`,
+      }}
     >
       {Array.from({ length: grid.rows }).flatMap((_, row) =>
         Array.from({ length: grid.cols }).map((_, col) => {

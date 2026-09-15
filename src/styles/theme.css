@@ -46,6 +46,7 @@
     --color-text-muted: #b3aecb;
     --color-card-bg: #2a2440;
     --color-border: #4c4370;
+    color-scheme: dark;
   }
 }
 
@@ -57,4 +58,23 @@
   --color-text-muted: #b3aecb;
   --color-card-bg: #2a2440;
   --color-border: #4c4370;
+  color-scheme: dark;
+}
+
+/* Font Size setting (SettingsScreen) -- scales the *root* font-size, not
+   body's, since `rem` units (used for every font-size in this codebase --
+   verified there are no stray px/em font sizes to leave un-scaled) are
+   always relative to the root element regardless of where else font-size
+   is set. This means every component's text scales automatically with no
+   per-component wiring: a plain `html[data-font-size]` attribute swap is
+   all useAppearance.ts needs to do. 'medium' is the default and needs no
+   rule since it matches :root's un-overridden 100%. */
+html[data-font-size='small'] {
+  font-size: 87.5%;
+}
+html[data-font-size='large'] {
+  font-size: 112.5%;
+}
+html[data-font-size='xlarge'] {
+  font-size: 125%;
 }

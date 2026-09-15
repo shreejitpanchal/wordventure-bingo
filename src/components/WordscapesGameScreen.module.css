@@ -1,13 +1,26 @@
+/* Fixed-viewport-height layout (not min-height: a tall crossword grid --
+   e.g. a long/awkwardly-shaped word set -- must NOT grow the whole page,
+   or the top bar scrolls out of reach and the wheel/action buttons end up
+   pushed down under the device's gesture/nav bar. Only .gridBox below
+   scrolls; the top bar and the wheel/buttons stay pinned in place.
+   100dvh (falls back to 100vh where unsupported) tracks the *current*
+   visual viewport so this also holds up when a mobile browser's own
+   chrome shows/hides. Safe-area padding keeps content clear of the status
+   bar / notch and the gesture nav bar in a fullscreen PWA/APK. */
 .screen {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-4);
+  overflow: hidden;
+  padding: calc(var(--space-4) + env(safe-area-inset-top)) var(--space-4)
+    calc(var(--space-4) + env(safe-area-inset-bottom));
   gap: var(--space-4);
 }
 
 .topBar {
+  flex-shrink: 0;
   width: 100%;
   max-width: 420px;
   display: flex;
@@ -41,6 +54,7 @@
 }
 
 .feedbackSlot {
+  flex-shrink: 0;
   min-height: 32px;
   display: flex;
   align-items: center;
@@ -70,9 +84,38 @@
 }
 
 .hintSlot {
+  flex-shrink: 0;
   width: 100%;
   max-width: 420px;
   min-height: 24px;
+}
+
+/* Bounding box for the crossword grid -- keeps a tall/irregularly shaped
+   grid from growing the page itself, which would push the top bar and the
+   wheel/action buttons out of reach or under the device's status/nav
+   bars. min-height: 0 is required so this flex child can actually shrink
+   below its content's natural size instead of forcing the whole .screen
+   to grow. CrosswordGrid's own CSS (aspect-ratio + max-width/max-height)
+   scales the grid to fit entirely within this box on any screen size --
+   overflow: hidden here is a backstop, not a scroll mechanism; the grid
+   should never actually need to overflow it. */
+.gridBox {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomControls {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
 }
 
 .hint {
@@ -113,6 +156,7 @@
 }
 
 .revealedPanel {
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

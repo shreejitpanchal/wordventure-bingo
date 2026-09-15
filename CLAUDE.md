@@ -72,6 +72,94 @@ they are; keep both in sync when either changes.
   whose progress it was, so whoever picks a name first gets it; every
   profile created after that starts empty, correctly.
 
+## Appearance settings (theme & font size)
+
+- **Device-wide, not per-profile** — like the rest of `Settings` (see
+  "Player profiles" above), theme and font size are accessibility/display
+  preferences tied to the physical device, not a specific player.
+- **Applied via a single `data-*` attribute swap on `<html>`
+  (`useAppearance.ts`), not per-component theming.** `theme.css` already
+  had a full `[data-theme='dark']` token set plus a `prefers-color-scheme`
+  media-query fallback (`:not([data-theme='light'])`) from the original
+  scaffold — it just had nothing ever setting the attribute. `Settings.theme`
+  is `'system' | 'light' | 'dark'`: `'system'` *removes* `data-theme`
+  entirely (falls through to the `prefers-color-scheme` block, i.e. follows
+  the OS/browser), `'light'`/`'dark'` set it explicitly and win regardless
+  of OS preference. `Settings.fontSize` is `'small' | 'medium' | 'large' |
+  'xlarge'`, applied the same way via `data-font-size`, scaling `html`'s
+  root `font-size` (87.5%/100%/112.5%/125%) — every `font-size` in this
+  codebase is authored in `rem` (verified, no stray `px`/`em` sizes), and
+  `rem` is always relative to the root element regardless of where else
+  `font-size` is set, so this one attribute scales the *entire* app's text
+  with zero per-component changes. Don't reach for a React theme
+  context/provider or thread `settings` through every styled component for
+  either of these — the whole point of doing it through `theme.css`'s
+  existing CSS-variable/root-font-size mechanism is that components stay
+  completely unaware of the current theme/font-size; they just consume
+  `var(--color-*)` and `rem` like they always did.
+- Researched via `C:\Development\python-adventure-kids` (a sibling,
+  different-stack project) for how it structures the equivalent settings —
+  named font-size scale keys and named theme presets, both persisted and
+  applied at one global point — as a UX/data-model reference, not code to
+  port; that Flet app has no CSS cascade, so it reapplies colors/sizes to
+  every control manually on each change. This app's CSS-variable/root-`rem`
+  approach is strictly less code and doesn't need that reference's
+  "rebuild every view" repaint step.
+
+## Hardware back button
+
+- **The Android hardware/gesture back button (and desktop browser back) is
+  wired to in-app navigation in `App.tsx`, not left to its default
+  behavior.** Both a browser and Capacitor's default Android back handling
+  just call `history.back()` if there's a history entry to go back to,
+  else exit/minimize the app — since this app is a hand-rolled `screen`
+  state machine with no router, it never pushed any history entry beyond
+  the initial page load, so that condition was never met and back always
+  fell straight through to "exit," which read as "the app just collapses
+  and does nothing" from a deep screen.
+- **Fix is explicit, deliberate `window.history.pushState(null, '')` calls
+  at exactly the functions that leave `'menu'` for a divertable sub-flow**
+  (`startGame`, `startWordscapes`, `openSettings`, `switchProfile`), paired
+  with a `popstate` listener whose handler resolves "what does back do
+  here" via a `switch (screen)` that calls the exact same functions each
+  screen's own visible back/exit/Menu button already calls (`goToMenu`,
+  `closeSettings`, or `setScreen('menu')` for the profile-switch case).
+  `goToMenu`/`closeSettings`/that profile case deliberately do **not**
+  push — they're the functions this handler calls to *consume* the entry,
+  not create a new one. Don't add a push to any of them.
+- **No stack bookkeeping needed, on purpose.** A screen only ever needs
+  exactly one history entry, however many further screens it can lead to
+  before returning to `'menu'` — e.g. `game` → `win` both resolve back to
+  `'menu'` in a single hop (matching their own visible exit/Menu buttons,
+  which don't have a "back to game" concept either), so `handleWin`/
+  `playAgain`/`nextWordscapesPuzzle` don't push additional entries; the one
+  pushed by `startGame`/`startWordscapes` already covers the whole
+  sub-flow. If a future screen needs actual multi-level back (a real "go
+  to the PREVIOUS specific screen, not always menu" need), this switch-
+  statement approach won't scale to that — reach for a real stack
+  (`history.state` carrying an app-level breadcrumb list) instead, don't
+  bolt more cases onto the switch.
+- **Visible back/exit/Menu buttons don't call `history.back()`
+  themselves** — they call `setScreen(...)` directly, same as always. This
+  can leave a pushed entry un-consumed at the browser level (e.g. opening
+  Settings via the gear, then closing it with the visible Back button
+  rather than hardware back). That's harmless: the dangling entry is
+  silently absorbed by a later hardware back press with no visible effect
+  (the `switch` no-ops on `'menu'`), at worst costing one extra press
+  before the app actually exits. Making every visible button also drive
+  `history.back()` to keep the two perfectly in sync isn't worth the risk
+  of double-firing `handleBack` for that minor a polish gain.
+- Researched via `C:\Development\python-adventure-kids` (a sibling,
+  different-stack Flet/Flutter project) for the underlying concept: it
+  intercepts the native back action (`can_pop = False` + `on_confirm_pop`,
+  a `WillPopScope`-style hook — real-device testing there found the naive
+  default just closes the app, same symptom reported here) and drives
+  navigation from its own Python-side history stack instead. This app's
+  web-native equivalent is the browser History API itself (`pushState`/
+  `popstate`) rather than a from-scratch stack, since Capacitor's Android
+  back handling already delegates to it by default — no `@capacitor/app`
+  plugin or other native dependency needed.
+
 ## Word banks
 
 - Plain JSON under `src/data/wordbanks/`, registered in `src/data/wordBanks.ts`.
@@ -175,6 +263,55 @@ they are; keep both in sync when either changes.
   the test suite) that every shipped category/difficulty combo reliably
   generates across word counts 3-10 and many random seeds. Re-verify this
   if you significantly change a word bank's contents.
+- **`WordscapesGameScreen`'s `.screen` is a fixed-`height` (`100dvh`, not
+  `min-height`) layout with exactly one flexible region (`.gridBox`,
+  bounding just `CrosswordGrid`), and the grid always scales to fit inside
+  it rather than scrolling.** A tall or awkwardly-shaped word set (a
+  plus/zigzag grid that grows more vertically than horizontally — a small
+  word count produces this just as easily as a large one) used to grow the
+  *whole page*, scrolling the top bar out of reach and pushing the letter
+  wheel/action buttons down under the device's status bar or gesture-nav
+  bar in a fullscreen PWA/APK (`index.html`'s `viewport-fit=cover` draws
+  content edge-to-edge, so nothing reserved space for either). Two fixes,
+  layered:
+  1. `.screen` gets `overflow: hidden` plus `env(safe-area-inset-top/
+     bottom)` padding; the top bar/feedback/hint slots and
+     `.bottomControls` (wheel + assist buttons) are `flex-shrink: 0`; only
+     `.gridBox` (`flex: 1; min-height: 0`) is allowed to flex — `min-height:
+     0` is required on it, since a flex item won't shrink below its
+     content's natural size otherwise, which would just push `.screen`
+     tall again.
+  2. `CrosswordGrid`'s own `.grid` no longer just caps `max-width` (which
+     only ever bounded the horizontal axis — a grid taller than it is wide
+     still overflowed vertically regardless of word count). It sets an
+     inline `aspectRatio: '{cols} / {rows}'` and uses `max-width: min(100%,
+     480px)` **and** `max-height: 100%` with `width/height: auto`, the
+     standard "letterbox an aspect-ratio'd element inside a box" technique
+     (same idea as `object-fit: contain` on an image) — the browser solves
+     for the largest size that respects the aspect ratio and fits both
+     axes of `.gridBox`. This is why every puzzle now fits in one view
+     with no scrolling, at any word count, cell size shrinking as needed
+     rather than the grid overflowing. **The two numbers here (`100%` and
+     `480px`) each serve a different form factor this app targets — don't
+     collapse this back to one or the other:**
+     - On a **phone**, `.gridBox`'s width is always under 480px once
+       `.screen`'s own padding is subtracted, so `min(100%, 480px)`
+       resolves to `100%` — this is the load-bearing part of the fix. A
+       hardcoded small ceiling here (an earlier pass used a flat
+       `max-width: 380px`) silently wastes whatever extra *height*
+       `.gridBox` has to offer too, since the browser picks the largest
+       size fitting both axes — with width capped small, that "largest
+       size" stays small even with plenty of vertical room, leaving the
+       puzzle tiny with dead space above and below it.
+     - On a **tablet**, `.gridBox` can easily be 700px+ wide — stretching
+       the puzzle to fill that isn't "bigger," it's oversized and harder
+       to scan. The `480px` ceiling caps it to this app's existing
+       comfortable-content-width convention (`MenuScreen`/`ProfileScreen`
+       sections use the same `max-width: 480px`), so a tablet gets a
+       puzzle sized like a large phone's, centered with room around it.
+  If a similarly tall-content screen is added later, follow the same
+  pattern: fixed top chrome / one flexible fit-or-scroll middle region /
+  fixed bottom chrome, not a single page that scrolls as a whole.
 - The wheel (`LetterWheel.tsx`) lays tiles out in a **wrapping straight
   row, not a circle** — a circle has a fixed radius while tile count varies
   per puzzle, so a bigger puzzle used to overlap into an unreadable ring.

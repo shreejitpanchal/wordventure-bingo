@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { Settings } from '../types';
+import type { FontSize, Settings, ThemePreference } from '../types';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import WordListEditor from './WordListEditor';
 import styles from './SettingsScreen.module.css';
@@ -10,6 +10,19 @@ interface Props {
   onClose: () => void;
   reduceMotion: boolean;
 }
+
+const THEMES: { id: ThemePreference; label: string }[] = [
+  { id: 'system', label: 'System' },
+  { id: 'light', label: 'Light' },
+  { id: 'dark', label: 'Dark' },
+];
+
+const FONT_SIZES: { id: FontSize; label: string }[] = [
+  { id: 'small', label: 'Small' },
+  { id: 'medium', label: 'Medium' },
+  { id: 'large', label: 'Large' },
+  { id: 'xlarge', label: 'Extra Large' },
+];
 
 export default function SettingsScreen({ settings, onChange, onClose, reduceMotion }: Props) {
   return (
@@ -44,6 +57,36 @@ export default function SettingsScreen({ settings, onChange, onClose, reduceMoti
             onChange={(e) => onChange({ reduceMotion: e.target.checked })}
           />
         </label>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Theme</h2>
+        <div className={styles.chipGroup}>
+          {THEMES.map((t) => (
+            <button
+              key={t.id}
+              className={`${styles.chip} ${settings.theme === t.id ? styles.chipActive : ''}`}
+              onClick={() => onChange({ theme: t.id })}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Font Size</h2>
+        <div className={styles.chipGroup}>
+          {FONT_SIZES.map((f) => (
+            <button
+              key={f.id}
+              className={`${styles.chip} ${settings.fontSize === f.id ? styles.chipActive : ''}`}
+              onClick={() => onChange({ fontSize: f.id })}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
       </section>
 
       <section className={styles.section}>

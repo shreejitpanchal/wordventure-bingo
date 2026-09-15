@@ -1,8 +1,9 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import type { GameConfig, ScreenName, WinPattern, WordscapesConfig } from './types';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
+import { useAppearance } from './hooks/useAppearance';
 import {
   createProfile,
   getCurrentProfile,
@@ -53,6 +54,7 @@ export default function App() {
 
   const { settings, updateSettings } = useSettings();
   const reduceMotion = useReducedMotion(settings.reduceMotion);
+  useAppearance(settings);
 
   // Handles both picking an existing profile and creating a new one --
   // createProfile is idempotent for a name already in the list, so
@@ -67,10 +69,12 @@ export default function App() {
   }, []);
 
   const switchProfile = useCallback(() => {
+    window.history.pushState(null, '');
     setScreen('profile');
   }, []);
 
   const startGame = useCallback((config: GameConfig) => {
+    window.history.pushState(null, '');
     setGameConfig(config);
     setScreen('game');
   }, []);
@@ -89,6 +93,7 @@ export default function App() {
   }, [winInfo]);
 
   const startWordscapes = useCallback((config: WordscapesConfig) => {
+    window.history.pushState(null, '');
     setWordscapesConfig(config);
     setScreen('wordscapes-game');
   }, []);
@@ -118,6 +123,7 @@ export default function App() {
   }, []);
 
   const openSettings = useCallback(() => {
+    window.history.pushState(null, '');
     setPreviousScreen(screen);
     setScreen('settings');
   }, [screen]);
@@ -125,6 +131,62 @@ export default function App() {
   const closeSettings = useCallback(() => {
     setScreen(previousScreen);
   }, [previousScreen]);
+
+  // Wires the Android hardware/gesture back button (and desktop browser
+  // back) to this same in-app navigation instead of letting it silently
+  // background/exit the app. Capacitor's default Android back handling
+  // (and a browser's) is just `history.back()` if there's a history entry
+  // to go back to, else exit/minimize -- since nothing here ever pushed an
+  // entry beyond the initial page load, that condition was never met, so
+  // back always fell straight through to "exit," which read as "the app
+  // just collapses and does nothing." Every function above that leaves
+  // 'menu' for a divertable sub-flow (startGame, startWordscapes,
+  // openSettings, switchProfile) now pushes one entry; goToMenu/
+  // closeSettings/the profile "back to menu" case deliberately do NOT push,
+  // since they're the functions THIS handler calls to consume that entry.
+  // A screen only ever needs one entry regardless of how many further
+  // screens it leads to before returning to 'menu' (e.g. game -> win both
+  // resolve back to 'menu' in one hop, matching their own visible
+  // exit/Menu buttons), so no stack bookkeeping is needed here -- just a
+  // direct mapping from "current screen" to "what its own back/exit/menu
+  // button already does".
+  const handleBackRef = useRef<() => void>(() => {});
+  handleBackRef.current = () => {
+    switch (screen) {
+      case 'game':
+      case 'win':
+      case 'wordscapes-game':
+      case 'wordscapes-win':
+        goToMenu();
+        break;
+      case 'settings':
+        closeSettings();
+        break;
+      case 'profile':
+        if (currentProfile) {
+          setScreen('menu');
+        } else {
+          // First-launch picker: nothing to go back to. Re-push so this
+          // press is fully absorbed rather than draining history toward
+          // an unexpected exit on some later, unrelated press.
+          window.history.pushState(null, '');
+        }
+        break;
+      default:
+        // 'menu': the root screen. Nothing left to go back to in-app --
+        // let the browser/Capacitor's own "no history left" fallback
+        // (exit/background) happen, same as any Android app's home screen.
+        break;
+    }
+  };
+
+  useEffect(() => {
+    function onPopState() {
+      handleBackRef.current();
+    }
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   return (
     <AnimatePresence mode="wait">

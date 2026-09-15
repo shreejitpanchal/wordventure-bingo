@@ -22,7 +22,7 @@ function wordscapesStatsKey(profile: string): string {
   return `wordventure:wordscapesStats:${profile}`;
 }
 
-const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false };
+const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false, theme: 'system', fontSize: 'medium' };
 const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
 const DEFAULT_WORDSCAPES_STATS: WordscapesStats = { puzzlesCompleted: {}, bonusWordsFound: {} };
 
