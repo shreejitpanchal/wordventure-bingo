@@ -10,11 +10,11 @@ the screen state machine), see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 First launch asks "Who's playing?" — pick a name (or add a new one). This
 isn't a login: it's just a local label so siblings/family sharing one
-device/tablet each keep their own Bingo streaks and Wordscapes stats, all
+device/tablet each keep their own streaks/stats for every mode, all
 still stored only on-device. Tap the name button on the main menu (next to
 the settings gear) to switch player at any time.
 
-Two modes, picked from the main menu:
+Three modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
   The menu's **Call Speed** setting picks how many seconds the auto-caller
   waits between clues (10-60s, default 20s) — independent of difficulty, so
@@ -25,6 +25,13 @@ Two modes, picked from the main menu:
   word banks Bingo uses — no separate content to author. (Note: "Wordscapes"
   is used here only as an in-app label; it's a third party's trademark and
   must not be used in any app-store listing or published branding.)
+- **Sentence Quest** — a fill-in-the-blank grammar quiz: read a sentence
+  with a missing word and pick the right one from four options, with an
+  explanation shown after each answer. Its own category set targets
+  specific grammar skills (Verb Tense, Prepositions, Synonyms & Antonyms,
+  Idioms & Expressions, Grammar Basics) rather than Bingo/Wordscapes'
+  vocabulary themes. Pick how many questions make up a round (5/10/15/20)
+  in the menu.
 
 ## Tech stack
 
@@ -123,6 +130,48 @@ To add a brand-new category:
 The **Free Play** category (`src/data/wordbanks/freeplay.json`) additionally
 merges in whatever a parent adds through the in-app Settings → Free Play Word
 List editor (stored in `localStorage`, no difficulty tiers).
+
+## Adding new Sentence Quest questions
+
+Sentence Quest's question banks are separate from the word banks above —
+plain JSON in [src/data/sentenceQuestBanks/](src/data/sentenceQuestBanks/),
+same no-build-step editing. Each file has this shape:
+
+```json
+{
+  "category": "verbTense",
+  "label": "Verb Tense",
+  "questions": [
+    {
+      "sentence": "Yesterday, she ___ to the store to buy some milk.",
+      "options": ["went", "goes", "go", "going"],
+      "answer": "went",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday\" signals the past, so the verb should be \"went,\" the past tense of \"go\"."
+    }
+  ]
+}
+```
+
+Rules:
+- `sentence` must contain **exactly one** `"___"` (three underscores) marking
+  the blank.
+- `options` must have **exactly 4** entries, and `answer` must equal one of
+  them exactly (including capitalization/punctuation).
+- `explanation` is required and shown to the player right after they
+  answer, correct or not — it's the actual teaching moment, not optional
+  flavor text.
+- Each category needs **at least 20 questions per difficulty tier** to
+  support the largest round size (20 questions). Adding a category/tier
+  short on questions will fail loudly at round-generation time rather than
+  silently rendering a broken round.
+
+To add a brand-new category:
+1. Add a new JSON file under `src/data/sentenceQuestBanks/`.
+2. Register it in [src/data/sentenceQuestBanks.ts](src/data/sentenceQuestBanks.ts)
+   (`SENTENCE_QUEST_BANKS` map and `SENTENCE_QUEST_CATEGORY_ORDER`).
+3. Add the new `SentenceQuestCategoryId` to the union in
+   [src/types.ts](src/types.ts).
 
 ## How Wordscapes puzzles are generated
 
@@ -236,6 +285,7 @@ npm run test:coverage # with coverage report
 ```
 
 Unit tests cover the correctness-critical logic — card generation, win
-detection, clue selection/formatting, and Wordscapes grid generation
-(`src/lib/*.test.ts`, including `src/lib/wordscapes/`). UI and animation
-behavior is verified manually in-browser (desktop + Android).
+detection, clue selection/formatting, Wordscapes grid generation, and
+Sentence Quest round generation (`src/lib/*.test.ts`, including
+`src/lib/wordscapes/`). UI and animation behavior is verified manually
+in-browser (desktop + Android).

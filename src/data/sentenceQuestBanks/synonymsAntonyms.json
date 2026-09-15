@@ -1,0 +1,3906 @@
+{
+  "category": "synonymsAntonyms",
+  "label": "Synonyms & Antonyms",
+  "questions": [
+    {
+      "sentence": "The opposite of \"happy\" is ___.",
+      "options": [
+        "sad",
+        "glad",
+        "kind",
+        "loud"
+      ],
+      "answer": "sad",
+      "difficulty": "easy",
+      "explanation": "\"Sad\" is the antonym (opposite) of \"happy.\""
+    },
+    {
+      "sentence": "A word that means the same as \"huge\" is ___.",
+      "options": [
+        "giant",
+        "tiny",
+        "quick",
+        "soft"
+      ],
+      "answer": "giant",
+      "difficulty": "easy",
+      "explanation": "\"Giant\" is a synonym of \"huge\" -- both describe something very large."
+    },
+    {
+      "sentence": "\"Generous\" is closest in meaning to ___.",
+      "options": [
+        "giving",
+        "stingy",
+        "shy",
+        "angry"
+      ],
+      "answer": "giving",
+      "difficulty": "medium",
+      "explanation": "Someone \"generous\" freely gives to others, so \"giving\" is the closest synonym."
+    },
+    {
+      "sentence": "The antonym of \"transparent\" is ___.",
+      "options": [
+        "opaque",
+        "clear",
+        "thin",
+        "shiny"
+      ],
+      "answer": "opaque",
+      "difficulty": "medium",
+      "explanation": "\"Opaque\" (not able to be seen through) is the opposite of \"transparent\" (able to be seen through)."
+    },
+    {
+      "sentence": "\"Meticulous\" most nearly means ___.",
+      "options": [
+        "careful",
+        "careless",
+        "hurried",
+        "confused"
+      ],
+      "answer": "careful",
+      "difficulty": "hard",
+      "explanation": "\"Meticulous\" describes extreme care and attention to detail, making \"careful\" the closest synonym."
+    },
+    {
+      "sentence": "The antonym of \"benevolent\" is ___.",
+      "options": [
+        "malicious",
+        "generous",
+        "friendly",
+        "wealthy"
+      ],
+      "answer": "malicious",
+      "difficulty": "hard",
+      "explanation": "\"Benevolent\" means kind and well-meaning, so its opposite is \"malicious,\" meaning intending harm."
+    },
+    {
+      "sentence": "A word that means the same as \"happy\" is ___.",
+      "options": [
+        "empty",
+        "glad",
+        "smooth",
+        "gloomy"
+      ],
+      "answer": "glad",
+      "difficulty": "easy",
+      "explanation": "\"Glad\" is a synonym of \"happy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Big\" is closest in meaning to ___.",
+      "options": [
+        "scared",
+        "indifferent",
+        "huge",
+        "slow"
+      ],
+      "answer": "huge",
+      "difficulty": "easy",
+      "explanation": "\"Huge\" is a synonym of \"big\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"fast\" is ___.",
+      "options": [
+        "closed",
+        "rough",
+        "quick",
+        "weak"
+      ],
+      "answer": "quick",
+      "difficulty": "easy",
+      "explanation": "\"Quick\" is a synonym of \"fast\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Small\" most nearly means ___.",
+      "options": [
+        "tiny",
+        "helpful",
+        "careless",
+        "unhelpful"
+      ],
+      "answer": "tiny",
+      "difficulty": "easy",
+      "explanation": "\"Tiny\" is a synonym of \"small\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"smart\" is ___.",
+      "options": [
+        "clever",
+        "famous",
+        "true",
+        "wet"
+      ],
+      "answer": "clever",
+      "difficulty": "easy",
+      "explanation": "\"Clever\" is a synonym of \"smart\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "During the thunderstorm, Leo felt ___, a word that means the same as \"scared.\"",
+      "options": [
+        "loud",
+        "selfish",
+        "afraid",
+        "honest"
+      ],
+      "answer": "afraid",
+      "difficulty": "easy",
+      "explanation": "\"Afraid\" is a synonym of \"scared\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "By nine o'clock, the twins were ___, a word that means the same as \"tired.\"",
+      "options": [
+        "asleep",
+        "comfortable",
+        "helpful",
+        "sleepy"
+      ],
+      "answer": "sleepy",
+      "difficulty": "easy",
+      "explanation": "\"Sleepy\" is a synonym of \"tired\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "The clown's tricks were so ___ (a word that means the same as \"funny\") that everyone laughed.",
+      "options": [
+        "boring",
+        "thick",
+        "silly",
+        "famous"
+      ],
+      "answer": "silly",
+      "difficulty": "easy",
+      "explanation": "\"Silly\" is a synonym of \"funny\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"pretty\" is ___.",
+      "options": [
+        "tall",
+        "beautiful",
+        "sad",
+        "proud"
+      ],
+      "answer": "beautiful",
+      "difficulty": "easy",
+      "explanation": "\"Beautiful\" is a synonym of \"pretty\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Dad looked ___ (a word that means the same as \"angry\") when he saw the broken window.",
+      "options": [
+        "low",
+        "clean",
+        "mad",
+        "impatient"
+      ],
+      "answer": "mad",
+      "difficulty": "easy",
+      "explanation": "\"Mad\" is a synonym of \"angry\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"loud\" is ___.",
+      "options": [
+        "tall",
+        "healthy",
+        "gloomy",
+        "noisy"
+      ],
+      "answer": "noisy",
+      "difficulty": "easy",
+      "explanation": "\"Noisy\" is a synonym of \"loud\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Strong\" most nearly means ___.",
+      "options": [
+        "famous",
+        "tall",
+        "gentle",
+        "powerful"
+      ],
+      "answer": "powerful",
+      "difficulty": "easy",
+      "explanation": "\"Powerful\" is a synonym of \"strong\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"brave\" is ___.",
+      "options": [
+        "unknown",
+        "wrong",
+        "fearless",
+        "bright"
+      ],
+      "answer": "fearless",
+      "difficulty": "easy",
+      "explanation": "\"Fearless\" is a synonym of \"brave\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Kind\" is closest in meaning to ___.",
+      "options": [
+        "nice",
+        "messy",
+        "friendly",
+        "famous"
+      ],
+      "answer": "nice",
+      "difficulty": "easy",
+      "explanation": "\"Nice\" is a synonym of \"kind\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"clean\" is ___.",
+      "options": [
+        "tidy",
+        "low",
+        "cheerful",
+        "strong"
+      ],
+      "answer": "tidy",
+      "difficulty": "easy",
+      "explanation": "\"Tidy\" is a synonym of \"clean\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Easy\" most nearly means ___.",
+      "options": [
+        "thick",
+        "dirty",
+        "empty",
+        "simple"
+      ],
+      "answer": "simple",
+      "difficulty": "easy",
+      "explanation": "\"Simple\" is a synonym of \"easy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"hard\" is ___.",
+      "options": [
+        "difficult",
+        "rude",
+        "asleep",
+        "dangerous"
+      ],
+      "answer": "difficult",
+      "difficulty": "easy",
+      "explanation": "\"Difficult\" is a synonym of \"hard\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Wet\" is closest in meaning to ___.",
+      "options": [
+        "mean",
+        "damp",
+        "thick",
+        "noisy"
+      ],
+      "answer": "damp",
+      "difficulty": "easy",
+      "explanation": "\"Damp\" is a synonym of \"wet\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"hot\" is ___.",
+      "options": [
+        "big",
+        "warm",
+        "early",
+        "proud"
+      ],
+      "answer": "warm",
+      "difficulty": "easy",
+      "explanation": "\"Warm\" is a synonym of \"hot\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Cold\" most nearly means ___.",
+      "options": [
+        "proud",
+        "weak",
+        "selfish",
+        "chilly"
+      ],
+      "answer": "chilly",
+      "difficulty": "easy",
+      "explanation": "\"Chilly\" is a synonym of \"cold\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"old\" is ___.",
+      "options": [
+        "neat",
+        "uncomfortable",
+        "careless",
+        "ancient"
+      ],
+      "answer": "ancient",
+      "difficulty": "easy",
+      "explanation": "\"Ancient\" is a synonym of \"old\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Young\" is closest in meaning to ___.",
+      "options": [
+        "youthful",
+        "asleep",
+        "quiet",
+        "friendly"
+      ],
+      "answer": "youthful",
+      "difficulty": "easy",
+      "explanation": "\"Youthful\" is a synonym of \"young\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"rich\" is ___.",
+      "options": [
+        "wealthy",
+        "calm",
+        "cold",
+        "old"
+      ],
+      "answer": "wealthy",
+      "difficulty": "easy",
+      "explanation": "\"Wealthy\" is a synonym of \"rich\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Shy\" most nearly means ___.",
+      "options": [
+        "mean",
+        "timid",
+        "low",
+        "impatient"
+      ],
+      "answer": "timid",
+      "difficulty": "easy",
+      "explanation": "\"Timid\" is a synonym of \"shy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"silly\" is ___.",
+      "options": [
+        "healthy",
+        "famous",
+        "goofy",
+        "unknown"
+      ],
+      "answer": "goofy",
+      "difficulty": "easy",
+      "explanation": "\"Goofy\" is a synonym of \"silly\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Neat\" is closest in meaning to ___.",
+      "options": [
+        "nervous",
+        "orderly",
+        "old",
+        "small"
+      ],
+      "answer": "orderly",
+      "difficulty": "easy",
+      "explanation": "\"Orderly\" is a synonym of \"neat\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"heavy\" is ___.",
+      "options": [
+        "talkative",
+        "weighty",
+        "cold",
+        "exciting"
+      ],
+      "answer": "weighty",
+      "difficulty": "easy",
+      "explanation": "\"Weighty\" is a synonym of \"heavy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Thin\" most nearly means ___.",
+      "options": [
+        "deep",
+        "loud",
+        "weak",
+        "slim"
+      ],
+      "answer": "slim",
+      "difficulty": "easy",
+      "explanation": "\"Slim\" is a synonym of \"thin\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"soft\" is ___.",
+      "options": [
+        "selfish",
+        "slow",
+        "gentle",
+        "confident"
+      ],
+      "answer": "gentle",
+      "difficulty": "easy",
+      "explanation": "\"Gentle\" is a synonym of \"soft\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Sharp\" is closest in meaning to ___.",
+      "options": [
+        "famous",
+        "noisy",
+        "pointed",
+        "selfish"
+      ],
+      "answer": "pointed",
+      "difficulty": "easy",
+      "explanation": "\"Pointed\" is a synonym of \"sharp\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"bright\" is ___.",
+      "options": [
+        "shiny",
+        "dirty",
+        "hard",
+        "new"
+      ],
+      "answer": "shiny",
+      "difficulty": "easy",
+      "explanation": "\"Shiny\" is a synonym of \"bright\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Wide\" most nearly means ___.",
+      "options": [
+        "impatient",
+        "unhelpful",
+        "hot",
+        "broad"
+      ],
+      "answer": "broad",
+      "difficulty": "easy",
+      "explanation": "\"Broad\" is a synonym of \"wide\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"cheerful\" is ___.",
+      "options": [
+        "happy",
+        "short",
+        "joyful",
+        "good"
+      ],
+      "answer": "joyful",
+      "difficulty": "easy",
+      "explanation": "\"Joyful\" is a synonym of \"cheerful\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Unhappy\" is closest in meaning to ___.",
+      "options": [
+        "dirty",
+        "wrong",
+        "unknown",
+        "sad"
+      ],
+      "answer": "sad",
+      "difficulty": "easy",
+      "explanation": "\"Sad\" is a synonym of \"unhappy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"calm\" is ___.",
+      "options": [
+        "shy",
+        "near",
+        "dishonest",
+        "peaceful"
+      ],
+      "answer": "peaceful",
+      "difficulty": "easy",
+      "explanation": "\"Peaceful\" is a synonym of \"calm\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Excited\" most nearly means ___.",
+      "options": [
+        "honest",
+        "slow",
+        "thrilled",
+        "skinny"
+      ],
+      "answer": "thrilled",
+      "difficulty": "easy",
+      "explanation": "\"Thrilled\" is a synonym of \"excited\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"hungry\" is ___.",
+      "options": [
+        "high",
+        "indifferent",
+        "starving",
+        "friendly"
+      ],
+      "answer": "starving",
+      "difficulty": "easy",
+      "explanation": "\"Starving\" is a synonym of \"hungry\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Awake\" is closest in meaning to ___.",
+      "options": [
+        "sharp",
+        "big",
+        "helpful",
+        "alert"
+      ],
+      "answer": "alert",
+      "difficulty": "easy",
+      "explanation": "\"Alert\" is a synonym of \"awake\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"amusing\" is ___.",
+      "options": [
+        "dry",
+        "noisy",
+        "neat",
+        "funny"
+      ],
+      "answer": "funny",
+      "difficulty": "easy",
+      "explanation": "\"Funny\" is a synonym of \"amusing\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Boring\" most nearly means ___.",
+      "options": [
+        "honest",
+        "dull",
+        "mean",
+        "new"
+      ],
+      "answer": "dull",
+      "difficulty": "easy",
+      "explanation": "\"Dull\" is a synonym of \"boring\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"correct\" is ___.",
+      "options": [
+        "right",
+        "closed",
+        "scared",
+        "far"
+      ],
+      "answer": "right",
+      "difficulty": "easy",
+      "explanation": "\"Right\" is a synonym of \"correct\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Wrong\" is closest in meaning to ___.",
+      "options": [
+        "slow",
+        "mistaken",
+        "scared",
+        "good"
+      ],
+      "answer": "mistaken",
+      "difficulty": "easy",
+      "explanation": "\"Mistaken\" is a synonym of \"wrong\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"close\" is ___.",
+      "options": [
+        "exciting",
+        "careful",
+        "near",
+        "graceful"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" is a synonym of \"close\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Far\" most nearly means ___.",
+      "options": [
+        "famous",
+        "careful",
+        "quiet",
+        "distant"
+      ],
+      "answer": "distant",
+      "difficulty": "easy",
+      "explanation": "\"Distant\" is a synonym of \"far\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"tall\" is ___.",
+      "options": [
+        "loud",
+        "new",
+        "sharp",
+        "high"
+      ],
+      "answer": "high",
+      "difficulty": "easy",
+      "explanation": "\"High\" is a synonym of \"tall\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Shut\" is closest in meaning to ___.",
+      "options": [
+        "closed",
+        "short",
+        "happy",
+        "kind"
+      ],
+      "answer": "closed",
+      "difficulty": "easy",
+      "explanation": "\"Closed\" is a synonym of \"shut\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"quiet\" is ___.",
+      "options": [
+        "mean",
+        "silent",
+        "unhelpful",
+        "easy"
+      ],
+      "answer": "silent",
+      "difficulty": "easy",
+      "explanation": "\"Silent\" is a synonym of \"quiet\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Messy\" most nearly means ___.",
+      "options": [
+        "untidy",
+        "loud",
+        "wrong",
+        "cheerful"
+      ],
+      "answer": "untidy",
+      "difficulty": "easy",
+      "explanation": "\"Untidy\" is a synonym of \"messy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"little\" is ___.",
+      "options": [
+        "helpful",
+        "graceful",
+        "small",
+        "patient"
+      ],
+      "answer": "small",
+      "difficulty": "easy",
+      "explanation": "\"Small\" is a synonym of \"little\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Giant\" is closest in meaning to ___.",
+      "options": [
+        "comfortable",
+        "impatient",
+        "dark",
+        "huge"
+      ],
+      "answer": "huge",
+      "difficulty": "easy",
+      "explanation": "\"Huge\" is a synonym of \"giant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"speedy\" is ___.",
+      "options": [
+        "strong",
+        "fast",
+        "closed",
+        "thin"
+      ],
+      "answer": "fast",
+      "difficulty": "easy",
+      "explanation": "\"Fast\" is a synonym of \"speedy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Silent\" most nearly means ___.",
+      "options": [
+        "impatient",
+        "slow",
+        "mean",
+        "quiet"
+      ],
+      "answer": "quiet",
+      "difficulty": "easy",
+      "explanation": "\"Quiet\" is a synonym of \"silent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"exhausted\" is ___.",
+      "options": [
+        "new",
+        "tired",
+        "thin",
+        "old"
+      ],
+      "answer": "tired",
+      "difficulty": "easy",
+      "explanation": "\"Tired\" is a synonym of \"exhausted\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Furious\" is closest in meaning to ___.",
+      "options": [
+        "generous",
+        "angry",
+        "new",
+        "wet"
+      ],
+      "answer": "angry",
+      "difficulty": "easy",
+      "explanation": "\"Angry\" is a synonym of \"furious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"huge\" is ___.",
+      "options": [
+        "impatient",
+        "wet",
+        "messy",
+        "gigantic"
+      ],
+      "answer": "gigantic",
+      "difficulty": "easy",
+      "explanation": "\"Gigantic\" is a synonym of \"huge\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Polite\" most nearly means ___.",
+      "options": [
+        "confident",
+        "happy",
+        "nice",
+        "new"
+      ],
+      "answer": "nice",
+      "difficulty": "easy",
+      "explanation": "\"Nice\" is a synonym of \"polite\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"proud\" is ___.",
+      "options": [
+        "pleased",
+        "bright",
+        "strong",
+        "dangerous"
+      ],
+      "answer": "pleased",
+      "difficulty": "easy",
+      "explanation": "\"Pleased\" is a synonym of \"proud\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Chilly\" is closest in meaning to ___.",
+      "options": [
+        "cold",
+        "right",
+        "happy",
+        "skinny"
+      ],
+      "answer": "cold",
+      "difficulty": "easy",
+      "explanation": "\"Cold\" is a synonym of \"chilly\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "After dropping her ice cream cone, Mia felt ___, the opposite of \"happy.\"",
+      "options": [
+        "boring",
+        "heavy",
+        "unhappy",
+        "sad"
+      ],
+      "answer": "sad",
+      "difficulty": "easy",
+      "explanation": "\"Sad\" is the antonym (opposite) of \"happy.\""
+    },
+    {
+      "sentence": "The antonym of \"big\" is ___.",
+      "options": [
+        "thrilled",
+        "bright",
+        "tall",
+        "small"
+      ],
+      "answer": "small",
+      "difficulty": "easy",
+      "explanation": "\"Small\" is the antonym (opposite) of \"big.\""
+    },
+    {
+      "sentence": "\"Fast\" means the opposite of ___.",
+      "options": [
+        "slow",
+        "dull",
+        "difficult",
+        "youthful"
+      ],
+      "answer": "slow",
+      "difficulty": "easy",
+      "explanation": "\"Slow\" is the antonym (opposite) of \"fast.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"hot\" could be described as ___.",
+      "options": [
+        "cold",
+        "pointed",
+        "quiet",
+        "weighty"
+      ],
+      "answer": "cold",
+      "difficulty": "easy",
+      "explanation": "\"Cold\" is the antonym (opposite) of \"hot.\""
+    },
+    {
+      "sentence": "The opposite of \"easy\" is ___.",
+      "options": [
+        "untidy",
+        "soft",
+        "hard",
+        "joyful"
+      ],
+      "answer": "hard",
+      "difficulty": "easy",
+      "explanation": "\"Hard\" is the antonym (opposite) of \"easy.\""
+    },
+    {
+      "sentence": "The antonym of \"wet\" is ___.",
+      "options": [
+        "high",
+        "silly",
+        "dry",
+        "gentle"
+      ],
+      "answer": "dry",
+      "difficulty": "easy",
+      "explanation": "\"Dry\" is the antonym (opposite) of \"wet.\""
+    },
+    {
+      "sentence": "\"Full\" means the opposite of ___.",
+      "options": [
+        "alert",
+        "loud",
+        "tall",
+        "empty"
+      ],
+      "answer": "empty",
+      "difficulty": "easy",
+      "explanation": "\"Empty\" is the antonym (opposite) of \"full.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"new\" could be described as ___.",
+      "options": [
+        "young",
+        "noisy",
+        "old",
+        "angry"
+      ],
+      "answer": "old",
+      "difficulty": "easy",
+      "explanation": "\"Old\" is the antonym (opposite) of \"new.\""
+    },
+    {
+      "sentence": "The opposite of \"strong\" is ___.",
+      "options": [
+        "easy",
+        "weak",
+        "little",
+        "sad"
+      ],
+      "answer": "weak",
+      "difficulty": "easy",
+      "explanation": "\"Weak\" is the antonym (opposite) of \"strong.\""
+    },
+    {
+      "sentence": "Even though he felt ___ (the opposite of \"brave\"), Sam still walked into the dark cave.",
+      "options": [
+        "warm",
+        "sharp",
+        "scared",
+        "heavy"
+      ],
+      "answer": "scared",
+      "difficulty": "easy",
+      "explanation": "\"Scared\" is the antonym (opposite) of \"brave.\""
+    },
+    {
+      "sentence": "Everyone thought the new student was ___ (the opposite of \"kind\") until they got to know her.",
+      "options": [
+        "shiny",
+        "mean",
+        "wrong",
+        "slim"
+      ],
+      "answer": "mean",
+      "difficulty": "easy",
+      "explanation": "\"Mean\" is the antonym (opposite) of \"kind.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"clean\" could be described as ___.",
+      "options": [
+        "fast",
+        "sleepy",
+        "shy",
+        "dirty"
+      ],
+      "answer": "dirty",
+      "difficulty": "easy",
+      "explanation": "\"Dirty\" is the antonym (opposite) of \"clean.\""
+    },
+    {
+      "sentence": "The library stayed completely ___, the opposite of \"loud,\" except for a few whispers.",
+      "options": [
+        "exhausted",
+        "huge",
+        "fast",
+        "loud"
+      ],
+      "answer": "loud",
+      "difficulty": "easy",
+      "explanation": "\"Loud\" is the antonym (opposite) of \"quiet.\""
+    },
+    {
+      "sentence": "The antonym of \"near\" is ___.",
+      "options": [
+        "joyful",
+        "far",
+        "distant",
+        "closed"
+      ],
+      "answer": "far",
+      "difficulty": "easy",
+      "explanation": "\"Far\" is the antonym (opposite) of \"near.\""
+    },
+    {
+      "sentence": "\"High\" means the opposite of ___.",
+      "options": [
+        "excited",
+        "low",
+        "proud",
+        "brave"
+      ],
+      "answer": "low",
+      "difficulty": "easy",
+      "explanation": "\"Low\" is the antonym (opposite) of \"high.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"light\" could be described as ___.",
+      "options": [
+        "dark",
+        "little",
+        "giant",
+        "proud"
+      ],
+      "answer": "dark",
+      "difficulty": "easy",
+      "explanation": "\"Dark\" is the antonym (opposite) of \"light.\""
+    },
+    {
+      "sentence": "The opposite of \"open\" is ___.",
+      "options": [
+        "weighty",
+        "closed",
+        "shiny",
+        "boring"
+      ],
+      "answer": "closed",
+      "difficulty": "easy",
+      "explanation": "\"Closed\" is the antonym (opposite) of \"open.\""
+    },
+    {
+      "sentence": "The antonym of \"good\" is ___.",
+      "options": [
+        "gentle",
+        "bad",
+        "exhausted",
+        "weighty"
+      ],
+      "answer": "bad",
+      "difficulty": "easy",
+      "explanation": "\"Bad\" is the antonym (opposite) of \"good.\""
+    },
+    {
+      "sentence": "\"Right\" means the opposite of ___.",
+      "options": [
+        "brave",
+        "near",
+        "mad",
+        "wrong"
+      ],
+      "answer": "wrong",
+      "difficulty": "easy",
+      "explanation": "\"Wrong\" is the antonym (opposite) of \"right.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"true\" could be described as ___.",
+      "options": [
+        "false",
+        "small",
+        "silly",
+        "boring"
+      ],
+      "answer": "false",
+      "difficulty": "easy",
+      "explanation": "\"False\" is the antonym (opposite) of \"true.\""
+    },
+    {
+      "sentence": "The opposite of \"tall\" is ___.",
+      "options": [
+        "starving",
+        "easy",
+        "short",
+        "simple"
+      ],
+      "answer": "short",
+      "difficulty": "easy",
+      "explanation": "\"Short\" is the antonym (opposite) of \"tall.\""
+    },
+    {
+      "sentence": "The antonym of \"thick\" is ___.",
+      "options": [
+        "tall",
+        "funny",
+        "thin",
+        "tiny"
+      ],
+      "answer": "thin",
+      "difficulty": "easy",
+      "explanation": "\"Thin\" is the antonym (opposite) of \"thick.\""
+    },
+    {
+      "sentence": "\"Heavy\" means the opposite of ___.",
+      "options": [
+        "silent",
+        "light",
+        "dull",
+        "quiet"
+      ],
+      "answer": "light",
+      "difficulty": "easy",
+      "explanation": "\"Light\" is the antonym (opposite) of \"heavy.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"sharp\" could be described as ___.",
+      "options": [
+        "dull",
+        "proud",
+        "giant",
+        "shut"
+      ],
+      "answer": "dull",
+      "difficulty": "easy",
+      "explanation": "\"Dull\" is the antonym (opposite) of \"sharp.\""
+    },
+    {
+      "sentence": "The opposite of \"bright\" is ___.",
+      "options": [
+        "dim",
+        "gigantic",
+        "happy",
+        "easy"
+      ],
+      "answer": "dim",
+      "difficulty": "easy",
+      "explanation": "\"Dim\" is the antonym (opposite) of \"bright.\""
+    },
+    {
+      "sentence": "The antonym of \"wide\" is ___.",
+      "options": [
+        "huge",
+        "difficult",
+        "narrow",
+        "cold"
+      ],
+      "answer": "narrow",
+      "difficulty": "easy",
+      "explanation": "\"Narrow\" is the antonym (opposite) of \"wide.\""
+    },
+    {
+      "sentence": "\"Deep\" means the opposite of ___.",
+      "options": [
+        "shallow",
+        "wrong",
+        "quick",
+        "quiet"
+      ],
+      "answer": "shallow",
+      "difficulty": "easy",
+      "explanation": "\"Shallow\" is the antonym (opposite) of \"deep.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"early\" could be described as ___.",
+      "options": [
+        "peaceful",
+        "late",
+        "giant",
+        "shut"
+      ],
+      "answer": "late",
+      "difficulty": "easy",
+      "explanation": "\"Late\" is the antonym (opposite) of \"early.\""
+    },
+    {
+      "sentence": "The opposite of \"awake\" is ___.",
+      "options": [
+        "asleep",
+        "goofy",
+        "powerful",
+        "joyful"
+      ],
+      "answer": "asleep",
+      "difficulty": "easy",
+      "explanation": "\"Asleep\" is the antonym (opposite) of \"awake.\""
+    },
+    {
+      "sentence": "The antonym of \"fat\" is ___.",
+      "options": [
+        "timid",
+        "skinny",
+        "shiny",
+        "wealthy"
+      ],
+      "answer": "skinny",
+      "difficulty": "easy",
+      "explanation": "\"Skinny\" is the antonym (opposite) of \"fat.\""
+    },
+    {
+      "sentence": "\"Polite\" means the opposite of ___.",
+      "options": [
+        "mistaken",
+        "rude",
+        "cold",
+        "smart"
+      ],
+      "answer": "rude",
+      "difficulty": "easy",
+      "explanation": "\"Rude\" is the antonym (opposite) of \"polite.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"safe\" could be described as ___.",
+      "options": [
+        "boring",
+        "young",
+        "shy",
+        "dangerous"
+      ],
+      "answer": "dangerous",
+      "difficulty": "easy",
+      "explanation": "\"Dangerous\" is the antonym (opposite) of \"safe.\""
+    },
+    {
+      "sentence": "The opposite of \"gentle\" is ___.",
+      "options": [
+        "rough",
+        "heavy",
+        "right",
+        "untidy"
+      ],
+      "answer": "rough",
+      "difficulty": "easy",
+      "explanation": "\"Rough\" is the antonym (opposite) of \"gentle.\""
+    },
+    {
+      "sentence": "The antonym of \"smooth\" is ___.",
+      "options": [
+        "quiet",
+        "old",
+        "bumpy",
+        "unhappy"
+      ],
+      "answer": "bumpy",
+      "difficulty": "easy",
+      "explanation": "\"Bumpy\" is the antonym (opposite) of \"smooth.\""
+    },
+    {
+      "sentence": "\"Neat\" means the opposite of ___.",
+      "options": [
+        "messy",
+        "hard",
+        "dull",
+        "tired"
+      ],
+      "answer": "messy",
+      "difficulty": "easy",
+      "explanation": "\"Messy\" is the antonym (opposite) of \"neat.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"silent\" could be described as ___.",
+      "options": [
+        "noisy",
+        "goofy",
+        "hungry",
+        "gentle"
+      ],
+      "answer": "noisy",
+      "difficulty": "easy",
+      "explanation": "\"Noisy\" is the antonym (opposite) of \"silent.\""
+    },
+    {
+      "sentence": "The opposite of \"boring\" is ___.",
+      "options": [
+        "hungry",
+        "exciting",
+        "noisy",
+        "tall"
+      ],
+      "answer": "exciting",
+      "difficulty": "easy",
+      "explanation": "\"Exciting\" is the antonym (opposite) of \"boring.\""
+    },
+    {
+      "sentence": "The antonym of \"soft\" is ___.",
+      "options": [
+        "gentle",
+        "scared",
+        "funny",
+        "hard"
+      ],
+      "answer": "hard",
+      "difficulty": "easy",
+      "explanation": "\"Hard\" is the antonym (opposite) of \"soft.\""
+    },
+    {
+      "sentence": "\"Careful\" means the opposite of ___.",
+      "options": [
+        "careless",
+        "fast",
+        "shiny",
+        "alert"
+      ],
+      "answer": "careless",
+      "difficulty": "easy",
+      "explanation": "\"Careless\" is the antonym (opposite) of \"careful.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"honest\" could be described as ___.",
+      "options": [
+        "powerful",
+        "dishonest",
+        "easy",
+        "closed"
+      ],
+      "answer": "dishonest",
+      "difficulty": "easy",
+      "explanation": "\"Dishonest\" is the antonym (opposite) of \"honest.\""
+    },
+    {
+      "sentence": "The opposite of \"patient\" is ___.",
+      "options": [
+        "shy",
+        "chilly",
+        "nice",
+        "impatient"
+      ],
+      "answer": "impatient",
+      "difficulty": "easy",
+      "explanation": "\"Impatient\" is the antonym (opposite) of \"patient.\""
+    },
+    {
+      "sentence": "The antonym of \"healthy\" is ___.",
+      "options": [
+        "joyful",
+        "big",
+        "gigantic",
+        "sick"
+      ],
+      "answer": "sick",
+      "difficulty": "easy",
+      "explanation": "\"Sick\" is the antonym (opposite) of \"healthy.\""
+    },
+    {
+      "sentence": "\"Lucky\" means the opposite of ___.",
+      "options": [
+        "unlucky",
+        "afraid",
+        "small",
+        "quiet"
+      ],
+      "answer": "unlucky",
+      "difficulty": "easy",
+      "explanation": "\"Unlucky\" is the antonym (opposite) of \"lucky.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"famous\" could be described as ___.",
+      "options": [
+        "close",
+        "unknown",
+        "simple",
+        "calm"
+      ],
+      "answer": "unknown",
+      "difficulty": "easy",
+      "explanation": "\"Unknown\" is the antonym (opposite) of \"famous.\""
+    },
+    {
+      "sentence": "The opposite of \"comfortable\" is ___.",
+      "options": [
+        "uncomfortable",
+        "timid",
+        "young",
+        "sharp"
+      ],
+      "answer": "uncomfortable",
+      "difficulty": "easy",
+      "explanation": "\"Uncomfortable\" is the antonym (opposite) of \"comfortable.\""
+    },
+    {
+      "sentence": "The antonym of \"cheerful\" is ___.",
+      "options": [
+        "gloomy",
+        "exhausted",
+        "simple",
+        "easy"
+      ],
+      "answer": "gloomy",
+      "difficulty": "easy",
+      "explanation": "\"Gloomy\" is the antonym (opposite) of \"cheerful.\""
+    },
+    {
+      "sentence": "\"Proud\" means the opposite of ___.",
+      "options": [
+        "tidy",
+        "chilly",
+        "ashamed",
+        "wrong"
+      ],
+      "answer": "ashamed",
+      "difficulty": "easy",
+      "explanation": "\"Ashamed\" is the antonym (opposite) of \"proud.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"curious\" could be described as ___.",
+      "options": [
+        "chilly",
+        "indifferent",
+        "silly",
+        "correct"
+      ],
+      "answer": "indifferent",
+      "difficulty": "easy",
+      "explanation": "\"Indifferent\" is the antonym (opposite) of \"curious.\""
+    },
+    {
+      "sentence": "The opposite of \"generous\" is ___.",
+      "options": [
+        "selfish",
+        "tiny",
+        "tall",
+        "boring"
+      ],
+      "answer": "selfish",
+      "difficulty": "easy",
+      "explanation": "\"Selfish\" is the antonym (opposite) of \"generous.\""
+    },
+    {
+      "sentence": "The antonym of \"helpful\" is ___.",
+      "options": [
+        "easy",
+        "unhelpful",
+        "soft",
+        "quick"
+      ],
+      "answer": "unhelpful",
+      "difficulty": "easy",
+      "explanation": "\"Unhelpful\" is the antonym (opposite) of \"helpful.\""
+    },
+    {
+      "sentence": "\"Friendly\" means the opposite of ___.",
+      "options": [
+        "awake",
+        "unfriendly",
+        "polite",
+        "hard"
+      ],
+      "answer": "unfriendly",
+      "difficulty": "easy",
+      "explanation": "\"Unfriendly\" is the antonym (opposite) of \"friendly.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"calm\" could be described as ___.",
+      "options": [
+        "ancient",
+        "nervous",
+        "slim",
+        "silent"
+      ],
+      "answer": "nervous",
+      "difficulty": "easy",
+      "explanation": "\"Nervous\" is the antonym (opposite) of \"calm.\""
+    },
+    {
+      "sentence": "The opposite of \"confident\" is ___.",
+      "options": [
+        "clever",
+        "shy",
+        "weighty",
+        "youthful"
+      ],
+      "answer": "shy",
+      "difficulty": "easy",
+      "explanation": "\"Shy\" is the antonym (opposite) of \"confident.\""
+    },
+    {
+      "sentence": "The antonym of \"clumsy\" is ___.",
+      "options": [
+        "bright",
+        "graceful",
+        "quick",
+        "tiny"
+      ],
+      "answer": "graceful",
+      "difficulty": "easy",
+      "explanation": "\"Graceful\" is the antonym (opposite) of \"clumsy.\""
+    },
+    {
+      "sentence": "\"Talkative\" means the opposite of ___.",
+      "options": [
+        "hard",
+        "high",
+        "quiet",
+        "sleepy"
+      ],
+      "answer": "quiet",
+      "difficulty": "easy",
+      "explanation": "\"Quiet\" is the antonym (opposite) of \"talkative.\""
+    },
+    {
+      "sentence": "A word that means the same as \"enormous\" is ___.",
+      "options": [
+        "tiny",
+        "vacant",
+        "gigantic",
+        "late"
+      ],
+      "answer": "gigantic",
+      "difficulty": "medium",
+      "explanation": "\"Gigantic\" is a synonym of \"enormous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Cautious\" is closest in meaning to ___.",
+      "options": [
+        "vivid",
+        "decisive",
+        "careful",
+        "guilty"
+      ],
+      "answer": "careful",
+      "difficulty": "medium",
+      "explanation": "\"Careful\" is a synonym of \"cautious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"fragile\" is ___.",
+      "options": [
+        "diligent",
+        "strict",
+        "genuine",
+        "delicate"
+      ],
+      "answer": "delicate",
+      "difficulty": "medium",
+      "explanation": "\"Delicate\" is a synonym of \"fragile\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Brilliant\" most nearly means ___.",
+      "options": [
+        "social",
+        "intelligent",
+        "cruel",
+        "jovial"
+      ],
+      "answer": "intelligent",
+      "difficulty": "medium",
+      "explanation": "\"Intelligent\" is a synonym of \"brilliant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"clumsy\" is ___.",
+      "options": [
+        "awkward",
+        "meek",
+        "innocent",
+        "generous"
+      ],
+      "answer": "awkward",
+      "difficulty": "medium",
+      "explanation": "\"Awkward\" is a synonym of \"clumsy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Courteous\" is closest in meaning to ___.",
+      "options": [
+        "superior",
+        "outgoing",
+        "polite",
+        "genuine"
+      ],
+      "answer": "polite",
+      "difficulty": "medium",
+      "explanation": "\"Polite\" is a synonym of \"courteous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Because he was so ___ (a word that means the same as \"diligent\"), Marcus finished all his homework before dinner.",
+      "options": [
+        "formal",
+        "visible",
+        "temporary",
+        "hardworking"
+      ],
+      "answer": "hardworking",
+      "difficulty": "medium",
+      "explanation": "\"Hardworking\" is a synonym of \"diligent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Waving her hand wildly, Zoe was clearly ___ (a word that means the same as \"eager\") to answer the question.",
+      "options": [
+        "enthusiastic",
+        "somber",
+        "decisive",
+        "confident"
+      ],
+      "answer": "enthusiastic",
+      "difficulty": "medium",
+      "explanation": "\"Enthusiastic\" is a synonym of \"eager\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"elegant\" is ___.",
+      "options": [
+        "rare",
+        "gentle",
+        "temporary",
+        "graceful"
+      ],
+      "answer": "graceful",
+      "difficulty": "medium",
+      "explanation": "\"Graceful\" is a synonym of \"elegant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "The rainy, ___ (a word that means the same as \"gloomy\") afternoon kept everyone indoors.",
+      "options": [
+        "timid",
+        "dreary",
+        "pessimistic",
+        "simple"
+      ],
+      "answer": "dreary",
+      "difficulty": "medium",
+      "explanation": "\"Dreary\" is a synonym of \"gloomy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"humble\" is ___.",
+      "options": [
+        "brisk",
+        "modest",
+        "innocent",
+        "late"
+      ],
+      "answer": "modest",
+      "difficulty": "medium",
+      "explanation": "\"Modest\" is a synonym of \"humble\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Immense\" most nearly means ___.",
+      "options": [
+        "inferior",
+        "placid",
+        "flimsy",
+        "huge"
+      ],
+      "answer": "huge",
+      "difficulty": "medium",
+      "explanation": "\"Huge\" is a synonym of \"immense\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"jubilant\" is ___.",
+      "options": [
+        "tense",
+        "scarce",
+        "vacant",
+        "joyful"
+      ],
+      "answer": "joyful",
+      "difficulty": "medium",
+      "explanation": "\"Joyful\" is a synonym of \"jubilant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Lengthy\" is closest in meaning to ___.",
+      "options": [
+        "reckless",
+        "sturdy",
+        "long",
+        "generous"
+      ],
+      "answer": "long",
+      "difficulty": "medium",
+      "explanation": "\"Long\" is a synonym of \"lengthy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"magnificent\" is ___.",
+      "options": [
+        "splendid",
+        "somber",
+        "frequent",
+        "decisive"
+      ],
+      "answer": "splendid",
+      "difficulty": "medium",
+      "explanation": "\"Splendid\" is a synonym of \"magnificent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Mischievous\" most nearly means ___.",
+      "options": [
+        "naughty",
+        "dull",
+        "generous",
+        "obscure"
+      ],
+      "answer": "naughty",
+      "difficulty": "medium",
+      "explanation": "\"Naughty\" is a synonym of \"mischievous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Before the spelling bee, Priya felt ___, a word that means the same as \"nervous.\"",
+      "options": [
+        "anxious",
+        "vivid",
+        "late",
+        "superior"
+      ],
+      "answer": "anxious",
+      "difficulty": "medium",
+      "explanation": "\"Anxious\" is a synonym of \"nervous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Obedient\" is closest in meaning to ___.",
+      "options": [
+        "rebellious",
+        "sluggish",
+        "rural",
+        "compliant"
+      ],
+      "answer": "compliant",
+      "difficulty": "medium",
+      "explanation": "\"Compliant\" is a synonym of \"obedient\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"peculiar\" is ___.",
+      "options": [
+        "tranquil",
+        "famous",
+        "dull",
+        "strange"
+      ],
+      "answer": "strange",
+      "difficulty": "medium",
+      "explanation": "\"Strange\" is a synonym of \"peculiar\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Radiant\" most nearly means ___.",
+      "options": [
+        "glowing",
+        "visible",
+        "punctual",
+        "invisible"
+      ],
+      "answer": "glowing",
+      "difficulty": "medium",
+      "explanation": "\"Glowing\" is a synonym of \"radiant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"robust\" is ___.",
+      "options": [
+        "fresh",
+        "sturdy",
+        "inferior",
+        "rigid"
+      ],
+      "answer": "sturdy",
+      "difficulty": "medium",
+      "explanation": "\"Sturdy\" is a synonym of \"robust\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Sincere\" is closest in meaning to ___.",
+      "options": [
+        "optimistic",
+        "flimsy",
+        "genuine",
+        "vivid"
+      ],
+      "answer": "genuine",
+      "difficulty": "medium",
+      "explanation": "\"Genuine\" is a synonym of \"sincere\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"vivid\" is ___.",
+      "options": [
+        "humble",
+        "bright",
+        "genuine",
+        "permanent"
+      ],
+      "answer": "bright",
+      "difficulty": "medium",
+      "explanation": "\"Bright\" is a synonym of \"vivid\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Weary\" most nearly means ___.",
+      "options": [
+        "fragile",
+        "wasteful",
+        "sluggish",
+        "exhausted"
+      ],
+      "answer": "exhausted",
+      "difficulty": "medium",
+      "explanation": "\"Exhausted\" is a synonym of \"weary\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"brittle\" is ___.",
+      "options": [
+        "modern",
+        "vague",
+        "fragile",
+        "strict"
+      ],
+      "answer": "fragile",
+      "difficulty": "medium",
+      "explanation": "\"Fragile\" is a synonym of \"brittle\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Delighted\" is closest in meaning to ___.",
+      "options": [
+        "rigid",
+        "humble",
+        "thrilled",
+        "fresh"
+      ],
+      "answer": "thrilled",
+      "difficulty": "medium",
+      "explanation": "\"Thrilled\" is a synonym of \"delighted\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"drowsy\" is ___.",
+      "options": [
+        "fragile",
+        "famous",
+        "sleepy",
+        "late"
+      ],
+      "answer": "sleepy",
+      "difficulty": "medium",
+      "explanation": "\"Sleepy\" is a synonym of \"drowsy\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Fatigued\" most nearly means ___.",
+      "options": [
+        "tired",
+        "proud",
+        "abundant",
+        "temporary"
+      ],
+      "answer": "tired",
+      "difficulty": "medium",
+      "explanation": "\"Tired\" is a synonym of \"fatigued\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"hostile\" is ___.",
+      "options": [
+        "rebellious",
+        "graceful",
+        "inferior",
+        "unfriendly"
+      ],
+      "answer": "unfriendly",
+      "difficulty": "medium",
+      "explanation": "\"Unfriendly\" is a synonym of \"hostile\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Intricate\" is closest in meaning to ___.",
+      "options": [
+        "stingy",
+        "complex",
+        "fake",
+        "abundant"
+      ],
+      "answer": "complex",
+      "difficulty": "medium",
+      "explanation": "\"Complex\" is a synonym of \"intricate\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"lively\" is ___.",
+      "options": [
+        "sturdy",
+        "formal",
+        "dull",
+        "energetic"
+      ],
+      "answer": "energetic",
+      "difficulty": "medium",
+      "explanation": "\"Energetic\" is a synonym of \"lively\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Monotonous\" most nearly means ___.",
+      "options": [
+        "flexible",
+        "boring",
+        "timid",
+        "tense"
+      ],
+      "answer": "boring",
+      "difficulty": "medium",
+      "explanation": "\"Boring\" is a synonym of \"monotonous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"notorious\" is ___.",
+      "options": [
+        "infamous",
+        "frequent",
+        "cautious",
+        "invisible"
+      ],
+      "answer": "infamous",
+      "difficulty": "medium",
+      "explanation": "\"Infamous\" is a synonym of \"notorious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Even after losing the first game, the team stayed ___, a word that means the same as \"optimistic.\"",
+      "options": [
+        "brave",
+        "hopeful",
+        "feeble",
+        "simple"
+      ],
+      "answer": "hopeful",
+      "difficulty": "medium",
+      "explanation": "\"Hopeful\" is a synonym of \"optimistic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"plentiful\" is ___.",
+      "options": [
+        "abundant",
+        "frequent",
+        "reserved",
+        "diligent"
+      ],
+      "answer": "abundant",
+      "difficulty": "medium",
+      "explanation": "\"Abundant\" is a synonym of \"plentiful\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Stubborn\" most nearly means ___.",
+      "options": [
+        "flexible",
+        "obstinate",
+        "modern",
+        "brave"
+      ],
+      "answer": "obstinate",
+      "difficulty": "medium",
+      "explanation": "\"Obstinate\" is a synonym of \"stubborn\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"timid\" is ___.",
+      "options": [
+        "occupied",
+        "sturdy",
+        "famous",
+        "shy"
+      ],
+      "answer": "shy",
+      "difficulty": "medium",
+      "explanation": "\"Shy\" is a synonym of \"timid\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Vast\" is closest in meaning to ___.",
+      "options": [
+        "insecure",
+        "enormous",
+        "urban",
+        "rebellious"
+      ],
+      "answer": "enormous",
+      "difficulty": "medium",
+      "explanation": "\"Enormous\" is a synonym of \"vast\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"absurd\" is ___.",
+      "options": [
+        "fragile",
+        "gentle",
+        "simple",
+        "ridiculous"
+      ],
+      "answer": "ridiculous",
+      "difficulty": "medium",
+      "explanation": "\"Ridiculous\" is a synonym of \"absurd\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Blunt\" most nearly means ___.",
+      "options": [
+        "stingy",
+        "abundant",
+        "direct",
+        "tense"
+      ],
+      "answer": "direct",
+      "difficulty": "medium",
+      "explanation": "\"Direct\" is a synonym of \"blunt\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"cunning\" is ___.",
+      "options": [
+        "arrogant",
+        "cruel",
+        "sly",
+        "somber"
+      ],
+      "answer": "sly",
+      "difficulty": "medium",
+      "explanation": "\"Sly\" is a synonym of \"cunning\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Dismal\" is closest in meaning to ___.",
+      "options": [
+        "somber",
+        "invisible",
+        "frugal",
+        "gloomy"
+      ],
+      "answer": "gloomy",
+      "difficulty": "medium",
+      "explanation": "\"Gloomy\" is a synonym of \"dismal\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"exceptional\" is ___.",
+      "options": [
+        "clear",
+        "outstanding",
+        "fresh",
+        "famous"
+      ],
+      "answer": "outstanding",
+      "difficulty": "medium",
+      "explanation": "\"Outstanding\" is a synonym of \"exceptional\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Frantic\" most nearly means ___.",
+      "options": [
+        "nimble",
+        "feeble",
+        "social",
+        "panicked"
+      ],
+      "answer": "panicked",
+      "difficulty": "medium",
+      "explanation": "\"Panicked\" is a synonym of \"frantic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"genuine\" is ___.",
+      "options": [
+        "heartless",
+        "fragile",
+        "authentic",
+        "sturdy"
+      ],
+      "answer": "authentic",
+      "difficulty": "medium",
+      "explanation": "\"Authentic\" is a synonym of \"genuine\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Hesitant\" is closest in meaning to ___.",
+      "options": [
+        "formal",
+        "flimsy",
+        "feeble",
+        "unsure"
+      ],
+      "answer": "unsure",
+      "difficulty": "medium",
+      "explanation": "\"Unsure\" is a synonym of \"hesitant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"ample\" is ___.",
+      "options": [
+        "fragile",
+        "heartless",
+        "solitary",
+        "plentiful"
+      ],
+      "answer": "plentiful",
+      "difficulty": "medium",
+      "explanation": "\"Plentiful\" is a synonym of \"ample\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Bashful\" most nearly means ___.",
+      "options": [
+        "permanent",
+        "humble",
+        "cruel",
+        "shy"
+      ],
+      "answer": "shy",
+      "difficulty": "medium",
+      "explanation": "\"Shy\" is a synonym of \"bashful\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"bizarre\" is ___.",
+      "options": [
+        "flimsy",
+        "tense",
+        "strange",
+        "brave"
+      ],
+      "answer": "strange",
+      "difficulty": "medium",
+      "explanation": "\"Strange\" is a synonym of \"bizarre\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Colossal\" is closest in meaning to ___.",
+      "options": [
+        "outgoing",
+        "optimistic",
+        "nimble",
+        "huge"
+      ],
+      "answer": "huge",
+      "difficulty": "medium",
+      "explanation": "\"Huge\" is a synonym of \"colossal\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"deceitful\" is ___.",
+      "options": [
+        "dishonest",
+        "elaborate",
+        "invisible",
+        "clumsy"
+      ],
+      "answer": "dishonest",
+      "difficulty": "medium",
+      "explanation": "\"Dishonest\" is a synonym of \"deceitful\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "The opposite of \"cautious\" is ___.",
+      "options": [
+        "bizarre",
+        "fragile",
+        "joyful",
+        "reckless"
+      ],
+      "answer": "reckless",
+      "difficulty": "medium",
+      "explanation": "\"Reckless\" is the antonym (opposite) of \"cautious.\""
+    },
+    {
+      "sentence": "The antonym of \"ancient\" is ___.",
+      "options": [
+        "compliant",
+        "modern",
+        "delighted",
+        "bright"
+      ],
+      "answer": "modern",
+      "difficulty": "medium",
+      "explanation": "\"Modern\" is the antonym (opposite) of \"ancient.\""
+    },
+    {
+      "sentence": "Unlike his ___ (the opposite of \"arrogant\") teammate, the star player bragged about every goal he scored.",
+      "options": [
+        "diligent",
+        "awkward",
+        "notorious",
+        "humble"
+      ],
+      "answer": "humble",
+      "difficulty": "medium",
+      "explanation": "\"Humble\" is the antonym (opposite) of \"arrogant.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"brave\" could be described as ___.",
+      "options": [
+        "cowardly",
+        "strange",
+        "long",
+        "frantic"
+      ],
+      "answer": "cowardly",
+      "difficulty": "medium",
+      "explanation": "\"Cowardly\" is the antonym (opposite) of \"brave.\""
+    },
+    {
+      "sentence": "The opposite of \"genuine\" is ___.",
+      "options": [
+        "elegant",
+        "vivid",
+        "blunt",
+        "fake"
+      ],
+      "answer": "fake",
+      "difficulty": "medium",
+      "explanation": "\"Fake\" is the antonym (opposite) of \"genuine.\""
+    },
+    {
+      "sentence": "The antonym of \"scarce\" is ___.",
+      "options": [
+        "abundant",
+        "deceitful",
+        "delicate",
+        "plentiful"
+      ],
+      "answer": "abundant",
+      "difficulty": "medium",
+      "explanation": "\"Abundant\" is the antonym (opposite) of \"scarce.\""
+    },
+    {
+      "sentence": "\"Permanent\" means the opposite of ___.",
+      "options": [
+        "hostile",
+        "authentic",
+        "temporary",
+        "plentiful"
+      ],
+      "answer": "temporary",
+      "difficulty": "medium",
+      "explanation": "\"Temporary\" is the antonym (opposite) of \"permanent.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"visible\" could be described as ___.",
+      "options": [
+        "frantic",
+        "invisible",
+        "brilliant",
+        "elegant"
+      ],
+      "answer": "invisible",
+      "difficulty": "medium",
+      "explanation": "\"Invisible\" is the antonym (opposite) of \"visible.\""
+    },
+    {
+      "sentence": "Unlike his usual confident self, Ben felt ___ (the opposite of \"confident\") right before the big test.",
+      "options": [
+        "exhausted",
+        "robust",
+        "insecure",
+        "delicate"
+      ],
+      "answer": "insecure",
+      "difficulty": "medium",
+      "explanation": "\"Insecure\" is the antonym (opposite) of \"confident.\""
+    },
+    {
+      "sentence": "No one in the story liked the ___ (the opposite of \"kind\") villain.",
+      "options": [
+        "elegant",
+        "cruel",
+        "genuine",
+        "ridiculous"
+      ],
+      "answer": "cruel",
+      "difficulty": "medium",
+      "explanation": "\"Cruel\" is the antonym (opposite) of \"kind.\""
+    },
+    {
+      "sentence": "\"Diligent\" means the opposite of ___.",
+      "options": [
+        "ample",
+        "lazy",
+        "dismal",
+        "gigantic"
+      ],
+      "answer": "lazy",
+      "difficulty": "medium",
+      "explanation": "\"Lazy\" is the antonym (opposite) of \"diligent.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"flexible\" could be described as ___.",
+      "options": [
+        "drowsy",
+        "rigid",
+        "modest",
+        "deceitful"
+      ],
+      "answer": "rigid",
+      "difficulty": "medium",
+      "explanation": "\"Rigid\" is the antonym (opposite) of \"flexible.\""
+    },
+    {
+      "sentence": "The opposite of \"fragile\" is ___.",
+      "options": [
+        "direct",
+        "eager",
+        "sturdy",
+        "obstinate"
+      ],
+      "answer": "sturdy",
+      "difficulty": "medium",
+      "explanation": "\"Sturdy\" is the antonym (opposite) of \"fragile.\""
+    },
+    {
+      "sentence": "The antonym of \"frequent\" is ___.",
+      "options": [
+        "rare",
+        "thrilled",
+        "elegant",
+        "hostile"
+      ],
+      "answer": "rare",
+      "difficulty": "medium",
+      "explanation": "\"Rare\" is the antonym (opposite) of \"frequent.\""
+    },
+    {
+      "sentence": "\"Graceful\" means the opposite of ___.",
+      "options": [
+        "lengthy",
+        "elegant",
+        "cautious",
+        "clumsy"
+      ],
+      "answer": "clumsy",
+      "difficulty": "medium",
+      "explanation": "\"Clumsy\" is the antonym (opposite) of \"graceful.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"harsh\" could be described as ___.",
+      "options": [
+        "exceptional",
+        "hopeful",
+        "elegant",
+        "gentle"
+      ],
+      "answer": "gentle",
+      "difficulty": "medium",
+      "explanation": "\"Gentle\" is the antonym (opposite) of \"harsh.\""
+    },
+    {
+      "sentence": "The opposite of \"humble\" is ___.",
+      "options": [
+        "proud",
+        "genuine",
+        "sincere",
+        "brilliant"
+      ],
+      "answer": "proud",
+      "difficulty": "medium",
+      "explanation": "\"Proud\" is the antonym (opposite) of \"humble.\""
+    },
+    {
+      "sentence": "The antonym of \"innocent\" is ___.",
+      "options": [
+        "graceful",
+        "careful",
+        "obstinate",
+        "guilty"
+      ],
+      "answer": "guilty",
+      "difficulty": "medium",
+      "explanation": "\"Guilty\" is the antonym (opposite) of \"innocent.\""
+    },
+    {
+      "sentence": "\"Major\" means the opposite of ___.",
+      "options": [
+        "elegant",
+        "energetic",
+        "minor",
+        "unsure"
+      ],
+      "answer": "minor",
+      "difficulty": "medium",
+      "explanation": "\"Minor\" is the antonym (opposite) of \"major.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"mature\" could be described as ___.",
+      "options": [
+        "sturdy",
+        "hesitant",
+        "immature",
+        "dismal"
+      ],
+      "answer": "immature",
+      "difficulty": "medium",
+      "explanation": "\"Immature\" is the antonym (opposite) of \"mature.\""
+    },
+    {
+      "sentence": "The opposite of \"obedient\" is ___.",
+      "options": [
+        "weary",
+        "rebellious",
+        "lengthy",
+        "authentic"
+      ],
+      "answer": "rebellious",
+      "difficulty": "medium",
+      "explanation": "\"Rebellious\" is the antonym (opposite) of \"obedient.\""
+    },
+    {
+      "sentence": "The antonym of \"optimistic\" is ___.",
+      "options": [
+        "pessimistic",
+        "hostile",
+        "thrilled",
+        "shy"
+      ],
+      "answer": "pessimistic",
+      "difficulty": "medium",
+      "explanation": "\"Pessimistic\" is the antonym (opposite) of \"optimistic.\""
+    },
+    {
+      "sentence": "\"Punctual\" means the opposite of ___.",
+      "options": [
+        "tired",
+        "late",
+        "energetic",
+        "radiant"
+      ],
+      "answer": "late",
+      "difficulty": "medium",
+      "explanation": "\"Late\" is the antonym (opposite) of \"punctual.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"rural\" could be described as ___.",
+      "options": [
+        "abundant",
+        "elegant",
+        "plentiful",
+        "urban"
+      ],
+      "answer": "urban",
+      "difficulty": "medium",
+      "explanation": "\"Urban\" is the antonym (opposite) of \"rural.\""
+    },
+    {
+      "sentence": "The opposite of \"sincere\" is ___.",
+      "options": [
+        "ample",
+        "insincere",
+        "drowsy",
+        "sturdy"
+      ],
+      "answer": "insincere",
+      "difficulty": "medium",
+      "explanation": "\"Insincere\" is the antonym (opposite) of \"sincere.\""
+    },
+    {
+      "sentence": "The antonym of \"solitary\" is ___.",
+      "options": [
+        "splendid",
+        "long",
+        "social",
+        "sleepy"
+      ],
+      "answer": "social",
+      "difficulty": "medium",
+      "explanation": "\"Social\" is the antonym (opposite) of \"solitary.\""
+    },
+    {
+      "sentence": "\"Sturdy\" means the opposite of ___.",
+      "options": [
+        "nervous",
+        "direct",
+        "flimsy",
+        "eager"
+      ],
+      "answer": "flimsy",
+      "difficulty": "medium",
+      "explanation": "\"Flimsy\" is the antonym (opposite) of \"sturdy.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"superior\" could be described as ___.",
+      "options": [
+        "inferior",
+        "weary",
+        "delighted",
+        "abundant"
+      ],
+      "answer": "inferior",
+      "difficulty": "medium",
+      "explanation": "\"Inferior\" is the antonym (opposite) of \"superior.\""
+    },
+    {
+      "sentence": "The opposite of \"tense\" is ___.",
+      "options": [
+        "bizarre",
+        "relaxed",
+        "boring",
+        "sincere"
+      ],
+      "answer": "relaxed",
+      "difficulty": "medium",
+      "explanation": "\"Relaxed\" is the antonym (opposite) of \"tense.\""
+    },
+    {
+      "sentence": "The antonym of \"timid\" is ___.",
+      "options": [
+        "brilliant",
+        "sincere",
+        "bold",
+        "direct"
+      ],
+      "answer": "bold",
+      "difficulty": "medium",
+      "explanation": "\"Bold\" is the antonym (opposite) of \"timid.\""
+    },
+    {
+      "sentence": "\"Vacant\" means the opposite of ___.",
+      "options": [
+        "occupied",
+        "radiant",
+        "elegant",
+        "intelligent"
+      ],
+      "answer": "occupied",
+      "difficulty": "medium",
+      "explanation": "\"Occupied\" is the antonym (opposite) of \"vacant.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"vague\" could be described as ___.",
+      "options": [
+        "clear",
+        "huge",
+        "modest",
+        "sturdy"
+      ],
+      "answer": "clear",
+      "difficulty": "medium",
+      "explanation": "\"Clear\" is the antonym (opposite) of \"vague.\""
+    },
+    {
+      "sentence": "The opposite of \"vast\" is ___.",
+      "options": [
+        "enormous",
+        "glowing",
+        "tiny",
+        "brilliant"
+      ],
+      "answer": "tiny",
+      "difficulty": "medium",
+      "explanation": "\"Tiny\" is the antonym (opposite) of \"vast.\""
+    },
+    {
+      "sentence": "The antonym of \"vivid\" is ___.",
+      "options": [
+        "dull",
+        "lively",
+        "awkward",
+        "hopeful"
+      ],
+      "answer": "dull",
+      "difficulty": "medium",
+      "explanation": "\"Dull\" is the antonym (opposite) of \"vivid.\""
+    },
+    {
+      "sentence": "\"Stale\" means the opposite of ___.",
+      "options": [
+        "fresh",
+        "bizarre",
+        "brittle",
+        "ample"
+      ],
+      "answer": "fresh",
+      "difficulty": "medium",
+      "explanation": "\"Fresh\" is the antonym (opposite) of \"stale.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"generous\" could be described as ___.",
+      "options": [
+        "sturdy",
+        "bizarre",
+        "stingy",
+        "joyful"
+      ],
+      "answer": "stingy",
+      "difficulty": "medium",
+      "explanation": "\"Stingy\" is the antonym (opposite) of \"generous.\""
+    },
+    {
+      "sentence": "The opposite of \"brisk\" is ___.",
+      "options": [
+        "enthusiastic",
+        "sturdy",
+        "immense",
+        "sluggish"
+      ],
+      "answer": "sluggish",
+      "difficulty": "medium",
+      "explanation": "\"Sluggish\" is the antonym (opposite) of \"brisk.\""
+    },
+    {
+      "sentence": "The antonym of \"meek\" is ___.",
+      "options": [
+        "jubilant",
+        "assertive",
+        "humble",
+        "strange"
+      ],
+      "answer": "assertive",
+      "difficulty": "medium",
+      "explanation": "\"Assertive\" is the antonym (opposite) of \"meek.\""
+    },
+    {
+      "sentence": "\"Compassionate\" means the opposite of ___.",
+      "options": [
+        "monotonous",
+        "heartless",
+        "lengthy",
+        "sleepy"
+      ],
+      "answer": "heartless",
+      "difficulty": "medium",
+      "explanation": "\"Heartless\" is the antonym (opposite) of \"compassionate.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"decisive\" could be described as ___.",
+      "options": [
+        "immense",
+        "lengthy",
+        "cautious",
+        "indecisive"
+      ],
+      "answer": "indecisive",
+      "difficulty": "medium",
+      "explanation": "\"Indecisive\" is the antonym (opposite) of \"decisive.\""
+    },
+    {
+      "sentence": "The opposite of \"elaborate\" is ___.",
+      "options": [
+        "simple",
+        "cautious",
+        "gloomy",
+        "compliant"
+      ],
+      "answer": "simple",
+      "difficulty": "medium",
+      "explanation": "\"Simple\" is the antonym (opposite) of \"elaborate.\""
+    },
+    {
+      "sentence": "The antonym of \"feeble\" is ___.",
+      "options": [
+        "fragile",
+        "panicked",
+        "hardworking",
+        "strong"
+      ],
+      "answer": "strong",
+      "difficulty": "medium",
+      "explanation": "\"Strong\" is the antonym (opposite) of \"feeble.\""
+    },
+    {
+      "sentence": "\"Formal\" means the opposite of ___.",
+      "options": [
+        "diligent",
+        "cautious",
+        "casual",
+        "hesitant"
+      ],
+      "answer": "casual",
+      "difficulty": "medium",
+      "explanation": "\"Casual\" is the antonym (opposite) of \"formal.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"frugal\" could be described as ___.",
+      "options": [
+        "wasteful",
+        "frantic",
+        "enthusiastic",
+        "intricate"
+      ],
+      "answer": "wasteful",
+      "difficulty": "medium",
+      "explanation": "\"Wasteful\" is the antonym (opposite) of \"frugal.\""
+    },
+    {
+      "sentence": "The opposite of \"indifferent\" is ___.",
+      "options": [
+        "long",
+        "passionate",
+        "graceful",
+        "dishonest"
+      ],
+      "answer": "passionate",
+      "difficulty": "medium",
+      "explanation": "\"Passionate\" is the antonym (opposite) of \"indifferent.\""
+    },
+    {
+      "sentence": "The antonym of \"jovial\" is ___.",
+      "options": [
+        "somber",
+        "deceitful",
+        "compliant",
+        "hesitant"
+      ],
+      "answer": "somber",
+      "difficulty": "medium",
+      "explanation": "\"Somber\" is the antonym (opposite) of \"jovial.\""
+    },
+    {
+      "sentence": "\"Lenient\" means the opposite of ___.",
+      "options": [
+        "strict",
+        "graceful",
+        "dismal",
+        "authentic"
+      ],
+      "answer": "strict",
+      "difficulty": "medium",
+      "explanation": "\"Strict\" is the antonym (opposite) of \"lenient.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"nimble\" could be described as ___.",
+      "options": [
+        "clumsy",
+        "elegant",
+        "radiant",
+        "cautious"
+      ],
+      "answer": "clumsy",
+      "difficulty": "medium",
+      "explanation": "\"Clumsy\" is the antonym (opposite) of \"nimble.\""
+    },
+    {
+      "sentence": "The opposite of \"obscure\" is ___.",
+      "options": [
+        "delicate",
+        "anxious",
+        "famous",
+        "monotonous"
+      ],
+      "answer": "famous",
+      "difficulty": "medium",
+      "explanation": "\"Famous\" is the antonym (opposite) of \"obscure.\""
+    },
+    {
+      "sentence": "The antonym of \"placid\" is ___.",
+      "options": [
+        "glowing",
+        "turbulent",
+        "optimistic",
+        "unfriendly"
+      ],
+      "answer": "turbulent",
+      "difficulty": "medium",
+      "explanation": "\"Turbulent\" is the antonym (opposite) of \"placid.\""
+    },
+    {
+      "sentence": "\"Reserved\" means the opposite of ___.",
+      "options": [
+        "fatigued",
+        "outgoing",
+        "lengthy",
+        "unfriendly"
+      ],
+      "answer": "outgoing",
+      "difficulty": "medium",
+      "explanation": "\"Outgoing\" is the antonym (opposite) of \"reserved.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"tranquil\" could be described as ___.",
+      "options": [
+        "enormous",
+        "jubilant",
+        "chaotic",
+        "glowing"
+      ],
+      "answer": "chaotic",
+      "difficulty": "medium",
+      "explanation": "\"Chaotic\" is the antonym (opposite) of \"tranquil.\""
+    },
+    {
+      "sentence": "It took an ___ (a word that means the same as \"audacious\") explorer to attempt the climb alone.",
+      "options": [
+        "beneficial",
+        "talkative",
+        "bold",
+        "candid"
+      ],
+      "answer": "bold",
+      "difficulty": "hard",
+      "explanation": "\"Bold\" is a synonym of \"audacious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Belligerent\" is closest in meaning to ___.",
+      "options": [
+        "malevolent",
+        "stable",
+        "talkative",
+        "hostile"
+      ],
+      "answer": "hostile",
+      "difficulty": "hard",
+      "explanation": "\"Hostile\" is a synonym of \"belligerent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"candid\" is ___.",
+      "options": [
+        "reckless",
+        "idealistic",
+        "forgiving",
+        "honest"
+      ],
+      "answer": "honest",
+      "difficulty": "hard",
+      "explanation": "\"Honest\" is a synonym of \"candid\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Ephemeral\" most nearly means ___.",
+      "options": [
+        "stoic",
+        "temporary",
+        "lucid",
+        "timid"
+      ],
+      "answer": "temporary",
+      "difficulty": "hard",
+      "explanation": "\"Temporary\" is a synonym of \"ephemeral\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"esoteric\" is ___.",
+      "options": [
+        "laconic",
+        "impoverished",
+        "obscure",
+        "lavish"
+      ],
+      "answer": "obscure",
+      "difficulty": "hard",
+      "explanation": "\"Obscure\" is a synonym of \"esoteric\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Flippant\" is closest in meaning to ___.",
+      "options": [
+        "disrespectful",
+        "stoic",
+        "lavish",
+        "garrulous"
+      ],
+      "answer": "disrespectful",
+      "difficulty": "hard",
+      "explanation": "\"Disrespectful\" is a synonym of \"flippant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "At every family party, Grandpa was the most ___ (a word that means the same as \"gregarious\") person in the room.",
+      "options": [
+        "sociable",
+        "few",
+        "obvious",
+        "forgiving"
+      ],
+      "answer": "sociable",
+      "difficulty": "hard",
+      "explanation": "\"Sociable\" is a synonym of \"gregarious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Lucid\" most nearly means ___.",
+      "options": [
+        "ostentatious",
+        "deceptive",
+        "clear",
+        "ubiquitous"
+      ],
+      "answer": "clear",
+      "difficulty": "hard",
+      "explanation": "\"Clear\" is a synonym of \"lucid\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"magnanimous\" is ___.",
+      "options": [
+        "generous",
+        "inconspicuous",
+        "timorous",
+        "verbose"
+      ],
+      "answer": "generous",
+      "difficulty": "hard",
+      "explanation": "\"Generous\" is a synonym of \"magnanimous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Nefarious\" is closest in meaning to ___.",
+      "options": [
+        "wicked",
+        "reckless",
+        "tenacious",
+        "conspicuous"
+      ],
+      "answer": "wicked",
+      "difficulty": "hard",
+      "explanation": "\"Wicked\" is a synonym of \"nefarious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"obstinate\" is ___.",
+      "options": [
+        "confusing",
+        "candid",
+        "apathetic",
+        "stubborn"
+      ],
+      "answer": "stubborn",
+      "difficulty": "hard",
+      "explanation": "\"Stubborn\" is a synonym of \"obstinate\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Quixotic\" most nearly means ___.",
+      "options": [
+        "solid",
+        "prudent",
+        "vindictive",
+        "idealistic"
+      ],
+      "answer": "idealistic",
+      "difficulty": "hard",
+      "explanation": "\"Idealistic\" is a synonym of \"quixotic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"taciturn\" is ___.",
+      "options": [
+        "ubiquitous",
+        "malevolent",
+        "quiet",
+        "inarticulate"
+      ],
+      "answer": "quiet",
+      "difficulty": "hard",
+      "explanation": "\"Quiet\" is a synonym of \"taciturn\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Ubiquitous\" is closest in meaning to ___.",
+      "options": [
+        "belligerent",
+        "tenacious",
+        "reluctant",
+        "widespread"
+      ],
+      "answer": "widespread",
+      "difficulty": "hard",
+      "explanation": "\"Widespread\" is a synonym of \"ubiquitous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"vociferous\" is ___.",
+      "options": [
+        "bold",
+        "loud",
+        "pragmatic",
+        "concise"
+      ],
+      "answer": "loud",
+      "difficulty": "hard",
+      "explanation": "\"Loud\" is a synonym of \"vociferous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Whimsical\" most nearly means ___.",
+      "options": [
+        "apathetic",
+        "dogmatic",
+        "playful",
+        "austere"
+      ],
+      "answer": "playful",
+      "difficulty": "hard",
+      "explanation": "\"Playful\" is a synonym of \"whimsical\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"altruistic\" is ___.",
+      "options": [
+        "reluctant",
+        "taciturn",
+        "selfless",
+        "inarticulate"
+      ],
+      "answer": "selfless",
+      "difficulty": "hard",
+      "explanation": "\"Selfless\" is a synonym of \"altruistic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Austere\" is closest in meaning to ___.",
+      "options": [
+        "moderate",
+        "stern",
+        "belligerent",
+        "malevolent"
+      ],
+      "answer": "stern",
+      "difficulty": "hard",
+      "explanation": "\"Stern\" is a synonym of \"austere\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"capricious\" is ___.",
+      "options": [
+        "myriad",
+        "peaceful",
+        "timid",
+        "unpredictable"
+      ],
+      "answer": "unpredictable",
+      "difficulty": "hard",
+      "explanation": "\"Unpredictable\" is a synonym of \"capricious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Clandestine\" most nearly means ___.",
+      "options": [
+        "tenuous",
+        "opulent",
+        "sagacious",
+        "secret"
+      ],
+      "answer": "secret",
+      "difficulty": "hard",
+      "explanation": "\"Secret\" is a synonym of \"clandestine\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"complacent\" is ___.",
+      "options": [
+        "content",
+        "self-satisfied",
+        "stable",
+        "laconic"
+      ],
+      "answer": "self-satisfied",
+      "difficulty": "hard",
+      "explanation": "\"Self-satisfied\" is a synonym of \"complacent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Deleterious\" is closest in meaning to ___.",
+      "options": [
+        "idealistic",
+        "clear",
+        "concise",
+        "harmful"
+      ],
+      "answer": "harmful",
+      "difficulty": "hard",
+      "explanation": "\"Harmful\" is a synonym of \"deleterious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"dogmatic\" is ___.",
+      "options": [
+        "permanent",
+        "opinionated",
+        "benevolent",
+        "pragmatic"
+      ],
+      "answer": "opinionated",
+      "difficulty": "hard",
+      "explanation": "\"Opinionated\" is a synonym of \"dogmatic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Eloquent\" most nearly means ___.",
+      "options": [
+        "articulate",
+        "insidious",
+        "lucid",
+        "inarticulate"
+      ],
+      "answer": "articulate",
+      "difficulty": "hard",
+      "explanation": "\"Articulate\" is a synonym of \"eloquent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"enigmatic\" is ___.",
+      "options": [
+        "essential",
+        "inconspicuous",
+        "mysterious",
+        "audacious"
+      ],
+      "answer": "mysterious",
+      "difficulty": "hard",
+      "explanation": "\"Mysterious\" is a synonym of \"enigmatic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Equivocal\" is closest in meaning to ___.",
+      "options": [
+        "peaceful",
+        "nefarious",
+        "wary",
+        "ambiguous"
+      ],
+      "answer": "ambiguous",
+      "difficulty": "hard",
+      "explanation": "\"Ambiguous\" is a synonym of \"equivocal\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"fastidious\" is ___.",
+      "options": [
+        "superfluous",
+        "stable",
+        "audacious",
+        "meticulous"
+      ],
+      "answer": "meticulous",
+      "difficulty": "hard",
+      "explanation": "\"Meticulous\" is a synonym of \"fastidious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Frivolous\" most nearly means ___.",
+      "options": [
+        "inarticulate",
+        "bold",
+        "trivial",
+        "flexible"
+      ],
+      "answer": "trivial",
+      "difficulty": "hard",
+      "explanation": "\"Trivial\" is a synonym of \"frivolous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"garrulous\" is ___.",
+      "options": [
+        "impetuous",
+        "silent",
+        "talkative",
+        "concise"
+      ],
+      "answer": "talkative",
+      "difficulty": "hard",
+      "explanation": "\"Talkative\" is a synonym of \"garrulous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Impetuous\" is closest in meaning to ___.",
+      "options": [
+        "superfluous",
+        "few",
+        "impulsive",
+        "timid"
+      ],
+      "answer": "impulsive",
+      "difficulty": "hard",
+      "explanation": "\"Impulsive\" is a synonym of \"impetuous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"incessant\" is ___.",
+      "options": [
+        "constant",
+        "flexible",
+        "inarticulate",
+        "stable"
+      ],
+      "answer": "constant",
+      "difficulty": "hard",
+      "explanation": "\"Constant\" is a synonym of \"incessant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Indolent\" most nearly means ___.",
+      "options": [
+        "lazy",
+        "timorous",
+        "concise",
+        "reclusive"
+      ],
+      "answer": "lazy",
+      "difficulty": "hard",
+      "explanation": "\"Lazy\" is a synonym of \"indolent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"insidious\" is ___.",
+      "options": [
+        "sneaky",
+        "lethargic",
+        "candid",
+        "voracious"
+      ],
+      "answer": "sneaky",
+      "difficulty": "hard",
+      "explanation": "\"Sneaky\" is a synonym of \"insidious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Laconic\" is closest in meaning to ___.",
+      "options": [
+        "impetuous",
+        "frivolous",
+        "idealistic",
+        "brief"
+      ],
+      "answer": "brief",
+      "difficulty": "hard",
+      "explanation": "\"Brief\" is a synonym of \"laconic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"lethargic\" is ___.",
+      "options": [
+        "willing",
+        "opulent",
+        "sluggish",
+        "austere"
+      ],
+      "answer": "sluggish",
+      "difficulty": "hard",
+      "explanation": "\"Sluggish\" is a synonym of \"lethargic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Malevolent\" most nearly means ___.",
+      "options": [
+        "open-minded",
+        "belligerent",
+        "evil",
+        "altruistic"
+      ],
+      "answer": "evil",
+      "difficulty": "hard",
+      "explanation": "\"Evil\" is a synonym of \"malevolent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"nonchalant\" is ___.",
+      "options": [
+        "austere",
+        "calm",
+        "serene",
+        "lavish"
+      ],
+      "answer": "calm",
+      "difficulty": "hard",
+      "explanation": "\"Calm\" is a synonym of \"nonchalant\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Ostentatious\" is closest in meaning to ___.",
+      "options": [
+        "showy",
+        "taciturn",
+        "voracious",
+        "tenuous"
+      ],
+      "answer": "showy",
+      "difficulty": "hard",
+      "explanation": "\"Showy\" is a synonym of \"ostentatious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"pragmatic\" is ___.",
+      "options": [
+        "ambiguous",
+        "lethargic",
+        "practical",
+        "bold"
+      ],
+      "answer": "practical",
+      "difficulty": "hard",
+      "explanation": "\"Practical\" is a synonym of \"pragmatic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Precocious\" most nearly means ___.",
+      "options": [
+        "clear",
+        "forgiving",
+        "stoic",
+        "advanced"
+      ],
+      "answer": "advanced",
+      "difficulty": "hard",
+      "explanation": "\"Advanced\" is a synonym of \"precocious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "A word that means the same as \"prudent\" is ___.",
+      "options": [
+        "reclusive",
+        "wise",
+        "resilient",
+        "vindictive"
+      ],
+      "answer": "wise",
+      "difficulty": "hard",
+      "explanation": "\"Wise\" is a synonym of \"prudent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Resilient\" is closest in meaning to ___.",
+      "options": [
+        "tough",
+        "ephemeral",
+        "wistful",
+        "energetic"
+      ],
+      "answer": "tough",
+      "difficulty": "hard",
+      "explanation": "\"Tough\" is a synonym of \"resilient\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"reticent\" is ___.",
+      "options": [
+        "virtuous",
+        "reserved",
+        "indolent",
+        "voracious"
+      ],
+      "answer": "reserved",
+      "difficulty": "hard",
+      "explanation": "\"Reserved\" is a synonym of \"reticent\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Sagacious\" most nearly means ___.",
+      "options": [
+        "wistful",
+        "nonchalant",
+        "wise",
+        "lucid"
+      ],
+      "answer": "wise",
+      "difficulty": "hard",
+      "explanation": "\"Wise\" is a synonym of \"sagacious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Even during the scary movie, Grandpa stayed completely ___, a word that means the same as \"stoic.\"",
+      "options": [
+        "unemotional",
+        "beneficial",
+        "open-minded",
+        "laconic"
+      ],
+      "answer": "unemotional",
+      "difficulty": "hard",
+      "explanation": "\"Unemotional\" is a synonym of \"stoic\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Superfluous\" is closest in meaning to ___.",
+      "options": [
+        "belligerent",
+        "excessive",
+        "ostentatious",
+        "reticent"
+      ],
+      "answer": "excessive",
+      "difficulty": "hard",
+      "explanation": "\"Excessive\" is a synonym of \"superfluous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"tenacious\" is ___.",
+      "options": [
+        "foolish",
+        "ambiguous",
+        "persistent",
+        "austere"
+      ],
+      "answer": "persistent",
+      "difficulty": "hard",
+      "explanation": "\"Persistent\" is a synonym of \"tenacious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Voracious\" most nearly means ___.",
+      "options": [
+        "reticent",
+        "zealous",
+        "ravenous",
+        "gregarious"
+      ],
+      "answer": "ravenous",
+      "difficulty": "hard",
+      "explanation": "\"Ravenous\" is a synonym of \"voracious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "After the last storm, the sailors grew ___ (a word that means the same as \"wary\") of the darkening sky.",
+      "options": [
+        "confusing",
+        "moderate",
+        "wistful",
+        "cautious"
+      ],
+      "answer": "cautious",
+      "difficulty": "hard",
+      "explanation": "\"Cautious\" is a synonym of \"wary\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "The young scientist was ___ (a word that means the same as \"zealous\") about protecting endangered species.",
+      "options": [
+        "insidious",
+        "voracious",
+        "emotional",
+        "passionate"
+      ],
+      "answer": "passionate",
+      "difficulty": "hard",
+      "explanation": "\"Passionate\" is a synonym of \"zealous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "Another way to say \"conspicuous\" is ___.",
+      "options": [
+        "volatile",
+        "noticeable",
+        "tenuous",
+        "pragmatic"
+      ],
+      "answer": "noticeable",
+      "difficulty": "hard",
+      "explanation": "\"Noticeable\" is a synonym of \"conspicuous\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "\"Pernicious\" most nearly means ___.",
+      "options": [
+        "confusing",
+        "modest",
+        "harmful",
+        "impoverished"
+      ],
+      "answer": "harmful",
+      "difficulty": "hard",
+      "explanation": "\"Harmful\" is a synonym of \"pernicious\" -- they mean nearly the same thing."
+    },
+    {
+      "sentence": "The opposite of \"ambiguous\" is ___.",
+      "options": [
+        "lazy",
+        "stoic",
+        "clear",
+        "bold"
+      ],
+      "answer": "clear",
+      "difficulty": "hard",
+      "explanation": "\"Clear\" is the antonym (opposite) of \"ambiguous.\""
+    },
+    {
+      "sentence": "At first Elena was ___ (the opposite of \"reluctant\") to try the spicy dish, but she eventually took a bite.",
+      "options": [
+        "generous",
+        "willing",
+        "opinionated",
+        "deleterious"
+      ],
+      "answer": "willing",
+      "difficulty": "hard",
+      "explanation": "\"Willing\" is the antonym (opposite) of \"reluctant.\""
+    },
+    {
+      "sentence": "\"Altruistic\" means the opposite of ___.",
+      "options": [
+        "candid",
+        "selfish",
+        "trivial",
+        "obscure"
+      ],
+      "answer": "selfish",
+      "difficulty": "hard",
+      "explanation": "\"Selfish\" is the antonym (opposite) of \"altruistic.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"audacious\" could be described as ___.",
+      "options": [
+        "eloquent",
+        "evil",
+        "timid",
+        "generous"
+      ],
+      "answer": "timid",
+      "difficulty": "hard",
+      "explanation": "\"Timid\" is the antonym (opposite) of \"audacious.\""
+    },
+    {
+      "sentence": "The opposite of \"belligerent\" is ___.",
+      "options": [
+        "meticulous",
+        "peaceful",
+        "equivocal",
+        "excessive"
+      ],
+      "answer": "peaceful",
+      "difficulty": "hard",
+      "explanation": "\"Peaceful\" is the antonym (opposite) of \"belligerent.\""
+    },
+    {
+      "sentence": "The antonym of \"candid\" is ___.",
+      "options": [
+        "incessant",
+        "deceptive",
+        "deleterious",
+        "clear"
+      ],
+      "answer": "deceptive",
+      "difficulty": "hard",
+      "explanation": "\"Deceptive\" is the antonym (opposite) of \"candid.\""
+    },
+    {
+      "sentence": "\"Ephemeral\" means the opposite of ___.",
+      "options": [
+        "persistent",
+        "secret",
+        "meticulous",
+        "permanent"
+      ],
+      "answer": "permanent",
+      "difficulty": "hard",
+      "explanation": "\"Permanent\" is the antonym (opposite) of \"ephemeral.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"frivolous\" could be described as ___.",
+      "options": [
+        "resilient",
+        "sluggish",
+        "serious",
+        "esoteric"
+      ],
+      "answer": "serious",
+      "difficulty": "hard",
+      "explanation": "\"Serious\" is the antonym (opposite) of \"frivolous.\""
+    },
+    {
+      "sentence": "The opposite of \"gregarious\" is ___.",
+      "options": [
+        "obscure",
+        "reclusive",
+        "capricious",
+        "magnanimous"
+      ],
+      "answer": "reclusive",
+      "difficulty": "hard",
+      "explanation": "\"Reclusive\" is the antonym (opposite) of \"gregarious.\""
+    },
+    {
+      "sentence": "The antonym of \"impetuous\" is ___.",
+      "options": [
+        "cautious",
+        "hostile",
+        "quiet",
+        "voracious"
+      ],
+      "answer": "cautious",
+      "difficulty": "hard",
+      "explanation": "\"Cautious\" is the antonym (opposite) of \"impetuous.\""
+    },
+    {
+      "sentence": "\"Indolent\" means the opposite of ___.",
+      "options": [
+        "industrious",
+        "magnanimous",
+        "idealistic",
+        "talkative"
+      ],
+      "answer": "industrious",
+      "difficulty": "hard",
+      "explanation": "\"Industrious\" is the antonym (opposite) of \"indolent.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"lucid\" could be described as ___.",
+      "options": [
+        "bold",
+        "confusing",
+        "tenacious",
+        "insidious"
+      ],
+      "answer": "confusing",
+      "difficulty": "hard",
+      "explanation": "\"Confusing\" is the antonym (opposite) of \"lucid.\""
+    },
+    {
+      "sentence": "The opposite of \"magnanimous\" is ___.",
+      "options": [
+        "hostile",
+        "precocious",
+        "selfish",
+        "laconic"
+      ],
+      "answer": "selfish",
+      "difficulty": "hard",
+      "explanation": "\"Selfish\" is the antonym (opposite) of \"magnanimous.\""
+    },
+    {
+      "sentence": "The antonym of \"nefarious\" is ___.",
+      "options": [
+        "trivial",
+        "sneaky",
+        "clandestine",
+        "virtuous"
+      ],
+      "answer": "virtuous",
+      "difficulty": "hard",
+      "explanation": "\"Virtuous\" is the antonym (opposite) of \"nefarious.\""
+    },
+    {
+      "sentence": "\"Obstinate\" means the opposite of ___.",
+      "options": [
+        "calm",
+        "enigmatic",
+        "pragmatic",
+        "flexible"
+      ],
+      "answer": "flexible",
+      "difficulty": "hard",
+      "explanation": "\"Flexible\" is the antonym (opposite) of \"obstinate.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"ostentatious\" could be described as ___.",
+      "options": [
+        "modest",
+        "reticent",
+        "stubborn",
+        "impetuous"
+      ],
+      "answer": "modest",
+      "difficulty": "hard",
+      "explanation": "\"Modest\" is the antonym (opposite) of \"ostentatious.\""
+    },
+    {
+      "sentence": "The opposite of \"pragmatic\" is ___.",
+      "options": [
+        "idealistic",
+        "opinionated",
+        "persistent",
+        "insidious"
+      ],
+      "answer": "idealistic",
+      "difficulty": "hard",
+      "explanation": "\"Idealistic\" is the antonym (opposite) of \"pragmatic.\""
+    },
+    {
+      "sentence": "The antonym of \"prudent\" is ___.",
+      "options": [
+        "impetuous",
+        "ubiquitous",
+        "reckless",
+        "vociferous"
+      ],
+      "answer": "reckless",
+      "difficulty": "hard",
+      "explanation": "\"Reckless\" is the antonym (opposite) of \"prudent.\""
+    },
+    {
+      "sentence": "\"Resilient\" means the opposite of ___.",
+      "options": [
+        "brief",
+        "equivocal",
+        "fragile",
+        "playful"
+      ],
+      "answer": "fragile",
+      "difficulty": "hard",
+      "explanation": "\"Fragile\" is the antonym (opposite) of \"resilient.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"reticent\" could be described as ___.",
+      "options": [
+        "talkative",
+        "brief",
+        "deleterious",
+        "disrespectful"
+      ],
+      "answer": "talkative",
+      "difficulty": "hard",
+      "explanation": "\"Talkative\" is the antonym (opposite) of \"reticent.\""
+    },
+    {
+      "sentence": "The opposite of \"sagacious\" is ___.",
+      "options": [
+        "frivolous",
+        "foolish",
+        "insidious",
+        "showy"
+      ],
+      "answer": "foolish",
+      "difficulty": "hard",
+      "explanation": "\"Foolish\" is the antonym (opposite) of \"sagacious.\""
+    },
+    {
+      "sentence": "The antonym of \"stoic\" is ___.",
+      "options": [
+        "emotional",
+        "lucid",
+        "unemotional",
+        "clandestine"
+      ],
+      "answer": "emotional",
+      "difficulty": "hard",
+      "explanation": "\"Emotional\" is the antonym (opposite) of \"stoic.\""
+    },
+    {
+      "sentence": "\"Superfluous\" means the opposite of ___.",
+      "options": [
+        "sneaky",
+        "widespread",
+        "stubborn",
+        "essential"
+      ],
+      "answer": "essential",
+      "difficulty": "hard",
+      "explanation": "\"Essential\" is the antonym (opposite) of \"superfluous.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"tenacious\" could be described as ___.",
+      "options": [
+        "irresolute",
+        "resilient",
+        "honest",
+        "ambiguous"
+      ],
+      "answer": "irresolute",
+      "difficulty": "hard",
+      "explanation": "\"Irresolute\" is the antonym (opposite) of \"tenacious.\""
+    },
+    {
+      "sentence": "The opposite of \"ubiquitous\" is ___.",
+      "options": [
+        "rare",
+        "ambiguous",
+        "frivolous",
+        "widespread"
+      ],
+      "answer": "rare",
+      "difficulty": "hard",
+      "explanation": "\"Rare\" is the antonym (opposite) of \"ubiquitous.\""
+    },
+    {
+      "sentence": "The antonym of \"vociferous\" is ___.",
+      "options": [
+        "reserved",
+        "austere",
+        "sociable",
+        "silent"
+      ],
+      "answer": "silent",
+      "difficulty": "hard",
+      "explanation": "\"Silent\" is the antonym (opposite) of \"vociferous.\""
+    },
+    {
+      "sentence": "\"Voracious\" means the opposite of ___.",
+      "options": [
+        "showy",
+        "candid",
+        "esoteric",
+        "moderate"
+      ],
+      "answer": "moderate",
+      "difficulty": "hard",
+      "explanation": "\"Moderate\" is the antonym (opposite) of \"voracious.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"wary\" could be described as ___.",
+      "options": [
+        "fastidious",
+        "widespread",
+        "ambiguous",
+        "trusting"
+      ],
+      "answer": "trusting",
+      "difficulty": "hard",
+      "explanation": "\"Trusting\" is the antonym (opposite) of \"wary.\""
+    },
+    {
+      "sentence": "The opposite of \"zealous\" is ___.",
+      "options": [
+        "lucid",
+        "apathetic",
+        "ephemeral",
+        "sociable"
+      ],
+      "answer": "apathetic",
+      "difficulty": "hard",
+      "explanation": "\"Apathetic\" is the antonym (opposite) of \"zealous.\""
+    },
+    {
+      "sentence": "The antonym of \"conspicuous\" is ___.",
+      "options": [
+        "sneaky",
+        "gregarious",
+        "inconspicuous",
+        "clandestine"
+      ],
+      "answer": "inconspicuous",
+      "difficulty": "hard",
+      "explanation": "\"Inconspicuous\" is the antonym (opposite) of \"conspicuous.\""
+    },
+    {
+      "sentence": "\"Dogmatic\" means the opposite of ___.",
+      "options": [
+        "open-minded",
+        "calm",
+        "widespread",
+        "resilient"
+      ],
+      "answer": "open-minded",
+      "difficulty": "hard",
+      "explanation": "\"Open-minded\" is the antonym (opposite) of \"dogmatic.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"eloquent\" could be described as ___.",
+      "options": [
+        "bold",
+        "inarticulate",
+        "magnanimous",
+        "honest"
+      ],
+      "answer": "inarticulate",
+      "difficulty": "hard",
+      "explanation": "\"Inarticulate\" is the antonym (opposite) of \"eloquent.\""
+    },
+    {
+      "sentence": "The opposite of \"enigmatic\" is ___.",
+      "options": [
+        "wicked",
+        "indolent",
+        "lethargic",
+        "obvious"
+      ],
+      "answer": "obvious",
+      "difficulty": "hard",
+      "explanation": "\"Obvious\" is the antonym (opposite) of \"enigmatic.\""
+    },
+    {
+      "sentence": "The antonym of \"garrulous\" is ___.",
+      "options": [
+        "wicked",
+        "taciturn",
+        "flippant",
+        "practical"
+      ],
+      "answer": "taciturn",
+      "difficulty": "hard",
+      "explanation": "\"Taciturn\" is the antonym (opposite) of \"garrulous.\""
+    },
+    {
+      "sentence": "\"Insidious\" means the opposite of ___.",
+      "options": [
+        "talkative",
+        "incessant",
+        "tenacious",
+        "harmless"
+      ],
+      "answer": "harmless",
+      "difficulty": "hard",
+      "explanation": "\"Harmless\" is the antonym (opposite) of \"insidious.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"laconic\" could be described as ___.",
+      "options": [
+        "precocious",
+        "prudent",
+        "verbose",
+        "conspicuous"
+      ],
+      "answer": "verbose",
+      "difficulty": "hard",
+      "explanation": "\"Verbose\" is the antonym (opposite) of \"laconic.\""
+    },
+    {
+      "sentence": "The opposite of \"lethargic\" is ___.",
+      "options": [
+        "altruistic",
+        "brief",
+        "prudent",
+        "energetic"
+      ],
+      "answer": "energetic",
+      "difficulty": "hard",
+      "explanation": "\"Energetic\" is the antonym (opposite) of \"lethargic.\""
+    },
+    {
+      "sentence": "The antonym of \"malevolent\" is ___.",
+      "options": [
+        "voracious",
+        "impulsive",
+        "benevolent",
+        "pragmatic"
+      ],
+      "answer": "benevolent",
+      "difficulty": "hard",
+      "explanation": "\"Benevolent\" is the antonym (opposite) of \"malevolent.\""
+    },
+    {
+      "sentence": "\"Myriad\" means the opposite of ___.",
+      "options": [
+        "few",
+        "garrulous",
+        "sneaky",
+        "wary"
+      ],
+      "answer": "few",
+      "difficulty": "hard",
+      "explanation": "\"Few\" is the antonym (opposite) of \"myriad.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"nonchalant\" could be described as ___.",
+      "options": [
+        "anxious",
+        "ostentatious",
+        "cautious",
+        "trivial"
+      ],
+      "answer": "anxious",
+      "difficulty": "hard",
+      "explanation": "\"Anxious\" is the antonym (opposite) of \"nonchalant.\""
+    },
+    {
+      "sentence": "The opposite of \"opulent\" is ___.",
+      "options": [
+        "enigmatic",
+        "lucid",
+        "impoverished",
+        "flippant"
+      ],
+      "answer": "impoverished",
+      "difficulty": "hard",
+      "explanation": "\"Impoverished\" is the antonym (opposite) of \"opulent.\""
+    },
+    {
+      "sentence": "The antonym of \"pernicious\" is ___.",
+      "options": [
+        "widespread",
+        "pragmatic",
+        "beneficial",
+        "gregarious"
+      ],
+      "answer": "beneficial",
+      "difficulty": "hard",
+      "explanation": "\"Beneficial\" is the antonym (opposite) of \"pernicious.\""
+    },
+    {
+      "sentence": "\"Serene\" means the opposite of ___.",
+      "options": [
+        "turbulent",
+        "deleterious",
+        "brief",
+        "ravenous"
+      ],
+      "answer": "turbulent",
+      "difficulty": "hard",
+      "explanation": "\"Turbulent\" is the antonym (opposite) of \"serene.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"staid\" could be described as ___.",
+      "options": [
+        "complacent",
+        "persistent",
+        "flamboyant",
+        "dogmatic"
+      ],
+      "answer": "flamboyant",
+      "difficulty": "hard",
+      "explanation": "\"Flamboyant\" is the antonym (opposite) of \"staid.\""
+    },
+    {
+      "sentence": "The opposite of \"tenuous\" is ___.",
+      "options": [
+        "wary",
+        "solid",
+        "pragmatic",
+        "passionate"
+      ],
+      "answer": "solid",
+      "difficulty": "hard",
+      "explanation": "\"Solid\" is the antonym (opposite) of \"tenuous.\""
+    },
+    {
+      "sentence": "Despite being usually timorous, the boy felt surprisingly ___ (the opposite of \"timorous\") and volunteered to speak first.",
+      "options": [
+        "bold",
+        "zealous",
+        "gregarious",
+        "pragmatic"
+      ],
+      "answer": "bold",
+      "difficulty": "hard",
+      "explanation": "\"Bold\" is the antonym (opposite) of \"timorous.\""
+    },
+    {
+      "sentence": "After the prank, Noah chose to be ___ (the opposite of \"vindictive\") instead of plotting revenge.",
+      "options": [
+        "incessant",
+        "forgiving",
+        "sagacious",
+        "nefarious"
+      ],
+      "answer": "forgiving",
+      "difficulty": "hard",
+      "explanation": "\"Forgiving\" is the antonym (opposite) of \"vindictive.\""
+    },
+    {
+      "sentence": "Something that is the opposite of \"wistful\" could be described as ___.",
+      "options": [
+        "deleterious",
+        "audacious",
+        "content",
+        "unemotional"
+      ],
+      "answer": "content",
+      "difficulty": "hard",
+      "explanation": "\"Content\" is the antonym (opposite) of \"wistful.\""
+    },
+    {
+      "sentence": "The opposite of \"austere\" is ___.",
+      "options": [
+        "secret",
+        "lucid",
+        "lavish",
+        "eloquent"
+      ],
+      "answer": "lavish",
+      "difficulty": "hard",
+      "explanation": "\"Lavish\" is the antonym (opposite) of \"austere.\""
+    },
+    {
+      "sentence": "The antonym of \"verbose\" is ___.",
+      "options": [
+        "dogmatic",
+        "articulate",
+        "garrulous",
+        "concise"
+      ],
+      "answer": "concise",
+      "difficulty": "hard",
+      "explanation": "\"Concise\" is the antonym (opposite) of \"verbose.\""
+    },
+    {
+      "sentence": "\"Volatile\" means the opposite of ___.",
+      "options": [
+        "sociable",
+        "stable",
+        "wicked",
+        "secret"
+      ],
+      "answer": "stable",
+      "difficulty": "hard",
+      "explanation": "\"Stable\" is the antonym (opposite) of \"volatile.\""
+    }
+  ]
+}

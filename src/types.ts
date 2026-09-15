@@ -45,9 +45,18 @@ export interface WinResult {
   cellIndices: number[];
 }
 
-export type ScreenName = 'profile' | 'menu' | 'game' | 'win' | 'settings' | 'wordscapes-game' | 'wordscapes-win';
+export type ScreenName =
+  | 'profile'
+  | 'menu'
+  | 'game'
+  | 'win'
+  | 'settings'
+  | 'wordscapes-game'
+  | 'wordscapes-win'
+  | 'sentence-quest-game'
+  | 'sentence-quest-win';
 
-export type GameMode = 'bingo' | 'wordscapes';
+export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest';
 
 /** 'system' follows the OS/browser's own light/dark preference; 'light'/'dark'
  * force it regardless -- see theme.css's [data-theme] selectors. */
@@ -133,4 +142,49 @@ export interface WordscapesLevel {
 export interface WordscapesStats {
   puzzlesCompleted: Record<string, number>;
   bonusWordsFound: Record<string, number>;
+}
+
+// --- Sentence Quest (fill-in-the-blank grammar mode) --------------------
+
+/** Grammar-focused, not vocabulary/topic-focused like CategoryId -- Sentence
+ * Quest exists specifically to build grammar/usage skills, so its
+ * categories are grammar concepts rather than themes like Bingo/Wordscapes. */
+export type SentenceQuestCategoryId = 'verbTense' | 'prepositions' | 'synonymsAntonyms' | 'idioms' | 'grammarBasics';
+
+export interface SentenceQuestion {
+  /** The missing word's position is marked with "___" (three underscores);
+   * exactly one occurrence per sentence. */
+  sentence: string;
+  /** Always exactly 4 entries (1 correct + 3 distractors); order is
+   * whatever's authored here -- generateRound shuffles per-question. */
+  options: string[];
+  /** Must equal exactly one entry in `options`, string-for-string. */
+  answer: string;
+  difficulty: Difficulty;
+  /** One clear sentence explaining why `answer` is correct, shown as
+   * feedback after the player answers -- this is the actual teaching
+   * moment, not just a right/wrong signal. */
+  explanation: string;
+}
+
+export interface SentenceQuestBank {
+  category: SentenceQuestCategoryId;
+  label: string;
+  questions: SentenceQuestion[];
+}
+
+export interface SentenceQuestConfig {
+  category: SentenceQuestCategoryId;
+  difficulty: Difficulty;
+  /** How many questions make up one round. */
+  questionCount: number;
+}
+
+export interface SentenceQuestStats {
+  roundsCompleted: Record<string, number>;
+  /** Every correct answer ever, per category -- tracked independently of
+   * roundsCompleted so a round abandoned partway through (exiting to menu
+   * mid-round) still credits whatever was genuinely answered correctly. */
+  correctAnswers: Record<string, number>;
+  questionsAnswered: Record<string, number>;
 }

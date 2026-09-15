@@ -1,0 +1,4062 @@
+{
+  "category": "grammarBasics",
+  "label": "Grammar Basics",
+  "questions": [
+    {
+      "sentence": "The dog wagged ___ tail happily.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "his's"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" (no apostrophe) shows possession; \"it's\" is short for \"it is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "There ___ three apples left in the basket.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Three apples\" is plural, so the verb must be the plural \"are,\" not \"is.\""
+    },
+    {
+      "sentence": "Neither of the boys ___ finished his homework.",
+      "options": [
+        "has",
+        "have",
+        "having",
+        "had have"
+      ],
+      "answer": "has",
+      "difficulty": "medium",
+      "explanation": "\"Neither\" takes a singular verb, so \"has\" is correct, not the plural \"have.\""
+    },
+    {
+      "sentence": "This gift is for you and ___.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "After a preposition like \"for,\" use the object pronoun \"me,\" not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "The committee ___ divided on the issue, with several members switching sides.",
+      "options": [
+        "were",
+        "was",
+        "is",
+        "has"
+      ],
+      "answer": "were",
+      "difficulty": "hard",
+      "explanation": "When a collective noun like \"committee\" is acting as separate individuals rather than one unit, it can take a plural verb: \"were.\""
+    },
+    {
+      "sentence": "Whom did you say ___ at the door?",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "has been"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "\"Whom\" here is the object of \"did you say,\" while the subject of the clause is singular, so it takes \"was.\""
+    },
+    {
+      "sentence": "The cat licked ___ paw before falling asleep.",
+      "options": [
+        "its",
+        "it's",
+        "his",
+        "their"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" (no apostrophe) shows possession; \"it's\" is short for \"it is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "The tree lost ___ leaves in the storm.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "it is"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" shows that the leaves belong to the tree. \"It's\" would mean \"it is,\" which doesn't make sense here."
+    },
+    {
+      "sentence": "The robot flashed ___ lights when it powered on.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "it's own"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" is the possessive form of \"it.\" \"It's\" always means \"it is\" or \"it has.\""
+    },
+    {
+      "sentence": "The team celebrated ___ first win of the season.",
+      "options": [
+        "its",
+        "it's",
+        "their's",
+        "it is"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" shows the win belongs to the team. Don't confuse it with \"it's,\" the contraction for \"it is.\""
+    },
+    {
+      "sentence": "The company changed ___ logo last year.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "it's own"
+      ],
+      "answer": "its",
+      "difficulty": "easy",
+      "explanation": "\"Its\" shows possession here. \"It's\" is only correct when you mean \"it is\" or \"it has.\""
+    },
+    {
+      "sentence": "___ going to love this new game!",
+      "options": [
+        "You're",
+        "Your",
+        "Youre",
+        "Yours"
+      ],
+      "answer": "You're",
+      "difficulty": "easy",
+      "explanation": "\"You're\" is short for \"you are.\" \"Your\" shows possession, so it doesn't fit before \"going.\""
+    },
+    {
+      "sentence": "Please bring ___ backpack to school tomorrow.",
+      "options": [
+        "your",
+        "you're",
+        "yours",
+        "your's"
+      ],
+      "answer": "your",
+      "difficulty": "easy",
+      "explanation": "\"Your\" shows the backpack belongs to you. \"You're\" means \"you are,\" which doesn't fit here."
+    },
+    {
+      "sentence": "I heard ___ moving to a new house next month.",
+      "options": [
+        "you're",
+        "your",
+        "yours",
+        "youre"
+      ],
+      "answer": "you're",
+      "difficulty": "easy",
+      "explanation": "\"You're\" is short for \"you are.\" \"Your\" would need to show possession of something, which isn't the case here."
+    },
+    {
+      "sentence": "Is this ___ umbrella or mine?",
+      "options": [
+        "your",
+        "you're",
+        "yours",
+        "your's"
+      ],
+      "answer": "your",
+      "difficulty": "easy",
+      "explanation": "\"Your\" shows possession right before the noun \"umbrella.\" \"You're\" means \"you are,\" which doesn't fit."
+    },
+    {
+      "sentence": "___ doing a great job on this project.",
+      "options": [
+        "You're",
+        "Your",
+        "Yours",
+        "Youre"
+      ],
+      "answer": "You're",
+      "difficulty": "easy",
+      "explanation": "\"You're\" means \"you are.\" \"Your\" would need to be followed by something you own, like \"your project.\""
+    },
+    {
+      "sentence": "___ going to the beach this weekend.",
+      "options": [
+        "They're",
+        "Their",
+        "There",
+        "Theirs"
+      ],
+      "answer": "They're",
+      "difficulty": "easy",
+      "explanation": "\"They're\" is short for \"they are.\" \"Their\" shows possession and \"there\" points to a place."
+    },
+    {
+      "sentence": "The kids left ___ shoes by the front door.",
+      "options": [
+        "their",
+        "there",
+        "they're",
+        "theirs"
+      ],
+      "answer": "their",
+      "difficulty": "easy",
+      "explanation": "\"Their\" shows the shoes belong to the kids. \"There\" points to a place, and \"they're\" means \"they are.\""
+    },
+    {
+      "sentence": "___ is a new bakery on Main Street.",
+      "options": [
+        "There",
+        "Their",
+        "They're",
+        "Theirs"
+      ],
+      "answer": "There",
+      "difficulty": "easy",
+      "explanation": "\"There\" points to a place or introduces a sentence. \"Their\" shows possession, which doesn't fit here."
+    },
+    {
+      "sentence": "My cousins said ___ bringing a board game tonight.",
+      "options": [
+        "they're",
+        "their",
+        "there",
+        "theirs"
+      ],
+      "answer": "they're",
+      "difficulty": "easy",
+      "explanation": "\"They're\" is short for \"they are.\" \"Their\" would need to show possession of something."
+    },
+    {
+      "sentence": "Put the boxes over ___ next to the wall.",
+      "options": [
+        "there",
+        "their",
+        "they're",
+        "theirs"
+      ],
+      "answer": "there",
+      "difficulty": "easy",
+      "explanation": "\"There\" tells where to put the boxes. \"Their\" shows possession, which doesn't fit this spot."
+    },
+    {
+      "sentence": "The students forgot ___ homework at home.",
+      "options": [
+        "their",
+        "there",
+        "they're",
+        "theirs"
+      ],
+      "answer": "their",
+      "difficulty": "easy",
+      "explanation": "\"Their\" shows the homework belongs to the students. \"There\" points to a place, not possession."
+    },
+    {
+      "sentence": "The cats ___ sleeping on the warm windowsill.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Cats\" is plural, so it needs the plural verb \"are,\" not the singular \"is.\""
+    },
+    {
+      "sentence": "My sister ___ a new bicycle for her birthday.",
+      "options": [
+        "has",
+        "have",
+        "having",
+        "had"
+      ],
+      "answer": "has",
+      "difficulty": "easy",
+      "explanation": "\"Sister\" is singular, so it takes the singular verb \"has,\" not \"have.\""
+    },
+    {
+      "sentence": "The books ___ stacked neatly on the shelf.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Books\" is plural, so the verb must also be plural: \"are.\""
+    },
+    {
+      "sentence": "Our dog ___ very friendly with strangers.",
+      "options": [
+        "is",
+        "are",
+        "was",
+        "be"
+      ],
+      "answer": "is",
+      "difficulty": "easy",
+      "explanation": "\"Dog\" is a singular subject, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "The children ___ playing outside in the yard.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Children\" is plural, so it needs the plural verb \"are.\""
+    },
+    {
+      "sentence": "This puzzle ___ one hundred pieces.",
+      "options": [
+        "has",
+        "have",
+        "having",
+        "had"
+      ],
+      "answer": "has",
+      "difficulty": "easy",
+      "explanation": "\"Puzzle\" is singular, so it takes the singular verb \"has,\" not \"have.\""
+    },
+    {
+      "sentence": "The flowers in the garden ___ blooming early this year.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "The subject \"flowers\" is plural, so the verb must be the plural \"are.\""
+    },
+    {
+      "sentence": "My grandmother ___ the best cook in our family.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "be"
+      ],
+      "answer": "is",
+      "difficulty": "easy",
+      "explanation": "\"Grandmother\" is singular, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "The players ___ practicing for tomorrow's game.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Players\" is plural, so it needs the plural verb \"are,\" not \"is.\""
+    },
+    {
+      "sentence": "The birds ___ singing in the tree outside my window.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Birds\" is plural, so the verb must match with \"are.\""
+    },
+    {
+      "sentence": "Our teacher ___ a strict rule about phones in class.",
+      "options": [
+        "has",
+        "have",
+        "having",
+        "had"
+      ],
+      "answer": "has",
+      "difficulty": "easy",
+      "explanation": "\"Teacher\" is singular, so it takes the singular verb \"has.\""
+    },
+    {
+      "sentence": "The lake ___ completely frozen this morning.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "be"
+      ],
+      "answer": "was",
+      "difficulty": "easy",
+      "explanation": "\"Lake\" is singular, so the past-tense verb must be \"was,\" not the plural \"were.\""
+    },
+    {
+      "sentence": "The twins ___ matching backpacks for school.",
+      "options": [
+        "have",
+        "has",
+        "having",
+        "had"
+      ],
+      "answer": "have",
+      "difficulty": "easy",
+      "explanation": "\"Twins\" is plural, so it needs the plural verb \"have,\" not \"has.\""
+    },
+    {
+      "sentence": "That movie ___ too scary for young kids.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "be"
+      ],
+      "answer": "is",
+      "difficulty": "easy",
+      "explanation": "\"Movie\" is a singular subject, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "The puppies ___ chewing on their new toys.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Puppies\" is plural, so it needs the plural verb \"are.\""
+    },
+    {
+      "sentence": "My parents ___ working late tonight.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "be"
+      ],
+      "answer": "are",
+      "difficulty": "easy",
+      "explanation": "\"Parents\" is plural, so it takes the plural verb \"are,\" not \"is.\""
+    },
+    {
+      "sentence": "___ is my best friend from school.",
+      "options": [
+        "She",
+        "Her",
+        "Them",
+        "Us"
+      ],
+      "answer": "She",
+      "difficulty": "easy",
+      "explanation": "\"She\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"her.\""
+    },
+    {
+      "sentence": "Give the ball to ___, please.",
+      "options": [
+        "him",
+        "he",
+        "his",
+        "he's"
+      ],
+      "answer": "him",
+      "difficulty": "easy",
+      "explanation": "\"Him\" is the object of \"give... to,\" so it needs the object pronoun, not the subject pronoun \"he.\""
+    },
+    {
+      "sentence": "___ are going to the park later.",
+      "options": [
+        "We",
+        "Us",
+        "Them",
+        "Our"
+      ],
+      "answer": "We",
+      "difficulty": "easy",
+      "explanation": "\"We\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"us.\""
+    },
+    {
+      "sentence": "The teacher asked ___ to answer the question.",
+      "options": [
+        "her",
+        "she",
+        "hers",
+        "herself"
+      ],
+      "answer": "her",
+      "difficulty": "easy",
+      "explanation": "\"Her\" is the object of \"asked,\" so it needs the object pronoun, not the subject pronoun \"she.\""
+    },
+    {
+      "sentence": "___ built this sandcastle all by himself.",
+      "options": [
+        "He",
+        "Him",
+        "His",
+        "Himself"
+      ],
+      "answer": "He",
+      "difficulty": "easy",
+      "explanation": "\"He\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"him.\""
+    },
+    {
+      "sentence": "Can you help ___ find my shoes?",
+      "options": [
+        "me",
+        "I",
+        "my",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "easy",
+      "explanation": "\"Me\" is the object of \"help,\" so it needs the object pronoun, not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "___ won the spelling bee last week.",
+      "options": [
+        "They",
+        "Them",
+        "Their",
+        "Theirs"
+      ],
+      "answer": "They",
+      "difficulty": "easy",
+      "explanation": "\"They\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"them.\""
+    },
+    {
+      "sentence": "The coach chose ___ for the relay team.",
+      "options": [
+        "him",
+        "he",
+        "his",
+        "he's"
+      ],
+      "answer": "him",
+      "difficulty": "easy",
+      "explanation": "\"Him\" is the object of \"chose,\" so it needs the object pronoun, not the subject pronoun \"he.\""
+    },
+    {
+      "sentence": "___ is coming to my birthday party.",
+      "options": [
+        "He",
+        "Him",
+        "His",
+        "Himself"
+      ],
+      "answer": "He",
+      "difficulty": "easy",
+      "explanation": "\"He\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"him.\""
+    },
+    {
+      "sentence": "Please sit next to ___ during the movie.",
+      "options": [
+        "me",
+        "I",
+        "my",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "easy",
+      "explanation": "\"Me\" is the object of the preposition \"next to,\" so it needs the object pronoun, not \"I.\""
+    },
+    {
+      "sentence": "___ found a lost kitten in the park.",
+      "options": [
+        "She",
+        "Her",
+        "Them",
+        "Us"
+      ],
+      "answer": "She",
+      "difficulty": "easy",
+      "explanation": "\"She\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"her.\""
+    },
+    {
+      "sentence": "My mom gave ___ a new backpack for school.",
+      "options": [
+        "me",
+        "I",
+        "my",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "easy",
+      "explanation": "\"Me\" is the object of \"gave,\" so it needs the object pronoun, not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "___ are the fastest runners on the team.",
+      "options": [
+        "They",
+        "Them",
+        "Their",
+        "Theirs"
+      ],
+      "answer": "They",
+      "difficulty": "easy",
+      "explanation": "\"They\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"them.\""
+    },
+    {
+      "sentence": "The librarian handed the book to ___.",
+      "options": [
+        "her",
+        "she",
+        "hers",
+        "herself"
+      ],
+      "answer": "her",
+      "difficulty": "easy",
+      "explanation": "\"Her\" is the object of \"handed... to,\" so it needs the object pronoun, not the subject pronoun \"she.\""
+    },
+    {
+      "sentence": "___ likes to read comic books after school.",
+      "options": [
+        "He",
+        "Him",
+        "His",
+        "Himself"
+      ],
+      "answer": "He",
+      "difficulty": "easy",
+      "explanation": "\"He\" is the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"him.\""
+    },
+    {
+      "sentence": "Everyone cheered for ___ after the race.",
+      "options": [
+        "him",
+        "he",
+        "his",
+        "he's"
+      ],
+      "answer": "him",
+      "difficulty": "easy",
+      "explanation": "\"Him\" is the object of \"cheered for,\" so it needs the object pronoun, not the subject pronoun \"he.\""
+    },
+    {
+      "sentence": "She saw ___ elephant at the zoo yesterday.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"elephant.\""
+    },
+    {
+      "sentence": "He wants to adopt ___ puppy from the shelter.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "easy",
+      "explanation": "Use \"a\" before a word that starts with a consonant sound, like \"puppy.\""
+    },
+    {
+      "sentence": "I found ___ old coin buried in the sand.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"old.\""
+    },
+    {
+      "sentence": "We watched ___ documentary about ocean animals.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "easy",
+      "explanation": "Use \"a\" before a word that starts with a consonant sound, like \"documentary.\""
+    },
+    {
+      "sentence": "My brother ate ___ orange for breakfast.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"orange.\""
+    },
+    {
+      "sentence": "They built ___ treehouse in the backyard.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "easy",
+      "explanation": "Use \"a\" before a word that starts with a consonant sound, like \"treehouse.\""
+    },
+    {
+      "sentence": "She carried ___ umbrella in case it rained.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"umbrella.\""
+    },
+    {
+      "sentence": "He is reading ___ interesting book about dinosaurs.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"interesting.\""
+    },
+    {
+      "sentence": "Can I borrow ___ pencil for the test?",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "easy",
+      "explanation": "Use \"a\" before a word that starts with a consonant sound, like \"pencil.\""
+    },
+    {
+      "sentence": "It was ___ unusual afternoon at the farm.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"unusual.\""
+    },
+    {
+      "sentence": "___ sun rises in the east every single morning.",
+      "options": [
+        "The",
+        "A",
+        "An",
+        "Some"
+      ],
+      "answer": "The",
+      "difficulty": "easy",
+      "explanation": "\"The\" is used for a specific, one-of-a-kind thing like the sun, not \"a\" or \"an.\""
+    },
+    {
+      "sentence": "___ moon looked especially bright last night.",
+      "options": [
+        "The",
+        "A",
+        "An",
+        "Some"
+      ],
+      "answer": "The",
+      "difficulty": "easy",
+      "explanation": "\"The\" is used for a specific, one-of-a-kind thing like the moon, not \"a\" or \"an.\""
+    },
+    {
+      "sentence": "He gave ___ apple to his teacher as a gift.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"apple.\""
+    },
+    {
+      "sentence": "She is training for ___ marathon next spring.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "easy",
+      "explanation": "Use \"a\" before a word that starts with a consonant sound, like \"marathon.\""
+    },
+    {
+      "sentence": "We saw ___ owl sitting on the fence post.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "easy",
+      "explanation": "Use \"an\" before a word that starts with a vowel sound, like \"owl.\""
+    },
+    {
+      "sentence": "___ Earth orbits the sun once every year.",
+      "options": [
+        "The",
+        "A",
+        "An",
+        "Some"
+      ],
+      "answer": "The",
+      "difficulty": "easy",
+      "explanation": "\"The\" is used for a specific, one-of-a-kind thing like the Earth, not \"a\" or \"an.\""
+    },
+    {
+      "sentence": "Two ___ were playing tag in the backyard.",
+      "options": [
+        "children",
+        "childs",
+        "childes",
+        "childrens"
+      ],
+      "answer": "children",
+      "difficulty": "easy",
+      "explanation": "\"Child\" has an irregular plural: \"children,\" not \"childs.\""
+    },
+    {
+      "sentence": "The dentist checked all of my ___.",
+      "options": [
+        "teeth",
+        "tooths",
+        "teeths",
+        "toothes"
+      ],
+      "answer": "teeth",
+      "difficulty": "easy",
+      "explanation": "\"Tooth\" has an irregular plural: \"teeth,\" not \"tooths.\""
+    },
+    {
+      "sentence": "The barn had several ___ living in the walls.",
+      "options": [
+        "mice",
+        "mouses",
+        "mices",
+        "mouse's"
+      ],
+      "answer": "mice",
+      "difficulty": "easy",
+      "explanation": "\"Mouse\" has an irregular plural: \"mice,\" not \"mouses.\""
+    },
+    {
+      "sentence": "Three ___ crossed the finish line together.",
+      "options": [
+        "men",
+        "mans",
+        "mens",
+        "man's"
+      ],
+      "answer": "men",
+      "difficulty": "easy",
+      "explanation": "\"Man\" has an irregular plural: \"men,\" not \"mans.\""
+    },
+    {
+      "sentence": "The ___ in the meeting all agreed on the plan.",
+      "options": [
+        "women",
+        "womans",
+        "womens",
+        "woman's"
+      ],
+      "answer": "women",
+      "difficulty": "easy",
+      "explanation": "\"Woman\" has an irregular plural: \"women,\" not \"womans.\""
+    },
+    {
+      "sentence": "Hundreds of ___ filled the stadium for the concert.",
+      "options": [
+        "people",
+        "persons",
+        "peoples",
+        "person's"
+      ],
+      "answer": "people",
+      "difficulty": "easy",
+      "explanation": "\"Person\" most commonly has the irregular plural \"people,\" not \"persons.\""
+    },
+    {
+      "sentence": "I packed my shoes in two cardboard ___.",
+      "options": [
+        "boxes",
+        "boxs",
+        "boxies",
+        "box's"
+      ],
+      "answer": "boxes",
+      "difficulty": "easy",
+      "explanation": "Words ending in \"x\" add \"-es\" to form the plural: \"box\" becomes \"boxes.\""
+    },
+    {
+      "sentence": "She has three ___ for painting her nails.",
+      "options": [
+        "brushes",
+        "brushs",
+        "brushies",
+        "brush's"
+      ],
+      "answer": "brushes",
+      "difficulty": "easy",
+      "explanation": "Words ending in \"sh\" add \"-es\" to form the plural: \"brush\" becomes \"brushes.\""
+    },
+    {
+      "sentence": "We visited five different ___ on our road trip.",
+      "options": [
+        "cities",
+        "citys",
+        "citties",
+        "city's"
+      ],
+      "answer": "cities",
+      "difficulty": "easy",
+      "explanation": "When a word ends in a consonant plus \"y,\" change the \"y\" to \"i\" and add \"-es\": \"city\" becomes \"cities.\""
+    },
+    {
+      "sentence": "The new mom brought home twin ___.",
+      "options": [
+        "babies",
+        "babys",
+        "babyes",
+        "baby's"
+      ],
+      "answer": "babies",
+      "difficulty": "easy",
+      "explanation": "When a word ends in a consonant plus \"y,\" change the \"y\" to \"i\" and add \"-es\": \"baby\" becomes \"babies.\""
+    },
+    {
+      "sentence": "Our ___ chased each other around the yard.",
+      "options": [
+        "puppies",
+        "puppys",
+        "puppyes",
+        "puppy's"
+      ],
+      "answer": "puppies",
+      "difficulty": "easy",
+      "explanation": "When a word ends in a consonant plus \"y,\" change the \"y\" to \"i\" and add \"-es\": \"puppy\" becomes \"puppies.\""
+    },
+    {
+      "sentence": "There are four ___ in our elementary school.",
+      "options": [
+        "classes",
+        "classs",
+        "classies",
+        "class's"
+      ],
+      "answer": "classes",
+      "difficulty": "easy",
+      "explanation": "Words ending in \"ss\" add \"-es\" to form the plural: \"class\" becomes \"classes.\""
+    },
+    {
+      "sentence": "He wears two different ___ every week.",
+      "options": [
+        "watches",
+        "watchs",
+        "watchies",
+        "watch's"
+      ],
+      "answer": "watches",
+      "difficulty": "easy",
+      "explanation": "Words ending in \"ch\" add \"-es\" to form the plural: \"watch\" becomes \"watches.\""
+    },
+    {
+      "sentence": "The fishermen caught several ___ in the lake.",
+      "options": [
+        "fish",
+        "fishes",
+        "fishies",
+        "fish's"
+      ],
+      "answer": "fish",
+      "difficulty": "easy",
+      "explanation": "\"Fish\" usually stays the same in the plural when talking about a simple catch, unlike most nouns."
+    },
+    {
+      "sentence": "The farmer raised a small flock of ___.",
+      "options": [
+        "sheep",
+        "sheeps",
+        "sheepes",
+        "sheep's"
+      ],
+      "answer": "sheep",
+      "difficulty": "easy",
+      "explanation": "\"Sheep\" stays the same in the singular and plural forms; it never becomes \"sheeps.\""
+    },
+    {
+      "sentence": "After the long hike, both of my ___ were sore.",
+      "options": [
+        "feet",
+        "foots",
+        "feets",
+        "foot's"
+      ],
+      "answer": "feet",
+      "difficulty": "easy",
+      "explanation": "\"Foot\" has an irregular plural: \"feet,\" not \"foots.\""
+    },
+    {
+      "sentence": "This is the ___ cake I have ever tasted.",
+      "options": [
+        "best",
+        "goodest",
+        "more good",
+        "better"
+      ],
+      "answer": "best",
+      "difficulty": "easy",
+      "explanation": "\"Good\" is irregular: its superlative form is \"best,\" not \"goodest.\""
+    },
+    {
+      "sentence": "My little brother is ___ than me.",
+      "options": [
+        "taller",
+        "more tall",
+        "tallest",
+        "tall"
+      ],
+      "answer": "taller",
+      "difficulty": "easy",
+      "explanation": "To compare two things, add \"-er\" to short adjectives like \"tall\": \"taller.\""
+    },
+    {
+      "sentence": "Of all the runners, Maya is the ___.",
+      "options": [
+        "fastest",
+        "faster",
+        "most fast",
+        "fast"
+      ],
+      "answer": "fastest",
+      "difficulty": "easy",
+      "explanation": "To compare three or more things, add \"-est\" to short adjectives like \"fast\": \"fastest.\""
+    },
+    {
+      "sentence": "Today's weather is much ___ than yesterday's.",
+      "options": [
+        "worse",
+        "badder",
+        "worst",
+        "more bad"
+      ],
+      "answer": "worse",
+      "difficulty": "easy",
+      "explanation": "\"Bad\" is irregular: its comparative form is \"worse,\" not \"badder.\""
+    },
+    {
+      "sentence": "This is the ___ day of my whole life!",
+      "options": [
+        "worst",
+        "baddest",
+        "worse",
+        "more bad"
+      ],
+      "answer": "worst",
+      "difficulty": "easy",
+      "explanation": "\"Bad\" is irregular: its superlative form is \"worst,\" not \"baddest.\""
+    },
+    {
+      "sentence": "Her backpack is ___ than mine.",
+      "options": [
+        "bigger",
+        "more big",
+        "biggest",
+        "big"
+      ],
+      "answer": "bigger",
+      "difficulty": "easy",
+      "explanation": "To compare two things, add \"-er\" to short adjectives like \"big\": \"bigger.\""
+    },
+    {
+      "sentence": "That was the ___ movie in the whole festival.",
+      "options": [
+        "best",
+        "goodest",
+        "better",
+        "most good"
+      ],
+      "answer": "best",
+      "difficulty": "easy",
+      "explanation": "\"Good\" is irregular: its superlative form is \"best,\" not \"goodest.\""
+    },
+    {
+      "sentence": "This puzzle is ___ than the last one we solved.",
+      "options": [
+        "easier",
+        "more easy",
+        "easiest",
+        "easy"
+      ],
+      "answer": "easier",
+      "difficulty": "easy",
+      "explanation": "For adjectives ending in \"y,\" change the \"y\" to \"i\" and add \"-er\": \"easy\" becomes \"easier.\""
+    },
+    {
+      "sentence": "He is the ___ singer in the whole choir.",
+      "options": [
+        "best",
+        "goodest",
+        "better",
+        "most good"
+      ],
+      "answer": "best",
+      "difficulty": "easy",
+      "explanation": "\"Good\" is irregular: its superlative form is \"best,\" not \"goodest.\""
+    },
+    {
+      "sentence": "The red kite flew ___ than the blue one.",
+      "options": [
+        "higher",
+        "more high",
+        "highest",
+        "high"
+      ],
+      "answer": "higher",
+      "difficulty": "easy",
+      "explanation": "To compare two things, add \"-er\" to short adjectives like \"high\": \"higher.\""
+    },
+    {
+      "sentence": "This is the ___ mountain in the entire park.",
+      "options": [
+        "smallest",
+        "more small",
+        "smaller",
+        "small"
+      ],
+      "answer": "smallest",
+      "difficulty": "easy",
+      "explanation": "To compare three or more things, add \"-est\" to short adjectives like \"small\": \"smallest.\""
+    },
+    {
+      "sentence": "My cousin is ___ than I am.",
+      "options": [
+        "shorter",
+        "more short",
+        "shortest",
+        "short"
+      ],
+      "answer": "shorter",
+      "difficulty": "easy",
+      "explanation": "To compare two things, add \"-er\" to short adjectives like \"short\": \"shorter.\""
+    },
+    {
+      "sentence": "That joke was the ___ one he has ever told.",
+      "options": [
+        "funniest",
+        "funnier",
+        "more funny",
+        "funny"
+      ],
+      "answer": "funniest",
+      "difficulty": "easy",
+      "explanation": "For adjectives ending in \"y,\" change the \"y\" to \"i\" and add \"-est\": \"funny\" becomes \"funniest.\""
+    },
+    {
+      "sentence": "This lemonade tastes ___ than the last batch.",
+      "options": [
+        "sweeter",
+        "more sweet",
+        "sweetest",
+        "sweet"
+      ],
+      "answer": "sweeter",
+      "difficulty": "easy",
+      "explanation": "To compare two things, add \"-er\" to short adjectives like \"sweet\": \"sweeter.\""
+    },
+    {
+      "sentence": "We are visiting ___ for our family vacation this summer.",
+      "options": [
+        "Paris",
+        "paris",
+        "PARIS",
+        "Pari's"
+      ],
+      "answer": "Paris",
+      "difficulty": "easy",
+      "explanation": "Names of specific places, like cities, are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "My birthday falls on a ___ this year.",
+      "options": [
+        "Monday",
+        "monday",
+        "MONDAY",
+        "Mondey"
+      ],
+      "answer": "Monday",
+      "difficulty": "easy",
+      "explanation": "Days of the week are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "___ is my favorite month because of the holidays.",
+      "options": [
+        "December",
+        "december",
+        "DECEMBER",
+        "Decembar"
+      ],
+      "answer": "December",
+      "difficulty": "easy",
+      "explanation": "Months of the year are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "She is learning to speak ___ at school.",
+      "options": [
+        "Spanish",
+        "spanish",
+        "SPANISH",
+        "Spanich"
+      ],
+      "answer": "Spanish",
+      "difficulty": "easy",
+      "explanation": "Names of languages are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "___ am so excited for the field trip tomorrow.",
+      "options": [
+        "I",
+        "i",
+        "Ii",
+        "eye"
+      ],
+      "answer": "I",
+      "difficulty": "easy",
+      "explanation": "The pronoun \"I\" is always capitalized, no matter where it appears in a sentence."
+    },
+    {
+      "sentence": "We celebrate ___ every November with a big turkey dinner.",
+      "options": [
+        "Thanksgiving",
+        "thanksgiving",
+        "THANKSGIVING",
+        "Thanksgiveing"
+      ],
+      "answer": "Thanksgiving",
+      "difficulty": "easy",
+      "explanation": "Names of holidays are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "My family moved here from ___ two years ago.",
+      "options": [
+        "India",
+        "india",
+        "INDIA",
+        "Indea"
+      ],
+      "answer": "India",
+      "difficulty": "easy",
+      "explanation": "Names of countries are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "Our class read a book about ___ Lincoln for history.",
+      "options": [
+        "President",
+        "president",
+        "PRESIDENT",
+        "Presedent"
+      ],
+      "answer": "President",
+      "difficulty": "easy",
+      "explanation": "A title used directly before a person's name, like \"President,\" is capitalized."
+    },
+    {
+      "sentence": "The tallest mountain in the world is located in ___.",
+      "options": [
+        "Asia",
+        "asia",
+        "ASIA",
+        "Aisia"
+      ],
+      "answer": "Asia",
+      "difficulty": "easy",
+      "explanation": "Names of continents are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "We always go camping in ___ near the lake.",
+      "options": [
+        "Colorado",
+        "colorado",
+        "COLORADO",
+        "Colerado"
+      ],
+      "answer": "Colorado",
+      "difficulty": "easy",
+      "explanation": "Names of states are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "The ___ Ocean is the largest one on Earth.",
+      "options": [
+        "Pacific",
+        "pacific",
+        "PACIFIC",
+        "Pasific"
+      ],
+      "answer": "Pacific",
+      "difficulty": "easy",
+      "explanation": "Specific names of oceans are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "My favorite holiday is ___, when we hunt for eggs.",
+      "options": [
+        "Easter",
+        "easter",
+        "EASTER",
+        "Easer"
+      ],
+      "answer": "Easter",
+      "difficulty": "easy",
+      "explanation": "Names of holidays are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "We watched fireworks on ___ to celebrate the Fourth of July.",
+      "options": [
+        "Saturday",
+        "saturday",
+        "SATURDAY",
+        "Satterday"
+      ],
+      "answer": "Saturday",
+      "difficulty": "easy",
+      "explanation": "Days of the week are proper nouns and must always be capitalized."
+    },
+    {
+      "sentence": "Our new puppy is named ___ after my grandfather.",
+      "options": [
+        "Max",
+        "max",
+        "MAX",
+        "Maxx"
+      ],
+      "answer": "Max",
+      "difficulty": "easy",
+      "explanation": "A pet's given name is a proper noun and must always be capitalized."
+    },
+    {
+      "sentence": "The team ___ practicing every day this week.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"team\" is treated as one unit, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "My family ___ planning a big trip to the coast this year.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"family\" is treated as one unit, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "The jury ___ ready to announce its decision.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"jury\" is treated as one unit acting together, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "Each of the players ___ required to attend practice.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "\"Each\" is always singular, even when followed by a plural phrase like \"of the players,\" so it takes \"is.\""
+    },
+    {
+      "sentence": "Every student in the class ___ a locker of their own.",
+      "options": [
+        "has",
+        "have",
+        "having",
+        "had"
+      ],
+      "answer": "has",
+      "difficulty": "medium",
+      "explanation": "\"Every\" makes the subject singular, so it takes the singular verb \"has,\" even with a plural-sounding phrase after it."
+    },
+    {
+      "sentence": "The coach, along with the players, ___ heading to the tournament.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "\"Along with the players\" is an extra phrase, not part of the subject. The true subject is \"coach,\" which is singular."
+    },
+    {
+      "sentence": "The book, as well as the workbook, ___ due back on Friday.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "\"As well as the workbook\" is an extra phrase, not part of the subject. The true subject is \"book,\" which is singular."
+    },
+    {
+      "sentence": "Neither the twins nor their mother ___ ready to leave yet.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "With \"neither...nor,\" the verb agrees with the closer subject. \"Mother\" is singular, so it takes \"is.\""
+    },
+    {
+      "sentence": "Neither the coach nor the players ___ happy with the loss.",
+      "options": [
+        "are",
+        "is",
+        "were",
+        "have"
+      ],
+      "answer": "are",
+      "difficulty": "medium",
+      "explanation": "With \"neither...nor,\" the verb agrees with the closer subject. \"Players\" is plural, so it takes \"are.\""
+    },
+    {
+      "sentence": "The number of empty seats ___ surprising this year.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "\"The number of\" is treated as singular, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "A number of students ___ already turned in their projects.",
+      "options": [
+        "have",
+        "has",
+        "having",
+        "had"
+      ],
+      "answer": "have",
+      "difficulty": "medium",
+      "explanation": "\"A number of\" is treated as plural, so it takes the plural verb \"have.\""
+    },
+    {
+      "sentence": "The audience ___ cheering loudly after the final goal.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"audience\" is treated as one unit, so it takes the singular verb \"was.\""
+    },
+    {
+      "sentence": "Either my brother or my sisters ___ walking the dog tonight.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "have"
+      ],
+      "answer": "are",
+      "difficulty": "medium",
+      "explanation": "With \"either...or,\" the verb agrees with the closer subject. \"Sisters\" is plural, so it takes \"are.\""
+    },
+    {
+      "sentence": "The staff ___ meeting in the library this afternoon.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"staff\" is treated as one unit, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "The class ___ voting on a new mascot this week.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "medium",
+      "explanation": "A collective noun like \"class\" is treated as one unit, so it takes the singular verb \"is.\""
+    },
+    {
+      "sentence": "Every one of the recipes ___ a pinch of salt.",
+      "options": [
+        "needs",
+        "need",
+        "needing",
+        "needed"
+      ],
+      "answer": "needs",
+      "difficulty": "medium",
+      "explanation": "\"Every one\" is singular, so it takes the singular verb \"needs,\" even with a plural phrase after it."
+    },
+    {
+      "sentence": "This secret is strictly between you and ___.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "After a preposition like \"between,\" use the object pronoun \"me,\" not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "My parents invited Sarah and ___ to the barbecue.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "\"Me\" is part of the object of \"invited,\" so it needs the object pronoun, not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "___ and I finished the science project together.",
+      "options": [
+        "She",
+        "Her",
+        "Us",
+        "Them"
+      ],
+      "answer": "She",
+      "difficulty": "medium",
+      "explanation": "\"She\" is part of the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"her.\""
+    },
+    {
+      "sentence": "The prize was shared equally between the twins and ___.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "After a preposition like \"between,\" use the object pronoun \"me,\" not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "___ did you invite to the party?",
+      "options": [
+        "Whom",
+        "Who",
+        "Whose",
+        "Who's"
+      ],
+      "answer": "Whom",
+      "difficulty": "medium",
+      "explanation": "\"Whom\" is the object of \"invite,\" so the object form is correct here, not \"who.\""
+    },
+    {
+      "sentence": "___ is coming with us to the museum?",
+      "options": [
+        "Who",
+        "Whom",
+        "Whose",
+        "Who's"
+      ],
+      "answer": "Who",
+      "difficulty": "medium",
+      "explanation": "\"Who\" is the subject of the sentence, so the subject form is correct here, not \"whom.\""
+    },
+    {
+      "sentence": "To ___ should I address this letter?",
+      "options": [
+        "whom",
+        "who",
+        "whose",
+        "who's"
+      ],
+      "answer": "whom",
+      "difficulty": "medium",
+      "explanation": "\"Whom\" is the object of the preposition \"to,\" so the object form is correct here, not \"who.\""
+    },
+    {
+      "sentence": "My coach is taller than ___.",
+      "options": [
+        "I",
+        "me",
+        "myself",
+        "mine"
+      ],
+      "answer": "I",
+      "difficulty": "medium",
+      "explanation": "The comparison implies \"than I am,\" so the subject pronoun \"I\" is correct, not the object pronoun \"me.\""
+    },
+    {
+      "sentence": "No one runs faster than ___ does on our team.",
+      "options": [
+        "he",
+        "him",
+        "his",
+        "himself"
+      ],
+      "answer": "he",
+      "difficulty": "medium",
+      "explanation": "The comparison implies \"than he does,\" so the subject pronoun \"he\" is correct, not the object pronoun \"him.\""
+    },
+    {
+      "sentence": "Just between ___ and me, I think we'll win.",
+      "options": [
+        "you",
+        "yours",
+        "you're",
+        "your"
+      ],
+      "answer": "you",
+      "difficulty": "medium",
+      "explanation": "After a preposition like \"between,\" use the object pronoun \"you,\" not the contraction \"you're.\""
+    },
+    {
+      "sentence": "The manager thanked Jake and ___ for volunteering.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "\"Me\" is part of the object of \"thanked,\" so it needs the object pronoun, not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "___ do you think will win the contest?",
+      "options": [
+        "Who",
+        "Whom",
+        "Whose",
+        "Who's"
+      ],
+      "answer": "Who",
+      "difficulty": "medium",
+      "explanation": "\"Who\" is the subject of \"will win,\" so the subject form is correct here, not \"whom.\""
+    },
+    {
+      "sentence": "___ did the award go to?",
+      "options": [
+        "Whom",
+        "Who",
+        "Whose",
+        "Who's"
+      ],
+      "answer": "Whom",
+      "difficulty": "medium",
+      "explanation": "\"Whom\" is the object of \"go to,\" so the object form is correct here, not \"who.\""
+    },
+    {
+      "sentence": "My sister and ___ are going to the fair together.",
+      "options": [
+        "I",
+        "me",
+        "myself",
+        "mine"
+      ],
+      "answer": "I",
+      "difficulty": "medium",
+      "explanation": "\"I\" is part of the subject of the sentence, so it needs the subject pronoun, not the object pronoun \"me.\""
+    },
+    {
+      "sentence": "The teacher gave the extra credit to Maria and ___.",
+      "options": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "answer": "me",
+      "difficulty": "medium",
+      "explanation": "\"Me\" is part of the object of \"gave... to,\" so it needs the object pronoun, not the subject pronoun \"I.\""
+    },
+    {
+      "sentence": "It was ___ who left the door unlocked.",
+      "options": [
+        "he",
+        "him",
+        "his",
+        "himself"
+      ],
+      "answer": "he",
+      "difficulty": "medium",
+      "explanation": "After \"it was,\" use the subject pronoun \"he,\" since it renames the subject of the sentence."
+    },
+    {
+      "sentence": "___ turn is it to pick the movie tonight?",
+      "options": [
+        "Whose",
+        "Who's",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Whose",
+      "difficulty": "medium",
+      "explanation": "\"Whose\" shows possession. \"Who's\" is a contraction for \"who is\" or \"who has,\" which doesn't fit here."
+    },
+    {
+      "sentence": "___ been practicing piano every single day this month.",
+      "options": [
+        "Who's",
+        "Whose",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Who's",
+      "difficulty": "medium",
+      "explanation": "\"Who's\" is short for \"who has.\" \"Whose\" shows possession, which doesn't fit this sentence."
+    },
+    {
+      "sentence": "___ coming to the study group later?",
+      "options": [
+        "Who's",
+        "Whose",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Who's",
+      "difficulty": "medium",
+      "explanation": "\"Who's\" is short for \"who is.\" \"Whose\" shows possession, which doesn't fit this sentence."
+    },
+    {
+      "sentence": "___ backpack is this lying by the door?",
+      "options": [
+        "Whose",
+        "Who's",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Whose",
+      "difficulty": "medium",
+      "explanation": "\"Whose\" shows possession. \"Who's\" is a contraction for \"who is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "___ car needs new tires before the road trip.",
+      "options": [
+        "Mom and Dad's",
+        "Mom's and Dad's",
+        "Moms and Dads",
+        "Mom and Dads"
+      ],
+      "answer": "Mom and Dad's",
+      "difficulty": "medium",
+      "explanation": "When two people jointly own one thing, only the last name gets the apostrophe: \"Mom and Dad's car.\""
+    },
+    {
+      "sentence": "___ projects were both chosen for the science fair.",
+      "options": [
+        "Sara's and Tom's",
+        "Sara and Tom's",
+        "Saras and Toms",
+        "Sara's and Toms"
+      ],
+      "answer": "Sara's and Tom's",
+      "difficulty": "medium",
+      "explanation": "When two people each own a separate thing, both names get their own apostrophe: \"Sara's and Tom's.\""
+    },
+    {
+      "sentence": "The ___ toys were scattered all over the playroom floor.",
+      "options": [
+        "children's",
+        "childrens",
+        "childrens'",
+        "children"
+      ],
+      "answer": "children's",
+      "difficulty": "medium",
+      "explanation": "\"Children\" is already plural, so simply add an apostrophe and \"s\" to show possession: \"children's.\""
+    },
+    {
+      "sentence": "The three ___ bikes were parked outside the school.",
+      "options": [
+        "boys'",
+        "boy's",
+        "boys",
+        "boys's"
+      ],
+      "answer": "boys'",
+      "difficulty": "medium",
+      "explanation": "For a regular plural noun like \"boys,\" add only an apostrophe after the \"s\" to show possession."
+    },
+    {
+      "sentence": "My ___ backpack was left on the bus this morning.",
+      "options": [
+        "sister's",
+        "sisters",
+        "sisters'",
+        "sister"
+      ],
+      "answer": "sister's",
+      "difficulty": "medium",
+      "explanation": "For one singular owner, add an apostrophe and \"s\": \"sister's backpack.\""
+    },
+    {
+      "sentence": "The ___ nest fell out of the tree during the storm.",
+      "options": [
+        "bird's",
+        "birds'",
+        "birds",
+        "bird"
+      ],
+      "answer": "bird's",
+      "difficulty": "medium",
+      "explanation": "For one singular owner, add an apostrophe and \"s\": \"bird's nest.\""
+    },
+    {
+      "sentence": "The company celebrated ___ tenth anniversary this year.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "it's own"
+      ],
+      "answer": "its",
+      "difficulty": "medium",
+      "explanation": "\"Its\" shows possession here. \"It's\" always means \"it is\" or \"it has,\" which doesn't fit."
+    },
+    {
+      "sentence": "Is that jacket ___, or does it belong to your brother?",
+      "options": [
+        "yours",
+        "your's",
+        "you're",
+        "your"
+      ],
+      "answer": "yours",
+      "difficulty": "medium",
+      "explanation": "\"Yours\" is a possessive pronoun and never takes an apostrophe, unlike a contraction."
+    },
+    {
+      "sentence": "The trophy is officially ___ after winning three straight games.",
+      "options": [
+        "theirs",
+        "there's",
+        "they're",
+        "their"
+      ],
+      "answer": "theirs",
+      "difficulty": "medium",
+      "explanation": "\"Theirs\" is a possessive pronoun and never takes an apostrophe, unlike a contraction."
+    },
+    {
+      "sentence": "That new skateboard on the porch is ___, not mine.",
+      "options": [
+        "his",
+        "he's",
+        "him's",
+        "hers's"
+      ],
+      "answer": "his",
+      "difficulty": "medium",
+      "explanation": "\"His\" is a possessive pronoun and never takes an apostrophe."
+    },
+    {
+      "sentence": "The dog buried ___ favorite bone in the backyard.",
+      "options": [
+        "its",
+        "it's",
+        "their",
+        "it is"
+      ],
+      "answer": "its",
+      "difficulty": "medium",
+      "explanation": "\"Its\" shows possession here. \"It's\" always means \"it is\" or \"it has,\" which doesn't fit."
+    },
+    {
+      "sentence": "The two ___ classroom was decorated for the holidays.",
+      "options": [
+        "teachers'",
+        "teacher's",
+        "teachers",
+        "teacher's's"
+      ],
+      "answer": "teachers'",
+      "difficulty": "medium",
+      "explanation": "For a plural noun ending in \"s\" that shares one thing, add only an apostrophe after the \"s\": \"teachers' classroom.\""
+    },
+    {
+      "sentence": "It took ___ hour to finish all of our homework.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"hour\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "She is ___ honest person who always tells the truth.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"honest\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "My uncle served as ___ FBI agent for twenty years.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "\"FBI\" is pronounced starting with the letter \"F,\" which sounds like \"eff\" — a vowel sound — so it needs \"an.\""
+    },
+    {
+      "sentence": "He is studying to become ___ European history teacher.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"European\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "We waited ___ hour and a half for the bus to arrive.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"hour\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "That is ___ unique opportunity you shouldn't miss.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"Unique\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "She earned ___ MBA before starting her own business.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "\"MBA\" is pronounced starting with the letter \"M,\" which sounds like \"em\" — a vowel sound — so it needs \"an.\""
+    },
+    {
+      "sentence": "He gave a speech as ___ honorable member of the club.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"honorable\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "They spotted ___ UFO hovering above the field.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"UFO\" is pronounced starting with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "It was ___ historic moment for our entire town.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"historic\" is pronounced, so the word starts with a consonant sound and needs \"a.\""
+    },
+    {
+      "sentence": "My cousin bought ___ used car last weekend.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"Used\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "This recipe only takes ___ hour to prepare.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"hour\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "That was ___ one-of-a-kind performance from the whole cast.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"One\" starts with a \"w\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "He is ___ heir to a small family fortune.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"heir\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "She wants to attend ___ university in another state.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "medium",
+      "explanation": "\"University\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "It was ___ honor to meet the author in person.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "medium",
+      "explanation": "The \"h\" in \"honor\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "Autumn is when ___ fall from the trees.",
+      "options": [
+        "leaves",
+        "leafs",
+        "leaves's",
+        "leafes"
+      ],
+      "answer": "leaves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"leaf\" becomes \"leaves.\""
+    },
+    {
+      "sentence": "She sliced the bread with one of the sharpest ___ in the drawer.",
+      "options": [
+        "knives",
+        "knifes",
+        "knive's",
+        "knifies"
+      ],
+      "answer": "knives",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"fe\" often change to \"ves\" in the plural: \"knife\" becomes \"knives.\""
+    },
+    {
+      "sentence": "The pack of ___ howled at the moon all night.",
+      "options": [
+        "wolves",
+        "wolfs",
+        "wolve's",
+        "wolfies"
+      ],
+      "answer": "wolves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"wolf\" becomes \"wolves.\""
+    },
+    {
+      "sentence": "We split the pizza into two equal ___.",
+      "options": [
+        "halves",
+        "halfs",
+        "halve's",
+        "halfies"
+      ],
+      "answer": "halves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"half\" becomes \"halves.\""
+    },
+    {
+      "sentence": "The library added new ___ for all the returned books.",
+      "options": [
+        "shelves",
+        "shelfs",
+        "shelve's",
+        "shelfies"
+      ],
+      "answer": "shelves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"shelf\" becomes \"shelves.\""
+    },
+    {
+      "sentence": "My grandmother has told stories about her many ___ growing up on the farm.",
+      "options": [
+        "lives",
+        "lifes",
+        "live's",
+        "lifies"
+      ],
+      "answer": "lives",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"fe\" often change to \"ves\" in the plural: \"life\" becomes \"lives.\""
+    },
+    {
+      "sentence": "We planted ___ in the garden for a big harvest.",
+      "options": [
+        "potatoes",
+        "potatos",
+        "potatoe's",
+        "potatoies"
+      ],
+      "answer": "potatoes",
+      "difficulty": "medium",
+      "explanation": "Many nouns ending in \"o\" add \"-es\" in the plural: \"potato\" becomes \"potatoes.\""
+    },
+    {
+      "sentence": "The soldiers were welcomed home as ___ by the whole town.",
+      "options": [
+        "heroes",
+        "heros",
+        "heroe's",
+        "heroies"
+      ],
+      "answer": "heroes",
+      "difficulty": "medium",
+      "explanation": "Many nouns ending in \"o\" add \"-es\" in the plural: \"hero\" becomes \"heroes.\""
+    },
+    {
+      "sentence": "I printed several ___ from our vacation last summer.",
+      "options": [
+        "photos",
+        "photoes",
+        "photo's",
+        "photoies"
+      ],
+      "answer": "photos",
+      "difficulty": "medium",
+      "explanation": "Some nouns ending in \"o,\" like \"photo,\" simply add \"-s\" instead of \"-es\" in the plural."
+    },
+    {
+      "sentence": "The chef added fresh ___ to the pasta sauce.",
+      "options": [
+        "tomatoes",
+        "tomatos",
+        "tomatoe's",
+        "tomatoies"
+      ],
+      "answer": "tomatoes",
+      "difficulty": "medium",
+      "explanation": "Many nouns ending in \"o\" add \"-es\" in the plural: \"tomato\" becomes \"tomatoes.\""
+    },
+    {
+      "sentence": "There are seven ___ in a week.",
+      "options": [
+        "days",
+        "dayes",
+        "day's",
+        "daies"
+      ],
+      "answer": "days",
+      "difficulty": "medium",
+      "explanation": "When a word ends in a vowel plus \"y,\" simply add \"-s\" in the plural: \"day\" becomes \"days.\""
+    },
+    {
+      "sentence": "The bakery sells fresh ___ every single morning.",
+      "options": [
+        "loaves",
+        "loafs",
+        "loave's",
+        "loafies"
+      ],
+      "answer": "loaves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"loaf\" becomes \"loaves.\""
+    },
+    {
+      "sentence": "My little cousin loves recording funny ___ on his tablet.",
+      "options": [
+        "videos",
+        "videoes",
+        "video's",
+        "videoies"
+      ],
+      "answer": "videos",
+      "difficulty": "medium",
+      "explanation": "Some nouns ending in \"o,\" like \"video,\" simply add \"-s\" instead of \"-es\" in the plural."
+    },
+    {
+      "sentence": "We watched several ___ about deep-sea creatures.",
+      "options": [
+        "documentaries",
+        "documentarys",
+        "documentarie's",
+        "documentaryes"
+      ],
+      "answer": "documentaries",
+      "difficulty": "medium",
+      "explanation": "When a word ends in a consonant plus \"y,\" change the \"y\" to \"i\" and add \"-es\": \"documentary\" becomes \"documentaries.\""
+    },
+    {
+      "sentence": "It was so cold that everyone wore wool ___ outside.",
+      "options": [
+        "scarves",
+        "scarfes",
+        "scarf's",
+        "scarfies"
+      ],
+      "answer": "scarves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"scarf\" becomes \"scarves.\""
+    },
+    {
+      "sentence": "The play featured several ___ working in Santa's workshop.",
+      "options": [
+        "elves",
+        "elfs",
+        "elve's",
+        "elfies"
+      ],
+      "answer": "elves",
+      "difficulty": "medium",
+      "explanation": "Words ending in \"f\" often change to \"ves\" in the plural: \"elf\" becomes \"elves.\""
+    },
+    {
+      "sentence": "I have ___ patience for waiting in long lines than my brother does.",
+      "options": [
+        "less",
+        "littler",
+        "more little",
+        "lesser"
+      ],
+      "answer": "less",
+      "difficulty": "medium",
+      "explanation": "\"Little\" is irregular: its comparative form is \"less,\" not \"littler.\""
+    },
+    {
+      "sentence": "Of the two trails, this one is ___.",
+      "options": [
+        "farther",
+        "farer",
+        "more far",
+        "farrer"
+      ],
+      "answer": "farther",
+      "difficulty": "medium",
+      "explanation": "\"Far\" is irregular: its comparative form (for comparing two things) is \"farther.\""
+    },
+    {
+      "sentence": "She lives the ___ from school out of everyone in our class.",
+      "options": [
+        "farthest",
+        "farther",
+        "more far",
+        "farrest"
+      ],
+      "answer": "farthest",
+      "difficulty": "medium",
+      "explanation": "\"Far\" is irregular: its superlative form (for comparing three or more) is \"farthest.\""
+    },
+    {
+      "sentence": "I have ___ homework tonight than I did yesterday.",
+      "options": [
+        "more",
+        "most",
+        "much",
+        "mucher"
+      ],
+      "answer": "more",
+      "difficulty": "medium",
+      "explanation": "\"Much\" is irregular: its comparative form is \"more,\" not \"mucher.\""
+    },
+    {
+      "sentence": "Of all my chores, I dislike this one the ___.",
+      "options": [
+        "most",
+        "more",
+        "much",
+        "mostest"
+      ],
+      "answer": "most",
+      "difficulty": "medium",
+      "explanation": "\"Much\" is irregular: its superlative form is \"most,\" not \"mostest.\""
+    },
+    {
+      "sentence": "He felt ___ about losing the game than he expected.",
+      "options": [
+        "worse",
+        "more bad",
+        "baddest",
+        "badder"
+      ],
+      "answer": "worse",
+      "difficulty": "medium",
+      "explanation": "\"Bad\" is irregular: its comparative form is \"worse,\" not \"badder.\""
+    },
+    {
+      "sentence": "Between the two desserts, I liked the pie ___.",
+      "options": [
+        "better",
+        "best",
+        "more good",
+        "gooder"
+      ],
+      "answer": "better",
+      "difficulty": "medium",
+      "explanation": "When comparing exactly two things, use the comparative form \"better,\" not the superlative \"best.\""
+    },
+    {
+      "sentence": "Out of everyone at camp, she made the ___ friends.",
+      "options": [
+        "most",
+        "more",
+        "many",
+        "mostest"
+      ],
+      "answer": "most",
+      "difficulty": "medium",
+      "explanation": "\"Many\" is irregular: its superlative form is \"most,\" not \"manyest.\""
+    },
+    {
+      "sentence": "I have ___ patience for waiting than my sister does.",
+      "options": [
+        "less",
+        "littler",
+        "more little",
+        "lesser"
+      ],
+      "answer": "less",
+      "difficulty": "medium",
+      "explanation": "\"Little\" is irregular: its comparative form is \"less,\" not \"littler.\""
+    },
+    {
+      "sentence": "You should never say something is 'more better'; you should just say it is ___.",
+      "options": [
+        "better",
+        "more better",
+        "bestest",
+        "gooder"
+      ],
+      "answer": "better",
+      "difficulty": "medium",
+      "explanation": "\"Good\" is already irregular in its comparative form, \"better\"; adding \"more\" in front creates an incorrect double comparative."
+    },
+    {
+      "sentence": "That was, without question, the ___ she has ever performed on stage.",
+      "options": [
+        "best",
+        "better",
+        "goodest",
+        "most good"
+      ],
+      "answer": "best",
+      "difficulty": "medium",
+      "explanation": "\"Good\" is irregular: its superlative form is \"best,\" not \"goodest.\""
+    },
+    {
+      "sentence": "Of the twins, Jake is slightly ___.",
+      "options": [
+        "taller",
+        "tallest",
+        "more tall",
+        "tallerest"
+      ],
+      "answer": "taller",
+      "difficulty": "medium",
+      "explanation": "When comparing exactly two people, use the comparative form \"taller,\" not the superlative \"tallest.\""
+    },
+    {
+      "sentence": "That was, without question, the ___ storm of the entire decade.",
+      "options": [
+        "worst",
+        "worse",
+        "baddest",
+        "more bad"
+      ],
+      "answer": "worst",
+      "difficulty": "medium",
+      "explanation": "\"Bad\" is irregular: its superlative form is \"worst,\" not \"baddest.\""
+    },
+    {
+      "sentence": "She practices ___ than anyone else on the swim team.",
+      "options": [
+        "more",
+        "most",
+        "much",
+        "mucher"
+      ],
+      "answer": "more",
+      "difficulty": "medium",
+      "explanation": "\"Much\" is irregular: its comparative form is \"more,\" not \"mucher.\""
+    },
+    {
+      "sentence": "My grandfather is the ___ person I know, even at eighty.",
+      "options": [
+        "wisest",
+        "wiser",
+        "more wise",
+        "wisiest"
+      ],
+      "answer": "wisest",
+      "difficulty": "medium",
+      "explanation": "To compare among many people, add \"-est\" to a short adjective like \"wise\": \"wisest.\""
+    },
+    {
+      "sentence": "This is the ___ of the two answers, so choose it.",
+      "options": [
+        "better",
+        "best",
+        "more good",
+        "gooder"
+      ],
+      "answer": "better",
+      "difficulty": "medium",
+      "explanation": "When comparing exactly two things, use the comparative form \"better,\" not the superlative \"best.\""
+    },
+    {
+      "sentence": "We are studying ___ Lincoln's role in the Civil War this week.",
+      "options": [
+        "President",
+        "president",
+        "PRESIDENT",
+        "Precedent"
+      ],
+      "answer": "President",
+      "difficulty": "medium",
+      "explanation": "A title used directly before a person's name, like \"President,\" is capitalized."
+    },
+    {
+      "sentence": "My favorite season is ___, when the leaves change color.",
+      "options": [
+        "fall",
+        "Fall",
+        "FALL",
+        "faLl"
+      ],
+      "answer": "fall",
+      "difficulty": "medium",
+      "explanation": "Names of seasons, like \"fall,\" are not proper nouns, so they stay lowercase."
+    },
+    {
+      "sentence": "Many settlers traveled toward the ___ during the Gold Rush.",
+      "options": [
+        "West",
+        "west",
+        "WEST",
+        "Weste"
+      ],
+      "answer": "West",
+      "difficulty": "medium",
+      "explanation": "When a direction names a specific region, like \"the West,\" it becomes a proper noun and is capitalized."
+    },
+    {
+      "sentence": "Turn ___ at the next intersection to reach the library.",
+      "options": [
+        "north",
+        "North",
+        "NORTH",
+        "Nourth"
+      ],
+      "answer": "north",
+      "difficulty": "medium",
+      "explanation": "A simple compass direction, like \"north,\" is not a proper noun, so it stays lowercase."
+    },
+    {
+      "sentence": "___ Martinez is my favorite science teacher.",
+      "options": [
+        "Dr.",
+        "dr.",
+        "DR.",
+        "Drr."
+      ],
+      "answer": "Dr.",
+      "difficulty": "medium",
+      "explanation": "A title used directly before a person's name, like \"Dr.,\" is capitalized."
+    },
+    {
+      "sentence": "My favorite subject this semester is ___.",
+      "options": [
+        "Spanish",
+        "spanish",
+        "SPANISH",
+        "Spanich"
+      ],
+      "answer": "Spanish",
+      "difficulty": "medium",
+      "explanation": "Names of languages are proper nouns and are always capitalized."
+    },
+    {
+      "sentence": "I have math, gym, and ___ homework tonight.",
+      "options": [
+        "science",
+        "Science",
+        "SCIENCE",
+        "sicence"
+      ],
+      "answer": "science",
+      "difficulty": "medium",
+      "explanation": "Ordinary school subjects, like \"science,\" are not proper nouns, so they stay lowercase."
+    },
+    {
+      "sentence": "We learned about the ___ Renaissance in art class today.",
+      "options": [
+        "Renaissance",
+        "renaissance",
+        "RENAISSANCE",
+        "Renaisance"
+      ],
+      "answer": "Renaissance",
+      "difficulty": "medium",
+      "explanation": "Names of specific historical periods, like the \"Renaissance,\" are proper nouns and are capitalized."
+    },
+    {
+      "sentence": "___ said dinner would be ready in ten minutes.",
+      "options": [
+        "Mom",
+        "mom",
+        "MOM",
+        "Momm"
+      ],
+      "answer": "Mom",
+      "difficulty": "medium",
+      "explanation": "When a family title is used like a name, without \"my\" or \"the\" in front, it is capitalized."
+    },
+    {
+      "sentence": "I asked my ___ if I could stay up late.",
+      "options": [
+        "mom",
+        "Mom",
+        "MOM",
+        "momm"
+      ],
+      "answer": "mom",
+      "difficulty": "medium",
+      "explanation": "When a family title follows a possessive word like \"my,\" it is treated as a regular noun and stays lowercase."
+    },
+    {
+      "sentence": "The coldest season here is ___, especially in January.",
+      "options": [
+        "winter",
+        "Winter",
+        "WINTER",
+        "wintre"
+      ],
+      "answer": "winter",
+      "difficulty": "medium",
+      "explanation": "Names of seasons, like \"winter,\" are not proper nouns, so they stay lowercase."
+    },
+    {
+      "sentence": "___ Smith will be our substitute teacher today.",
+      "options": [
+        "Mrs.",
+        "mrs.",
+        "MRS.",
+        "Mss."
+      ],
+      "answer": "Mrs.",
+      "difficulty": "medium",
+      "explanation": "A title used directly before a person's name, like \"Mrs.,\" is capitalized."
+    },
+    {
+      "sentence": "Everyone in my family speaks ___ at home.",
+      "options": [
+        "French",
+        "french",
+        "FRENCH",
+        "Frentch"
+      ],
+      "answer": "French",
+      "difficulty": "medium",
+      "explanation": "Names of languages are proper nouns and are always capitalized."
+    },
+    {
+      "sentence": "We are heading ___ for winter break to visit my grandparents.",
+      "options": [
+        "south",
+        "South",
+        "SOUTH",
+        "Sowth"
+      ],
+      "answer": "south",
+      "difficulty": "medium",
+      "explanation": "A simple compass direction, like \"south,\" is not a proper noun, so it stays lowercase."
+    },
+    {
+      "sentence": "I can't wait for ___ vacation to visit the mountains.",
+      "options": [
+        "summer",
+        "Summer",
+        "SUMMER",
+        "sumer"
+      ],
+      "answer": "summer",
+      "difficulty": "medium",
+      "explanation": "Names of seasons, like \"summer,\" are not proper nouns, so they stay lowercase."
+    },
+    {
+      "sentence": "My uncle fought for the country during ___ War II.",
+      "options": [
+        "World",
+        "world",
+        "WORLD",
+        "Wurld"
+      ],
+      "answer": "World",
+      "difficulty": "medium",
+      "explanation": "Specific named historical events, like \"World War II,\" are proper nouns and are capitalized."
+    },
+    {
+      "sentence": "Everybody in the auditorium ___ asked to remain seated during the ceremony.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "Indefinite pronouns like \"everybody\" are treated as singular, so they take the singular verb \"was.\""
+    },
+    {
+      "sentence": "Neither of the answers ___ correct, according to the answer key.",
+      "options": [
+        "is",
+        "are",
+        "was",
+        "were"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "\"Neither\" is treated as singular, even when followed by a plural phrase, so it takes \"is.\""
+    },
+    {
+      "sentence": "Each of the essays ___ carefully graded by two different teachers.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "\"Each\" is treated as singular, even when followed by a plural phrase, so it takes \"was.\""
+    },
+    {
+      "sentence": "Somebody in the back row ___ laughing during the entire movie.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "Indefinite pronouns like \"somebody\" are treated as singular, so they take the singular verb \"was.\""
+    },
+    {
+      "sentence": "Either the twins or their father ___ driving us to practice tonight.",
+      "options": [
+        "is",
+        "are",
+        "was",
+        "were"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "With \"either...or,\" the verb agrees with the closer subject. \"Father\" is singular, so it takes \"is.\""
+    },
+    {
+      "sentence": "Either the coach or the players ___ responsible for the delay.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "were"
+      ],
+      "answer": "are",
+      "difficulty": "hard",
+      "explanation": "With \"either...or,\" the verb agrees with the closer subject. \"Players\" is plural, so it takes \"are.\""
+    },
+    {
+      "sentence": "The committee ___ arguing among themselves about the new rule.",
+      "options": [
+        "were",
+        "was",
+        "is",
+        "has"
+      ],
+      "answer": "were",
+      "difficulty": "hard",
+      "explanation": "When a collective noun like \"committee\" is acting as separate individuals rather than one unit, it can take the plural verb \"were.\""
+    },
+    {
+      "sentence": "Few of the students ___ finished the assignment early.",
+      "options": [
+        "have",
+        "has",
+        "having",
+        "had"
+      ],
+      "answer": "have",
+      "difficulty": "hard",
+      "explanation": "\"Few\" refers to several individuals, so it is treated as plural and takes \"have.\""
+    },
+    {
+      "sentence": "None of the cake ___ left by the time we arrived.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "\"None\" is treated as singular when it refers to an uncountable amount, like \"cake,\" so it takes \"was.\""
+    },
+    {
+      "sentence": "Hardly anybody at the assembly ___ paying attention to the announcement.",
+      "options": [
+        "was",
+        "were",
+        "is",
+        "are"
+      ],
+      "answer": "was",
+      "difficulty": "hard",
+      "explanation": "Indefinite pronouns like \"anybody\" are treated as singular, so they take the singular verb \"was.\""
+    },
+    {
+      "sentence": "The news about the flooding ___ concerning to everyone in town.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "\"News\" looks plural but is always treated as singular, so it takes \"is.\""
+    },
+    {
+      "sentence": "Mathematics ___ my favorite subject, believe it or not.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "Some subjects ending in \"s,\" like \"mathematics,\" are treated as singular, so they take \"is.\""
+    },
+    {
+      "sentence": "The scissors ___ sitting right where you left them.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "has"
+      ],
+      "answer": "are",
+      "difficulty": "hard",
+      "explanation": "Tool names like \"scissors\" that describe a single item made of two parts are always treated as plural."
+    },
+    {
+      "sentence": "Physics ___ far more challenging than I expected this semester.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "Some subjects ending in \"s,\" like \"physics,\" are treated as singular, so they take \"is.\""
+    },
+    {
+      "sentence": "The United States ___ made up of fifty individual states.",
+      "options": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "answer": "is",
+      "difficulty": "hard",
+      "explanation": "Although \"United States\" ends in \"s,\" it refers to one country and is treated as singular."
+    },
+    {
+      "sentence": "Here ___ the results of last night's election.",
+      "options": [
+        "are",
+        "is",
+        "was",
+        "comes"
+      ],
+      "answer": "are",
+      "difficulty": "hard",
+      "explanation": "In an inverted sentence beginning with \"here,\" the verb must still agree with the subject that follows it — \"results,\" which is plural."
+    },
+    {
+      "sentence": "The prize will go to ___ finishes the race first.",
+      "options": [
+        "whoever",
+        "whomever",
+        "who",
+        "whom"
+      ],
+      "answer": "whoever",
+      "difficulty": "hard",
+      "explanation": "\"Whoever\" is the subject of \"finishes,\" so it needs the subject form, even though the whole clause is the object of \"to.\""
+    },
+    {
+      "sentence": "Give this note to ___ answers the door.",
+      "options": [
+        "whoever",
+        "whomever",
+        "who",
+        "whom"
+      ],
+      "answer": "whoever",
+      "difficulty": "hard",
+      "explanation": "\"Whoever\" is the subject of \"answers,\" so it needs the subject form, even though the whole clause is the object of \"to.\""
+    },
+    {
+      "sentence": "You may invite ___ you would like to the party.",
+      "options": [
+        "whomever",
+        "whoever",
+        "who",
+        "whom"
+      ],
+      "answer": "whomever",
+      "difficulty": "hard",
+      "explanation": "\"Whomever\" is the object of \"invite,\" so the object form is correct here."
+    },
+    {
+      "sentence": "The manager will hire ___ she believes is most qualified.",
+      "options": [
+        "whoever",
+        "whomever",
+        "who",
+        "whom"
+      ],
+      "answer": "whoever",
+      "difficulty": "hard",
+      "explanation": "\"Whoever\" is the subject of \"is,\" so it needs the subject form, even though the whole clause is the object of \"hire.\""
+    },
+    {
+      "sentence": "My brother scored higher on the test than ___ did.",
+      "options": [
+        "I",
+        "me",
+        "myself",
+        "mine"
+      ],
+      "answer": "I",
+      "difficulty": "hard",
+      "explanation": "The comparison implies \"than I did,\" so the subject pronoun \"I\" is correct here, not \"me.\""
+    },
+    {
+      "sentence": "She bought ___ a new pair of shoes for the recital.",
+      "options": [
+        "herself",
+        "her",
+        "she",
+        "hers"
+      ],
+      "answer": "herself",
+      "difficulty": "hard",
+      "explanation": "A reflexive pronoun like \"herself\" is used when the action of the sentence reflects back onto the subject."
+    },
+    {
+      "sentence": "He accidentally locked ___ out of the house.",
+      "options": [
+        "himself",
+        "him",
+        "he",
+        "his"
+      ],
+      "answer": "himself",
+      "difficulty": "hard",
+      "explanation": "A reflexive pronoun like \"himself\" is used when the action of the sentence reflects back onto the subject."
+    },
+    {
+      "sentence": "They planned the entire surprise party by ___.",
+      "options": [
+        "themselves",
+        "them",
+        "themself",
+        "their"
+      ],
+      "answer": "themselves",
+      "difficulty": "hard",
+      "explanation": "\"Themselves\" is the correct reflexive pronoun for a plural subject like \"they.\""
+    },
+    {
+      "sentence": "Everyone should bring ___ own lunch to the picnic.",
+      "options": [
+        "their",
+        "his",
+        "his or her",
+        "theirs"
+      ],
+      "answer": "their",
+      "difficulty": "hard",
+      "explanation": "\"Their\" is widely accepted as a singular possessive pronoun for indefinite words like \"everyone.\""
+    },
+    {
+      "sentence": "It was ___ who solved the mystery in the end.",
+      "options": [
+        "she",
+        "her",
+        "hers",
+        "herself"
+      ],
+      "answer": "she",
+      "difficulty": "hard",
+      "explanation": "After \"it was,\" use the subject pronoun \"she,\" since it renames the subject of the sentence."
+    },
+    {
+      "sentence": "The one who broke the vase was ___, not my sister.",
+      "options": [
+        "I",
+        "me",
+        "myself",
+        "mine"
+      ],
+      "answer": "I",
+      "difficulty": "hard",
+      "explanation": "After a linking verb like \"was,\" use the subject pronoun \"I\" to rename the subject."
+    },
+    {
+      "sentence": "My parents are prouder of my sister than ___ am of me.",
+      "options": [
+        "I",
+        "me",
+        "myself",
+        "mine"
+      ],
+      "answer": "I",
+      "difficulty": "hard",
+      "explanation": "The comparison implies \"than I am of me,\" so the subject pronoun \"I\" is correct here."
+    },
+    {
+      "sentence": "___ the coach selects will represent our school at the meet.",
+      "options": [
+        "Whomever",
+        "Whoever",
+        "Who",
+        "Whom"
+      ],
+      "answer": "Whomever",
+      "difficulty": "hard",
+      "explanation": "\"Whomever\" is the object of \"selects,\" so the object form is correct here, even though the whole clause is the sentence's subject."
+    },
+    {
+      "sentence": "___ ever finishes first gets to choose the movie tonight.",
+      "options": [
+        "Whoever",
+        "Whomever",
+        "Who",
+        "Whom"
+      ],
+      "answer": "Whoever",
+      "difficulty": "hard",
+      "explanation": "\"Whoever\" is the subject of \"finishes,\" so it needs the subject form."
+    },
+    {
+      "sentence": "The teacher will reward ___ tries the hardest, regardless of the outcome.",
+      "options": [
+        "whoever",
+        "whomever",
+        "who",
+        "whom"
+      ],
+      "answer": "whoever",
+      "difficulty": "hard",
+      "explanation": "\"Whoever\" is the subject of \"tries,\" so it needs the subject form, even though the whole clause is the object of \"reward.\""
+    },
+    {
+      "sentence": "Between the two finalists, the judges must decide ___ performed better.",
+      "options": [
+        "who",
+        "whom",
+        "whose",
+        "who's"
+      ],
+      "answer": "who",
+      "difficulty": "hard",
+      "explanation": "\"Who\" is the subject of \"performed,\" so the subject form is correct here, not \"whom.\""
+    },
+    {
+      "sentence": "I really appreciate ___ helping me move this weekend.",
+      "options": [
+        "your",
+        "you're",
+        "yours",
+        "you"
+      ],
+      "answer": "your",
+      "difficulty": "hard",
+      "explanation": "Before a gerund like \"helping,\" use the possessive form \"your\" to show whose action is being discussed."
+    },
+    {
+      "sentence": "___ constantly interrupting made the meeting run long.",
+      "options": [
+        "His",
+        "Him",
+        "He",
+        "Himself"
+      ],
+      "answer": "His",
+      "difficulty": "hard",
+      "explanation": "Before a gerund like \"interrupting,\" use the possessive form \"his\" to show whose action is being discussed."
+    },
+    {
+      "sentence": "We were all surprised by ___ winning the championship.",
+      "options": [
+        "their",
+        "them",
+        "they",
+        "theirs"
+      ],
+      "answer": "their",
+      "difficulty": "hard",
+      "explanation": "Before a gerund like \"winning,\" use the possessive form \"their\" to show whose action is being discussed."
+    },
+    {
+      "sentence": "___ book is this, the one with the torn cover?",
+      "options": [
+        "Whose",
+        "Who's",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Whose",
+      "difficulty": "hard",
+      "explanation": "\"Whose\" shows possession. \"Who's\" is a contraction for \"who is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "I still don't know ___ responsible for the broken window.",
+      "options": [
+        "who's",
+        "whose",
+        "whos",
+        "who're"
+      ],
+      "answer": "who's",
+      "difficulty": "hard",
+      "explanation": "\"Who's\" is short for \"who is.\" \"Whose\" shows possession, which doesn't fit this sentence."
+    },
+    {
+      "sentence": "___ essays were both selected for the anthology, since each wrote a separate one.",
+      "options": [
+        "James's and Charles's",
+        "James and Charles's",
+        "James' and Charles'",
+        "Jameses and Charleses"
+      ],
+      "answer": "James's and Charles's",
+      "difficulty": "hard",
+      "explanation": "When two people each own a separate thing, both names get their own apostrophe and \"s,\" even names already ending in \"s.\""
+    },
+    {
+      "sentence": "___ car was towed from the school parking lot.",
+      "options": [
+        "Mr. Thomas's",
+        "Mr. Thomas'",
+        "Mr. Thomases",
+        "Mr Thomas's"
+      ],
+      "answer": "Mr. Thomas's",
+      "difficulty": "hard",
+      "explanation": "A singular name ending in \"s,\" like \"Thomas,\" still typically adds an apostrophe and \"s\" to show possession."
+    },
+    {
+      "sentence": "The two countries settled ___ long-standing border dispute peacefully.",
+      "options": [
+        "their",
+        "there",
+        "they're",
+        "theirs"
+      ],
+      "answer": "their",
+      "difficulty": "hard",
+      "explanation": "\"Their\" shows possession here. \"There\" points to a place, and \"they're\" means \"they are.\""
+    },
+    {
+      "sentence": "___ turn it is to present hasn't been decided yet.",
+      "options": [
+        "Whose",
+        "Who's",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Whose",
+      "difficulty": "hard",
+      "explanation": "\"Whose\" shows possession. \"Who's\" is a contraction for \"who is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "The students appreciated ___ rescheduling the exam to next week.",
+      "options": [
+        "her",
+        "hers",
+        "she",
+        "herself"
+      ],
+      "answer": "her",
+      "difficulty": "hard",
+      "explanation": "Before a gerund like \"rescheduling,\" use the possessive form \"her\" to show whose action is being discussed."
+    },
+    {
+      "sentence": "___ house is just down the street from ours.",
+      "options": [
+        "My parents-in-law's",
+        "My parent-in-laws'",
+        "My parents-in-laws'",
+        "My parent's-in-law"
+      ],
+      "answer": "My parents-in-law's",
+      "difficulty": "hard",
+      "explanation": "For a hyphenated compound noun, add the possessive ending to the very end of the whole term: \"parents-in-law's.\""
+    },
+    {
+      "sentence": "That backpack over there is ___, not the teacher's.",
+      "options": [
+        "theirs",
+        "their's",
+        "there's",
+        "they're"
+      ],
+      "answer": "theirs",
+      "difficulty": "hard",
+      "explanation": "\"Theirs\" is a possessive pronoun and never takes an apostrophe, unlike a contraction."
+    },
+    {
+      "sentence": "___ decision it was to cancel the trip remains a mystery.",
+      "options": [
+        "Whose",
+        "Who's",
+        "Whos",
+        "Who're"
+      ],
+      "answer": "Whose",
+      "difficulty": "hard",
+      "explanation": "\"Whose\" shows possession. \"Who's\" is a contraction for \"who is,\" which doesn't fit here."
+    },
+    {
+      "sentence": "We couldn't believe ___ finishing the marathon in under three hours.",
+      "options": [
+        "his",
+        "him",
+        "he",
+        "himself"
+      ],
+      "answer": "his",
+      "difficulty": "hard",
+      "explanation": "Before a gerund like \"finishing,\" use the possessive form \"his\" to show whose action is being discussed."
+    },
+    {
+      "sentence": "The award for best essay is officially ___, not the runner-up's.",
+      "options": [
+        "hers",
+        "her's",
+        "her",
+        "she's"
+      ],
+      "answer": "hers",
+      "difficulty": "hard",
+      "explanation": "\"Hers\" is a possessive pronoun and never takes an apostrophe."
+    },
+    {
+      "sentence": "___ silence during the announcement made everyone nervous.",
+      "options": [
+        "Their",
+        "They're",
+        "There",
+        "Theirs"
+      ],
+      "answer": "Their",
+      "difficulty": "hard",
+      "explanation": "\"Their\" shows possession here. \"There\" points to a place, and \"they're\" means \"they are.\""
+    },
+    {
+      "sentence": "She works as ___ NBA referee during basketball season.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "\"NBA\" is pronounced starting with the letter \"N,\" which sounds like \"en\" — a vowel sound — so it needs \"an.\""
+    },
+    {
+      "sentence": "He was awarded ___ honorary degree from the university.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"honorary\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "That is ___ European castle with a fascinating history.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"European\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "They watched ___ hour-long documentary about volcanoes.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"hour\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "It was considered ___ historic decision by the entire town council.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"historic\" is pronounced, so the word starts with a consonant sound and needs \"a.\""
+    },
+    {
+      "sentence": "My cousin owns ___ one-of-a-kind vintage motorcycle.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"One\" starts with a \"w\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "She is training to become ___ union organizer for the factory.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"Union\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "He sent ___ SOS signal when the boat began to sink.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "\"SOS\" is pronounced starting with the letter \"S,\" which sounds like \"ess\" — a vowel sound — so it needs \"an.\""
+    },
+    {
+      "sentence": "It was ___ unbelievably long wait at the amusement park.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "\"Unbelievably\" starts with a vowel sound, so it needs \"an,\" not \"a.\""
+    },
+    {
+      "sentence": "That is ___ useful tool for fixing bicycles.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"Useful\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "We met ___ heir to a famous painting collection.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"heir\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "He gave ___ humble apology after the mistake.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"humble\" is pronounced, so the word starts with a consonant sound and needs \"a.\""
+    },
+    {
+      "sentence": "She earned ___ MSc in marine biology last spring.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "\"MSc\" is pronounced starting with the letter \"M,\" which sounds like \"em\" — a vowel sound — so it needs \"an.\""
+    },
+    {
+      "sentence": "It felt like ___ once-in-a-lifetime opportunity for our whole team.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"Once\" starts with a \"w\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "They elected ___ honest, hardworking mayor last November.",
+      "options": [
+        "an",
+        "a",
+        "some",
+        "any"
+      ],
+      "answer": "an",
+      "difficulty": "hard",
+      "explanation": "The \"h\" in \"honest\" is silent, so the word starts with a vowel sound and needs \"an.\""
+    },
+    {
+      "sentence": "He interviewed for ___ unique position at the aquarium.",
+      "options": [
+        "a",
+        "an",
+        "some",
+        "any"
+      ],
+      "answer": "a",
+      "difficulty": "hard",
+      "explanation": "\"Unique\" starts with a \"yoo\" sound, which is a consonant sound, so it needs \"a,\" not \"an.\""
+    },
+    {
+      "sentence": "Scientists are studying several new ___ related to the storm's formation.",
+      "options": [
+        "phenomena",
+        "phenomenon",
+        "phenomenons",
+        "phenomenas"
+      ],
+      "answer": "phenomena",
+      "difficulty": "hard",
+      "explanation": "\"Phenomenon\" has an irregular Greek plural: \"phenomena,\" not \"phenomenons.\""
+    },
+    {
+      "sentence": "The grading rubric lists three separate ___ for this project.",
+      "options": [
+        "criteria",
+        "criterion",
+        "criterions",
+        "criterias"
+      ],
+      "answer": "criteria",
+      "difficulty": "hard",
+      "explanation": "\"Criterion\" has an irregular Greek plural: \"criteria,\" not \"criterions.\""
+    },
+    {
+      "sentence": "The professor assigned two research ___ due at the end of the term.",
+      "options": [
+        "theses",
+        "thesis",
+        "thesises",
+        "thesis's"
+      ],
+      "answer": "theses",
+      "difficulty": "hard",
+      "explanation": "\"Thesis\" has an irregular Greek plural: \"theses,\" not \"thesises.\""
+    },
+    {
+      "sentence": "The scientists compared their ___ after running the experiment twice.",
+      "options": [
+        "analyses",
+        "analysis",
+        "analysises",
+        "analysis's"
+      ],
+      "answer": "analyses",
+      "difficulty": "hard",
+      "explanation": "\"Analysis\" has an irregular Greek plural: \"analyses,\" not \"analysises.\""
+    },
+    {
+      "sentence": "The young researcher tested two competing ___ before writing her report.",
+      "options": [
+        "hypotheses",
+        "hypothesis",
+        "hypothesises",
+        "hypothesis's"
+      ],
+      "answer": "hypotheses",
+      "difficulty": "hard",
+      "explanation": "\"Hypothesis\" has an irregular Greek plural: \"hypotheses,\" not \"hypothesises.\""
+    },
+    {
+      "sentence": "The geometry worksheet asked us to label each triangle's three ___.",
+      "options": [
+        "vertices",
+        "vertex",
+        "vertexs",
+        "vertice"
+      ],
+      "answer": "vertices",
+      "difficulty": "hard",
+      "explanation": "\"Vertex\" has an irregular Latin plural: \"vertices,\" not \"vertexs.\""
+    },
+    {
+      "sentence": "Our school welcomed back three generations of ___ for the big reunion.",
+      "options": [
+        "alumni",
+        "alumnus",
+        "alumnuses",
+        "alumnis"
+      ],
+      "answer": "alumni",
+      "difficulty": "hard",
+      "explanation": "\"Alumnus\" has an irregular Latin plural: \"alumni,\" not \"alumnuses.\""
+    },
+    {
+      "sentence": "The report included five separate ___ at the very end.",
+      "options": [
+        "appendices",
+        "appendix",
+        "appendixs",
+        "appendix's"
+      ],
+      "answer": "appendices",
+      "difficulty": "hard",
+      "explanation": "\"Appendix\" has an irregular Latin plural: \"appendices,\" not \"appendixs.\""
+    },
+    {
+      "sentence": "The country faced back-to-back economic ___ in the last decade.",
+      "options": [
+        "crises",
+        "crisis",
+        "crisises",
+        "crisis's"
+      ],
+      "answer": "crises",
+      "difficulty": "hard",
+      "explanation": "\"Crisis\" has an irregular Greek plural: \"crises,\" not \"crisises.\""
+    },
+    {
+      "sentence": "We rolled a pair of ___ to decide who would go first.",
+      "options": [
+        "dice",
+        "die",
+        "dices",
+        "dies"
+      ],
+      "answer": "dice",
+      "difficulty": "hard",
+      "explanation": "\"Die\" has an irregular plural: \"dice.\" Since the sentence needs a plural for \"a pair of,\" \"die\" alone is wrong."
+    },
+    {
+      "sentence": "The butterfly's delicate ___ helped it sense the nearby flowers.",
+      "options": [
+        "antennae",
+        "antenna",
+        "antennas",
+        "antennaes"
+      ],
+      "answer": "antennae",
+      "difficulty": "hard",
+      "explanation": "For living things like insects, the plural of \"antenna\" is \"antennae\"; \"antennas\" is used for devices instead."
+    },
+    {
+      "sentence": "The pond was full of tiny mosquito ___ every spring.",
+      "options": [
+        "larvae",
+        "larva",
+        "larvas",
+        "larvaes"
+      ],
+      "answer": "larvae",
+      "difficulty": "hard",
+      "explanation": "\"Larva\" has an irregular Latin plural: \"larvae,\" not \"larvas.\""
+    },
+    {
+      "sentence": "The chiropractor examined each of his patient's spinal ___.",
+      "options": [
+        "vertebrae",
+        "vertebra",
+        "vertebras",
+        "vertebraes"
+      ],
+      "answer": "vertebrae",
+      "difficulty": "hard",
+      "explanation": "\"Vertebra\" has an irregular Latin plural: \"vertebrae,\" not \"vertebras.\""
+    },
+    {
+      "sentence": "Under the microscope, the cells' ___ were clearly visible.",
+      "options": [
+        "nuclei",
+        "nucleus",
+        "nucleuses",
+        "nucleusi"
+      ],
+      "answer": "nuclei",
+      "difficulty": "hard",
+      "explanation": "\"Nucleus\" has an irregular Latin plural: \"nuclei,\" not \"nucleuses.\""
+    },
+    {
+      "sentence": "The psychologist tested how the mice responded to different ___.",
+      "options": [
+        "stimuli",
+        "stimulus",
+        "stimuluses",
+        "stimulusi"
+      ],
+      "answer": "stimuli",
+      "difficulty": "hard",
+      "explanation": "\"Stimulus\" has an irregular Latin plural: \"stimuli,\" not \"stimuluses.\""
+    },
+    {
+      "sentence": "The camel caravan stopped to rest at two desert ___ along the route.",
+      "options": [
+        "oases",
+        "oasis",
+        "oasises",
+        "oasis's"
+      ],
+      "answer": "oases",
+      "difficulty": "hard",
+      "explanation": "\"Oasis\" has an irregular Greek plural: \"oases,\" not \"oasises.\""
+    },
+    {
+      "sentence": "There were ___ people at the game tonight than last week.",
+      "options": [
+        "fewer",
+        "less",
+        "lesser",
+        "least"
+      ],
+      "answer": "fewer",
+      "difficulty": "hard",
+      "explanation": "Use \"fewer\" for things you can count, like \"people.\" \"Less\" is for amounts you can't count individually."
+    },
+    {
+      "sentence": "We have ___ time left before the bus arrives than I thought.",
+      "options": [
+        "less",
+        "fewer",
+        "lesser",
+        "least"
+      ],
+      "answer": "less",
+      "difficulty": "hard",
+      "explanation": "Use \"less\" for amounts you can't count individually, like \"time.\" \"Fewer\" is for things you can count."
+    },
+    {
+      "sentence": "She has ___ homework tonight than her older brother does.",
+      "options": [
+        "less",
+        "fewer",
+        "lesser",
+        "least"
+      ],
+      "answer": "less",
+      "difficulty": "hard",
+      "explanation": "Use \"less\" for amounts you can't count individually, like \"homework.\" \"Fewer\" is for things you can count."
+    },
+    {
+      "sentence": "There are ___ chairs in this room than we actually need.",
+      "options": [
+        "fewer",
+        "less",
+        "lesser",
+        "least"
+      ],
+      "answer": "fewer",
+      "difficulty": "hard",
+      "explanation": "Use \"fewer\" for things you can count, like \"chairs.\" \"Less\" is for amounts you can't count individually."
+    },
+    {
+      "sentence": "I made ___ mistakes on this test than on the last one.",
+      "options": [
+        "fewer",
+        "less",
+        "lesser",
+        "least"
+      ],
+      "answer": "fewer",
+      "difficulty": "hard",
+      "explanation": "Use \"fewer\" for things you can count, like \"mistakes.\" \"Less\" is for amounts you can't count individually."
+    },
+    {
+      "sentence": "There is ___ traffic on this road today than usual.",
+      "options": [
+        "less",
+        "fewer",
+        "lesser",
+        "least"
+      ],
+      "answer": "less",
+      "difficulty": "hard",
+      "explanation": "Use \"less\" for amounts you can't count individually, like \"traffic.\" \"Fewer\" is for things you can count."
+    },
+    {
+      "sentence": "Only ___ students signed up for the field trip this year.",
+      "options": [
+        "fewer",
+        "less",
+        "lesser",
+        "least"
+      ],
+      "answer": "fewer",
+      "difficulty": "hard",
+      "explanation": "Use \"fewer\" for things you can count, like \"students.\" \"Less\" is for amounts you can't count individually."
+    },
+    {
+      "sentence": "We had ___ snow this winter than we did last winter.",
+      "options": [
+        "less",
+        "fewer",
+        "lesser",
+        "least"
+      ],
+      "answer": "less",
+      "difficulty": "hard",
+      "explanation": "Use \"less\" for amounts you can't count individually, like \"snow.\" \"Fewer\" is for things you can count."
+    },
+    {
+      "sentence": "It is incorrect to say 'more taller'; the correct comparative form is simply ___.",
+      "options": [
+        "taller",
+        "more taller",
+        "tallerer",
+        "most tallest"
+      ],
+      "answer": "taller",
+      "difficulty": "hard",
+      "explanation": "\"Taller\" already shows comparison by itself, so adding \"more\" in front creates an incorrect double comparative."
+    },
+    {
+      "sentence": "You should never say 'most best'; the correct superlative is just ___.",
+      "options": [
+        "best",
+        "most best",
+        "bestest",
+        "more best"
+      ],
+      "answer": "best",
+      "difficulty": "hard",
+      "explanation": "\"Best\" already shows the superlative by itself, so adding \"most\" in front creates an incorrect double superlative."
+    },
+    {
+      "sentence": "Saying 'more easier' is a common mistake; the correct word is simply ___.",
+      "options": [
+        "easier",
+        "more easier",
+        "easiest more",
+        "easierer"
+      ],
+      "answer": "easier",
+      "difficulty": "hard",
+      "explanation": "\"Easier\" already shows comparison by itself, so adding \"more\" in front creates an incorrect double comparative."
+    },
+    {
+      "sentence": "It's wrong to say 'more happier'; you should just say ___.",
+      "options": [
+        "happier",
+        "more happier",
+        "happiest",
+        "happierer"
+      ],
+      "answer": "happier",
+      "difficulty": "hard",
+      "explanation": "\"Happier\" already shows comparison by itself, so adding \"more\" in front creates an incorrect double comparative."
+    },
+    {
+      "sentence": "Instead of 'more smarter,' the correct comparative form is simply ___.",
+      "options": [
+        "smarter",
+        "more smarter",
+        "smartest",
+        "smarterer"
+      ],
+      "answer": "smarter",
+      "difficulty": "hard",
+      "explanation": "\"Smarter\" already shows comparison by itself, so adding \"more\" in front creates an incorrect double comparative."
+    },
+    {
+      "sentence": "Rather than 'most fastest,' the correct superlative is simply ___.",
+      "options": [
+        "fastest",
+        "most fastest",
+        "fasterest",
+        "more fastest"
+      ],
+      "answer": "fastest",
+      "difficulty": "hard",
+      "explanation": "\"Fastest\" already shows the superlative by itself, so adding \"most\" in front creates an incorrect double superlative."
+    },
+    {
+      "sentence": "This glass is either completely full or it isn't, so 'more ___' doesn't really apply here.",
+      "options": [
+        "full",
+        "more full",
+        "fuller",
+        "fullest"
+      ],
+      "answer": "full",
+      "difficulty": "hard",
+      "explanation": "\"Full\" describes an all-or-nothing state, so it isn't usually graded with \"more\" or \"-er\" the way ordinary adjectives are."
+    },
+    {
+      "sentence": "There were ___ volunteers this year than the event actually needed.",
+      "options": [
+        "fewer",
+        "less",
+        "lesser",
+        "least"
+      ],
+      "answer": "fewer",
+      "difficulty": "hard",
+      "explanation": "Use \"fewer\" for things you can count, like \"volunteers.\" \"Less\" is for amounts you can't count individually."
+    },
+    {
+      "sentence": "My grandfather fought in the ___ during World War II in the Pacific.",
+      "options": [
+        "Navy",
+        "navy",
+        "NAVY",
+        "Navvy"
+      ],
+      "answer": "Navy",
+      "difficulty": "hard",
+      "explanation": "When naming a specific branch of the military, like the \"Navy,\" it is a proper noun and is capitalized."
+    },
+    {
+      "sentence": "He proudly joined the ___ after high school graduation.",
+      "options": [
+        "Marines",
+        "marines",
+        "MARINES",
+        "Marrines"
+      ],
+      "answer": "Marines",
+      "difficulty": "hard",
+      "explanation": "When naming a specific branch of the military, like the \"Marines,\" it is a proper noun and is capitalized."
+    },
+    {
+      "sentence": "We studied the ___ Revolution in our history class this week.",
+      "options": [
+        "French",
+        "french",
+        "FRENCH",
+        "Frentch"
+      ],
+      "answer": "French",
+      "difficulty": "hard",
+      "explanation": "A proper adjective formed from a country's name, like \"French,\" is always capitalized."
+    },
+    {
+      "sentence": "The museum's new exhibit focuses on the ___ Ages, when knights and castles ruled Europe.",
+      "options": [
+        "Middle",
+        "middle",
+        "MIDDLE",
+        "Midle"
+      ],
+      "answer": "Middle",
+      "difficulty": "hard",
+      "explanation": "\"Middle Ages\" is the proper name of a specific historical period, so both words are capitalized."
+    },
+    {
+      "sentence": "Our teacher explained how the ___ Depression affected families across the country.",
+      "options": [
+        "Great",
+        "great",
+        "GREAT",
+        "Grate"
+      ],
+      "answer": "Great",
+      "difficulty": "hard",
+      "explanation": "\"Great Depression\" is the proper name of a specific historical event, so both words are capitalized."
+    },
+    {
+      "sentence": "My mom always says, \"___ is the best policy,\" whenever I'm tempted to lie.",
+      "options": [
+        "Honesty",
+        "honesty",
+        "HONESTY",
+        "Honisty"
+      ],
+      "answer": "Honesty",
+      "difficulty": "hard",
+      "explanation": "The first word of a quoted sentence is capitalized, just like the first word of any other sentence."
+    },
+    {
+      "sentence": "The recipe calls for a box of ___ crackers, my favorite brand.",
+      "options": [
+        "Ritz",
+        "ritz",
+        "RITZ",
+        "Rits"
+      ],
+      "answer": "Ritz",
+      "difficulty": "hard",
+      "explanation": "A specific brand name, like \"Ritz,\" is a proper noun and is always capitalized."
+    },
+    {
+      "sentence": "We drove through the ___ Mountains on our way to Colorado.",
+      "options": [
+        "Rocky",
+        "rocky",
+        "ROCKY",
+        "Rockey"
+      ],
+      "answer": "Rocky",
+      "difficulty": "hard",
+      "explanation": "\"Rocky Mountains\" is the proper name of a specific mountain range, so it is capitalized."
+    },
+    {
+      "sentence": "My aunt teaches ___ literature at the local college.",
+      "options": [
+        "American",
+        "american",
+        "AMERICAN",
+        "Amerken"
+      ],
+      "answer": "American",
+      "difficulty": "hard",
+      "explanation": "A proper adjective formed from a country's name, like \"American,\" is always capitalized."
+    },
+    {
+      "sentence": "The team traveled all the way to the ___ Ocean for the surfing competition.",
+      "options": [
+        "Atlantic",
+        "atlantic",
+        "ATLANTIC",
+        "Atlantik"
+      ],
+      "answer": "Atlantic",
+      "difficulty": "hard",
+      "explanation": "The specific name of an ocean, like the \"Atlantic,\" is a proper noun and is capitalized."
+    },
+    {
+      "sentence": "I asked ___ if she wanted to come over after school.",
+      "options": [
+        "Grandma",
+        "grandma",
+        "GRANDMA",
+        "Grandmaa"
+      ],
+      "answer": "Grandma",
+      "difficulty": "hard",
+      "explanation": "When a family title is used like a name, without \"my\" or \"the\" in front, it is capitalized."
+    },
+    {
+      "sentence": "I asked my ___ if she wanted to come over after school.",
+      "options": [
+        "grandma",
+        "Grandma",
+        "GRANDMA",
+        "Grandmaa"
+      ],
+      "answer": "grandma",
+      "difficulty": "hard",
+      "explanation": "When a family title follows a possessive word like \"my,\" it is treated as a regular noun and stays lowercase."
+    },
+    {
+      "sentence": "Every ___ Day, our town holds a big parade downtown.",
+      "options": [
+        "Independence",
+        "independence",
+        "INDEPENDENCE",
+        "Independance"
+      ],
+      "answer": "Independence",
+      "difficulty": "hard",
+      "explanation": "\"Independence Day\" is the proper name of a specific holiday, so it is capitalized."
+    },
+    {
+      "sentence": "Our class is learning about the ancient ___ civilization along the Nile.",
+      "options": [
+        "Egyptian",
+        "egyptian",
+        "EGYPTIAN",
+        "Egyptien"
+      ],
+      "answer": "Egyptian",
+      "difficulty": "hard",
+      "explanation": "A proper adjective formed from a place name, like \"Egyptian,\" is always capitalized."
+    },
+    {
+      "sentence": "The treaty was signed at the end of the ___ War in 1918.",
+      "options": [
+        "Great",
+        "great",
+        "GREAT",
+        "Grate"
+      ],
+      "answer": "Great",
+      "difficulty": "hard",
+      "explanation": "\"Great War\" is a proper name once used for a specific historical event (World War I), so it is capitalized."
+    },
+    {
+      "sentence": "We toured the ___ House while visiting Washington, D.C.",
+      "options": [
+        "White",
+        "white",
+        "WHITE",
+        "Wight"
+      ],
+      "answer": "White",
+      "difficulty": "hard",
+      "explanation": "\"White House\" is the proper name of a specific building, so it is capitalized."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type { Settings, Streaks, WordEntry, WordscapesStats } from '../types';
+import type { Settings, SentenceQuestStats, Streaks, WordEntry, WordscapesStats } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
@@ -22,9 +22,14 @@ function wordscapesStatsKey(profile: string): string {
   return `wordventure:wordscapesStats:${profile}`;
 }
 
+function sentenceQuestStatsKey(profile: string): string {
+  return `wordventure:sentenceQuestStats:${profile}`;
+}
+
 const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false, theme: 'system', fontSize: 'medium' };
 const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
 const DEFAULT_WORDSCAPES_STATS: WordscapesStats = { puzzlesCompleted: {}, bonusWordsFound: {} };
+const DEFAULT_SENTENCE_QUEST_STATS: SentenceQuestStats = { roundsCompleted: {}, correctAnswers: {}, questionsAnswered: {} };
 
 /**
  * localStorage can throw (private browsing, disabled storage, quota) or
@@ -150,6 +155,39 @@ export function recordWordscapesCompletion(
     stats.bonusWordsFound[category] = (stats.bonusWordsFound[category] ?? 0) + bonusWordsFoundCount;
   }
   writeJSON(wordscapesStatsKey(profile), stats);
+  return stats;
+}
+
+// --- Sentence Quest stats (per profile) -------------------------------------
+//
+// Unlike Bingo streaks/Wordscapes stats, there's no pre-profile-era legacy
+// key to migrate here -- this feature was added after profiles already
+// existed, so it's profile-scoped from day one with nothing to inherit.
+
+export function getSentenceQuestStats(profile: string): SentenceQuestStats {
+  return { ...DEFAULT_SENTENCE_QUEST_STATS, ...readJSON(sentenceQuestStatsKey(profile), DEFAULT_SENTENCE_QUEST_STATS) };
+}
+
+/**
+ * `correctCount`/`totalCount` are credited even if the round was abandoned
+ * partway through (exiting to menu mid-round) -- only `roundsCompleted`
+ * requires `completed: true`, mirroring how Wordscapes credits bonus words
+ * found before a give-up separately from the "puzzles completed" counter.
+ */
+export function recordSentenceQuestRound(
+  profile: string,
+  category: string,
+  correctCount: number,
+  totalCount: number,
+  completed: boolean,
+): SentenceQuestStats {
+  const stats = getSentenceQuestStats(profile);
+  if (completed) {
+    stats.roundsCompleted[category] = (stats.roundsCompleted[category] ?? 0) + 1;
+  }
+  stats.correctAnswers[category] = (stats.correctAnswers[category] ?? 0) + correctCount;
+  stats.questionsAnswered[category] = (stats.questionsAnswered[category] ?? 0) + totalCount;
+  writeJSON(sentenceQuestStatsKey(profile), stats);
   return stats;
 }
 

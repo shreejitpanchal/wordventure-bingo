@@ -5,12 +5,13 @@ PWA — Windows (Chrome/Edge) and Android (installed to home screen). No backend
 no accounts, no ads, no network calls after first load. (Named local player
 profiles exist — see "Player profiles" below — but they're just labeled
 localStorage buckets on-device, not accounts: no auth, no network, nothing
-that leaves the device.) Two modes, chosen from
-the main menu: **Bingo** (the original word-bingo game) and **Wordscapes**
+that leaves the device.) Three modes, chosen from
+the main menu: **Bingo** (the original word-bingo game), **Wordscapes**
 (a word-connect crossword puzzle, in the style of PeopleFun's Wordscapes/Word
 Cross — named "Wordscapes" as an in-app mode label only; that name is a
 third party's trademark, so it must not appear in any app-store listing,
-package id, or branding if this is ever published).
+package id, or branding if this is ever published), and **Sentence Quest**
+(a fill-in-the-blank grammar quiz — see "Sentence Quest mode" below).
 
 For a diagram-first map of module boundaries, data flow, and the screen
 state machine, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — this file
@@ -42,23 +43,26 @@ they are; keep both in sync when either changes.
   add a new screen safely.
 - No router: `src/App.tsx` is a single explicit screen state machine
   (`profile | menu | game | win | settings | wordscapes-game |
-  wordscapes-win`) swapped via `AnimatePresence`. Don't introduce React
-  Router or similar for what is a handful of screens. Mode selection (Bingo
-  vs. Wordscapes) happens inside `MenuScreen`, not as a separate screen.
+  wordscapes-win | sentence-quest-game | sentence-quest-win`) swapped via
+  `AnimatePresence`. Don't introduce React Router or similar for what is a
+  handful of screens. Mode selection (Bingo vs. Wordscapes vs. Sentence
+  Quest) happens inside `MenuScreen`, not as a separate screen.
 - No backend, no global state library: all persistence is `localStorage`
   behind `src/lib/storage.ts` (settings, player profiles, Bingo streaks,
-  Wordscapes stats, the Free Play custom word list). That file is the only
-  place allowed to touch `localStorage` directly. `App.tsx` holds the
-  active profile name and the loaded streaks/stats in React state and
-  passes them down explicitly as props — components never re-read "the
-  current profile" from storage themselves, so who a given render's data
-  belongs to is always traceable through props, not an implicit global.
+  Wordscapes stats, Sentence Quest stats, the Free Play custom word list).
+  That file is the only place allowed to touch `localStorage` directly.
+  `App.tsx` holds the active profile name and the loaded streaks/stats in
+  React state and passes them down explicitly as props — components never
+  re-read "the current profile" from storage themselves, so who a given
+  render's data belongs to is always traceable through props, not an
+  implicit global.
 - Game logic is framework-free and colocated in `src/lib/` (`cardGeneration`,
   `winDetection`, `clueMatching`, `caller` for Bingo; `wordscapes/gridGeneration`
-  for Wordscapes) — pure functions taking an injectable `rng` parameter so
-  they stay unit-testable without mocking `Math.random`. Keep new game-rule
-  logic there, not inside components. Shared utilities (e.g. `shuffle`) live
-  in `src/lib/random.ts` — reuse it rather than re-implementing per module.
+  for Wordscapes; `sentenceQuest` for Sentence Quest) — pure functions
+  taking an injectable `rng` parameter so they stay unit-testable without
+  mocking `Math.random`. Keep new game-rule logic there, not inside
+  components. Shared utilities (e.g. `shuffle`) live in `src/lib/random.ts`
+  — reuse it rather than re-implementing per module.
 
 ## Player profiles
 
@@ -418,6 +422,99 @@ they are; keep both in sync when either changes.
   again by skipping the whole storage call when `assisted` is true.
   `WordscapesWinScreen` also reads `assisted` to skip the confetti and
   swap the heading to "NICE TRY!".
+
+## Sentence Quest mode
+
+- **Fill-in-the-blank grammar quiz — one sentence with a missing word,
+  four multiple-choice options.** Built to directly target grammar/usage
+  skill-building (verb tense, prepositions, synonyms/antonyms, idioms,
+  and general grammar rules), which is why it has its **own category set**
+  (`SentenceQuestCategoryId`: `verbTense`, `prepositions`,
+  `synonymsAntonyms`, `idioms`, `grammarBasics`) instead of reusing Bingo/
+  Wordscapes' topic categories (`spelling`/`animals`/`geography`/`science`/
+  `freeplay`) — those are vocabulary themes, not grammar concepts, and
+  don't map cleanly onto "test this specific grammar rule." Content lives
+  in `src/data/sentenceQuestBanks/*.json`, registered in
+  `src/data/sentenceQuestBanks.ts` (mirrors `wordBanks.ts`'s pattern
+  exactly, just a parallel, unrelated registry — not an extension of it).
+- **A round is `questionCount` (menu option, `QUESTION_COUNT_OPTIONS` =
+  5/10/15/20 in `src/lib/sentenceQuest.ts`) questions sampled from the
+  chosen category/difficulty pool.** `generateRound` shuffles which
+  questions are picked *and* shuffles each question's own `options` order
+  — the correct answer is never predictably in the same on-screen slot.
+  Grading is always by string equality against `answer`, never by array
+  index, so that shuffle can never cause a misgrade. Like `generateCard`/
+  Wordscapes' `generateLevel`, it throws loudly if the pool can't fill a
+  round rather than rendering a broken one — every category/difficulty
+  needs at least `MAX_QUESTION_COUNT` (20) questions.
+- **Every `sentence` must contain exactly one `"___"` marker** (checked by
+  `splitSentence`, which throws otherwise) and **every question must have
+  exactly 4 `options`, with `answer` equal to exactly one of them
+  string-for-string.** These invariants are enforced by convention/review,
+  not by a runtime guard in the game code itself — when adding or editing
+  question-bank content, verify it with a script (see below), not by eye.
+- **`explanation` is the actual teaching moment, not a footnote.**
+  `SentenceQuestScreen` shows it immediately after the player answers,
+  regardless of right or wrong — the point of this mode is building
+  grammar understanding, so seeing *why* an answer is correct matters more
+  than the score. Don't make `explanation` optional or skip rendering it
+  to save space.
+- **Stats are per-profile** (`SentenceQuestStats`, `sentenceQuestStatsKey`
+  in `storage.ts`), same pattern as Wordscapes: `recordSentenceQuestRound`
+  splits `roundsCompleted` (gated on `completed: true` — currently always
+  true, since a round can only be reported via
+  `SentenceQuestScreen`'s own completion flow, but the parameter exists
+  for the same reason Wordscapes' `solved` flag does: an abandoned-partway
+  round should be able to credit correct answers without counting as a
+  full completion, if that path gets built later) from `correctAnswers`/
+  `questionsAnswered`, which are always credited regardless. Unlike Bingo/
+  Wordscapes, there's no pre-profile-era legacy key to migrate — this
+  feature was added after profiles already existed, so it's profile-scoped
+  from day one with nothing to inherit.
+- **Content was authored in bulk by background agents, one per category**
+  (mirroring how `spelling`/`freeplay`'s word-bank expansion was done),
+  targeting ~100-150 questions per difficulty tier per category. Final
+  counts: `verbTense` 318 (106/106/106), `prepositions` 356
+  (112/122/122), `synonymsAntonyms` 325 (115/105/105), `idioms` 315
+  (105/104/106), `grammarBasics` 338 (110/114/114) — **1652 questions
+  total**. Each category file started with 6 hand-written example
+  questions (2 per difficulty) that fixed the tone/quality bar/schema for
+  its agent to match — those originals are still in each file, not just
+  scaffolding to delete.
+- **Structural validation (schema/duplicates/JSON-validity) cannot catch
+  actual content bugs — independent review of every file's real content
+  found and fixed several after the agents' own "ALL GOOD" self-checks
+  had already passed:** a subject-verb agreement error baked into a
+  templated clause (`"When the scientists **was** younger..."` — the
+  template didn't fork on subject number), two he/she–his/her pronoun
+  mismatches within a single sentence, a duplicated-determiner typo
+  (`"standing among **the the** crowd"`), a self-contradictory question
+  (a `"(the opposite of X)"` hint whose stated answer was the *same* word
+  as `X`, not its antonym), and — most importantly — **one genuinely
+  inappropriate word (`"Whore"`) that turned up as a plausible-looking
+  misspelling among multiple-choice distractors**, caught only by
+  actually reading sampled output, not by any schema check. None of this
+  is a one-time cleanup: **any future edit to these files (agent-authored
+  or hand-written) needs the same two-pass treatment** — first the
+  structural script (exactly one `"___"` per sentence, exactly 4 options
+  with `answer` present exactly once, no duplicate `sentence` values, no
+  duplicated-word/double-space typos, valid JSON) — but treat that pass
+  as necessary, not sufficient. **Also read a real sample of the actual
+  generated sentences** (not just the validator's summary) before trusting
+  new content, specifically checking for: grammar correctness in the
+  sentence itself (not just the blank), sensible/non-contradictory
+  sentence logic, and inappropriate language — this is a kids' app, so
+  that last check isn't optional. A keyword sweep can help surface
+  candidates but has real false-positive risk on short substrings inside
+  innocent words (e.g. `"hell"` inside `"seashells"`) — verify each hit
+  before treating it as real, don't blind-delete on a keyword match alone.
+- Added a `--color-danger`/`--color-danger-dark` pair to `theme.css`
+  specifically for this mode's right/wrong answer feedback — no prior
+  screen needed a "this is wrong" color (Wordscapes' invalid-word feedback
+  deliberately uses a neutral/muted style, not red, since a mistyped word
+  is a minor slip, not a graded answer). A quiz's correct/incorrect
+  distinction is the core feedback loop here, so it earns a real color
+  rather than reusing the muted style.
 
 ## Testing
 

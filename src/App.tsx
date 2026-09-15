@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Capacitor } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
-import type { GameConfig, ScreenName, WinPattern, WordscapesConfig } from './types';
+import type { GameConfig, ScreenName, SentenceQuestConfig, WinPattern, WordscapesConfig } from './types';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useAppearance } from './hooks/useAppearance';
@@ -10,9 +10,11 @@ import {
   createProfile,
   getCurrentProfile,
   getProfiles,
+  getSentenceQuestStats,
   getStreaks,
   getWordscapesStats,
   recordGameResult,
+  recordSentenceQuestRound,
   recordWordscapesCompletion,
 } from './lib/storage';
 import ProfileScreen from './components/ProfileScreen';
@@ -21,6 +23,8 @@ import GameScreen from './components/GameScreen';
 import WinScreen from './components/WinScreen';
 import WordscapesGameScreen from './components/WordscapesGameScreen';
 import WordscapesWinScreen from './components/WordscapesWinScreen';
+import SentenceQuestScreen from './components/SentenceQuestScreen';
+import SentenceQuestWinScreen from './components/SentenceQuestWinScreen';
 import SettingsScreen from './components/SettingsScreen';
 
 interface WinInfo {
@@ -36,6 +40,12 @@ interface WordscapesWinInfo {
    * Give Up) at any point in this puzzle, even if they finished the rest
    * of it themselves. */
   assisted: boolean;
+}
+
+interface SentenceQuestWinInfo {
+  config: SentenceQuestConfig;
+  correctCount: number;
+  totalCount: number;
 }
 
 export default function App() {
@@ -54,6 +64,10 @@ export default function App() {
   const [wordscapesWinInfo, setWordscapesWinInfo] = useState<WordscapesWinInfo | null>(null);
   const [wordscapesStats, setWordscapesStats] = useState(() => getWordscapesStats(currentProfile ?? ''));
 
+  const [sentenceQuestConfig, setSentenceQuestConfig] = useState<SentenceQuestConfig | null>(null);
+  const [sentenceQuestWinInfo, setSentenceQuestWinInfo] = useState<SentenceQuestWinInfo | null>(null);
+  const [sentenceQuestStats, setSentenceQuestStats] = useState(() => getSentenceQuestStats(currentProfile ?? ''));
+
   const { settings, updateSettings } = useSettings();
   const reduceMotion = useReducedMotion(settings.reduceMotion);
   useAppearance(settings);
@@ -67,6 +81,7 @@ export default function App() {
     setProfiles(getProfiles());
     setStreaks(getStreaks(name));
     setWordscapesStats(getWordscapesStats(name));
+    setSentenceQuestStats(getSentenceQuestStats(name));
     setScreen('menu');
   }, []);
 
@@ -116,11 +131,37 @@ export default function App() {
     setScreen('wordscapes-game');
   }, [wordscapesWinInfo]);
 
+  const startSentenceQuest = useCallback((config: SentenceQuestConfig) => {
+    window.history.pushState(null, '');
+    setSentenceQuestConfig(config);
+    setScreen('sentence-quest-game');
+  }, []);
+
+  const handleSentenceQuestComplete = useCallback(
+    (correctCount: number, totalCount: number) => {
+      if (!sentenceQuestConfig || !currentProfile) return;
+      setSentenceQuestStats(
+        recordSentenceQuestRound(currentProfile, sentenceQuestConfig.category, correctCount, totalCount, true),
+      );
+      setSentenceQuestWinInfo({ config: sentenceQuestConfig, correctCount, totalCount });
+      setScreen('sentence-quest-win');
+    },
+    [sentenceQuestConfig, currentProfile],
+  );
+
+  const playSentenceQuestAgain = useCallback(() => {
+    if (!sentenceQuestWinInfo) return;
+    setSentenceQuestConfig({ ...sentenceQuestWinInfo.config });
+    setScreen('sentence-quest-game');
+  }, [sentenceQuestWinInfo]);
+
   const goToMenu = useCallback(() => {
     setGameConfig(null);
     setWinInfo(null);
     setWordscapesConfig(null);
     setWordscapesWinInfo(null);
+    setSentenceQuestConfig(null);
+    setSentenceQuestWinInfo(null);
     setScreen('menu');
   }, []);
 
@@ -143,7 +184,7 @@ export default function App() {
   // back always fell straight through to "exit," which read as "the app
   // just collapses and does nothing." Every function above that leaves
   // 'menu' for a divertable sub-flow (startGame, startWordscapes,
-  // openSettings, switchProfile) now pushes one entry; goToMenu/
+  // startSentenceQuest, openSettings, switchProfile) now pushes one entry; goToMenu/
   // closeSettings/the profile "back to menu" case deliberately do NOT push,
   // since they're the functions THIS handler calls to consume that entry.
   // A screen only ever needs one entry regardless of how many further
@@ -159,6 +200,8 @@ export default function App() {
       case 'win':
       case 'wordscapes-game':
       case 'wordscapes-win':
+      case 'sentence-quest-game':
+      case 'sentence-quest-win':
         goToMenu();
         break;
       case 'settings':
@@ -230,8 +273,10 @@ export default function App() {
           playerName={currentProfile}
           streaks={streaks}
           wordscapesStats={wordscapesStats}
+          sentenceQuestStats={sentenceQuestStats}
           onStartBingo={startGame}
           onStartWordscapes={startWordscapes}
+          onStartSentenceQuest={startSentenceQuest}
           onOpenSettings={openSettings}
           onSwitchProfile={switchProfile}
           reduceMotion={reduceMotion}
@@ -276,6 +321,27 @@ export default function App() {
           assisted={wordscapesWinInfo.assisted}
           stats={wordscapesStats}
           onNextPuzzle={nextWordscapesPuzzle}
+          onMenu={goToMenu}
+          reduceMotion={reduceMotion}
+        />
+      )}
+      {screen === 'sentence-quest-game' && sentenceQuestConfig && (
+        <SentenceQuestScreen
+          key="sentence-quest-game"
+          config={sentenceQuestConfig}
+          onComplete={handleSentenceQuestComplete}
+          onExit={goToMenu}
+          reduceMotion={reduceMotion}
+        />
+      )}
+      {screen === 'sentence-quest-win' && sentenceQuestWinInfo && (
+        <SentenceQuestWinScreen
+          key="sentence-quest-win"
+          config={sentenceQuestWinInfo.config}
+          correctCount={sentenceQuestWinInfo.correctCount}
+          totalCount={sentenceQuestWinInfo.totalCount}
+          stats={sentenceQuestStats}
+          onPlayAgain={playSentenceQuestAgain}
           onMenu={goToMenu}
           reduceMotion={reduceMotion}
         />
