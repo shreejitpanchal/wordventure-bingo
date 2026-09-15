@@ -123,8 +123,12 @@ echo
 (cd "$ANDROID_DIR" && ./gradlew assembleDebug)
 
 mkdir -p "$OUT_DIR"
+# Gradle's own output path always says "debug" (that's the build type),
+# but the renamed file we hand back doesn't need to repeat it -- the
+# top-of-file comment and README/CLAUDE.md already document that this is
+# a debug-signed build, not a Play Store release.
 BUILT_APK="$ANDROID_DIR/app/build/outputs/apk/debug/app-debug.apk"
-TAGGED_APK="$OUT_DIR/wordventure-bingo-v${APP_VERSION}-build${NEW_BUILD}-debug.apk"
+TAGGED_APK="$OUT_DIR/wordventure-bingo-v${APP_VERSION}-build${NEW_BUILD}.apk"
 if [ -f "$BUILT_APK" ]; then
     mv "$BUILT_APK" "$TAGGED_APK"
     echo

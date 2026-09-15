@@ -1,21 +1,28 @@
-/* Fixed-viewport-height layout (not min-height: a tall crossword grid --
-   e.g. a long/awkwardly-shaped word set -- must NOT grow the whole page,
-   or the top bar scrolls out of reach and the wheel/action buttons end up
-   pushed down under the device's gesture/nav bar. Only .gridBox below
-   scrolls; the top bar and the wheel/buttons stay pinned in place.
-   100dvh (falls back to 100vh where unsupported) tracks the *current*
-   visual viewport so this also holds up when a mobile browser's own
-   chrome shows/hides. Safe-area padding keeps content clear of the status
-   bar / notch and the gesture nav bar in a fullscreen PWA/APK. */
+/* Fixed-height layout (not min-height: a tall crossword grid -- e.g. a
+   long/awkwardly-shaped word set -- must NOT grow the whole page, or the
+   top bar scrolls out of reach and the wheel/action buttons end up pushed
+   down under the device's gesture/nav bar. Only .gridBox below scrolls;
+   the top bar and the wheel/buttons stay pinned in place.
+   `height: 100%`, not `100vh`/`100dvh`: this is 100% of body's own
+   already safe-area-inset content box (see index.css), which is also
+   what every other screen in this app now uses for consistency (all of
+   them used to fight this same status-bar/nav-bar overlap independently
+   before that centralized there) -- vh/dvh units always measure the raw
+   viewport regardless of any ancestor's padding, so they'd undo that
+   inset entirely and put content back under the status/nav bars, which is
+   exactly the bug that padding exists to fix. The one thing dvh handled
+   that a plain percentage doesn't: tracking a mobile *browser tab's* own
+   chrome show/hide. That's a non-issue for the Capacitor APK (a fullscreen
+   native shell with no browser chrome at all) and a minor one for an
+   installed PWA; consistency with the rest of the app's safe-area
+   handling here matters more. */
 .screen {
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding: calc(var(--space-4) + env(safe-area-inset-top)) var(--space-4)
-    calc(var(--space-4) + env(safe-area-inset-bottom));
+  padding: var(--space-4);
   gap: var(--space-4);
 }
 

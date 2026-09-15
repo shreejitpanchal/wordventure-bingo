@@ -22,6 +22,24 @@ they are; keep both in sync when either changes.
 - React + Vite + TypeScript, Framer Motion for all transitions/animations, CSS
   Modules for styling (no Tailwind, no UI framework).
 - `vite-plugin-pwa` owns the manifest + service worker (`vite.config.ts`).
+- **Safe-area insets are handled once, globally, on `body` (`index.css`)
+  — not per-screen.** `index.html`'s `viewport-fit=cover` draws content
+  edge-to-edge (required for `env(safe-area-inset-*)` to report real,
+  non-zero values at all), so without reserving that space, content can
+  render under the status bar/notch or the gesture-nav bar in a fullscreen
+  PWA/APK — this first surfaced on `WordscapesGameScreen` and got a
+  screen-local fix, then again on `MenuScreen` (its top bar buttons sat
+  right against the status bar), which is what prompted centralizing it:
+  `body` gets `padding: env(safe-area-inset-*)` on all four sides, and
+  every screen's own `.screen` class sizes itself with `height: 100%` /
+  `min-height: 100%` (never `vh`/`dvh`) so it's measured against that
+  already-inset box automatically. **Every current and future `.screen`
+  class must follow that same `100%`-not-`vh` rule** — a `vh`/`dvh` value
+  always measures the raw viewport regardless of any ancestor's padding,
+  which silently undoes the inset and reintroduces exactly this bug for
+  that one screen. `#root`/`body`/`html` already chain `height: 100%`
+  correctly for this (see `index.css`) — nothing else needs to change to
+  add a new screen safely.
 - No router: `src/App.tsx` is a single explicit screen state machine
   (`profile | menu | game | win | settings | wordscapes-game |
   wordscapes-win`) swapped via `AnimatePresence`. Don't introduce React
@@ -149,16 +167,34 @@ they are; keep both in sync when either changes.
   before the app actually exits. Making every visible button also drive
   `history.back()` to keep the two perfectly in sync isn't worth the risk
   of double-firing `handleBack` for that minor a polish gain.
+- **On the native Android APK, `@capacitor/app`'s `backButton` event is
+  the authoritative mechanism — not the `popstate` listener above.**
+  Capacitor's docs say its default Android back handling calls
+  `history.back()` for you, which is why the `pushState`/`popstate`
+  approach above was tried first; real-device testing on the actual APK
+  showed it did **not** reliably reach the app (hardware back still just
+  closed it from Settings) — WebView-back-button-to-JS-history bridging
+  apparently isn't trustworthy enough to depend on alone. A second
+  `useEffect` in `App.tsx`, gated on `Capacitor.isNativePlatform()`,
+  registers `CapacitorApp.addListener('backButton', ...)` and calls the
+  *same* `handleBackRef.current()` resolver directly — no history
+  involved at all. Registering that listener also **disables** Capacitor's
+  default back handling entirely (per its own docs), so on native Android
+  this listener becomes the sole back-press path; the `pushState` calls
+  sprinkled through `startGame`/`startWordscapes`/`openSettings`/
+  `switchProfile` become inert there but stay meaningful for the web/PWA
+  case, where this plugin event doesn't exist and `popstate` is still the
+  only mechanism. Keep both — don't remove the `popstate` path thinking
+  the plugin superseded it, it only supersedes it *on native*.
 - Researched via `C:\Development\python-adventure-kids` (a sibling,
   different-stack Flet/Flutter project) for the underlying concept: it
   intercepts the native back action (`can_pop = False` + `on_confirm_pop`,
   a `WillPopScope`-style hook — real-device testing there found the naive
   default just closes the app, same symptom reported here) and drives
-  navigation from its own Python-side history stack instead. This app's
-  web-native equivalent is the browser History API itself (`pushState`/
-  `popstate`) rather than a from-scratch stack, since Capacitor's Android
-  back handling already delegates to it by default — no `@capacitor/app`
-  plugin or other native dependency needed.
+  navigation from its own Python-side history stack instead. The
+  `@capacitor/app` listener above is this app's equivalent of that direct
+  native interception; the `popstate`/`pushState` mechanism is what's left
+  for contexts (the web/PWA) where no such native hook exists.
 
 ## Word banks
 
@@ -263,7 +299,7 @@ they are; keep both in sync when either changes.
   the test suite) that every shipped category/difficulty combo reliably
   generates across word counts 3-10 and many random seeds. Re-verify this
   if you significantly change a word bank's contents.
-- **`WordscapesGameScreen`'s `.screen` is a fixed-`height` (`100dvh`, not
+- **`WordscapesGameScreen`'s `.screen` is a fixed-`height` (`100%`, not
   `min-height`) layout with exactly one flexible region (`.gridBox`,
   bounding just `CrosswordGrid`), and the grid always scales to fit inside
   it rather than scrolling.** A tall or awkwardly-shaped word set (a
@@ -272,10 +308,11 @@ they are; keep both in sync when either changes.
   *whole page*, scrolling the top bar out of reach and pushing the letter
   wheel/action buttons down under the device's status bar or gesture-nav
   bar in a fullscreen PWA/APK (`index.html`'s `viewport-fit=cover` draws
-  content edge-to-edge, so nothing reserved space for either). Two fixes,
+  content edge-to-edge; see "Stack & architecture" for the app-wide
+  `env(safe-area-inset-*)` fix on `body` — this screen used to carry its
+  own copy of that padding before it was centralized there). Two fixes,
   layered:
-  1. `.screen` gets `overflow: hidden` plus `env(safe-area-inset-top/
-     bottom)` padding; the top bar/feedback/hint slots and
+  1. `.screen` gets `overflow: hidden`; the top bar/feedback/hint slots and
      `.bottomControls` (wheel + assist buttons) are `flex-shrink: 0`; only
      `.gridBox` (`flex: 1; min-height: 0`) is allowed to flex — `min-height:
      0` is required on it, since a flex item won't shrink below its

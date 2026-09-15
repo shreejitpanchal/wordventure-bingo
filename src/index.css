@@ -19,6 +19,16 @@ body {
   color: var(--color-text);
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
+  /* index.html's viewport-fit=cover draws content edge-to-edge (needed for
+     env(safe-area-inset-*) to report real, non-zero values at all), so
+     without this every screen's content can render under the status bar/
+     notch or the gesture-nav bar in a fullscreen PWA/APK. This is the one
+     place that needs it: every screen's own .screen height (`min-height:
+     100%`/`height: 100%`, not vh/dvh -- see below) is measured relative to
+     this already-inset box, so they all get the correct safe area for
+     free with no per-screen padding of their own. */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
 }
 
 button {

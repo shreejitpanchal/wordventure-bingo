@@ -146,8 +146,12 @@ if ($buildExit -ne 0) {
 }
 
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
+# Gradle's own output path always says "debug" (that's the build type),
+# but the renamed file we hand back doesn't need to repeat it -- the
+# top-of-file comment and README/CLAUDE.md already document that this is
+# a debug-signed build, not a Play Store release.
 $builtApk = Join-Path $AndroidDir 'app\build\outputs\apk\debug\app-debug.apk'
-$taggedApk = Join-Path $OutDir "wordventure-bingo-v$appVersion-build$newBuild-debug.apk"
+$taggedApk = Join-Path $OutDir "wordventure-bingo-v$appVersion-build$newBuild.apk"
 if (Test-Path $builtApk) {
     Move-Item -Path $builtApk -Destination $taggedApk -Force
     Write-Host ''

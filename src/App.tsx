@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { Capacitor } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
 import type { GameConfig, ScreenName, WinPattern, WordscapesConfig } from './types';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
@@ -186,6 +188,29 @@ export default function App() {
     }
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  // Real-device testing showed the popstate-based fix above (relying on
+  // Capacitor's default Android back handling, which is documented to call
+  // history.back() for us) doesn't reliably reach the app in the native
+  // APK -- WebView back-button-to-history bridging is apparently not
+  // trustworthy enough to depend on alone. `@capacitor/app`'s `backButton`
+  // event is a direct native signal that bypasses that bridging entirely:
+  // registering a listener for it also disables Capacitor's default
+  // history.back()/exit behavior, so this becomes the sole, authoritative
+  // back-press path on native Android -- call the same resolver directly,
+  // no history state involved. Only registered when actually running
+  // inside Capacitor (Capacitor.isNativePlatform()); on the web/PWA the
+  // popstate listener above remains the only mechanism, since this plugin
+  // event doesn't exist there.
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) return;
+    const listenerHandle = CapacitorApp.addListener('backButton', () => {
+      handleBackRef.current();
+    });
+    return () => {
+      listenerHandle.then((handle) => handle.remove());
+    };
   }, []);
 
   return (
