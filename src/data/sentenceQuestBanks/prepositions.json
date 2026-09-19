@@ -4273,6 +4273,4086 @@
       "answer": "In light of",
       "difficulty": "hard",
       "explanation": "\"In light of\" introduces new information that leads to a decision, like the complaints leading to a policy change."
+    },
+    {
+      "sentence": "The fox is resting ___ the porch steps.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the fox below porch steps."
+    },
+    {
+      "sentence": "The otter is resting ___ the dock.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the otter below dock."
+    },
+    {
+      "sentence": "The duck is resting ___ the picnic table.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the duck below picnic table."
+    },
+    {
+      "sentence": "The goat is resting ___ the wagon.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the goat below wagon."
+    },
+    {
+      "sentence": "The pony is resting ___ the old oak tree.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the pony below old oak tree."
+    },
+    {
+      "sentence": "The sheep is resting ___ the shed.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the sheep below shed."
+    },
+    {
+      "sentence": "The frog is resting ___ the lily pad.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the frog below lily pad."
+    },
+    {
+      "sentence": "The owl is resting ___ the barn eaves.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like the owl below barn eaves."
+    },
+    {
+      "sentence": "The pencils are ___ the drawer.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the pencils inside drawer."
+    },
+    {
+      "sentence": "The shells are ___ the bucket.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the shells inside bucket."
+    },
+    {
+      "sentence": "The stickers are ___ the folder.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the stickers inside folder."
+    },
+    {
+      "sentence": "The apples are ___ the basket.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the apples inside basket."
+    },
+    {
+      "sentence": "The buttons are ___ the jar.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the buttons inside jar."
+    },
+    {
+      "sentence": "The tickets are ___ the wallet.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the tickets inside wallet."
+    },
+    {
+      "sentence": "The photos are ___ the album.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the photos inside album."
+    },
+    {
+      "sentence": "The seeds are ___ the pouch.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "under"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used for something enclosed inside a container, like the seeds inside pouch."
+    },
+    {
+      "sentence": "The glider soared ___ the valley.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the glider passing above valley."
+    },
+    {
+      "sentence": "The hawk circled ___ the canyon.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the hawk passing above canyon."
+    },
+    {
+      "sentence": "The airplane climbed ___ the meadow.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the airplane passing above meadow."
+    },
+    {
+      "sentence": "The seagull glided ___ the harbor.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the seagull passing above harbor."
+    },
+    {
+      "sentence": "The blimp floated ___ the coastline.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the blimp passing above coastline."
+    },
+    {
+      "sentence": "The drone hovered ___ the wheat field.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the drone passing above wheat field."
+    },
+    {
+      "sentence": "The kite dipped ___ the hillside.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the kite passing above hillside."
+    },
+    {
+      "sentence": "The jet roared ___ the glacier.",
+      "options": [
+        "over",
+        "under",
+        "at",
+        "to"
+      ],
+      "answer": "over",
+      "difficulty": "easy",
+      "explanation": "\"Over\" describes movement above something, like the jet passing above glacier."
+    },
+    {
+      "sentence": "The playground is ___ the daycare and the pool.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like daycare and pool."
+    },
+    {
+      "sentence": "The vet clinic is ___ the pet shop and the diner.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like pet shop and diner."
+    },
+    {
+      "sentence": "The bus stop is ___ the bakery and the barbershop.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like bakery and barbershop."
+    },
+    {
+      "sentence": "The music store is ___ the toy store and the bookshop.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like toy store and bookshop."
+    },
+    {
+      "sentence": "The skating rink is ___ the arena and the parking lot.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like arena and parking lot."
+    },
+    {
+      "sentence": "The garden center is ___ the greenhouse and the nursery.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like greenhouse and nursery."
+    },
+    {
+      "sentence": "The bike rack is ___ the entrance and the flagpole.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like entrance and flagpole."
+    },
+    {
+      "sentence": "The food truck is ___ the tennis courts and the playground area.",
+      "options": [
+        "between",
+        "among",
+        "near",
+        "at"
+      ],
+      "answer": "between",
+      "difficulty": "easy",
+      "explanation": "\"Between\" is used for something located in the middle of exactly two places, like tennis courts and playground area."
+    },
+    {
+      "sentence": "The stool sits ___ the counter.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the stool beside counter."
+    },
+    {
+      "sentence": "The basket sits ___ the front door.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the basket beside front door."
+    },
+    {
+      "sentence": "The mirror stands ___ the closet.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the mirror beside closet."
+    },
+    {
+      "sentence": "The easel stands ___ the window.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the easel beside window."
+    },
+    {
+      "sentence": "The crate sits ___ the workbench.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the crate beside workbench."
+    },
+    {
+      "sentence": "The bike rests ___ the shed.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the bike beside shed."
+    },
+    {
+      "sentence": "The bench sits ___ the flower bed.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the bench beside flower bed."
+    },
+    {
+      "sentence": "The ladder leans ___ the garage wall.",
+      "options": [
+        "next to",
+        "between",
+        "into",
+        "from"
+      ],
+      "answer": "next to",
+      "difficulty": "easy",
+      "explanation": "\"Next to\" describes something positioned right beside another object, like the ladder beside garage wall."
+    },
+    {
+      "sentence": "The chandelier hangs ___ the dining table.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the chandelier positioned over dining table."
+    },
+    {
+      "sentence": "The bulletin board hangs ___ the coat hooks.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the bulletin board positioned over coat hooks."
+    },
+    {
+      "sentence": "The flag hangs ___ the entrance.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the flag positioned over entrance."
+    },
+    {
+      "sentence": "The skylight sits ___ the staircase.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the skylight positioned over staircase."
+    },
+    {
+      "sentence": "The nightlight glows ___ the crib.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the nightlight positioned over crib."
+    },
+    {
+      "sentence": "The awning stretches ___ the shop window.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the awning positioned over shop window."
+    },
+    {
+      "sentence": "The garland hangs ___ the mantel.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the garland positioned over mantel."
+    },
+    {
+      "sentence": "The lantern hangs ___ the patio table.",
+      "options": [
+        "above",
+        "under",
+        "into",
+        "at"
+      ],
+      "answer": "above",
+      "difficulty": "easy",
+      "explanation": "\"Above\" describes something positioned higher than another object, like the lantern positioned over patio table."
+    },
+    {
+      "sentence": "Our clubhouse is ___ the creek.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the clubhouse being close to creek."
+    },
+    {
+      "sentence": "Our tent is ___ the campfire.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the tent being close to campfire."
+    },
+    {
+      "sentence": "Our apartment is ___ the subway station.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the apartment being close to subway station."
+    },
+    {
+      "sentence": "Our barn is ___ the orchard.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the barn being close to orchard."
+    },
+    {
+      "sentence": "Our dorm is ___ the library.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the dorm being close to library."
+    },
+    {
+      "sentence": "Our booth is ___ the entrance.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the booth being close to entrance."
+    },
+    {
+      "sentence": "Our cottage is ___ the lighthouse.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the cottage being close to lighthouse."
+    },
+    {
+      "sentence": "Our classroom is ___ the gym.",
+      "options": [
+        "near",
+        "between",
+        "among",
+        "into"
+      ],
+      "answer": "near",
+      "difficulty": "easy",
+      "explanation": "\"Near\" describes something located close to another place, like the classroom being close to gym."
+    },
+    {
+      "sentence": "The toolshed is ___ the greenhouse.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the toolshed at the back of greenhouse."
+    },
+    {
+      "sentence": "The bleachers are ___ the scoreboard.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the bleachers at the back of scoreboard."
+    },
+    {
+      "sentence": "The dumpster is ___ the restaurant.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the dumpster at the back of restaurant."
+    },
+    {
+      "sentence": "The chicken coop is ___ the farmhouse.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the chicken coop at the back of farmhouse."
+    },
+    {
+      "sentence": "The parking lot is ___ the stadium.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the parking lot at the back of stadium."
+    },
+    {
+      "sentence": "The storage unit is ___ the warehouse.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the storage unit at the back of warehouse."
+    },
+    {
+      "sentence": "The dugout is ___ the fence.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the dugout at the back of fence."
+    },
+    {
+      "sentence": "The tool cabinet is ___ the workbench.",
+      "options": [
+        "behind",
+        "between",
+        "into",
+        "among"
+      ],
+      "answer": "behind",
+      "difficulty": "easy",
+      "explanation": "\"Behind\" describes something located at the back of another place, like the tool cabinet at the back of workbench."
+    },
+    {
+      "sentence": "The parcel came ___ my pen pal.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the parcel coming from my pen pal."
+    },
+    {
+      "sentence": "The recipe came ___ my great-grandmother.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the recipe coming from my great-grandmother."
+    },
+    {
+      "sentence": "The song came ___ an old record.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the song coming from an old record."
+    },
+    {
+      "sentence": "The rumor came ___ the new kid.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the rumor coming from the new kid."
+    },
+    {
+      "sentence": "The signal came ___ a distant tower.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the signal coming from a distant tower."
+    },
+    {
+      "sentence": "The breeze came ___ the open window.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the breeze coming from the open window."
+    },
+    {
+      "sentence": "The applause came ___ the back row.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the applause coming from the back row."
+    },
+    {
+      "sentence": "The idea came ___ a dream.",
+      "options": [
+        "from",
+        "to",
+        "at",
+        "in"
+      ],
+      "answer": "from",
+      "difficulty": "easy",
+      "explanation": "\"From\" shows the point of origin something came from, like the idea coming from a dream."
+    },
+    {
+      "sentence": "We will meet you ___ the ice rink at five o'clock",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the ice rink.\""
+    },
+    {
+      "sentence": "We will meet her ___ the bakery at noon",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the bakery.\""
+    },
+    {
+      "sentence": "We will meet him ___ the courthouse at two o'clock",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the courthouse.\""
+    },
+    {
+      "sentence": "We will meet them ___ the ferry dock at sunrise",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the ferry dock.\""
+    },
+    {
+      "sentence": "We will meet us ___ the ticket booth at seven o'clock",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the ticket booth.\""
+    },
+    {
+      "sentence": "We will meet everyone ___ the fairground at ten a.m..",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "to"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"At\" is used for a specific place, like a building or landmark: \"at the fairground.\""
+    },
+    {
+      "sentence": "The choir arrived ___ the concert hall early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the concert hall.\""
+    },
+    {
+      "sentence": "The delegation arrived ___ the courthouse early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the courthouse.\""
+    },
+    {
+      "sentence": "The scouts arrived ___ the campsite early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the campsite.\""
+    },
+    {
+      "sentence": "The crew arrived ___ the harbor early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the harbor.\""
+    },
+    {
+      "sentence": "The volunteers arrived ___ the shelter early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the shelter.\""
+    },
+    {
+      "sentence": "The guests arrived ___ the venue early in the morning.",
+      "options": [
+        "at",
+        "in",
+        "to",
+        "from"
+      ],
+      "answer": "at",
+      "difficulty": "easy",
+      "explanation": "\"Arrive at\" is used with a specific point location, like a building or terminal: \"arrive at the venue.\""
+    },
+    {
+      "sentence": "The seal dove ___ the harbor.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the seal entering harbor."
+    },
+    {
+      "sentence": "The penguin dove ___ the icy water.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the penguin entering icy water."
+    },
+    {
+      "sentence": "The swimmer dove ___ the deep end.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the swimmer entering deep end."
+    },
+    {
+      "sentence": "The boy dove ___ the wave pool.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the boy entering wave pool."
+    },
+    {
+      "sentence": "The otter dove ___ the stream.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the otter entering stream."
+    },
+    {
+      "sentence": "The dolphin dove ___ the surf.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "from"
+      ],
+      "answer": "into",
+      "difficulty": "easy",
+      "explanation": "\"Into\" describes movement from outside to inside something, like the dolphin entering surf."
+    },
+    {
+      "sentence": "The recital happens ___ Monday evening.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"Monday evening,\" to say when something happens."
+    },
+    {
+      "sentence": "The tournament starts ___ Saturday morning.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"Saturday morning,\" to say when something happens."
+    },
+    {
+      "sentence": "The parade takes place ___ Independence Day.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"Independence Day,\" to say when something happens."
+    },
+    {
+      "sentence": "The bake sale happens ___ Friday afternoon.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"Friday afternoon,\" to say when something happens."
+    },
+    {
+      "sentence": "The assembly takes place ___ Wednesday morning.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"Wednesday morning,\" to say when something happens."
+    },
+    {
+      "sentence": "The fireworks show happens ___ New Year's Eve.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used with specific days, like \"New Year's Eve,\" to say when something happens."
+    },
+    {
+      "sentence": "My aunt was born ___ April.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"April,\" to say when something happened."
+    },
+    {
+      "sentence": "My librarian was born ___ 1988.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"1988,\" to say when something happened."
+    },
+    {
+      "sentence": "My pen pal was born ___ November.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"November,\" to say when something happened."
+    },
+    {
+      "sentence": "My swim coach was born ___ June.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"June,\" to say when something happened."
+    },
+    {
+      "sentence": "My piano teacher was born ___ 2001.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"2001,\" to say when something happened."
+    },
+    {
+      "sentence": "My babysitter was born ___ February.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "since"
+      ],
+      "answer": "in",
+      "difficulty": "easy",
+      "explanation": "\"In\" is used with months and years, like \"February,\" to say when something happened."
+    },
+    {
+      "sentence": "We are walking ___ the park after lunch.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward the park."
+    },
+    {
+      "sentence": "She drove ___ the airport this morning.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward the airport."
+    },
+    {
+      "sentence": "The bus goes ___ downtown every hour.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward downtown."
+    },
+    {
+      "sentence": "He rode his bike ___ school today.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward school."
+    },
+    {
+      "sentence": "They flew ___ Chicago last weekend.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward Chicago."
+    },
+    {
+      "sentence": "The dog ran ___ the gate.",
+      "options": [
+        "to",
+        "from",
+        "at",
+        "in"
+      ],
+      "answer": "to",
+      "difficulty": "easy",
+      "explanation": "\"To\" shows the destination of a movement, like heading toward the gate."
+    },
+    {
+      "sentence": "The vase is ___ the shelf.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the vase on top of shelf."
+    },
+    {
+      "sentence": "The napkin is ___ the tray.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the napkin on top of tray."
+    },
+    {
+      "sentence": "The sticker is ___ the notebook.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the sticker on top of notebook."
+    },
+    {
+      "sentence": "The blanket is ___ the bed.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the blanket on top of bed."
+    },
+    {
+      "sentence": "The plate is ___ the counter.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the plate on top of counter."
+    },
+    {
+      "sentence": "The poster is ___ the wall.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "under"
+      ],
+      "answer": "on",
+      "difficulty": "easy",
+      "explanation": "\"On\" is used for something resting on the surface of another object, like the poster on top of wall."
+    },
+    {
+      "sentence": "The ball rolled ___ the porch.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below porch."
+    },
+    {
+      "sentence": "The frisbee landed ___ the hedge.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below hedge."
+    },
+    {
+      "sentence": "The coin slipped ___ the rug.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below rug."
+    },
+    {
+      "sentence": "The kite got stuck ___ the bleachers.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below bleachers."
+    },
+    {
+      "sentence": "The sock fell ___ the dresser.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below dresser."
+    },
+    {
+      "sentence": "The remote slid ___ the recliner.",
+      "options": [
+        "under",
+        "on",
+        "at",
+        "to"
+      ],
+      "answer": "under",
+      "difficulty": "easy",
+      "explanation": "\"Under\" describes something positioned beneath another object, like it landing below recliner."
+    },
+    {
+      "sentence": "Mom is worried ___ the exam results.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the exam results."
+    },
+    {
+      "sentence": "The captain is worried ___ the injury report.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the injury report."
+    },
+    {
+      "sentence": "My grandmother is worried ___ the icy roads.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the icy roads."
+    },
+    {
+      "sentence": "The scientists are worried ___ the shrinking glaciers.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the shrinking glaciers."
+    },
+    {
+      "sentence": "Our neighbor is worried ___ the loose fence.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the loose fence."
+    },
+    {
+      "sentence": "The pilot is worried ___ the strong headwinds.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the strong headwinds."
+    },
+    {
+      "sentence": "The nurse is worried ___ the patient's fever.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the patient's fever."
+    },
+    {
+      "sentence": "The farmer is worried ___ the late frost.",
+      "options": [
+        "about",
+        "of",
+        "for",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Worried about\" is the fixed phrase used to name the source of concern, like the late frost."
+    },
+    {
+      "sentence": "The kids are excited ___ the field trip.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the field trip."
+    },
+    {
+      "sentence": "My sister is excited ___ her new puppy.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like her new puppy."
+    },
+    {
+      "sentence": "The whole team is excited ___ the rematch.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the rematch."
+    },
+    {
+      "sentence": "Grandpa is excited ___ the family reunion.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the family reunion."
+    },
+    {
+      "sentence": "The students are excited ___ the science fair.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the science fair."
+    },
+    {
+      "sentence": "Our coach is excited ___ the new season.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the new season."
+    },
+    {
+      "sentence": "The tourists are excited ___ the boat tour.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the boat tour."
+    },
+    {
+      "sentence": "My cousin is excited ___ the concert.",
+      "options": [
+        "about",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "about",
+      "difficulty": "medium",
+      "explanation": "\"Excited about\" is the fixed phrase used to name the reason for enthusiasm, like the concert."
+    },
+    {
+      "sentence": "The librarian is familiar ___ every book on the shelf.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like every book on the shelf."
+    },
+    {
+      "sentence": "The new coach is familiar ___ the team's playbook.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like the team's playbook."
+    },
+    {
+      "sentence": "My uncle is familiar ___ the old trails.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like the old trails."
+    },
+    {
+      "sentence": "The mechanic is familiar ___ this engine model.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like this engine model."
+    },
+    {
+      "sentence": "The tour guide is familiar ___ the city's history.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like the city's history."
+    },
+    {
+      "sentence": "The vet is familiar ___ exotic pets.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like exotic pets."
+    },
+    {
+      "sentence": "The chef is familiar ___ regional spices.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like regional spices."
+    },
+    {
+      "sentence": "The pilot is familiar ___ the flight route.",
+      "options": [
+        "with",
+        "of",
+        "in",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "medium",
+      "explanation": "\"Familiar with\" is the fixed phrase used to show knowledge of something, like the flight route."
+    },
+    {
+      "sentence": "Each student is responsible ___ their own supplies.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like their own supplies."
+    },
+    {
+      "sentence": "The captain is responsible ___ the team's schedule.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like the team's schedule."
+    },
+    {
+      "sentence": "The babysitter is responsible ___ the children's safety.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like the children's safety."
+    },
+    {
+      "sentence": "The manager is responsible ___ the store's inventory.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like the store's inventory."
+    },
+    {
+      "sentence": "The pilot is responsible ___ everyone on board.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like everyone on board."
+    },
+    {
+      "sentence": "The editor is responsible ___ the final draft.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like the final draft."
+    },
+    {
+      "sentence": "The lifeguard is responsible ___ pool safety.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like pool safety."
+    },
+    {
+      "sentence": "The treasurer is responsible ___ the club's funds.",
+      "options": [
+        "for",
+        "of",
+        "in",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Responsible for\" is the fixed phrase used to name a duty, like the club's funds."
+    },
+    {
+      "sentence": "This recipe is different ___ my grandmother's version.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like this recipe and my grandmother's version."
+    },
+    {
+      "sentence": "The new uniform is different ___ last year's design.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like the new uniform and last year's design."
+    },
+    {
+      "sentence": "Her handwriting is different ___ her sister's.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like her handwriting and her sister's."
+    },
+    {
+      "sentence": "The remake is different ___ the original movie.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like the remake and the original movie."
+    },
+    {
+      "sentence": "City life is different ___ life on the farm.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like city life and life on the farm."
+    },
+    {
+      "sentence": "His accent is different ___ his brother's.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like his accent and his brother's."
+    },
+    {
+      "sentence": "The new rules are different ___ the old ones.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like the new rules and the old ones."
+    },
+    {
+      "sentence": "This trail is different ___ the one we hiked last time.",
+      "options": [
+        "from",
+        "of",
+        "in",
+        "at"
+      ],
+      "answer": "from",
+      "difficulty": "medium",
+      "explanation": "\"Different from\" is the fixed phrase used to compare two things, like this trail and the one we hiked last time."
+    },
+    {
+      "sentence": "Her painting style is similar ___ Van Gogh's.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like her painting style and Van Gogh's."
+    },
+    {
+      "sentence": "This puzzle is similar ___ the one we solved yesterday.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like this puzzle and the one we solved yesterday."
+    },
+    {
+      "sentence": "The twins' voices are similar ___ each other's.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like the twins' voices and each other's."
+    },
+    {
+      "sentence": "This dessert tastes similar ___ the one from the bakery.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like this dessert and the one from the bakery."
+    },
+    {
+      "sentence": "The new stadium looks similar ___ the old one.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like the new stadium and the old one."
+    },
+    {
+      "sentence": "Our routine is similar ___ last summer's schedule.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like our routine and last summer's schedule."
+    },
+    {
+      "sentence": "This song sounds similar ___ an old folk tune.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like this song and an old folk tune."
+    },
+    {
+      "sentence": "The insect looks similar ___ a leaf.",
+      "options": [
+        "to",
+        "of",
+        "with",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "medium",
+      "explanation": "\"Similar to\" is the fixed phrase used to compare two things, like the insect and a leaf."
+    },
+    {
+      "sentence": "The attic is full ___ old photographs.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like old photographs."
+    },
+    {
+      "sentence": "The backpack is full ___ camping gear.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like camping gear."
+    },
+    {
+      "sentence": "The pond is full ___ tadpoles this spring.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like tadpoles this spring."
+    },
+    {
+      "sentence": "The classroom is full ___ colorful posters.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like colorful posters."
+    },
+    {
+      "sentence": "The basement was full ___ dusty boxes.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like dusty boxes."
+    },
+    {
+      "sentence": "The orchard is full ___ ripe apples.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like ripe apples."
+    },
+    {
+      "sentence": "The notebook is full ___ doodles.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like doodles."
+    },
+    {
+      "sentence": "The garden is full ___ blooming tulips.",
+      "options": [
+        "of",
+        "with",
+        "in",
+        "from"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Full of\" is the fixed phrase used to describe something packed with items, like blooming tulips."
+    },
+    {
+      "sentence": "This town is famous ___ its cherry blossoms.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like its cherry blossoms."
+    },
+    {
+      "sentence": "The chef is famous ___ his spicy noodles.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like his spicy noodles."
+    },
+    {
+      "sentence": "The region is famous ___ its waterfalls.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like its waterfalls."
+    },
+    {
+      "sentence": "The author is famous ___ her mystery novels.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like her mystery novels."
+    },
+    {
+      "sentence": "The bakery is famous ___ its sourdough loaves.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like its sourdough loaves."
+    },
+    {
+      "sentence": "The lake is famous ___ its clear water.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like its clear water."
+    },
+    {
+      "sentence": "The artist is famous ___ his bold murals.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like his bold murals."
+    },
+    {
+      "sentence": "The island is famous ___ its coral reefs.",
+      "options": [
+        "for",
+        "of",
+        "about",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"Famous for\" is the fixed phrase used to name what someone or something is known for, like its coral reefs."
+    },
+    {
+      "sentence": "The bridge is made ___ steel.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like steel."
+    },
+    {
+      "sentence": "Her necklace is made ___ seashells.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like seashells."
+    },
+    {
+      "sentence": "The statue is made ___ bronze.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like bronze."
+    },
+    {
+      "sentence": "The blanket is made ___ wool.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like wool."
+    },
+    {
+      "sentence": "This table is made ___ oak.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like oak."
+    },
+    {
+      "sentence": "The costume is made ___ sequined fabric.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like sequined fabric."
+    },
+    {
+      "sentence": "The trophy is made ___ brass.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like brass."
+    },
+    {
+      "sentence": "The kite is made ___ nylon.",
+      "options": [
+        "of",
+        "at",
+        "on",
+        "to"
+      ],
+      "answer": "of",
+      "difficulty": "medium",
+      "explanation": "\"Made of\" is the fixed phrase used to name the material something is built from, like nylon."
+    },
+    {
+      "sentence": "The movie is based ___ a true story.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like a true story."
+    },
+    {
+      "sentence": "Her thesis is based ___ years of research.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like years of research."
+    },
+    {
+      "sentence": "The recipe is based ___ an old family tradition.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like an old family tradition."
+    },
+    {
+      "sentence": "The mural is based ___ local legends.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like local legends."
+    },
+    {
+      "sentence": "The game is based ___ classic chess rules.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like classic chess rules."
+    },
+    {
+      "sentence": "The musical is based ___ a popular novel.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like a popular novel."
+    },
+    {
+      "sentence": "The design is based ___ ancient architecture.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like ancient architecture."
+    },
+    {
+      "sentence": "The lesson is based ___ last week's reading.",
+      "options": [
+        "on",
+        "in",
+        "at",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "medium",
+      "explanation": "\"Based on\" is the fixed phrase used to name the source something was built from, like last week's reading."
+    },
+    {
+      "sentence": "The parade marched ___ the town square.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through town square."
+    },
+    {
+      "sentence": "The ants crawled ___ the anthill tunnel.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through anthill tunnel."
+    },
+    {
+      "sentence": "The train rushed ___ the mountain tunnel.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through mountain tunnel."
+    },
+    {
+      "sentence": "The sunlight streamed ___ the stained glass.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through stained glass."
+    },
+    {
+      "sentence": "The wind howled ___ the narrow canyon.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through narrow canyon."
+    },
+    {
+      "sentence": "The salmon swam ___ the rushing rapids.",
+      "options": [
+        "through",
+        "beside",
+        "among",
+        "onto"
+      ],
+      "answer": "through",
+      "difficulty": "medium",
+      "explanation": "\"Through\" describes movement from one side of something to the other, like passing through rushing rapids."
+    },
+    {
+      "sentence": "The scoutmaster sat ___ the campfire and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the scoutmaster sitting right next to campfire."
+    },
+    {
+      "sentence": "The twins sat ___ the ticket booth and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the twins sitting right next to ticket booth."
+    },
+    {
+      "sentence": "The retriever sat ___ the mailbox and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the retriever sitting right next to mailbox."
+    },
+    {
+      "sentence": "The violinist sat ___ the music stand and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the violinist sitting right next to music stand."
+    },
+    {
+      "sentence": "The umpire sat ___ the dugout and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the umpire sitting right next to dugout."
+    },
+    {
+      "sentence": "The toddler sat ___ the sandbox and waited.",
+      "options": [
+        "beside",
+        "among",
+        "onto",
+        "through"
+      ],
+      "answer": "beside",
+      "difficulty": "medium",
+      "explanation": "\"Beside\" means right next to something, like the toddler sitting right next to sandbox."
+    },
+    {
+      "sentence": "She felt proud standing ___ so many talented artists.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among so many talented artists."
+    },
+    {
+      "sentence": "He felt small standing ___ the towering skyscrapers.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among the towering skyscrapers."
+    },
+    {
+      "sentence": "The new recruit felt nervous standing ___ the veteran soldiers.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among the veteran soldiers."
+    },
+    {
+      "sentence": "The kitten felt lost wandering ___ the tall sunflowers.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among the tall sunflowers."
+    },
+    {
+      "sentence": "The rookie felt honored standing ___ the championship trophies.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among the championship trophies."
+    },
+    {
+      "sentence": "The exchange student felt shy standing ___ her new classmates.",
+      "options": [
+        "among",
+        "between",
+        "beside",
+        "onto"
+      ],
+      "answer": "among",
+      "difficulty": "medium",
+      "explanation": "\"Among\" is used for a position within a group of three or more, like standing among her new classmates."
+    },
+    {
+      "sentence": "The surfer climbed ___ the surfboard.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the surfer landing onto surfboard."
+    },
+    {
+      "sentence": "The kitten hopped ___ the windowsill.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the kitten landing onto windowsill."
+    },
+    {
+      "sentence": "The hiker stepped ___ the boulder.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the hiker landing onto boulder."
+    },
+    {
+      "sentence": "The dancer leapt ___ the stage.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the dancer landing onto stage."
+    },
+    {
+      "sentence": "The crab crawled ___ the driftwood.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the crab landing onto driftwood."
+    },
+    {
+      "sentence": "The toddler climbed ___ the stool.",
+      "options": [
+        "onto",
+        "among",
+        "beside",
+        "through"
+      ],
+      "answer": "onto",
+      "difficulty": "medium",
+      "explanation": "\"Onto\" describes movement to a position on top of something, like the toddler landing onto stool."
+    },
+    {
+      "sentence": "The theater has shown classic films ___ 2015.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "during"
+      ],
+      "answer": "since",
+      "difficulty": "medium",
+      "explanation": "\"Since\" marks a specific starting point in time, like 2015, rather than a length of time."
+    },
+    {
+      "sentence": "My sister has collected postcards ___ her trip to Peru.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "during"
+      ],
+      "answer": "since",
+      "difficulty": "medium",
+      "explanation": "\"Since\" marks a specific starting point in time, like her trip to Peru, rather than a length of time."
+    },
+    {
+      "sentence": "The diner has served pancakes ___ it opened decades ago.",
+      "options": [
+        "since",
+        "for",
+        "from",
+        "during"
+      ],
+      "answer": "since",
+      "difficulty": "medium",
+      "explanation": "\"Since\" marks a specific starting point in time, like it opened decades ago, rather than a length of time."
+    },
+    {
+      "sentence": "The theater has shown classic films ___ eight years.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "during"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"For\" marks a length of time, like eight years, rather than a fixed starting point."
+    },
+    {
+      "sentence": "My sister has collected postcards ___ two years.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "during"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"For\" marks a length of time, like two years, rather than a fixed starting point."
+    },
+    {
+      "sentence": "The diner has served pancakes ___ several decades.",
+      "options": [
+        "for",
+        "since",
+        "from",
+        "during"
+      ],
+      "answer": "for",
+      "difficulty": "medium",
+      "explanation": "\"For\" marks a length of time, like several decades, rather than a fixed starting point."
+    },
+    {
+      "sentence": "The village relies ___ a single well for water.",
+      "options": [
+        "on",
+        "at",
+        "for",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "hard",
+      "explanation": "\"rely on\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Pilots rely ___ radar during storms.",
+      "options": [
+        "on",
+        "at",
+        "for",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "hard",
+      "explanation": "\"rely on\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The team relies ___ its veteran goalkeeper.",
+      "options": [
+        "on",
+        "at",
+        "for",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "hard",
+      "explanation": "\"rely on\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Farmers rely ___ accurate weather forecasts.",
+      "options": [
+        "on",
+        "at",
+        "for",
+        "of"
+      ],
+      "answer": "on",
+      "difficulty": "hard",
+      "explanation": "\"rely on\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Students benefit ___ regular practice tests.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"benefit from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The whole community benefits ___ the new library.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"benefit from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Crops benefit ___ the extra rainfall.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"benefit from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Young athletes benefit ___ proper coaching.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"benefit from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "When talks failed, the leaders resorted ___ a compromise.",
+      "options": [
+        "to",
+        "at",
+        "on",
+        "for"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"resort to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The hikers resorted ___ their emergency flares.",
+      "options": [
+        "to",
+        "at",
+        "on",
+        "for"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"resort to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She resorted ___ old family recipes during the shortage.",
+      "options": [
+        "to",
+        "at",
+        "on",
+        "for"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"resort to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The team resorted ___ a risky final play.",
+      "options": [
+        "to",
+        "at",
+        "on",
+        "for"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"resort to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "All employees must comply ___ the new safety rules.",
+      "options": [
+        "with",
+        "to",
+        "of",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"comply with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The factory failed to comply ___ pollution regulations.",
+      "options": [
+        "with",
+        "to",
+        "of",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"comply with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Drivers must comply ___ posted speed limits.",
+      "options": [
+        "with",
+        "to",
+        "of",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"comply with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The company agreed to comply ___ the court's ruling.",
+      "options": [
+        "with",
+        "to",
+        "of",
+        "for"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"comply with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Her scores allowed her to qualify ___ the finals.",
+      "options": [
+        "for",
+        "to",
+        "of",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"qualify for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Only seniors qualify ___ the scholarship.",
+      "options": [
+        "for",
+        "to",
+        "of",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"qualify for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The team qualified ___ the national tournament.",
+      "options": [
+        "for",
+        "to",
+        "of",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"qualify for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "He didn't qualify ___ the advanced course.",
+      "options": [
+        "for",
+        "to",
+        "of",
+        "with"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"qualify for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The treasurer must account ___ every dollar spent.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"account for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Heavy traffic accounted ___ the delay.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"account for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The scientist's theory accounts ___ the strange results.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"account for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Bad weather accounted ___ the low attendance.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"account for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Loud construction noise interfered ___ the meeting.",
+      "options": [
+        "with",
+        "of",
+        "for",
+        "on"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"interfere with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Please don't interfere ___ the referee's decisions.",
+      "options": [
+        "with",
+        "of",
+        "for",
+        "on"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"interfere with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The storm interfered ___ our travel plans.",
+      "options": [
+        "with",
+        "of",
+        "for",
+        "on"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"interfere with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "His old injury still interferes ___ his training.",
+      "options": [
+        "with",
+        "of",
+        "for",
+        "on"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"interfere with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The students eagerly engaged ___ the debate.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"engage in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Volunteers engaged ___ the cleanup effort all weekend.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"engage in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The committee engaged ___ a lengthy discussion.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"engage in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The class engaged ___ a friendly trivia contest.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"engage in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The word \"biology\" derives ___ Greek roots.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"derive from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Her confidence derives ___ years of practice.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"derive from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The recipe derives ___ an old family tradition.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"derive from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The tradition derives ___ ancient harvest festivals.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"derive from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Historians attribute the discovery ___ a lucky accident.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "with"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"attribute to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She attributes her success ___ hard work.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "with"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"attribute to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The coach attributes the win ___ strong teamwork.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "with"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"attribute to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Scientists attribute the change ___ rising temperatures.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "with"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"attribute to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Overtime pay compensates ___ the extra hours.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"compensate for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Nothing can compensate ___ a lost afternoon with family.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"compensate for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The bonus was meant to compensate ___ the inconvenience.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"compensate for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Practice can't always compensate ___ natural talent.",
+      "options": [
+        "for",
+        "of",
+        "on",
+        "to"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"compensate for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Every student must participate ___ the science fair.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"participate in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Local businesses participated ___ the charity auction.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"participate in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She rarely participates ___ group projects.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"participate in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The whole town participated ___ the annual parade.",
+      "options": [
+        "in",
+        "on",
+        "at",
+        "for"
+      ],
+      "answer": "in",
+      "difficulty": "hard",
+      "explanation": "\"participate in\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The judges must abstain ___ voting on their own students.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"abstain from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "He decided to abstain ___ sugar for a month.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"abstain from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Several council members abstained ___ the final vote.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"abstain from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Athletes are asked to abstain ___ certain supplements.",
+      "options": [
+        "from",
+        "of",
+        "at",
+        "for"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"abstain from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The two schools collaborated ___ each other on the mural.",
+      "options": [
+        "with",
+        "to",
+        "for",
+        "of"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"collaborate with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Scientists often collaborate ___ researchers from other countries.",
+      "options": [
+        "with",
+        "to",
+        "for",
+        "of"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"collaborate with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The band collaborated ___ a local choir for the concert.",
+      "options": [
+        "with",
+        "to",
+        "for",
+        "of"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"collaborate with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She collaborated ___ her sister on the science project.",
+      "options": [
+        "with",
+        "to",
+        "for",
+        "of"
+      ],
+      "answer": "with",
+      "difficulty": "hard",
+      "explanation": "\"collaborate with\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Several parents objected ___ the schedule change.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"object to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The lawyer objected ___ the witness's statement.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"object to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Residents objected ___ the new parking rules.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"object to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The union objected ___ the proposed pay cut.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"object to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The company converted ___ a four-day work week.",
+      "options": [
+        "to",
+        "on",
+        "for",
+        "of"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"convert to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She converted ___ a plant-based diet last year.",
+      "options": [
+        "to",
+        "on",
+        "for",
+        "of"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"convert to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The office converted ___ digital recordkeeping.",
+      "options": [
+        "to",
+        "on",
+        "for",
+        "of"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"convert to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The team converted ___ a new training schedule.",
+      "options": [
+        "to",
+        "on",
+        "for",
+        "of"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"convert to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Her fear of dogs stems ___ a childhood incident.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"stem from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The disagreement stemmed ___ a simple misunderstanding.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"stem from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Many English words stem ___ Latin origins.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"stem from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The rivalry stems ___ a decades-old championship game.",
+      "options": [
+        "from",
+        "of",
+        "by",
+        "with"
+      ],
+      "answer": "from",
+      "difficulty": "hard",
+      "explanation": "\"stem from\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The total repairs amounted ___ nearly a thousand dollars.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"amount to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Her excuses didn't amount ___ much.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"amount to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The donations amounted ___ a record sum this year.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"amount to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "His complaints amounted ___ very little in the end.",
+      "options": [
+        "to",
+        "for",
+        "of",
+        "at"
+      ],
+      "answer": "to",
+      "difficulty": "hard",
+      "explanation": "\"amount to\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "After months away, the sailors longed ___ home.",
+      "options": [
+        "for",
+        "of",
+        "to",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"long for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The exhausted hikers longed ___ a warm meal.",
+      "options": [
+        "for",
+        "of",
+        "to",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"long for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "City dwellers sometimes long ___ quiet countryside evenings.",
+      "options": [
+        "for",
+        "of",
+        "to",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"long for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The old dog longed ___ its former owner.",
+      "options": [
+        "for",
+        "of",
+        "to",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"long for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Exhausted, the team settled ___ a tie.",
+      "options": [
+        "for",
+        "with",
+        "of",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"settle for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "She refused to settle ___ second best.",
+      "options": [
+        "for",
+        "with",
+        "of",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"settle for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "The buyers settled ___ a smaller house.",
+      "options": [
+        "for",
+        "with",
+        "of",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"settle for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "He wouldn't settle ___ an easy answer.",
+      "options": [
+        "for",
+        "with",
+        "of",
+        "at"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"settle for\" is a fixed verb-preposition pairing; the other prepositions don't idiomatically follow this verb in this sense."
+    },
+    {
+      "sentence": "Despite ___ an alarm, he still overslept.",
+      "options": [
+        "setting",
+        "set",
+        "to set",
+        "sets"
+      ],
+      "answer": "setting",
+      "difficulty": "hard",
+      "explanation": "\"Despite\" is a preposition, so it must be followed by a gerund (\"setting\"), not a plain verb."
+    },
+    {
+      "sentence": "Without ___ a plan, they started building the treehouse.",
+      "options": [
+        "having",
+        "have",
+        "to have",
+        "has"
+      ],
+      "answer": "having",
+      "difficulty": "hard",
+      "explanation": "\"Without\" is a preposition, so it must be followed by a gerund (\"having\"), not a plain verb."
+    },
+    {
+      "sentence": "Before ___ the recipe, measure every ingredient twice.",
+      "options": [
+        "following",
+        "follow",
+        "to follow",
+        "follows"
+      ],
+      "answer": "following",
+      "difficulty": "hard",
+      "explanation": "\"Before\" is a preposition, so it must be followed by a gerund (\"following\"), not a plain verb."
+    },
+    {
+      "sentence": "After ___ the trail map, the scouts found the shortcut.",
+      "options": [
+        "studying",
+        "study",
+        "to study",
+        "studies"
+      ],
+      "answer": "studying",
+      "difficulty": "hard",
+      "explanation": "\"After\" is a preposition, so it must be followed by a gerund (\"studying\"), not a plain verb."
+    },
+    {
+      "sentence": "By ___ every clue carefully, the detective solved the case.",
+      "options": [
+        "examining",
+        "examine",
+        "to examine",
+        "examines"
+      ],
+      "answer": "examining",
+      "difficulty": "hard",
+      "explanation": "\"By\" is a preposition, so it must be followed by a gerund (\"examining\"), not a plain verb."
+    },
+    {
+      "sentence": "Instead of ___ a taxi, we caught the last bus.",
+      "options": [
+        "calling",
+        "call",
+        "to call",
+        "calls"
+      ],
+      "answer": "calling",
+      "difficulty": "hard",
+      "explanation": "\"Instead of\" is a preposition, so it must be followed by a gerund (\"calling\"), not a plain verb."
+    },
+    {
+      "sentence": "Besides ___ the trumpet, he also composes his own songs.",
+      "options": [
+        "playing",
+        "play",
+        "to play",
+        "plays"
+      ],
+      "answer": "playing",
+      "difficulty": "hard",
+      "explanation": "\"Besides\" is a preposition, so it must be followed by a gerund (\"playing\"), not a plain verb."
+    },
+    {
+      "sentence": "Upon ___ the results, the coach called a team meeting.",
+      "options": [
+        "seeing",
+        "see",
+        "to see",
+        "sees"
+      ],
+      "answer": "seeing",
+      "difficulty": "hard",
+      "explanation": "\"Upon\" is a preposition, so it must be followed by a gerund (\"seeing\"), not a plain verb."
+    },
+    {
+      "sentence": "For ___ the fastest lap, the driver received a trophy.",
+      "options": [
+        "completing",
+        "complete",
+        "to complete",
+        "completes"
+      ],
+      "answer": "completing",
+      "difficulty": "hard",
+      "explanation": "\"For\" is a preposition, so it must be followed by a gerund (\"completing\"), not a plain verb."
+    },
+    {
+      "sentence": "In addition to ___ the newsletter, she manages the club's social media.",
+      "options": [
+        "editing",
+        "edit",
+        "to edit",
+        "edits"
+      ],
+      "answer": "editing",
+      "difficulty": "hard",
+      "explanation": "\"In addition to\" is a preposition, so it must be followed by a gerund (\"editing\"), not a plain verb."
+    },
+    {
+      "sentence": "The bridge has been closed ___ the flood two years ago.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "Our neighbors have raised chickens ___ they moved here.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "The observatory has tracked the comet ___ its discovery.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "The choir has rehearsed on Thursdays ___ September.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "He hasn't touched his guitar ___ the injury.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "The shop has offered free delivery ___ last winter.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "The park has stayed open late ___ daylight saving began.",
+      "options": [
+        "since",
+        "for",
+        "during",
+        "while"
+      ],
+      "answer": "since",
+      "difficulty": "hard",
+      "explanation": "\"Since\" marks a fixed starting point in time; \"for\" would be used with a length of time instead."
+    },
+    {
+      "sentence": "The bridge remained closed ___ eighteen months.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "Our neighbors have raised chickens ___ almost a decade.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "The observatory tracked the comet ___ several weeks.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "The choir has rehearsed on Thursdays ___ many years.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "He hasn't touched his guitar ___ three months.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "The shop has offered free delivery ___ six months.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "The park has stayed open late ___ a full season.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "while"
+      ],
+      "answer": "for",
+      "difficulty": "hard",
+      "explanation": "\"For\" marks a length of time; \"since\" would be used with a fixed starting point instead."
+    },
+    {
+      "sentence": "No cars were allowed downtown ___ the marathon.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
+    },
+    {
+      "sentence": "The museum added extra guides ___ the exhibit opening.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
+    },
+    {
+      "sentence": "The power flickered several times ___ the windstorm.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
+    },
+    {
+      "sentence": "Ticket prices rise ___ the holiday season.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
+    },
+    {
+      "sentence": "The coach called two timeouts ___ the final quarter.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
+    },
+    {
+      "sentence": "The library stays quiet ___ exam week.",
+      "options": [
+        "during",
+        "since",
+        "for",
+        "while"
+      ],
+      "answer": "during",
+      "difficulty": "hard",
+      "explanation": "\"During\" is used with a specific event or period noun, not a length of time or a fixed starting point; \"while\" would need its own clause, not just a noun."
     }
   ]
 }

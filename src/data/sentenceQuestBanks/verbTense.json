@@ -1323,6 +1323,1326 @@
       "explanation": "A habitual, repeated action (\"every single day\") uses the simple present tense: \"teaches.\""
     },
     {
+      "sentence": "Last Monday, the beekeeper ___ the hives near the orchard.",
+      "options": [
+        "checked",
+        "check",
+        "checks",
+        "checking"
+      ],
+      "answer": "checked",
+      "difficulty": "easy",
+      "explanation": "\"Last Monday\" signals the past, so the verb should be \"checked,\" the past tense of \"check.\""
+    },
+    {
+      "sentence": "Two days ago, the ski club ___ down the steepest trail on the mountain.",
+      "options": [
+        "skied",
+        "ski",
+        "skis",
+        "skiing"
+      ],
+      "answer": "skied",
+      "difficulty": "easy",
+      "explanation": "\"Two days ago\" signals the past, so the verb should be \"skied,\" the past tense of \"ski.\""
+    },
+    {
+      "sentence": "Last spring, the beavers ___ a dam across the narrow stream.",
+      "options": [
+        "built",
+        "build",
+        "builds",
+        "building"
+      ],
+      "answer": "built",
+      "difficulty": "easy",
+      "explanation": "\"Last spring\" signals the past, so the verb should be \"built,\" the past tense of \"build.\""
+    },
+    {
+      "sentence": "Yesterday afternoon, the marching band ___ down Main Street.",
+      "options": [
+        "marched",
+        "march",
+        "marches",
+        "marching"
+      ],
+      "answer": "marched",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday afternoon\" signals the past, so the verb should be \"marched,\" the past tense of \"march.\""
+    },
+    {
+      "sentence": "Last November, the fishermen ___ a huge tuna off the coast.",
+      "options": [
+        "caught",
+        "catch",
+        "catches",
+        "catching"
+      ],
+      "answer": "caught",
+      "difficulty": "easy",
+      "explanation": "\"Last November\" signals the past, so the verb should be \"caught,\" the past tense of \"catch.\""
+    },
+    {
+      "sentence": "A week ago, the twins ___ their bicycles to the county fair.",
+      "options": [
+        "rode",
+        "ride",
+        "rides",
+        "riding"
+      ],
+      "answer": "rode",
+      "difficulty": "easy",
+      "explanation": "\"A week ago\" signals the past, so the verb should be \"rode,\" the past tense of \"ride.\""
+    },
+    {
+      "sentence": "Last Thursday, the choir ___ a brand-new song at rehearsal.",
+      "options": [
+        "learned",
+        "learn",
+        "learns",
+        "learning"
+      ],
+      "answer": "learned",
+      "difficulty": "easy",
+      "explanation": "\"Last Thursday\" signals the past, so the verb should be \"learned,\" the past tense of \"learn.\""
+    },
+    {
+      "sentence": "Yesterday morning, the wind ___ several branches off the old oak tree.",
+      "options": [
+        "knocked",
+        "knock",
+        "knocks",
+        "knocking"
+      ],
+      "answer": "knocked",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday morning\" signals the past, so the verb should be \"knocked,\" the past tense of \"knock.\""
+    },
+    {
+      "sentence": "Last week, the chess club ___ a tournament against another school.",
+      "options": [
+        "organized",
+        "organize",
+        "organizes",
+        "organizing"
+      ],
+      "answer": "organized",
+      "difficulty": "easy",
+      "explanation": "\"Last week\" signals the past, so the verb should be \"organized,\" the past tense of \"organize.\""
+    },
+    {
+      "sentence": "Three days ago, the kittens ___ under the porch during the thunderstorm.",
+      "options": [
+        "hid",
+        "hide",
+        "hides",
+        "hiding"
+      ],
+      "answer": "hid",
+      "difficulty": "easy",
+      "explanation": "\"Three days ago\" signals the past, so the verb should be \"hid,\" the past tense of \"hide.\""
+    },
+    {
+      "sentence": "Last Saturday, the carpenter ___ a new shelf for the library.",
+      "options": [
+        "carved",
+        "carve",
+        "carves",
+        "carving"
+      ],
+      "answer": "carved",
+      "difficulty": "easy",
+      "explanation": "\"Last Saturday\" signals the past, so the verb should be \"carved,\" the past tense of \"carve.\""
+    },
+    {
+      "sentence": "Yesterday evening, the choir director ___ the whole group for the concert.",
+      "options": [
+        "rehearsed",
+        "rehearse",
+        "rehearses",
+        "rehearsing"
+      ],
+      "answer": "rehearsed",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday evening\" signals the past, so the verb should be \"rehearsed,\" the past tense of \"rehearse.\""
+    },
+    {
+      "sentence": "Last month, the mail carrier ___ over a hundred packages before the holidays.",
+      "options": [
+        "delivered",
+        "deliver",
+        "delivers",
+        "delivering"
+      ],
+      "answer": "delivered",
+      "difficulty": "easy",
+      "explanation": "\"Last month\" signals the past, so the verb should be \"delivered,\" the past tense of \"deliver.\""
+    },
+    {
+      "sentence": "Two weeks ago, the shepherd ___ the sheep down from the hillside.",
+      "options": [
+        "herded",
+        "herd",
+        "herds",
+        "herding"
+      ],
+      "answer": "herded",
+      "difficulty": "easy",
+      "explanation": "\"Two weeks ago\" signals the past, so the verb should be \"herded,\" the past tense of \"herd.\""
+    },
+    {
+      "sentence": "Yesterday, the electrician ___ the broken light in the hallway.",
+      "options": [
+        "fixed",
+        "fix",
+        "fixes",
+        "fixing"
+      ],
+      "answer": "fixed",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday\" signals the past, so the verb should be \"fixed,\" the past tense of \"fix.\""
+    },
+    {
+      "sentence": "Last summer, the zookeeper ___ the baby giraffe every morning.",
+      "options": [
+        "weighed",
+        "weigh",
+        "weighs",
+        "weighing"
+      ],
+      "answer": "weighed",
+      "difficulty": "easy",
+      "explanation": "\"Last summer\" signals the past, so the verb should be \"weighed,\" the past tense of \"weigh.\""
+    },
+    {
+      "sentence": "Last Friday, the debate team ___ their final arguments before the judges.",
+      "options": [
+        "polished",
+        "polish",
+        "polishes",
+        "polishing"
+      ],
+      "answer": "polished",
+      "difficulty": "easy",
+      "explanation": "\"Last Friday\" signals the past, so the verb should be \"polished,\" the past tense of \"polish.\""
+    },
+    {
+      "sentence": "Last night, the raccoon ___ into the campsite and stole a bag of chips.",
+      "options": [
+        "sneaked",
+        "sneak",
+        "sneaks",
+        "sneaking"
+      ],
+      "answer": "sneaked",
+      "difficulty": "easy",
+      "explanation": "\"Last night\" signals the past, so the verb should be \"sneaked,\" the past tense of \"sneak.\""
+    },
+    {
+      "sentence": "A few minutes ago, the goalkeeper ___ a spectacular save in front of the crowd.",
+      "options": [
+        "made",
+        "make",
+        "makes",
+        "making"
+      ],
+      "answer": "made",
+      "difficulty": "easy",
+      "explanation": "\"A few minutes ago\" signals the past, so the verb should be \"made,\" the past tense of \"make.\""
+    },
+    {
+      "sentence": "Last winter, the sailors ___ their boat during a sudden storm.",
+      "options": [
+        "anchored",
+        "anchor",
+        "anchors",
+        "anchoring"
+      ],
+      "answer": "anchored",
+      "difficulty": "easy",
+      "explanation": "\"Last winter\" signals the past, so the verb should be \"anchored,\" the past tense of \"anchor.\""
+    },
+    {
+      "sentence": "Yesterday, the tailor ___ a new suit for the wedding.",
+      "options": [
+        "sewed",
+        "sew",
+        "sews",
+        "sewing"
+      ],
+      "answer": "sewed",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday\" signals the past, so the verb should be \"sewed,\" the past tense of \"sew.\""
+    },
+    {
+      "sentence": "Last week, the beavers' dam ___ under the weight of the heavy rain.",
+      "options": [
+        "collapsed",
+        "collapse",
+        "collapses",
+        "collapsing"
+      ],
+      "answer": "collapsed",
+      "difficulty": "easy",
+      "explanation": "\"Last week\" signals the past, so the verb should be \"collapsed,\" the past tense of \"collapse.\""
+    },
+    {
+      "sentence": "Right now, the beekeeper ___ the new hive in the back garden.",
+      "options": [
+        "is assembling",
+        "assembled",
+        "assembles",
+        "assemble"
+      ],
+      "answer": "is assembling",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is assembling.\""
+    },
+    {
+      "sentence": "At this moment, the choir ___ a duet for the spring concert.",
+      "options": [
+        "is rehearsing",
+        "rehearsed",
+        "rehearses",
+        "rehearse"
+      ],
+      "answer": "is rehearsing",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is rehearsing.\""
+    },
+    {
+      "sentence": "Currently, the sailors ___ the sails before the race begins.",
+      "options": [
+        "are checking",
+        "checked",
+        "checks",
+        "check"
+      ],
+      "answer": "are checking",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"are checking.\""
+    },
+    {
+      "sentence": "At the moment, the carpenter ___ a wobbly leg on the kitchen table.",
+      "options": [
+        "is repairing",
+        "repaired",
+        "repairs",
+        "repair"
+      ],
+      "answer": "is repairing",
+      "difficulty": "easy",
+      "explanation": "\"At the moment\" signals an action happening right now, which needs the present continuous: \"is repairing.\""
+    },
+    {
+      "sentence": "Right now, the twins ___ a tent in the backyard for the sleepover.",
+      "options": [
+        "are pitching",
+        "pitched",
+        "pitches",
+        "pitch"
+      ],
+      "answer": "are pitching",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"are pitching.\""
+    },
+    {
+      "sentence": "At this moment, the zookeeper ___ the lions their afternoon meal.",
+      "options": [
+        "is feeding",
+        "fed",
+        "feeds",
+        "feed"
+      ],
+      "answer": "is feeding",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is feeding.\""
+    },
+    {
+      "sentence": "Currently, the debate team ___ their notes one last time before the round starts.",
+      "options": [
+        "are reviewing",
+        "reviewed",
+        "reviews",
+        "review"
+      ],
+      "answer": "are reviewing",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"are reviewing.\""
+    },
+    {
+      "sentence": "Right now, the raccoon ___ through the trash cans behind the diner.",
+      "options": [
+        "is digging",
+        "dug",
+        "digs",
+        "dig"
+      ],
+      "answer": "is digging",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is digging.\""
+    },
+    {
+      "sentence": "At this moment, the tailor ___ the hem of my grandmother's dress.",
+      "options": [
+        "is measuring",
+        "measured",
+        "measures",
+        "measure"
+      ],
+      "answer": "is measuring",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is measuring.\""
+    },
+    {
+      "sentence": "Currently, the goalkeeper ___ a new pair of gloves before the match.",
+      "options": [
+        "is trying on",
+        "tried on",
+        "tries on",
+        "try on"
+      ],
+      "answer": "is trying on",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"is trying on.\""
+    },
+    {
+      "sentence": "At the moment, the shepherd ___ a lost lamb near the old stone wall.",
+      "options": [
+        "is searching for",
+        "searched for",
+        "searches for",
+        "search for"
+      ],
+      "answer": "is searching for",
+      "difficulty": "easy",
+      "explanation": "\"At the moment\" signals an action happening right now, which needs the present continuous: \"is searching for.\""
+    },
+    {
+      "sentence": "Right now, the mail carrier ___ letters up and down our street.",
+      "options": [
+        "is sorting",
+        "sorted",
+        "sorts",
+        "sort"
+      ],
+      "answer": "is sorting",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is sorting.\""
+    },
+    {
+      "sentence": "At this moment, the electrician ___ new wiring behind the classroom wall.",
+      "options": [
+        "is installing",
+        "installed",
+        "installs",
+        "install"
+      ],
+      "answer": "is installing",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is installing.\""
+    },
+    {
+      "sentence": "Currently, the campers ___ marshmallows over the crackling fire.",
+      "options": [
+        "are roasting",
+        "roasted",
+        "roasts",
+        "roast"
+      ],
+      "answer": "are roasting",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"are roasting.\""
+    },
+    {
+      "sentence": "Right now, the photographer ___ pictures of the parade downtown.",
+      "options": [
+        "is taking",
+        "took",
+        "takes",
+        "take"
+      ],
+      "answer": "is taking",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is taking.\""
+    },
+    {
+      "sentence": "At the moment, the kittens ___ with a ball of yarn on the rug.",
+      "options": [
+        "are playing",
+        "played",
+        "plays",
+        "play"
+      ],
+      "answer": "are playing",
+      "difficulty": "easy",
+      "explanation": "\"At the moment\" signals an action happening right now, which needs the present continuous: \"are playing.\""
+    },
+    {
+      "sentence": "Currently, the beavers ___ another dam farther down the creek.",
+      "options": [
+        "are building",
+        "built",
+        "builds",
+        "build"
+      ],
+      "answer": "are building",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"are building.\""
+    },
+    {
+      "sentence": "Right now, the violinist ___ a tricky passage before the recital.",
+      "options": [
+        "is practicing",
+        "practiced",
+        "practices",
+        "practice"
+      ],
+      "answer": "is practicing",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is practicing.\""
+    },
+    {
+      "sentence": "At this moment, the lifeguard ___ the swimmers near the deep end.",
+      "options": [
+        "is watching",
+        "watched",
+        "watches",
+        "watch"
+      ],
+      "answer": "is watching",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is watching.\""
+    },
+    {
+      "sentence": "Currently, the farmer's dog ___ the cattle back toward the barn.",
+      "options": [
+        "is herding",
+        "herded",
+        "herds",
+        "herd"
+      ],
+      "answer": "is herding",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"is herding.\""
+    },
+    {
+      "sentence": "Right now, the class ___ a mural on the cafeteria wall.",
+      "options": [
+        "is painting",
+        "painted",
+        "paints",
+        "paint"
+      ],
+      "answer": "is painting",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is painting.\""
+    },
+    {
+      "sentence": "At the moment, the referee ___ the players about a foul.",
+      "options": [
+        "is warning",
+        "warned",
+        "warns",
+        "warn"
+      ],
+      "answer": "is warning",
+      "difficulty": "easy",
+      "explanation": "\"At the moment\" signals an action happening right now, which needs the present continuous: \"is warning.\""
+    },
+    {
+      "sentence": "The zookeeper always ___ the elephants before the park opens.",
+      "options": [
+        "feeds",
+        "fed",
+        "will feed",
+        "is feeding"
+      ],
+      "answer": "feeds",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"always\") uses the simple present tense: \"feeds.\""
+    },
+    {
+      "sentence": "The debate team usually ___ every Tuesday afternoon.",
+      "options": [
+        "meets",
+        "met",
+        "will meet",
+        "is meeting"
+      ],
+      "answer": "meets",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"every Tuesday\") uses the simple present tense: \"meets.\""
+    },
+    {
+      "sentence": "The beavers usually ___ their dam before the first frost.",
+      "options": [
+        "repair",
+        "repaired",
+        "will repair",
+        "are repairing"
+      ],
+      "answer": "repair",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"before the first frost,\" every year) uses the simple present tense: \"repair.\""
+    },
+    {
+      "sentence": "My grandfather often ___ the newspaper on the porch each morning.",
+      "options": [
+        "reads",
+        "read",
+        "will read",
+        "is reading"
+      ],
+      "answer": "reads",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"each morning\") uses the simple present tense: \"reads.\""
+    },
+    {
+      "sentence": "The tailor usually ___ new curtains for the theater every fall.",
+      "options": [
+        "sews",
+        "sewed",
+        "will sew",
+        "is sewing"
+      ],
+      "answer": "sews",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"every fall\") uses the simple present tense: \"sews.\""
+    },
+    {
+      "sentence": "The lifeguards always ___ the pool an hour before it opens.",
+      "options": [
+        "inspect",
+        "inspected",
+        "will inspect",
+        "are inspecting"
+      ],
+      "answer": "inspect",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"always\") uses the simple present tense: \"inspect.\""
+    },
+    {
+      "sentence": "The violinist usually ___ for two hours every single evening.",
+      "options": [
+        "practices",
+        "practiced",
+        "will practice",
+        "is practicing"
+      ],
+      "answer": "practices",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"every single evening\") uses the simple present tense: \"practices.\""
+    },
+    {
+      "sentence": "The shepherd usually ___ the sheep down the hill each autumn.",
+      "options": [
+        "moves",
+        "moved",
+        "will move",
+        "is moving"
+      ],
+      "answer": "moves",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"each autumn\") uses the simple present tense: \"moves.\""
+    },
+    {
+      "sentence": "My cousins often ___ postcards from every country they visit.",
+      "options": [
+        "collect",
+        "collected",
+        "will collect",
+        "are collecting"
+      ],
+      "answer": "collect",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"often\") uses the simple present tense: \"collect.\""
+    },
+    {
+      "sentence": "The mail carrier usually ___ our street by nine o'clock every morning.",
+      "options": [
+        "reaches",
+        "reached",
+        "will reach",
+        "is reaching"
+      ],
+      "answer": "reaches",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"every morning\") uses the simple present tense: \"reaches.\""
+    },
+    {
+      "sentence": "The kittens usually ___ under the couch whenever the vacuum turns on.",
+      "options": [
+        "hide",
+        "hid",
+        "will hide",
+        "are hiding"
+      ],
+      "answer": "hide",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"usually\") uses the simple present tense: \"hide.\""
+    },
+    {
+      "sentence": "The electrician usually ___ every wire twice before leaving a job.",
+      "options": [
+        "checks",
+        "checked",
+        "will check",
+        "is checking"
+      ],
+      "answer": "checks",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"usually\") uses the simple present tense: \"checks.\""
+    },
+    {
+      "sentence": "The marching band usually ___ before every home football game.",
+      "options": [
+        "performs",
+        "performed",
+        "will perform",
+        "is performing"
+      ],
+      "answer": "performs",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"before every home game\") uses the simple present tense: \"performs.\""
+    },
+    {
+      "sentence": "The raccoon often ___ through our backyard late at night.",
+      "options": [
+        "wanders",
+        "wandered",
+        "will wander",
+        "is wandering"
+      ],
+      "answer": "wanders",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"often\") uses the simple present tense: \"wanders.\""
+    },
+    {
+      "sentence": "The chess club usually ___ new members at the start of the school year.",
+      "options": [
+        "welcomes",
+        "welcomed",
+        "will welcome",
+        "is welcoming"
+      ],
+      "answer": "welcomes",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"at the start of the school year,\" every year) uses the simple present tense: \"welcomes.\""
+    },
+    {
+      "sentence": "The goalkeeper always ___ before every single match.",
+      "options": [
+        "stretches",
+        "stretched",
+        "will stretch",
+        "is stretching"
+      ],
+      "answer": "stretches",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"always\") uses the simple present tense: \"stretches.\""
+    },
+    {
+      "sentence": "My aunt usually ___ homemade soup on the first cold day of fall.",
+      "options": [
+        "makes",
+        "made",
+        "will make",
+        "is making"
+      ],
+      "answer": "makes",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"on the first cold day,\" every year) uses the simple present tense: \"makes.\""
+    },
+    {
+      "sentence": "The photographer usually ___ the sunrise from the same hilltop.",
+      "options": [
+        "photographs",
+        "photographed",
+        "will photograph",
+        "is photographing"
+      ],
+      "answer": "photographs",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"usually\") uses the simple present tense: \"photographs.\""
+    },
+    {
+      "sentence": "The referee always ___ the field before the whistle blows.",
+      "options": [
+        "inspects",
+        "inspected",
+        "will inspect",
+        "is inspecting"
+      ],
+      "answer": "inspects",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"always\") uses the simple present tense: \"inspects.\""
+    },
+    {
+      "sentence": "The beekeeper usually ___ the honey in late summer.",
+      "options": [
+        "harvests",
+        "harvested",
+        "will harvest",
+        "is harvesting"
+      ],
+      "answer": "harvests",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"in late summer,\" every year) uses the simple present tense: \"harvests.\""
+    },
+    {
+      "sentence": "The campers usually ___ the campfire before it gets dark.",
+      "options": [
+        "light",
+        "lit",
+        "will light",
+        "are lighting"
+      ],
+      "answer": "light",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"usually\") uses the simple present tense: \"light.\""
+    },
+    {
+      "sentence": "The librarian usually ___ the returned books onto the cart each evening.",
+      "options": [
+        "stacks",
+        "stacked",
+        "will stack",
+        "is stacking"
+      ],
+      "answer": "stacks",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"each evening\") uses the simple present tense: \"stacks.\""
+    },
+    {
+      "sentence": "Tomorrow, the beekeeper ___ three new hives to the orchard.",
+      "options": [
+        "will bring",
+        "brought",
+        "bringing",
+        "brings"
+      ],
+      "answer": "will bring",
+      "difficulty": "easy",
+      "explanation": "\"Tomorrow\" points to the future, so the verb needs \"will\" plus the base verb: \"will bring.\""
+    },
+    {
+      "sentence": "Next Friday, the choir ___ at the town's winter festival.",
+      "options": [
+        "will perform",
+        "performed",
+        "performing",
+        "performs"
+      ],
+      "answer": "will perform",
+      "difficulty": "easy",
+      "explanation": "\"Next Friday\" points to the future, so the verb needs \"will\" plus the base verb: \"will perform.\""
+    },
+    {
+      "sentence": "Next month, the carpenter ___ a new porch for our house.",
+      "options": [
+        "will build",
+        "built",
+        "building",
+        "builds"
+      ],
+      "answer": "will build",
+      "difficulty": "easy",
+      "explanation": "\"Next month\" points to the future, so the verb needs \"will\" plus the base verb: \"will build.\""
+    },
+    {
+      "sentence": "Soon, the kittens ___ their eyes open for the very first time.",
+      "options": [
+        "will open",
+        "opened",
+        "opening",
+        "opens"
+      ],
+      "answer": "will open",
+      "difficulty": "easy",
+      "explanation": "\"Soon\" points to the future, so the verb needs \"will\" plus the base verb: \"will open.\""
+    },
+    {
+      "sentence": "This weekend, the sailors ___ across the bay for the regatta.",
+      "options": [
+        "will race",
+        "raced",
+        "racing",
+        "races"
+      ],
+      "answer": "will race",
+      "difficulty": "easy",
+      "explanation": "\"This weekend\" points to the future, so the verb needs \"will\" plus the base verb: \"will race.\""
+    },
+    {
+      "sentence": "Next year, the debate team ___ at the national championship.",
+      "options": [
+        "will compete",
+        "competed",
+        "competing",
+        "competes"
+      ],
+      "answer": "will compete",
+      "difficulty": "easy",
+      "explanation": "\"Next year\" points to the future, so the verb needs \"will\" plus the base verb: \"will compete.\""
+    },
+    {
+      "sentence": "In a few minutes, the electrician ___ the power back on.",
+      "options": [
+        "will turn",
+        "turned",
+        "turning",
+        "turns"
+      ],
+      "answer": "will turn",
+      "difficulty": "easy",
+      "explanation": "\"In a few minutes\" points to the future, so the verb needs \"will\" plus the base verb: \"will turn.\""
+    },
+    {
+      "sentence": "Next spring, the beavers ___ a new dam near the meadow.",
+      "options": [
+        "will build",
+        "built",
+        "building",
+        "builds"
+      ],
+      "answer": "will build",
+      "difficulty": "easy",
+      "explanation": "\"Next spring\" points to the future, so the verb needs \"will\" plus the base verb: \"will build.\""
+    },
+    {
+      "sentence": "Tomorrow morning, the shepherd ___ the flock to higher pasture.",
+      "options": [
+        "will lead",
+        "led",
+        "leading",
+        "leads"
+      ],
+      "answer": "will lead",
+      "difficulty": "easy",
+      "explanation": "\"Tomorrow morning\" points to the future, so the verb needs \"will\" plus the base verb: \"will lead.\""
+    },
+    {
+      "sentence": "Next Saturday, the photographer ___ pictures at my cousin's wedding.",
+      "options": [
+        "will take",
+        "took",
+        "taking",
+        "takes"
+      ],
+      "answer": "will take",
+      "difficulty": "easy",
+      "explanation": "\"Next Saturday\" points to the future, so the verb needs \"will\" plus the base verb: \"will take.\""
+    },
+    {
+      "sentence": "Later this evening, the librarian ___ the shelves for tomorrow.",
+      "options": [
+        "will organize",
+        "organized",
+        "organizing",
+        "organizes"
+      ],
+      "answer": "will organize",
+      "difficulty": "easy",
+      "explanation": "\"Later this evening\" points to the future, so the verb needs \"will\" plus the base verb: \"will organize.\""
+    },
+    {
+      "sentence": "Next week, the marching band ___ a brand-new halftime show.",
+      "options": [
+        "will debut",
+        "debuted",
+        "debuting",
+        "debuts"
+      ],
+      "answer": "will debut",
+      "difficulty": "easy",
+      "explanation": "\"Next week\" points to the future, so the verb needs \"will\" plus the base verb: \"will debut.\""
+    },
+    {
+      "sentence": "Tomorrow night, the raccoon ___ back to the same trash cans.",
+      "options": [
+        "will return",
+        "returned",
+        "returning",
+        "returns"
+      ],
+      "answer": "will return",
+      "difficulty": "easy",
+      "explanation": "\"Tomorrow night\" points to the future, so the verb needs \"will\" plus the base verb: \"will return.\""
+    },
+    {
+      "sentence": "Next month, the tailor ___ costumes for the school play.",
+      "options": [
+        "will design",
+        "designed",
+        "designing",
+        "designs"
+      ],
+      "answer": "will design",
+      "difficulty": "easy",
+      "explanation": "\"Next month\" points to the future, so the verb needs \"will\" plus the base verb: \"will design.\""
+    },
+    {
+      "sentence": "This afternoon, the goalkeeper ___ extra drills after practice.",
+      "options": [
+        "will run",
+        "ran",
+        "running",
+        "runs"
+      ],
+      "answer": "will run",
+      "difficulty": "easy",
+      "explanation": "\"This afternoon\" points to the future, so the verb needs \"will\" plus the base verb: \"will run.\""
+    },
+    {
+      "sentence": "Next winter, the zookeeper ___ a heated shelter for the penguins.",
+      "options": [
+        "will build",
+        "built",
+        "building",
+        "builds"
+      ],
+      "answer": "will build",
+      "difficulty": "easy",
+      "explanation": "\"Next winter\" points to the future, so the verb needs \"will\" plus the base verb: \"will build.\""
+    },
+    {
+      "sentence": "Tomorrow, the campers ___ the trail before sunrise.",
+      "options": [
+        "will hike",
+        "hiked",
+        "hiking",
+        "hikes"
+      ],
+      "answer": "will hike",
+      "difficulty": "easy",
+      "explanation": "\"Tomorrow\" points to the future, so the verb needs \"will\" plus the base verb: \"will hike.\""
+    },
+    {
+      "sentence": "Next Tuesday, the violinist ___ her very first solo concert.",
+      "options": [
+        "will give",
+        "gave",
+        "giving",
+        "gives"
+      ],
+      "answer": "will give",
+      "difficulty": "easy",
+      "explanation": "\"Next Tuesday\" points to the future, so the verb needs \"will\" plus the base verb: \"will give.\""
+    },
+    {
+      "sentence": "Soon, the mail carrier ___ a new route across town.",
+      "options": [
+        "will start",
+        "started",
+        "starting",
+        "starts"
+      ],
+      "answer": "will start",
+      "difficulty": "easy",
+      "explanation": "\"Soon\" points to the future, so the verb needs \"will\" plus the base verb: \"will start.\""
+    },
+    {
+      "sentence": "Next summer, the beekeeper ___ two more hives behind the barn.",
+      "options": [
+        "will add",
+        "added",
+        "adding",
+        "adds"
+      ],
+      "answer": "will add",
+      "difficulty": "easy",
+      "explanation": "\"Next summer\" points to the future, so the verb needs \"will\" plus the base verb: \"will add.\""
+    },
+    {
+      "sentence": "Later today, the referee ___ the two team captains together.",
+      "options": [
+        "will meet",
+        "met",
+        "meeting",
+        "meets"
+      ],
+      "answer": "will meet",
+      "difficulty": "easy",
+      "explanation": "\"Later today\" points to the future, so the verb needs \"will\" plus the base verb: \"will meet.\""
+    },
+    {
+      "sentence": "Next Monday, the class ___ a field trip to the science museum.",
+      "options": [
+        "will take",
+        "took",
+        "taking",
+        "takes"
+      ],
+      "answer": "will take",
+      "difficulty": "easy",
+      "explanation": "\"Next Monday\" points to the future, so the verb needs \"will\" plus the base verb: \"will take.\""
+    },
+    {
+      "sentence": "Last Wednesday, the librarian ___ overdue notices to twenty students.",
+      "options": [
+        "sent",
+        "send",
+        "sends",
+        "sending"
+      ],
+      "answer": "sent",
+      "difficulty": "easy",
+      "explanation": "\"Last Wednesday\" signals the past, so the verb should be \"sent,\" the past tense of \"send.\""
+    },
+    {
+      "sentence": "A moment ago, the goalkeeper ___ the ball out of bounds.",
+      "options": [
+        "kicked",
+        "kick",
+        "kicks",
+        "kicking"
+      ],
+      "answer": "kicked",
+      "difficulty": "easy",
+      "explanation": "\"A moment ago\" signals the past, so the verb should be \"kicked,\" the past tense of \"kick.\""
+    },
+    {
+      "sentence": "Last October, the class ___ a huge pumpkin at the farm.",
+      "options": [
+        "picked",
+        "pick",
+        "picks",
+        "picking"
+      ],
+      "answer": "picked",
+      "difficulty": "easy",
+      "explanation": "\"Last October\" signals the past, so the verb should be \"picked,\" the past tense of \"pick.\""
+    },
+    {
+      "sentence": "Yesterday, the sailors ___ the old rope on the dock.",
+      "options": [
+        "replaced",
+        "replace",
+        "replaces",
+        "replacing"
+      ],
+      "answer": "replaced",
+      "difficulty": "easy",
+      "explanation": "\"Yesterday\" signals the past, so the verb should be \"replaced,\" the past tense of \"replace.\""
+    },
+    {
+      "sentence": "Last night, the raccoon ___ the lid off the garbage can.",
+      "options": [
+        "pried",
+        "pry",
+        "pries",
+        "prying"
+      ],
+      "answer": "pried",
+      "difficulty": "easy",
+      "explanation": "\"Last night\" signals the past, so the verb should be \"pried,\" the past tense of \"pry.\""
+    },
+    {
+      "sentence": "Three weeks ago, the beavers ___ their old dam with fresh branches.",
+      "options": [
+        "patched",
+        "patch",
+        "patches",
+        "patching"
+      ],
+      "answer": "patched",
+      "difficulty": "easy",
+      "explanation": "\"Three weeks ago\" signals the past, so the verb should be \"patched,\" the past tense of \"patch.\""
+    },
+    {
+      "sentence": "Right now, the librarian ___ new labels onto the returned books.",
+      "options": [
+        "is sticking",
+        "stuck",
+        "sticks",
+        "stick"
+      ],
+      "answer": "is sticking",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"is sticking.\""
+    },
+    {
+      "sentence": "At this moment, the class ___ costumes for the school play.",
+      "options": [
+        "is sewing",
+        "sewed",
+        "sews",
+        "sew"
+      ],
+      "answer": "is sewing",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is sewing.\""
+    },
+    {
+      "sentence": "Currently, the beekeeper ___ a swarm that landed on the fence.",
+      "options": [
+        "is watching",
+        "watched",
+        "watches",
+        "watch"
+      ],
+      "answer": "is watching",
+      "difficulty": "easy",
+      "explanation": "\"Currently\" signals an action happening right now, which needs the present continuous: \"is watching.\""
+    },
+    {
+      "sentence": "At the moment, the twins ___ a snowman in the front yard.",
+      "options": [
+        "are building",
+        "built",
+        "builds",
+        "build"
+      ],
+      "answer": "are building",
+      "difficulty": "easy",
+      "explanation": "\"At the moment\" signals an action happening right now, which needs the present continuous: \"are building.\""
+    },
+    {
+      "sentence": "Right now, the sailors ___ the deck before the guests arrive.",
+      "options": [
+        "are scrubbing",
+        "scrubbed",
+        "scrubs",
+        "scrub"
+      ],
+      "answer": "are scrubbing",
+      "difficulty": "easy",
+      "explanation": "\"Right now\" signals an action happening at this moment, which needs the present continuous: \"are scrubbing.\""
+    },
+    {
+      "sentence": "At this moment, the shepherd ___ a fence that blew down in the wind.",
+      "options": [
+        "is repairing",
+        "repaired",
+        "repairs",
+        "repair"
+      ],
+      "answer": "is repairing",
+      "difficulty": "easy",
+      "explanation": "\"At this moment\" signals an action happening right now, which needs the present continuous: \"is repairing.\""
+    },
+    {
+      "sentence": "The carpenter usually ___ his tools at the end of every job.",
+      "options": [
+        "cleans",
+        "cleaned",
+        "will clean",
+        "is cleaning"
+      ],
+      "answer": "cleans",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"usually\") uses the simple present tense: \"cleans.\""
+    },
+    {
+      "sentence": "The kittens always ___ together in the same sunny corner.",
+      "options": [
+        "nap",
+        "napped",
+        "will nap",
+        "are napping"
+      ],
+      "answer": "nap",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"always\") uses the simple present tense: \"nap.\""
+    },
+    {
+      "sentence": "The choir usually ___ a holiday concert every December.",
+      "options": [
+        "holds",
+        "held",
+        "will hold",
+        "is holding"
+      ],
+      "answer": "holds",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"every December\") uses the simple present tense: \"holds.\""
+    },
+    {
+      "sentence": "The mail carrier's dog often ___ at the mail truck each afternoon.",
+      "options": [
+        "barks",
+        "barked",
+        "will bark",
+        "is barking"
+      ],
+      "answer": "barks",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"each afternoon\") uses the simple present tense: \"barks.\""
+    },
+    {
+      "sentence": "The referees usually ___ new rules before every season starts.",
+      "options": [
+        "review",
+        "reviewed",
+        "will review",
+        "are reviewing"
+      ],
+      "answer": "review",
+      "difficulty": "easy",
+      "explanation": "A habitual, repeated action (\"before every season\") uses the simple present tense: \"review.\""
+    },
+    {
+      "sentence": "Next week, the carpenter ___ new cabinets in the kitchen.",
+      "options": [
+        "will install",
+        "installed",
+        "installing",
+        "installs"
+      ],
+      "answer": "will install",
+      "difficulty": "easy",
+      "explanation": "\"Next week\" points to the future, so the verb needs \"will\" plus the base verb: \"will install.\""
+    },
+    {
+      "sentence": "Tomorrow, the choir director ___ the new song to the whole group.",
+      "options": [
+        "will teach",
+        "taught",
+        "teaching",
+        "teaches"
+      ],
+      "answer": "will teach",
+      "difficulty": "easy",
+      "explanation": "\"Tomorrow\" points to the future, so the verb needs \"will\" plus the base verb: \"will teach.\""
+    },
+    {
+      "sentence": "Next Sunday, the sailors ___ the harbor before the fog rolls in.",
+      "options": [
+        "will leave",
+        "left",
+        "leaving",
+        "leaves"
+      ],
+      "answer": "will leave",
+      "difficulty": "easy",
+      "explanation": "\"Next Sunday\" points to the future, so the verb needs \"will\" plus the base verb: \"will leave.\""
+    },
+    {
+      "sentence": "Soon, the beavers ___ the dam even taller before winter.",
+      "options": [
+        "will make",
+        "made",
+        "making",
+        "makes"
+      ],
+      "answer": "will make",
+      "difficulty": "easy",
+      "explanation": "\"Soon\" points to the future, so the verb needs \"will\" plus the base verb: \"will make.\""
+    },
+    {
+      "sentence": "Next month, the zookeeper ___ a brand-new exhibit for the otters.",
+      "options": [
+        "will open",
+        "opened",
+        "opening",
+        "opens"
+      ],
+      "answer": "will open",
+      "difficulty": "easy",
+      "explanation": "\"Next month\" points to the future, so the verb needs \"will\" plus the base verb: \"will open.\""
+    },
+    {
       "sentence": "When the puppies were younger, they ___ noodles for lunch every single day, but not anymore.",
       "options": [
         "used to cook",
@@ -2571,6 +3891,1326 @@
       "explanation": "An action already in progress when something else happened uses the past continuous: \"was cooking.\""
     },
     {
+      "sentence": "When my grandfather was young, he ___ to school on a horse every single day, but not anymore.",
+      "options": [
+        "used to ride",
+        "rides",
+        "riding",
+        "has ridden"
+      ],
+      "answer": "used to ride",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to ride.\""
+    },
+    {
+      "sentence": "When the tailor was younger, she ___ every button by hand, but not anymore.",
+      "options": [
+        "used to sew",
+        "sews",
+        "sewing",
+        "has sewn"
+      ],
+      "answer": "used to sew",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to sew.\""
+    },
+    {
+      "sentence": "When the sailors were younger, they ___ without any modern equipment, but not anymore.",
+      "options": [
+        "used to navigate",
+        "navigate",
+        "navigating",
+        "have navigated"
+      ],
+      "answer": "used to navigate",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to navigate.\""
+    },
+    {
+      "sentence": "When the beekeeper was younger, he ___ his hives without any protective gloves, but not anymore.",
+      "options": [
+        "used to check",
+        "checks",
+        "checking",
+        "has checked"
+      ],
+      "answer": "used to check",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to check.\""
+    },
+    {
+      "sentence": "When my aunt was younger, she ___ every Sunday dinner from scratch, but not anymore.",
+      "options": [
+        "used to cook",
+        "cooks",
+        "cooking",
+        "has cooked"
+      ],
+      "answer": "used to cook",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to cook.\""
+    },
+    {
+      "sentence": "When the shepherd was younger, he ___ the sheep on foot every single day, but not anymore.",
+      "options": [
+        "used to herd",
+        "herds",
+        "herding",
+        "has herded"
+      ],
+      "answer": "used to herd",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to herd.\""
+    },
+    {
+      "sentence": "When the twins were younger, they ___ every afternoon in the tree house, but not anymore.",
+      "options": [
+        "used to play",
+        "play",
+        "playing",
+        "have played"
+      ],
+      "answer": "used to play",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to play.\""
+    },
+    {
+      "sentence": "When the librarian was younger, she ___ every new book before shelving it, but not anymore.",
+      "options": [
+        "used to read",
+        "reads",
+        "reading",
+        "has read"
+      ],
+      "answer": "used to read",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to read.\""
+    },
+    {
+      "sentence": "When the violinist was younger, she ___ for three hours every single day, but not anymore.",
+      "options": [
+        "used to practice",
+        "practices",
+        "practicing",
+        "has practiced"
+      ],
+      "answer": "used to practice",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to practice.\""
+    },
+    {
+      "sentence": "When the zookeeper was younger, he ___ the tigers by hand every morning, but not anymore.",
+      "options": [
+        "used to feed",
+        "feeds",
+        "feeding",
+        "has fed"
+      ],
+      "answer": "used to feed",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to feed.\""
+    },
+    {
+      "sentence": "When the mail carrier was younger, he ___ the whole route on a bicycle, but not anymore.",
+      "options": [
+        "used to deliver",
+        "delivers",
+        "delivering",
+        "has delivered"
+      ],
+      "answer": "used to deliver",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to deliver.\""
+    },
+    {
+      "sentence": "When the carpenter was younger, he ___ every piece of furniture without power tools, but not anymore.",
+      "options": [
+        "used to build",
+        "builds",
+        "building",
+        "has built"
+      ],
+      "answer": "used to build",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to build.\""
+    },
+    {
+      "sentence": "When the campers were younger, they ___ their own tents at every campsite, but not anymore.",
+      "options": [
+        "used to pitch",
+        "pitch",
+        "pitching",
+        "have pitched"
+      ],
+      "answer": "used to pitch",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to pitch.\""
+    },
+    {
+      "sentence": "When the goalkeeper was younger, he ___ without any gloves at all, but not anymore.",
+      "options": [
+        "used to play",
+        "plays",
+        "playing",
+        "has played"
+      ],
+      "answer": "used to play",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to play.\""
+    },
+    {
+      "sentence": "When the electrician was younger, she ___ every circuit by candlelight during blackouts, but not anymore.",
+      "options": [
+        "used to check",
+        "checks",
+        "checking",
+        "has checked"
+      ],
+      "answer": "used to check",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to check.\""
+    },
+    {
+      "sentence": "When the photographer was younger, he ___ film instead of digital cameras, but not anymore.",
+      "options": [
+        "used to use",
+        "uses",
+        "using",
+        "has used"
+      ],
+      "answer": "used to use",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to use.\""
+    },
+    {
+      "sentence": "When the beavers first settled in the creek, they ___ their dam every single week, but not anymore.",
+      "options": [
+        "used to rebuild",
+        "rebuild",
+        "rebuilding",
+        "have rebuilt"
+      ],
+      "answer": "used to rebuild",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to rebuild.\""
+    },
+    {
+      "sentence": "When the referee was younger, he ___ three games every single weekend, but not anymore.",
+      "options": [
+        "used to officiate",
+        "officiates",
+        "officiating",
+        "has officiated"
+      ],
+      "answer": "used to officiate",
+      "difficulty": "medium",
+      "explanation": "A repeated habit that no longer happens is described with \"used to\" plus the base verb: \"used to officiate.\""
+    },
+    {
+      "sentence": "The carpenter ___ furniture for this school many times before.",
+      "options": [
+        "has built",
+        "built",
+        "is building",
+        "will build"
+      ],
+      "answer": "has built",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has built.\""
+    },
+    {
+      "sentence": "The sailors ___ across this bay many times before.",
+      "options": [
+        "have sailed",
+        "sailed",
+        "are sailing",
+        "will sail"
+      ],
+      "answer": "have sailed",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"have sailed.\""
+    },
+    {
+      "sentence": "The choir ___ that same song many times before.",
+      "options": [
+        "has sung",
+        "sang",
+        "is singing",
+        "will sing"
+      ],
+      "answer": "has sung",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has sung.\""
+    },
+    {
+      "sentence": "The debate team ___ this argument many times before.",
+      "options": [
+        "has used",
+        "used",
+        "is using",
+        "will use"
+      ],
+      "answer": "has used",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has used.\""
+    },
+    {
+      "sentence": "The beavers ___ that section of the creek many times before.",
+      "options": [
+        "have blocked",
+        "blocked",
+        "are blocking",
+        "will block"
+      ],
+      "answer": "have blocked",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"have blocked.\""
+    },
+    {
+      "sentence": "The zookeeper already ___ the morning rounds, so she can take a break.",
+      "options": [
+        "has finished",
+        "finished",
+        "is finishing",
+        "will finish"
+      ],
+      "answer": "has finished",
+      "difficulty": "medium",
+      "explanation": "An action completed at an unspecified recent time, still relevant now (\"already\"), uses the present perfect: \"has finished.\""
+    },
+    {
+      "sentence": "The mail carrier just ___ the last package on our street.",
+      "options": [
+        "has delivered",
+        "delivered",
+        "is delivering",
+        "will deliver"
+      ],
+      "answer": "has delivered",
+      "difficulty": "medium",
+      "explanation": "An action completed a moment ago and still relevant now (\"just\") uses the present perfect: \"has delivered.\""
+    },
+    {
+      "sentence": "The twins ___ their room several times this week.",
+      "options": [
+        "have cleaned",
+        "cleaned",
+        "are cleaning",
+        "will clean"
+      ],
+      "answer": "have cleaned",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"have cleaned.\""
+    },
+    {
+      "sentence": "The librarian ___ that mystery novel many times before.",
+      "options": [
+        "has recommended",
+        "recommended",
+        "is recommending",
+        "will recommend"
+      ],
+      "answer": "has recommended",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has recommended.\""
+    },
+    {
+      "sentence": "The shepherd ___ this exact field many times before.",
+      "options": [
+        "has crossed",
+        "crossed",
+        "is crossing",
+        "will cross"
+      ],
+      "answer": "has crossed",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has crossed.\""
+    },
+    {
+      "sentence": "The violinist ___ on this very stage many times before.",
+      "options": [
+        "has performed",
+        "performed",
+        "is performing",
+        "will perform"
+      ],
+      "answer": "has performed",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has performed.\""
+    },
+    {
+      "sentence": "The class already ___ the museum, so they went to the park instead.",
+      "options": [
+        "have visited",
+        "visited",
+        "are visiting",
+        "will visit"
+      ],
+      "answer": "have visited",
+      "difficulty": "medium",
+      "explanation": "An action completed at an unspecified recent time, still relevant now (\"already\"), uses the present perfect: \"have visited.\""
+    },
+    {
+      "sentence": "The goalkeeper ___ many penalty kicks before in his career.",
+      "options": [
+        "has stopped",
+        "stopped",
+        "is stopping",
+        "will stop"
+      ],
+      "answer": "has stopped",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has stopped.\""
+    },
+    {
+      "sentence": "The electrician just ___ the last of the wiring in the attic.",
+      "options": [
+        "has finished",
+        "finished",
+        "is finishing",
+        "will finish"
+      ],
+      "answer": "has finished",
+      "difficulty": "medium",
+      "explanation": "An action completed a moment ago and still relevant now (\"just\") uses the present perfect: \"has finished.\""
+    },
+    {
+      "sentence": "The referees ___ that same rule many times before.",
+      "options": [
+        "have explained",
+        "explained",
+        "are explaining",
+        "will explain"
+      ],
+      "answer": "have explained",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"have explained.\""
+    },
+    {
+      "sentence": "The photographer ___ this exact mountain many times before.",
+      "options": [
+        "has photographed",
+        "photographed",
+        "is photographing",
+        "will photograph"
+      ],
+      "answer": "has photographed",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has photographed.\""
+    },
+    {
+      "sentence": "My uncle ___ this same fishing spot many times before.",
+      "options": [
+        "has visited",
+        "visited",
+        "is visiting",
+        "will visit"
+      ],
+      "answer": "has visited",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has visited.\""
+    },
+    {
+      "sentence": "The beekeeper ___ that hive many times before.",
+      "options": [
+        "has inspected",
+        "inspected",
+        "is inspecting",
+        "will inspect"
+      ],
+      "answer": "has inspected",
+      "difficulty": "medium",
+      "explanation": "An action from an unspecified time in the past that still matters now uses the present perfect: \"has inspected.\""
+    },
+    {
+      "sentence": "If the sailors ___ the harbor before noon, everyone will celebrate.",
+      "options": [
+        "reach",
+        "reached",
+        "will reach",
+        "have reached"
+      ],
+      "answer": "reach",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"reach.\""
+    },
+    {
+      "sentence": "If the choir ___ that difficult song perfectly, the audience will erupt in applause.",
+      "options": [
+        "sings",
+        "sang",
+        "will sing",
+        "has sung"
+      ],
+      "answer": "sings",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"sings.\""
+    },
+    {
+      "sentence": "If the carpenter ___ the shelf by Friday, the whole family will celebrate.",
+      "options": [
+        "finishes",
+        "finished",
+        "will finish",
+        "has finished"
+      ],
+      "answer": "finishes",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"finishes.\""
+    },
+    {
+      "sentence": "If the beavers ___ the dam before winter, everyone will celebrate.",
+      "options": [
+        "finish",
+        "finished",
+        "will finish",
+        "have finished"
+      ],
+      "answer": "finish",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"finish.\""
+    },
+    {
+      "sentence": "If the twins ___ their room before dinner, my mother will be delighted.",
+      "options": [
+        "clean",
+        "cleaned",
+        "will clean",
+        "have cleaned"
+      ],
+      "answer": "clean",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"clean.\""
+    },
+    {
+      "sentence": "If the zookeeper ___ the new otter exhibit on time, the visitors will be thrilled.",
+      "options": [
+        "opens",
+        "opened",
+        "will open",
+        "has opened"
+      ],
+      "answer": "opens",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"opens.\""
+    },
+    {
+      "sentence": "If the debate team ___ the final round, their coach will be so proud.",
+      "options": [
+        "wins",
+        "won",
+        "will win",
+        "has won"
+      ],
+      "answer": "wins",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"wins.\""
+    },
+    {
+      "sentence": "If the violinist ___ without a single mistake, everyone will celebrate.",
+      "options": [
+        "performs",
+        "performed",
+        "will perform",
+        "has performed"
+      ],
+      "answer": "performs",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"performs.\""
+    },
+    {
+      "sentence": "If the goalkeeper ___ the penalty kick, the crowd will go wild.",
+      "options": [
+        "blocks",
+        "blocked",
+        "will block",
+        "has blocked"
+      ],
+      "answer": "blocks",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"blocks.\""
+    },
+    {
+      "sentence": "If the mail carrier ___ before the storm hits, everyone will celebrate.",
+      "options": [
+        "finishes",
+        "finished",
+        "will finish",
+        "has finished"
+      ],
+      "answer": "finishes",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"finishes.\""
+    },
+    {
+      "sentence": "If the shepherd ___ the lost lamb by sunset, everyone will be relieved.",
+      "options": [
+        "finds",
+        "found",
+        "will find",
+        "has found"
+      ],
+      "answer": "finds",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"finds.\""
+    },
+    {
+      "sentence": "If the librarian ___ the book fair this year, everyone will celebrate.",
+      "options": [
+        "organizes",
+        "organized",
+        "will organize",
+        "has organized"
+      ],
+      "answer": "organizes",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"organizes.\""
+    },
+    {
+      "sentence": "If the electrician ___ the lights before the show starts, the whole school will be grateful.",
+      "options": [
+        "fixes",
+        "fixed",
+        "will fix",
+        "has fixed"
+      ],
+      "answer": "fixes",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"fixes.\""
+    },
+    {
+      "sentence": "If the class ___ enough money for new equipment, everyone will celebrate.",
+      "options": [
+        "raises",
+        "raised",
+        "will raise",
+        "has raised"
+      ],
+      "answer": "raises",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"raises.\""
+    },
+    {
+      "sentence": "If the campers ___ the whole trail before dark, everyone will be impressed.",
+      "options": [
+        "finish",
+        "finished",
+        "will finish",
+        "have finished"
+      ],
+      "answer": "finish",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"finish.\""
+    },
+    {
+      "sentence": "If the referee ___ the match fairly, everyone will celebrate.",
+      "options": [
+        "calls",
+        "called",
+        "will call",
+        "has called"
+      ],
+      "answer": "calls",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"calls.\""
+    },
+    {
+      "sentence": "If the beekeeper ___ enough honey this season, the whole town will be delighted.",
+      "options": [
+        "collects",
+        "collected",
+        "will collect",
+        "has collected"
+      ],
+      "answer": "collects",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"collects.\""
+    },
+    {
+      "sentence": "If the photographer ___ the perfect shot at sunrise, everyone will celebrate.",
+      "options": [
+        "gets",
+        "got",
+        "will get",
+        "has gotten"
+      ],
+      "answer": "gets",
+      "difficulty": "medium",
+      "explanation": "A first conditional (a real possibility) uses the simple present in the \"if\" clause: \"gets.\""
+    },
+    {
+      "sentence": "By the time the guests arrived, the carpenter ___ the new shelf.",
+      "options": [
+        "had finished",
+        "finished",
+        "has finished",
+        "will have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had finished.\""
+    },
+    {
+      "sentence": "By the time the sun rose, the sailors ___ the harbor safely.",
+      "options": [
+        "had reached",
+        "reached",
+        "have reached",
+        "will have reached"
+      ],
+      "answer": "had reached",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had reached.\""
+    },
+    {
+      "sentence": "By the time the coach arrived, the goalkeeper ___ his warm-up drills.",
+      "options": [
+        "had finished",
+        "finished",
+        "has finished",
+        "will have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had finished.\""
+    },
+    {
+      "sentence": "By the time the judges sat down, the choir ___ its final rehearsal.",
+      "options": [
+        "had completed",
+        "completed",
+        "has completed",
+        "will have completed"
+      ],
+      "answer": "had completed",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had completed.\""
+    },
+    {
+      "sentence": "By the time winter arrived, the beavers ___ their new dam.",
+      "options": [
+        "had finished",
+        "finished",
+        "have finished",
+        "will have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had finished.\""
+    },
+    {
+      "sentence": "By the time the bell rang, the librarian ___ the last of the returned books.",
+      "options": [
+        "had shelved",
+        "shelved",
+        "has shelved",
+        "will have shelved"
+      ],
+      "answer": "had shelved",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had shelved.\""
+    },
+    {
+      "sentence": "By the time we got there, the debate team ___ their final argument.",
+      "options": [
+        "had prepared",
+        "prepared",
+        "have prepared",
+        "will have prepared"
+      ],
+      "answer": "had prepared",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had prepared.\""
+    },
+    {
+      "sentence": "By the time the storm hit, the shepherd ___ the sheep to safety.",
+      "options": [
+        "had led",
+        "led",
+        "has led",
+        "will have led"
+      ],
+      "answer": "had led",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had led.\""
+    },
+    {
+      "sentence": "By the time the parade started, the marching band ___ their instruments.",
+      "options": [
+        "had tuned",
+        "tuned",
+        "have tuned",
+        "will have tuned"
+      ],
+      "answer": "had tuned",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had tuned.\""
+    },
+    {
+      "sentence": "By the time the ambulance arrived, the lifeguard ___ the swimmer from the water.",
+      "options": [
+        "had pulled",
+        "pulled",
+        "has pulled",
+        "will have pulled"
+      ],
+      "answer": "had pulled",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had pulled.\""
+    },
+    {
+      "sentence": "By the time the tourists woke up, the tour guide ___ breakfast for the whole group.",
+      "options": [
+        "had prepared",
+        "prepared",
+        "has prepared",
+        "will have prepared"
+      ],
+      "answer": "had prepared",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had prepared.\""
+    },
+    {
+      "sentence": "By the time the vet arrived, the zookeeper ___ the injured bird.",
+      "options": [
+        "had examined",
+        "examined",
+        "has examined",
+        "will have examined"
+      ],
+      "answer": "had examined",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had examined.\""
+    },
+    {
+      "sentence": "By the time the power came back, the electrician ___ every circuit in the house.",
+      "options": [
+        "had checked",
+        "checked",
+        "has checked",
+        "will have checked"
+      ],
+      "answer": "had checked",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had checked.\""
+    },
+    {
+      "sentence": "By the time the audience arrived, the violinist ___ her instrument.",
+      "options": [
+        "had tuned",
+        "tuned",
+        "has tuned",
+        "will have tuned"
+      ],
+      "answer": "had tuned",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had tuned.\""
+    },
+    {
+      "sentence": "By the time the rain started, the campers ___ their tents.",
+      "options": [
+        "had pitched",
+        "pitched",
+        "have pitched",
+        "will have pitched"
+      ],
+      "answer": "had pitched",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had pitched.\""
+    },
+    {
+      "sentence": "By the time the referee blew the whistle, the players ___ onto the field.",
+      "options": [
+        "had jogged",
+        "jogged",
+        "have jogged",
+        "will have jogged"
+      ],
+      "answer": "had jogged",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had jogged.\""
+    },
+    {
+      "sentence": "By the time the sun set, the photographer ___ over a hundred pictures.",
+      "options": [
+        "had taken",
+        "took",
+        "has taken",
+        "will have taken"
+      ],
+      "answer": "had taken",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had taken.\""
+    },
+    {
+      "sentence": "By the time the bus left, the mail carrier ___ every package on the truck.",
+      "options": [
+        "had loaded",
+        "loaded",
+        "has loaded",
+        "will have loaded"
+      ],
+      "answer": "had loaded",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had loaded.\""
+    },
+    {
+      "sentence": "By the time the guests sat down, my aunt ___ the entire table.",
+      "options": [
+        "had decorated",
+        "decorated",
+        "has decorated",
+        "will have decorated"
+      ],
+      "answer": "had decorated",
+      "difficulty": "medium",
+      "explanation": "An action completed before another point in the past uses the past perfect: \"had decorated.\""
+    },
+    {
+      "sentence": "While the carpenter ___ the new shelf, the saw suddenly broke.",
+      "options": [
+        "was building",
+        "built",
+        "has built",
+        "will build"
+      ],
+      "answer": "was building",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was building.\""
+    },
+    {
+      "sentence": "While the sailors ___ the sails, a strong gust of wind knocked one of them over.",
+      "options": [
+        "were raising",
+        "raised",
+        "have raised",
+        "will raise"
+      ],
+      "answer": "were raising",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"were raising.\""
+    },
+    {
+      "sentence": "While the choir ___ the final verse, the lights in the auditorium flickered.",
+      "options": [
+        "was singing",
+        "sang",
+        "has sung",
+        "will sing"
+      ],
+      "answer": "was singing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was singing.\""
+    },
+    {
+      "sentence": "While the beavers ___ the dam, a fallen log blocked the stream.",
+      "options": [
+        "were repairing",
+        "repaired",
+        "have repaired",
+        "will repair"
+      ],
+      "answer": "were repairing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"were repairing.\""
+    },
+    {
+      "sentence": "While the twins ___ in the backyard, it suddenly started to hail.",
+      "options": [
+        "were playing",
+        "played",
+        "have played",
+        "will play"
+      ],
+      "answer": "were playing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"were playing.\""
+    },
+    {
+      "sentence": "While the zookeeper ___ the tigers, an alarm went off across the park.",
+      "options": [
+        "was feeding",
+        "fed",
+        "has fed",
+        "will feed"
+      ],
+      "answer": "was feeding",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was feeding.\""
+    },
+    {
+      "sentence": "While the debate team ___ their notes, the judges walked into the room.",
+      "options": [
+        "were reviewing",
+        "reviewed",
+        "have reviewed",
+        "will review"
+      ],
+      "answer": "were reviewing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"were reviewing.\""
+    },
+    {
+      "sentence": "While the violinist ___ her solo, a string snapped on her instrument.",
+      "options": [
+        "was playing",
+        "played",
+        "has played",
+        "will play"
+      ],
+      "answer": "was playing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was playing.\""
+    },
+    {
+      "sentence": "While the goalkeeper ___ his gloves, the referee blew the starting whistle.",
+      "options": [
+        "was adjusting",
+        "adjusted",
+        "has adjusted",
+        "will adjust"
+      ],
+      "answer": "was adjusting",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was adjusting.\""
+    },
+    {
+      "sentence": "While the mail carrier ___ letters, a dog ran out of a nearby yard.",
+      "options": [
+        "was sorting",
+        "sorted",
+        "has sorted",
+        "will sort"
+      ],
+      "answer": "was sorting",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was sorting.\""
+    },
+    {
+      "sentence": "While the shepherd ___ the flock down the hill, thick fog rolled in.",
+      "options": [
+        "was leading",
+        "led",
+        "has led",
+        "will lead"
+      ],
+      "answer": "was leading",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was leading.\""
+    },
+    {
+      "sentence": "While the librarian ___ the shelves, a stack of books toppled over.",
+      "options": [
+        "was organizing",
+        "organized",
+        "has organized",
+        "will organize"
+      ],
+      "answer": "was organizing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was organizing.\""
+    },
+    {
+      "sentence": "While the electrician ___ the wiring, the whole house lost power.",
+      "options": [
+        "was checking",
+        "checked",
+        "has checked",
+        "will check"
+      ],
+      "answer": "was checking",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was checking.\""
+    },
+    {
+      "sentence": "While the class ___ the mural, the art teacher walked in to check on them.",
+      "options": [
+        "was painting",
+        "painted",
+        "has painted",
+        "will paint"
+      ],
+      "answer": "was painting",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was painting.\""
+    },
+    {
+      "sentence": "While the campers ___ their tents, a family of deer wandered through the site.",
+      "options": [
+        "were pitching",
+        "pitched",
+        "have pitched",
+        "will pitch"
+      ],
+      "answer": "were pitching",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"were pitching.\""
+    },
+    {
+      "sentence": "While the referee ___ the field, a sudden downpour started.",
+      "options": [
+        "was inspecting",
+        "inspected",
+        "has inspected",
+        "will inspect"
+      ],
+      "answer": "was inspecting",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was inspecting.\""
+    },
+    {
+      "sentence": "While the beekeeper ___ the new hive, a swarm of bees landed on his hat.",
+      "options": [
+        "was assembling",
+        "assembled",
+        "has assembled",
+        "will assemble"
+      ],
+      "answer": "was assembling",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was assembling.\""
+    },
+    {
+      "sentence": "While the photographer ___ the sunset, storm clouds rolled across the sky.",
+      "options": [
+        "was photographing",
+        "photographed",
+        "has photographed",
+        "will photograph"
+      ],
+      "answer": "was photographing",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was photographing.\""
+    },
+    {
+      "sentence": "While the tailor ___ the wedding dress, the sewing machine jammed.",
+      "options": [
+        "was hemming",
+        "hemmed",
+        "has hemmed",
+        "will hem"
+      ],
+      "answer": "was hemming",
+      "difficulty": "medium",
+      "explanation": "An action already in progress when something else happened uses the past continuous: \"was hemming.\""
+    },
+    {
+      "sentence": "By next Friday, the carpenter ___ the new porch.",
+      "options": [
+        "will have finished",
+        "finished",
+        "has finished",
+        "had finished"
+      ],
+      "answer": "will have finished",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have finished.\""
+    },
+    {
+      "sentence": "By the end of the month, the sailors ___ the entire coastline.",
+      "options": [
+        "will have mapped",
+        "mapped",
+        "have mapped",
+        "had mapped"
+      ],
+      "answer": "will have mapped",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have mapped.\""
+    },
+    {
+      "sentence": "By next week, the choir ___ every song for the concert.",
+      "options": [
+        "will have learned",
+        "learned",
+        "have learned",
+        "had learned"
+      ],
+      "answer": "will have learned",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have learned.\""
+    },
+    {
+      "sentence": "By next spring, the beavers ___ a second dam downstream.",
+      "options": [
+        "will have built",
+        "built",
+        "have built",
+        "had built"
+      ],
+      "answer": "will have built",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have built.\""
+    },
+    {
+      "sentence": "By tomorrow morning, the twins ___ their whole room.",
+      "options": [
+        "will have cleaned",
+        "cleaned",
+        "have cleaned",
+        "had cleaned"
+      ],
+      "answer": "will have cleaned",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have cleaned.\""
+    },
+    {
+      "sentence": "By the end of the season, the zookeeper ___ over a thousand animals.",
+      "options": [
+        "will have fed",
+        "fed",
+        "has fed",
+        "had fed"
+      ],
+      "answer": "will have fed",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have fed.\""
+    },
+    {
+      "sentence": "By Saturday, the debate team ___ every possible argument.",
+      "options": [
+        "will have practiced",
+        "practiced",
+        "have practiced",
+        "had practiced"
+      ],
+      "answer": "will have practiced",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have practiced.\""
+    },
+    {
+      "sentence": "By next month, the violinist ___ the entire concerto.",
+      "options": [
+        "will have memorized",
+        "memorized",
+        "has memorized",
+        "had memorized"
+      ],
+      "answer": "will have memorized",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have memorized.\""
+    },
+    {
+      "sentence": "By the final whistle, the goalkeeper ___ at least ten shots.",
+      "options": [
+        "will have blocked",
+        "blocked",
+        "has blocked",
+        "had blocked"
+      ],
+      "answer": "will have blocked",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have blocked.\""
+    },
+    {
+      "sentence": "By five o'clock, the mail carrier ___ every house on the street.",
+      "options": [
+        "will have visited",
+        "visited",
+        "has visited",
+        "had visited"
+      ],
+      "answer": "will have visited",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have visited.\""
+    },
+    {
+      "sentence": "By next autumn, the shepherd ___ the flock to three different pastures.",
+      "options": [
+        "will have moved",
+        "moved",
+        "has moved",
+        "had moved"
+      ],
+      "answer": "will have moved",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have moved.\""
+    },
+    {
+      "sentence": "By the end of the day, the librarian ___ the entire fiction section.",
+      "options": [
+        "will have reorganized",
+        "reorganized",
+        "has reorganized",
+        "had reorganized"
+      ],
+      "answer": "will have reorganized",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have reorganized.\""
+    },
+    {
+      "sentence": "By next Tuesday, the electrician ___ the wiring in every classroom.",
+      "options": [
+        "will have replaced",
+        "replaced",
+        "has replaced",
+        "had replaced"
+      ],
+      "answer": "will have replaced",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have replaced.\""
+    },
+    {
+      "sentence": "By the end of the trip, the class ___ four different museums.",
+      "options": [
+        "will have visited",
+        "visited",
+        "have visited",
+        "had visited"
+      ],
+      "answer": "will have visited",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have visited.\""
+    },
+    {
+      "sentence": "By sunset, the campers ___ the entire trail.",
+      "options": [
+        "will have hiked",
+        "hiked",
+        "have hiked",
+        "had hiked"
+      ],
+      "answer": "will have hiked",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have hiked.\""
+    },
+    {
+      "sentence": "By the end of the tournament, the referee ___ over a dozen matches.",
+      "options": [
+        "will have officiated",
+        "officiated",
+        "has officiated",
+        "had officiated"
+      ],
+      "answer": "will have officiated",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have officiated.\""
+    },
+    {
+      "sentence": "By next summer, the beekeeper ___ five new hives.",
+      "options": [
+        "will have added",
+        "added",
+        "has added",
+        "had added"
+      ],
+      "answer": "will have added",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have added.\""
+    },
+    {
+      "sentence": "By the end of the year, the photographer ___ enough pictures for a whole book.",
+      "options": [
+        "will have taken",
+        "took",
+        "has taken",
+        "had taken"
+      ],
+      "answer": "will have taken",
+      "difficulty": "medium",
+      "explanation": "An action that will be completed before a future deadline uses the future perfect: \"will have taken.\""
+    },
+    {
       "sentence": "They told me that they ___ off the diving board the week before.",
       "options": [
         "had jumped",
@@ -3817,6 +6457,1326 @@
       "answer": "had visited",
       "difficulty": "hard",
       "explanation": "In reported speech, a past action shifts back to the past perfect: \"had visited.\""
+    },
+    {
+      "sentence": "If the carpenter ___ the shelf in time, everyone would have been overjoyed.",
+      "options": [
+        "had finished",
+        "finished",
+        "has finished",
+        "would have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had finished.\""
+    },
+    {
+      "sentence": "If the sailors ___ the harbor before the storm, they would have been absolutely relieved.",
+      "options": [
+        "had reached",
+        "reached",
+        "have reached",
+        "would have reached"
+      ],
+      "answer": "had reached",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had reached.\""
+    },
+    {
+      "sentence": "If the choir ___ that difficult song perfectly, the judges would have been amazed.",
+      "options": [
+        "had sung",
+        "sang",
+        "has sung",
+        "would have sung"
+      ],
+      "answer": "had sung",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had sung.\""
+    },
+    {
+      "sentence": "If the beavers ___ the dam before the flood, the whole meadow would have stayed dry.",
+      "options": [
+        "had finished",
+        "finished",
+        "have finished",
+        "would have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had finished.\""
+    },
+    {
+      "sentence": "If the twins ___ their room before the guests arrived, my mother would have been so proud.",
+      "options": [
+        "had cleaned",
+        "cleaned",
+        "have cleaned",
+        "would have cleaned"
+      ],
+      "answer": "had cleaned",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had cleaned.\""
+    },
+    {
+      "sentence": "If the zookeeper ___ the escaped otter sooner, the visitors would have been much calmer.",
+      "options": [
+        "had found",
+        "found",
+        "has found",
+        "would have found"
+      ],
+      "answer": "had found",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had found.\""
+    },
+    {
+      "sentence": "If the debate team ___ their closing argument better, they would have won the round.",
+      "options": [
+        "had delivered",
+        "delivered",
+        "have delivered",
+        "would have delivered"
+      ],
+      "answer": "had delivered",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had delivered.\""
+    },
+    {
+      "sentence": "If the violinist ___ her instrument sooner, the concert would have started on time.",
+      "options": [
+        "had tuned",
+        "tuned",
+        "has tuned",
+        "would have tuned"
+      ],
+      "answer": "had tuned",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had tuned.\""
+    },
+    {
+      "sentence": "If the goalkeeper ___ that final shot, the team would have won the championship.",
+      "options": [
+        "had blocked",
+        "blocked",
+        "has blocked",
+        "would have blocked"
+      ],
+      "answer": "had blocked",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had blocked.\""
+    },
+    {
+      "sentence": "If the mail carrier ___ before the rain started, none of the letters would have gotten wet.",
+      "options": [
+        "had finished",
+        "finished",
+        "has finished",
+        "would have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had finished.\""
+    },
+    {
+      "sentence": "If the shepherd ___ the lamb earlier, it would have been much easier to find.",
+      "options": [
+        "had searched for",
+        "searched for",
+        "has searched for",
+        "would have searched for"
+      ],
+      "answer": "had searched for",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had searched for.\""
+    },
+    {
+      "sentence": "If the librarian ___ the fair earlier in the year, more students would have attended.",
+      "options": [
+        "had planned",
+        "planned",
+        "has planned",
+        "would have planned"
+      ],
+      "answer": "had planned",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had planned.\""
+    },
+    {
+      "sentence": "If the electrician ___ the wiring sooner, the lights would never have gone out.",
+      "options": [
+        "had checked",
+        "checked",
+        "has checked",
+        "would have checked"
+      ],
+      "answer": "had checked",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had checked.\""
+    },
+    {
+      "sentence": "If the class ___ enough money in time, they would have gone on the trip.",
+      "options": [
+        "had raised",
+        "raised",
+        "have raised",
+        "would have raised"
+      ],
+      "answer": "had raised",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had raised.\""
+    },
+    {
+      "sentence": "If the campers ___ the whole trail before dark, they would not have needed flashlights.",
+      "options": [
+        "had finished",
+        "finished",
+        "have finished",
+        "would have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had finished.\""
+    },
+    {
+      "sentence": "If the referee ___ that foul, the crowd would have been much angrier.",
+      "options": [
+        "had missed",
+        "missed",
+        "has missed",
+        "would have missed"
+      ],
+      "answer": "had missed",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had missed.\""
+    },
+    {
+      "sentence": "If the beekeeper ___ the hive before the storm, fewer bees would have been lost.",
+      "options": [
+        "had moved",
+        "moved",
+        "has moved",
+        "would have moved"
+      ],
+      "answer": "had moved",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had moved.\""
+    },
+    {
+      "sentence": "If the photographer ___ the sunrise from the hilltop, she would have gotten the perfect shot.",
+      "options": [
+        "had photographed",
+        "photographed",
+        "has photographed",
+        "would have photographed"
+      ],
+      "answer": "had photographed",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had photographed.\""
+    },
+    {
+      "sentence": "If the tailor ___ the dress a day earlier, it would have been ready for the wedding.",
+      "options": [
+        "had finished",
+        "finished",
+        "has finished",
+        "would have finished"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had finished.\""
+    },
+    {
+      "sentence": "If the marching band ___ their new routine sooner, the halftime show would have been flawless.",
+      "options": [
+        "had learned",
+        "learned",
+        "have learned",
+        "would have learned"
+      ],
+      "answer": "had learned",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had learned.\""
+    },
+    {
+      "sentence": "If the lifeguard ___ the warning sooner, the swimmers would have left the water in time.",
+      "options": [
+        "had given",
+        "gave",
+        "has given",
+        "would have given"
+      ],
+      "answer": "had given",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had given.\""
+    },
+    {
+      "sentence": "If the carpenter's crew ___ the roof before the rain, the attic would not have flooded.",
+      "options": [
+        "had sealed",
+        "sealed",
+        "have sealed",
+        "would have sealed"
+      ],
+      "answer": "had sealed",
+      "difficulty": "hard",
+      "explanation": "A third conditional (an unreal past situation) needs the past perfect in the \"if\" clause: \"had sealed.\""
+    },
+    {
+      "sentence": "It is essential that the carpenter ___ the shelf before the inspection.",
+      "options": [
+        "finish",
+        "finishes",
+        "finished",
+        "has finished"
+      ],
+      "answer": "finish",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"finish,\" not \"finishes.\""
+    },
+    {
+      "sentence": "It is important that the sailors ___ the harbor before the storm arrives.",
+      "options": [
+        "reach",
+        "reaches",
+        "reached",
+        "have reached"
+      ],
+      "answer": "reach",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"reach,\" not \"reaches.\""
+    },
+    {
+      "sentence": "It is vital that the choir ___ the final verse one more time before the show.",
+      "options": [
+        "rehearse",
+        "rehearses",
+        "rehearsed",
+        "has rehearsed"
+      ],
+      "answer": "rehearse",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is vital that,\" takes the base form of the verb no matter the subject: \"rehearse,\" not \"rehearses.\""
+    },
+    {
+      "sentence": "It is essential that the beavers ___ the dam before the flood season.",
+      "options": [
+        "repair",
+        "repairs",
+        "repaired",
+        "have repaired"
+      ],
+      "answer": "repair",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"repair,\" not \"repairs.\""
+    },
+    {
+      "sentence": "It is important that the twins ___ their room before the guests arrive.",
+      "options": [
+        "clean",
+        "cleans",
+        "cleaned",
+        "have cleaned"
+      ],
+      "answer": "clean",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"clean,\" not \"cleans.\""
+    },
+    {
+      "sentence": "It is crucial that the zookeeper ___ the otter enclosure before opening time.",
+      "options": [
+        "check",
+        "checks",
+        "checked",
+        "has checked"
+      ],
+      "answer": "check",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is crucial that,\" takes the base form of the verb no matter the subject: \"check,\" not \"checks.\""
+    },
+    {
+      "sentence": "It is essential that the debate team ___ their notes one final time.",
+      "options": [
+        "review",
+        "reviews",
+        "reviewed",
+        "have reviewed"
+      ],
+      "answer": "review",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"review,\" not \"reviews.\""
+    },
+    {
+      "sentence": "It is important that the violinist ___ her instrument before the recital.",
+      "options": [
+        "tune",
+        "tunes",
+        "tuned",
+        "has tuned"
+      ],
+      "answer": "tune",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"tune,\" not \"tunes.\""
+    },
+    {
+      "sentence": "It is essential that the goalkeeper ___ his gloves before the match starts.",
+      "options": [
+        "adjust",
+        "adjusts",
+        "adjusted",
+        "has adjusted"
+      ],
+      "answer": "adjust",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"adjust,\" not \"adjusts.\""
+    },
+    {
+      "sentence": "It is important that the mail carrier ___ the packages before the storm hits.",
+      "options": [
+        "deliver",
+        "delivers",
+        "delivered",
+        "has delivered"
+      ],
+      "answer": "deliver",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"deliver,\" not \"delivers.\""
+    },
+    {
+      "sentence": "It is vital that the shepherd ___ the flock to shelter before the storm.",
+      "options": [
+        "lead",
+        "leads",
+        "led",
+        "has led"
+      ],
+      "answer": "lead",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is vital that,\" takes the base form of the verb no matter the subject: \"lead,\" not \"leads.\""
+    },
+    {
+      "sentence": "It is essential that the librarian ___ the returned books before closing time.",
+      "options": [
+        "shelve",
+        "shelves",
+        "shelved",
+        "has shelved"
+      ],
+      "answer": "shelve",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"shelve,\" not \"shelves.\""
+    },
+    {
+      "sentence": "It is important that the electrician ___ the wiring before the concert.",
+      "options": [
+        "inspect",
+        "inspects",
+        "inspected",
+        "has inspected"
+      ],
+      "answer": "inspect",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"inspect,\" not \"inspects.\""
+    },
+    {
+      "sentence": "It is essential that the class ___ their permission slips before Friday.",
+      "options": [
+        "submit",
+        "submits",
+        "submitted",
+        "have submitted"
+      ],
+      "answer": "submit",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"submit,\" not \"submits.\""
+    },
+    {
+      "sentence": "It is important that the campers ___ their tents before it gets dark.",
+      "options": [
+        "pitch",
+        "pitches",
+        "pitched",
+        "have pitched"
+      ],
+      "answer": "pitch",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"pitch,\" not \"pitches.\""
+    },
+    {
+      "sentence": "It is crucial that the referee ___ the field before the players arrive.",
+      "options": [
+        "inspect",
+        "inspects",
+        "inspected",
+        "has inspected"
+      ],
+      "answer": "inspect",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is crucial that,\" takes the base form of the verb no matter the subject: \"inspect,\" not \"inspects.\""
+    },
+    {
+      "sentence": "It is essential that the beekeeper ___ the hive before the frost arrives.",
+      "options": [
+        "move",
+        "moves",
+        "moved",
+        "has moved"
+      ],
+      "answer": "move",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"move,\" not \"moves.\""
+    },
+    {
+      "sentence": "It is important that the photographer ___ the equipment before the trip.",
+      "options": [
+        "test",
+        "tests",
+        "tested",
+        "has tested"
+      ],
+      "answer": "test",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"test,\" not \"tests.\""
+    },
+    {
+      "sentence": "It is vital that the tailor ___ the costumes before opening night.",
+      "options": [
+        "finish",
+        "finishes",
+        "finished",
+        "has finished"
+      ],
+      "answer": "finish",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is vital that,\" takes the base form of the verb no matter the subject: \"finish,\" not \"finishes.\""
+    },
+    {
+      "sentence": "It is essential that the marching band ___ their new routine before the parade.",
+      "options": [
+        "learn",
+        "learns",
+        "learned",
+        "have learned"
+      ],
+      "answer": "learn",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"learn,\" not \"learns.\""
+    },
+    {
+      "sentence": "It is important that the lifeguard ___ the pool before it opens to swimmers.",
+      "options": [
+        "inspect",
+        "inspects",
+        "inspected",
+        "has inspected"
+      ],
+      "answer": "inspect",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is important that,\" takes the base form of the verb no matter the subject: \"inspect,\" not \"inspects.\""
+    },
+    {
+      "sentence": "It is essential that the carpenter's apprentice ___ every tool before the job begins.",
+      "options": [
+        "count",
+        "counts",
+        "counted",
+        "has counted"
+      ],
+      "answer": "count",
+      "difficulty": "hard",
+      "explanation": "The subjunctive mood, used after expressions like \"it is essential that,\" takes the base form of the verb no matter the subject: \"count,\" not \"counts.\""
+    },
+    {
+      "sentence": "The carpenter told me that he ___ the shelf the week before.",
+      "options": [
+        "had finished",
+        "finished",
+        "is finishing",
+        "will finish"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had finished.\""
+    },
+    {
+      "sentence": "The sailors told me that they ___ the harbor just before the storm hit.",
+      "options": [
+        "had reached",
+        "reached",
+        "are reaching",
+        "will reach"
+      ],
+      "answer": "had reached",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had reached.\""
+    },
+    {
+      "sentence": "The choir director told me that the choir ___ that song many times the week before.",
+      "options": [
+        "had rehearsed",
+        "rehearsed",
+        "are rehearsing",
+        "will rehearse"
+      ],
+      "answer": "had rehearsed",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had rehearsed.\""
+    },
+    {
+      "sentence": "My aunt told me that she ___ the whole dinner from scratch the day before.",
+      "options": [
+        "had cooked",
+        "cooked",
+        "is cooking",
+        "will cook"
+      ],
+      "answer": "had cooked",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had cooked.\""
+    },
+    {
+      "sentence": "The twins told me that they ___ their room the week before.",
+      "options": [
+        "had cleaned",
+        "cleaned",
+        "are cleaning",
+        "will clean"
+      ],
+      "answer": "had cleaned",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had cleaned.\""
+    },
+    {
+      "sentence": "The zookeeper told me that he ___ the injured bird the day before.",
+      "options": [
+        "had examined",
+        "examined",
+        "is examining",
+        "will examine"
+      ],
+      "answer": "had examined",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had examined.\""
+    },
+    {
+      "sentence": "The debate team told me that they ___ their closing argument the night before.",
+      "options": [
+        "had rewritten",
+        "rewrote",
+        "are rewriting",
+        "will rewrite"
+      ],
+      "answer": "had rewritten",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had rewritten.\""
+    },
+    {
+      "sentence": "The violinist told me that she ___ her instrument the day before the recital.",
+      "options": [
+        "had tuned",
+        "tuned",
+        "is tuning",
+        "will tune"
+      ],
+      "answer": "had tuned",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had tuned.\""
+    },
+    {
+      "sentence": "The goalkeeper told me that he ___ the penalty kick the week before.",
+      "options": [
+        "had blocked",
+        "blocked",
+        "is blocking",
+        "will block"
+      ],
+      "answer": "had blocked",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had blocked.\""
+    },
+    {
+      "sentence": "The mail carrier told me that he ___ every package the day before the storm.",
+      "options": [
+        "had delivered",
+        "delivered",
+        "is delivering",
+        "will deliver"
+      ],
+      "answer": "had delivered",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had delivered.\""
+    },
+    {
+      "sentence": "The shepherd told me that he ___ the lost lamb the day before.",
+      "options": [
+        "had found",
+        "found",
+        "is finding",
+        "will find"
+      ],
+      "answer": "had found",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had found.\""
+    },
+    {
+      "sentence": "The librarian told me that she ___ the whole fiction section the week before.",
+      "options": [
+        "had reorganized",
+        "reorganized",
+        "is reorganizing",
+        "will reorganize"
+      ],
+      "answer": "had reorganized",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had reorganized.\""
+    },
+    {
+      "sentence": "The electrician told me that he ___ every wire in the house the day before.",
+      "options": [
+        "had checked",
+        "checked",
+        "is checking",
+        "will check"
+      ],
+      "answer": "had checked",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had checked.\""
+    },
+    {
+      "sentence": "The class told me that they ___ enough money for the trip the week before.",
+      "options": [
+        "had raised",
+        "raised",
+        "are raising",
+        "will raise"
+      ],
+      "answer": "had raised",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had raised.\""
+    },
+    {
+      "sentence": "The campers told me that they ___ the whole trail the day before.",
+      "options": [
+        "had hiked",
+        "hiked",
+        "are hiking",
+        "will hike"
+      ],
+      "answer": "had hiked",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had hiked.\""
+    },
+    {
+      "sentence": "The referee told me that he ___ the field carefully the morning before the match.",
+      "options": [
+        "had inspected",
+        "inspected",
+        "is inspecting",
+        "will inspect"
+      ],
+      "answer": "had inspected",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had inspected.\""
+    },
+    {
+      "sentence": "The beekeeper told me that he ___ the hive to a safer spot the week before.",
+      "options": [
+        "had moved",
+        "moved",
+        "is moving",
+        "will move"
+      ],
+      "answer": "had moved",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had moved.\""
+    },
+    {
+      "sentence": "The photographer told me that she ___ over a hundred pictures the day before.",
+      "options": [
+        "had taken",
+        "took",
+        "is taking",
+        "will take"
+      ],
+      "answer": "had taken",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had taken.\""
+    },
+    {
+      "sentence": "The tailor told me that she ___ the dress just in time for the wedding.",
+      "options": [
+        "had finished",
+        "finished",
+        "is finishing",
+        "will finish"
+      ],
+      "answer": "had finished",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had finished.\""
+    },
+    {
+      "sentence": "The marching band told me that they ___ the new routine the week before the parade.",
+      "options": [
+        "had learned",
+        "learned",
+        "are learning",
+        "will learn"
+      ],
+      "answer": "had learned",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had learned.\""
+    },
+    {
+      "sentence": "The lifeguard told me that he ___ the warning just before the storm rolled in.",
+      "options": [
+        "had given",
+        "gave",
+        "is giving",
+        "will give"
+      ],
+      "answer": "had given",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had given.\""
+    },
+    {
+      "sentence": "The carpenter's apprentice told me that he ___ every tool before the job began.",
+      "options": [
+        "had counted",
+        "counted",
+        "is counting",
+        "will count"
+      ],
+      "answer": "had counted",
+      "difficulty": "hard",
+      "explanation": "In reported speech, a past action shifts back to the past perfect: \"had counted.\""
+    },
+    {
+      "sentence": "The carpenter ___ the shelf for three hours before he finally took a break.",
+      "options": [
+        "had been building",
+        "built",
+        "has built",
+        "will have been building"
+      ],
+      "answer": "had been building",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been building.\""
+    },
+    {
+      "sentence": "The sailors ___ against the wind for six hours before they finally reached the harbor.",
+      "options": [
+        "had been sailing",
+        "sailed",
+        "have sailed",
+        "will have been sailing"
+      ],
+      "answer": "had been sailing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been sailing.\""
+    },
+    {
+      "sentence": "The choir ___ that same verse for an hour before the director finally stopped them.",
+      "options": [
+        "had been singing",
+        "sang",
+        "have sung",
+        "will have been singing"
+      ],
+      "answer": "had been singing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been singing.\""
+    },
+    {
+      "sentence": "The beavers ___ the dam for weeks before the flood finally destroyed it.",
+      "options": [
+        "had been repairing",
+        "repaired",
+        "have repaired",
+        "will have been repairing"
+      ],
+      "answer": "had been repairing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been repairing.\""
+    },
+    {
+      "sentence": "The twins ___ in the yard for hours before it finally started to rain.",
+      "options": [
+        "had been playing",
+        "played",
+        "have played",
+        "will have been playing"
+      ],
+      "answer": "had been playing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been playing.\""
+    },
+    {
+      "sentence": "The zookeeper ___ the tigers for twenty minutes before the alarm finally sounded.",
+      "options": [
+        "had been feeding",
+        "fed",
+        "has fed",
+        "will have been feeding"
+      ],
+      "answer": "had been feeding",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been feeding.\""
+    },
+    {
+      "sentence": "The debate team ___ their argument for days before the tournament finally began.",
+      "options": [
+        "had been polishing",
+        "polished",
+        "have polished",
+        "will have been polishing"
+      ],
+      "answer": "had been polishing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been polishing.\""
+    },
+    {
+      "sentence": "The violinist ___ that passage for hours before she finally got it right.",
+      "options": [
+        "had been practicing",
+        "practiced",
+        "has practiced",
+        "will have been practicing"
+      ],
+      "answer": "had been practicing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been practicing.\""
+    },
+    {
+      "sentence": "The goalkeeper ___ drills for an hour before the coach finally called him in.",
+      "options": [
+        "had been running",
+        "ran",
+        "has run",
+        "will have been running"
+      ],
+      "answer": "had been running",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been running.\""
+    },
+    {
+      "sentence": "The mail carrier ___ letters for the entire morning before her truck finally broke down.",
+      "options": [
+        "had been sorting",
+        "sorted",
+        "has sorted",
+        "will have been sorting"
+      ],
+      "answer": "had been sorting",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been sorting.\""
+    },
+    {
+      "sentence": "The shepherd ___ the flock for hours before they finally reached the barn.",
+      "options": [
+        "had been leading",
+        "led",
+        "has led",
+        "will have been leading"
+      ],
+      "answer": "had been leading",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been leading.\""
+    },
+    {
+      "sentence": "The librarian ___ the shelves for the whole afternoon before the fair finally began.",
+      "options": [
+        "had been organizing",
+        "organized",
+        "has organized",
+        "will have been organizing"
+      ],
+      "answer": "had been organizing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been organizing.\""
+    },
+    {
+      "sentence": "The electrician ___ the wiring for hours before the power finally came back on.",
+      "options": [
+        "had been checking",
+        "checked",
+        "has checked",
+        "will have been checking"
+      ],
+      "answer": "had been checking",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been checking.\""
+    },
+    {
+      "sentence": "The class ___ the mural for weeks before the principal finally saw it.",
+      "options": [
+        "had been painting",
+        "painted",
+        "have painted",
+        "will have been painting"
+      ],
+      "answer": "had been painting",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been painting.\""
+    },
+    {
+      "sentence": "The campers ___ for hours before they finally reached the summit.",
+      "options": [
+        "had been hiking",
+        "hiked",
+        "have hiked",
+        "will have been hiking"
+      ],
+      "answer": "had been hiking",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been hiking.\""
+    },
+    {
+      "sentence": "The referee ___ the field for twenty minutes before the storm finally forced a delay.",
+      "options": [
+        "had been inspecting",
+        "inspected",
+        "has inspected",
+        "will have been inspecting"
+      ],
+      "answer": "had been inspecting",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been inspecting.\""
+    },
+    {
+      "sentence": "The beekeeper ___ the hive for an hour before the bees finally settled down.",
+      "options": [
+        "had been calming",
+        "calmed",
+        "has calmed",
+        "will have been calming"
+      ],
+      "answer": "had been calming",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been calming.\""
+    },
+    {
+      "sentence": "The photographer ___ the mountain for hours before the clouds finally cleared.",
+      "options": [
+        "had been photographing",
+        "photographed",
+        "has photographed",
+        "will have been photographing"
+      ],
+      "answer": "had been photographing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been photographing.\""
+    },
+    {
+      "sentence": "The tailor ___ the costumes for days before opening night finally arrived.",
+      "options": [
+        "had been sewing",
+        "sewed",
+        "has sewn",
+        "will have been sewing"
+      ],
+      "answer": "had been sewing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been sewing.\""
+    },
+    {
+      "sentence": "The marching band ___ the routine for weeks before the parade finally began.",
+      "options": [
+        "had been rehearsing",
+        "rehearsed",
+        "have rehearsed",
+        "will have been rehearsing"
+      ],
+      "answer": "had been rehearsing",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been rehearsing.\""
+    },
+    {
+      "sentence": "The lifeguard ___ the swimmers for hours before her shift finally ended.",
+      "options": [
+        "had been watching",
+        "watched",
+        "has watched",
+        "will have been watching"
+      ],
+      "answer": "had been watching",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been watching.\""
+    },
+    {
+      "sentence": "The tour guide ___ the group's luggage for twenty minutes before she finally found the missing suitcase.",
+      "options": [
+        "had been counting",
+        "counted",
+        "has counted",
+        "will have been counting"
+      ],
+      "answer": "had been counting",
+      "difficulty": "hard",
+      "explanation": "An ongoing action that continued right up until another past event uses the past perfect continuous: \"had been counting.\""
+    },
+    {
+      "sentence": "By the time the inspector arrives, the carpenter ___ the shelf for three hours straight.",
+      "options": [
+        "will have been building",
+        "had been building",
+        "built",
+        "will build"
+      ],
+      "answer": "will have been building",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been building.\""
+    },
+    {
+      "sentence": "By the time we dock, the sailors ___ the ship for six hours straight.",
+      "options": [
+        "will have been steering",
+        "had been steering",
+        "steered",
+        "will steer"
+      ],
+      "answer": "will have been steering",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been steering.\""
+    },
+    {
+      "sentence": "By the time the curtain rises, the choir ___ for two hours straight.",
+      "options": [
+        "will have been rehearsing",
+        "had been rehearsing",
+        "rehearsed",
+        "will rehearse"
+      ],
+      "answer": "will have been rehearsing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been rehearsing.\""
+    },
+    {
+      "sentence": "By the time the flood season starts, the beavers ___ on the dam for weeks straight.",
+      "options": [
+        "will have been working",
+        "had been working",
+        "worked",
+        "will work"
+      ],
+      "answer": "will have been working",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been working.\""
+    },
+    {
+      "sentence": "By the time dinner is ready, the twins ___ in the yard for four hours straight.",
+      "options": [
+        "will have been playing",
+        "had been playing",
+        "played",
+        "will play"
+      ],
+      "answer": "will have been playing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been playing.\""
+    },
+    {
+      "sentence": "By the time the vet arrives, the zookeeper ___ the sick otter for an hour straight.",
+      "options": [
+        "will have been watching",
+        "had been watching",
+        "watched",
+        "will watch"
+      ],
+      "answer": "will have been watching",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been watching.\""
+    },
+    {
+      "sentence": "By the time the tournament ends, the debate team ___ for three days straight.",
+      "options": [
+        "will have been competing",
+        "had been competing",
+        "competed",
+        "will compete"
+      ],
+      "answer": "will have been competing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been competing.\""
+    },
+    {
+      "sentence": "By the time the recital begins, the violinist ___ for five hours straight.",
+      "options": [
+        "will have been practicing",
+        "had been practicing",
+        "practiced",
+        "will practice"
+      ],
+      "answer": "will have been practicing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been practicing.\""
+    },
+    {
+      "sentence": "By the time the match ends, the goalkeeper ___ shots for ninety minutes straight.",
+      "options": [
+        "will have been blocking",
+        "had been blocking",
+        "blocked",
+        "will block"
+      ],
+      "answer": "will have been blocking",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been blocking.\""
+    },
+    {
+      "sentence": "By the time her shift ends, the mail carrier ___ letters for eight hours straight.",
+      "options": [
+        "will have been sorting",
+        "had been sorting",
+        "sorted",
+        "will sort"
+      ],
+      "answer": "will have been sorting",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been sorting.\""
+    },
+    {
+      "sentence": "By the time they reach the barn, the shepherd ___ the flock for six hours straight.",
+      "options": [
+        "will have been leading",
+        "had been leading",
+        "led",
+        "will lead"
+      ],
+      "answer": "will have been leading",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been leading.\""
+    },
+    {
+      "sentence": "By the time the fair opens, the librarian ___ the shelves for two days straight.",
+      "options": [
+        "will have been organizing",
+        "had been organizing",
+        "organized",
+        "will organize"
+      ],
+      "answer": "will have been organizing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been organizing.\""
+    },
+    {
+      "sentence": "By the time the power is restored, the electrician ___ the wiring for five hours straight.",
+      "options": [
+        "will have been checking",
+        "had been checking",
+        "checked",
+        "will check"
+      ],
+      "answer": "will have been checking",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been checking.\""
+    },
+    {
+      "sentence": "By the time the principal visits, the class ___ the mural for three weeks straight.",
+      "options": [
+        "will have been painting",
+        "had been painting",
+        "painted",
+        "will paint"
+      ],
+      "answer": "will have been painting",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been painting.\""
+    },
+    {
+      "sentence": "By the time they reach the summit, the campers ___ for seven hours straight.",
+      "options": [
+        "will have been hiking",
+        "had been hiking",
+        "hiked",
+        "will hike"
+      ],
+      "answer": "will have been hiking",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been hiking.\""
+    },
+    {
+      "sentence": "By the time the delay ends, the referee ___ the field for twenty minutes straight.",
+      "options": [
+        "will have been inspecting",
+        "had been inspecting",
+        "inspected",
+        "will inspect"
+      ],
+      "answer": "will have been inspecting",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been inspecting.\""
+    },
+    {
+      "sentence": "By the time the bees settle down, the beekeeper ___ the hive for an hour straight.",
+      "options": [
+        "will have been calming",
+        "had been calming",
+        "calmed",
+        "will calm"
+      ],
+      "answer": "will have been calming",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been calming.\""
+    },
+    {
+      "sentence": "By the time the clouds clear, the photographer ___ the mountain for three hours straight.",
+      "options": [
+        "will have been photographing",
+        "had been photographing",
+        "photographed",
+        "will photograph"
+      ],
+      "answer": "will have been photographing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been photographing.\""
+    },
+    {
+      "sentence": "By the time opening night arrives, the tailor ___ costumes for two weeks straight.",
+      "options": [
+        "will have been sewing",
+        "had been sewing",
+        "sewed",
+        "will sew"
+      ],
+      "answer": "will have been sewing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been sewing.\""
+    },
+    {
+      "sentence": "By the time the parade begins, the marching band ___ the new routine for a month straight.",
+      "options": [
+        "will have been rehearsing",
+        "had been rehearsing",
+        "rehearsed",
+        "will rehearse"
+      ],
+      "answer": "will have been rehearsing",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been rehearsing.\""
+    },
+    {
+      "sentence": "By the time her shift ends, the lifeguard ___ the pool for six hours straight.",
+      "options": [
+        "will have been watching",
+        "had been watching",
+        "watched",
+        "will watch"
+      ],
+      "answer": "will have been watching",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been watching.\""
+    },
+    {
+      "sentence": "By the time the store closes, the toy store clerk ___ the shelves for six hours straight.",
+      "options": [
+        "will have been restocking",
+        "had been restocking",
+        "restocked",
+        "will restock"
+      ],
+      "answer": "will have been restocking",
+      "difficulty": "hard",
+      "explanation": "An action that will still be in progress up to a future point uses the future perfect continuous: \"will have been restocking.\""
     }
   ]
 }

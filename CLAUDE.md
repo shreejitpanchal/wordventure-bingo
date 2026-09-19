@@ -473,14 +473,31 @@ they are; keep both in sync when either changes.
   from day one with nothing to inherit.
 - **Content was authored in bulk by background agents, one per category**
   (mirroring how `spelling`/`freeplay`'s word-bank expansion was done),
-  targeting ~100-150 questions per difficulty tier per category. Final
-  counts: `verbTense` 318 (106/106/106), `prepositions` 356
-  (112/122/122), `synonymsAntonyms` 325 (115/105/105), `idioms` 315
-  (105/104/106), `grammarBasics` 338 (110/114/114) — **1652 questions
-  total**. Each category file started with 6 hand-written example
-  questions (2 per difficulty) that fixed the tone/quality bar/schema for
-  its agent to match — those originals are still in each file, not just
-  scaffolding to delete.
+  then roughly doubled in a second round the same way. Final counts:
+  `verbTense` 648 (216/216/216), `prepositions` 696 (232/232/232),
+  `synonymsAntonyms` 631 (210/211/210), `idioms` 601 (201/200/200 — capped
+  below the others because every question must be a genuinely distinct,
+  well-known real idiom; see below), `grammarBasics` 683 (225/229/229) —
+  **3259 questions total**. Each category file started with 6 hand-written
+  example questions (2 per difficulty) that fixed the tone/quality
+  bar/schema for its agent to match — those originals are still in each
+  file, not just scaffolding to delete.
+- **Background agents that author bulk content into a single shared file
+  should NOT spawn their own sub-agents to parallelize it.** The first
+  attempt at doubling `synonymsAntonyms` had its agent split the work into
+  3 sub-agents (one per difficulty) running concurrently — all 3 hit an
+  API rate limit simultaneously and the whole attempt was lost. Content-
+  authoring agents in this project are now explicitly instructed to write
+  directly, in one session, and to **save progress incrementally** (e.g.
+  after every ~30-50 questions) rather than holding everything until a
+  final write — when a whole background session got cut off by an
+  account-wide rate limit mid-run (this happens; don't assume it won't),
+  the `prepositions` doubling agent had already incrementally saved a
+  complete, valid 696-question file before the interruption, so no
+  progress was lost even though the agent's own run reported "failed" and
+  never got to self-verify. Always check the actual file's current state
+  before deciding a failed/interrupted agent's work needs to be redone —
+  it may have already finished.
 - **Structural validation (schema/duplicates/JSON-validity) cannot catch
   actual content bugs — independent review of every file's real content
   found and fixed several after the agents' own "ALL GOOD" self-checks
