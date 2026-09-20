@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { SentenceQuestConfig } from '../types';
 import { SENTENCE_QUEST_BANKS } from '../data/sentenceQuestBanks';
@@ -8,15 +8,36 @@ import styles from './SentenceQuestScreen.module.css';
 
 interface Props {
   config: SentenceQuestConfig;
+  /** Sentences the *previous* round (in this session) used, if any --
+   * passed back up via `onRoundStart` so `App.tsx` can hand it to the next
+   * round, keeping consecutive rounds from reusing the same questions. */
+  excludeSentences: string[];
+  onRoundStart: (sentences: string[]) => void;
   onComplete: (correctCount: number, totalCount: number) => void;
   onExit: () => void;
   reduceMotion: boolean;
 }
 
-export default function SentenceQuestScreen({ config, onComplete, onExit, reduceMotion }: Props) {
+export default function SentenceQuestScreen({
+  config,
+  excludeSentences,
+  onRoundStart,
+  onComplete,
+  onExit,
+  reduceMotion,
+}: Props) {
   const bank = SENTENCE_QUEST_BANKS[config.category];
   const pool = useMemo(() => selectQuestionPool(bank.questions, config.difficulty), [bank, config.difficulty]);
-  const [round] = useState(() => generateRound(pool, Math.random, config.questionCount));
+  const [round] = useState(() =>
+    generateRound(pool, Math.random, config.questionCount, new Set(excludeSentences)),
+  );
+
+  // Reports this round's questions back up to App.tsx once, right after
+  // mount, so the *next* round knows what to avoid repeating -- see
+  // generateRound's excludeSentences param.
+  useEffect(() => {
+    onRoundStart(round.map((q) => q.sentence));
+  }, [round, onRoundStart]);
 
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);

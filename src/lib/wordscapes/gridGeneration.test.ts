@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { generateLevel, isLevelComplete, isWordFound, revealAll, revealRandomLetter, revealWord, selectWordscapesPool } from './gridGeneration';
+import {
+  DEFAULT_WORD_COUNT,
+  generateLevel,
+  isLevelComplete,
+  isWordFound,
+  revealAll,
+  revealRandomLetter,
+  revealWord,
+  selectWordscapesPool,
+} from './gridGeneration';
 import { WORD_BANKS } from '../../data/wordBanks';
 import { seededRng } from '../../test/rng';
 import type { WordEntry } from '../../types';
@@ -191,6 +200,22 @@ describe('generateLevel', () => {
       expect(level.grid.placedWords.length).toBeLessThanOrEqual(wordCount);
       expect(level.grid.placedWords.length).toBeGreaterThanOrEqual(3);
     }
+  });
+
+  it('prefers not placing excludeWords when the pool has enough other words', () => {
+    // spelling's easy tier is large enough that excluding a handful of its
+    // own words still leaves plenty to interlock a puzzle from.
+    const pool = WORD_BANKS.spelling.words.filter((w) => w.difficulty === 'easy');
+    const previous = generateLevel(pool, seededRng(42));
+    const excludeWords = new Set(previous.grid.placedWords.map((p) => p.word));
+    const next = generateLevel(pool, seededRng(43), DEFAULT_WORD_COUNT, excludeWords);
+    const overlap = next.grid.placedWords.filter((p) => excludeWords.has(p.word));
+    expect(overlap).toHaveLength(0);
+  });
+
+  it('still generates a puzzle when excludeWords would leave too little to sample from', () => {
+    const excludeWords = new Set(animalsEasy.map((w) => w.word));
+    expect(() => generateLevel(animalsEasy, seededRng(44), DEFAULT_WORD_COUNT, excludeWords)).not.toThrow();
   });
 });
 

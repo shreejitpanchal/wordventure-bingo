@@ -21,7 +21,7 @@ export const zoomInVariants: Variants = {
  */
 export function withReducedMotion(variants: Variants, reduceMotion: boolean): Variants {
   if (!reduceMotion) return variants;
-  const instant = (variant: Variants[string] | undefined) => {
+  const instant = (variant: Variants[string]): Variants[string] => {
     if (typeof variant !== 'object' || variant === null) return variant;
     return { ...variant, transition: { duration: 0 } };
   };

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import type { SentenceQuestion } from '../types';
 import {
   DEFAULT_QUESTION_COUNT,
+  MAX_QUESTION_COUNT,
+  MIN_QUESTION_COUNT,
   generateRound,
   isCorrect,
   selectQuestionPool,
@@ -54,8 +56,22 @@ describe('generateRound', () => {
 
   it('clamps an out-of-range questionCount into MIN/MAX_QUESTION_COUNT', () => {
     const questions = makeQuestions(50);
-    expect(() => generateRound(questions, seededRng(3), 1)).not.toThrow();
-    expect(() => generateRound(questions, seededRng(3), 999)).toThrow(/Not enough questions/);
+    expect(generateRound(questions, seededRng(3), 1)).toHaveLength(MIN_QUESTION_COUNT);
+    expect(generateRound(questions, seededRng(3), 999)).toHaveLength(MAX_QUESTION_COUNT);
+  });
+
+  it('prefers questions not in excludeSentences when the pool has enough others', () => {
+    const questions = makeQuestions(DEFAULT_QUESTION_COUNT + 10);
+    const excludeSentences = new Set(questions.slice(0, DEFAULT_QUESTION_COUNT).map((q) => q.sentence));
+    const round = generateRound(questions, seededRng(4), DEFAULT_QUESTION_COUNT, excludeSentences);
+    expect(round.every((q) => !excludeSentences.has(q.sentence))).toBe(true);
+  });
+
+  it('falls back to reusing excluded questions when the pool is too small to avoid them', () => {
+    const questions = makeQuestions(DEFAULT_QUESTION_COUNT);
+    const excludeSentences = new Set(questions.map((q) => q.sentence));
+    const round = generateRound(questions, seededRng(5), DEFAULT_QUESTION_COUNT, excludeSentences);
+    expect(round).toHaveLength(DEFAULT_QUESTION_COUNT);
   });
 });
 

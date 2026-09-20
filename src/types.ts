@@ -54,9 +54,11 @@ export type ScreenName =
   | 'wordscapes-game'
   | 'wordscapes-win'
   | 'sentence-quest-game'
-  | 'sentence-quest-win';
+  | 'sentence-quest-win'
+  | 'synonym-safari-game'
+  | 'synonym-safari-win';
 
-export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest';
+export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest' | 'synonym-safari';
 
 /** 'system' follows the OS/browser's own light/dark preference; 'light'/'dark'
  * force it regardless -- see theme.css's [data-theme] selectors. */
@@ -187,4 +189,42 @@ export interface SentenceQuestStats {
    * mid-round) still credits whatever was genuinely answered correctly. */
   correctAnswers: Record<string, number>;
   questionsAnswered: Record<string, number>;
+}
+
+// --- Synonym Safari (tap-to-connect matching mode) ----------------------
+
+/** Not CategoryId -- that's vocabulary themes; Synonym Safari's axis is the
+ * word *relation* being tested, and each one maps 1:1 to a bank file -- see
+ * synonymSafariBanks.ts. (No 'mixed' option: it was tried and dropped --
+ * combining both banks in one round meant the same source word could appear
+ * once per bank with two different, contradictory correct matches.) */
+export type SynonymSafariCategoryId = 'synonyms' | 'antonyms';
+
+export interface WordPair {
+  word: string;
+  match: string;
+  difficulty: Difficulty;
+}
+
+export interface SynonymSafariBank {
+  relation: 'synonym' | 'antonym';
+  label: string;
+  pairs: WordPair[];
+}
+
+export interface SynonymSafariConfig {
+  category: SynonymSafariCategoryId;
+  difficulty: Difficulty;
+  /** How many pairs make up one round. */
+  pairCount: number;
+}
+
+export interface SynonymSafariStats {
+  roundsCompleted: Record<string, number>;
+  /** Every pair locked in ever, per category -- credited the same way
+   * regardless of whether the round was solved unaided or via the hint
+   * button (mirrors Wordscapes' bonusWordsFound, not Sentence Quest's
+   * correctAnswers -- there's no "wrong pair" outcome here to weigh it
+   * against). */
+  pairsMatched: Record<string, number>;
 }

@@ -9,14 +9,19 @@ import type {
   SentenceQuestConfig,
   SentenceQuestStats,
   Streaks,
+  SynonymSafariCategoryId,
+  SynonymSafariConfig,
+  SynonymSafariStats,
   WordscapesConfig,
   WordscapesStats,
 } from '../types';
 import { WORD_BANKS, CATEGORY_ORDER } from '../data/wordBanks';
 import { SENTENCE_QUEST_BANKS, SENTENCE_QUEST_CATEGORY_ORDER } from '../data/sentenceQuestBanks';
+import { SYNONYM_SAFARI_BANKS, SYNONYM_SAFARI_CATEGORY_ORDER } from '../data/synonymSafariBanks';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import { DEFAULT_WORD_COUNT, MAX_WORD_COUNT, MIN_WORD_COUNT } from '../lib/wordscapes/gridGeneration';
 import { DEFAULT_QUESTION_COUNT, QUESTION_COUNT_OPTIONS } from '../lib/sentenceQuest';
+import { DEFAULT_PAIR_COUNT, PAIR_COUNT_OPTIONS } from '../lib/synonymSafari';
 import { CALL_SECONDS_OPTIONS, DEFAULT_CALL_SECONDS } from '../lib/caller';
 import styles from './MenuScreen.module.css';
 
@@ -25,9 +30,11 @@ interface Props {
   streaks: Streaks;
   wordscapesStats: WordscapesStats;
   sentenceQuestStats: SentenceQuestStats;
+  synonymSafariStats: SynonymSafariStats;
   onStartBingo: (config: GameConfig) => void;
   onStartWordscapes: (config: WordscapesConfig) => void;
   onStartSentenceQuest: (config: SentenceQuestConfig) => void;
+  onStartSynonymSafari: (config: SynonymSafariConfig) => void;
   onOpenSettings: () => void;
   onSwitchProfile: () => void;
   reduceMotion: boolean;
@@ -43,6 +50,7 @@ const MODES: { id: GameMode; label: string; emoji: string }[] = [
   { id: 'bingo', label: 'Bingo', emoji: '🎯' },
   { id: 'wordscapes', label: 'Wordscapes', emoji: '🧩' },
   { id: 'sentence-quest', label: 'Sentence Quest', emoji: '📝' },
+  { id: 'synonym-safari', label: 'Synonym Safari', emoji: '🔗' },
 ];
 
 export default function MenuScreen({
@@ -50,9 +58,11 @@ export default function MenuScreen({
   streaks,
   wordscapesStats,
   sentenceQuestStats,
+  synonymSafariStats,
   onStartBingo,
   onStartWordscapes,
   onStartSentenceQuest,
+  onStartSynonymSafari,
   onOpenSettings,
   onSwitchProfile,
   reduceMotion,
@@ -60,15 +70,18 @@ export default function MenuScreen({
   const [mode, setMode] = useState<GameMode>('bingo');
   const [category, setCategory] = useState<CategoryId>('spelling');
   const [sentenceQuestCategory, setSentenceQuestCategory] = useState<SentenceQuestCategoryId>('verbTense');
+  const [synonymSafariCategory, setSynonymSafariCategory] = useState<SynonymSafariCategoryId>('synonyms');
   const [difficulty, setDifficulty] = useState<Difficulty>('easy');
   const [players, setPlayers] = useState<1 | 2>(1);
   const [callSeconds, setCallSeconds] = useState<number>(DEFAULT_CALL_SECONDS);
   const [wordCount, setWordCount] = useState<number>(DEFAULT_WORD_COUNT);
   const [questionCount, setQuestionCount] = useState<number>(DEFAULT_QUESTION_COUNT);
+  const [pairCount, setPairCount] = useState<number>(DEFAULT_PAIR_COUNT);
 
   const bestStreak = streaks.bestStreak[category] ?? 0;
   const puzzlesCompleted = wordscapesStats.puzzlesCompleted[category] ?? 0;
   const roundsCompleted = sentenceQuestStats.roundsCompleted[sentenceQuestCategory] ?? 0;
+  const synonymSafariRoundsCompleted = synonymSafariStats.roundsCompleted[synonymSafariCategory] ?? 0;
 
   return (
     <motion.main
@@ -114,6 +127,21 @@ export default function MenuScreen({
                 onClick={() => setSentenceQuestCategory(id)}
               >
                 {SENTENCE_QUEST_BANKS[id].label}
+              </button>
+            ))}
+          </div>
+        </section>
+      ) : mode === 'synonym-safari' ? (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Category</h2>
+          <div className={styles.grid}>
+            {SYNONYM_SAFARI_CATEGORY_ORDER.map((id) => (
+              <button
+                key={id}
+                className={`${styles.chip} ${synonymSafariCategory === id ? styles.chipActive : ''}`}
+                onClick={() => setSynonymSafariCategory(id)}
+              >
+                {SYNONYM_SAFARI_BANKS[id].label}
               </button>
             ))}
           </div>
@@ -215,6 +243,23 @@ export default function MenuScreen({
         </section>
       )}
 
+      {mode === 'synonym-safari' && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>Pair Count</h2>
+          <div className={styles.grid}>
+            {PAIR_COUNT_OPTIONS.map((n) => (
+              <button
+                key={n}
+                className={`${styles.chip} ${pairCount === n ? styles.chipActive : ''}`}
+                onClick={() => setPairCount(n)}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
       {mode === 'bingo' && bestStreak > 0 && (
         <p className={styles.streak}>🔥 Best streak in {WORD_BANKS[category].label}: {bestStreak}</p>
       )}
@@ -224,6 +269,11 @@ export default function MenuScreen({
       {mode === 'sentence-quest' && roundsCompleted > 0 && (
         <p className={styles.streak}>
           📝 Rounds completed in {SENTENCE_QUEST_BANKS[sentenceQuestCategory].label}: {roundsCompleted}
+        </p>
+      )}
+      {mode === 'synonym-safari' && synonymSafariRoundsCompleted > 0 && (
+        <p className={styles.streak}>
+          🔗 Rounds completed in {SYNONYM_SAFARI_BANKS[synonymSafariCategory].label}: {synonymSafariRoundsCompleted}
         </p>
       )}
 
@@ -236,8 +286,10 @@ export default function MenuScreen({
             onStartBingo({ category, difficulty, players, callSeconds });
           } else if (mode === 'wordscapes') {
             onStartWordscapes({ category, difficulty, wordCount });
-          } else {
+          } else if (mode === 'sentence-quest') {
             onStartSentenceQuest({ category: sentenceQuestCategory, difficulty, questionCount });
+          } else {
+            onStartSynonymSafari({ category: synonymSafariCategory, difficulty, pairCount });
           }
         }}
       >

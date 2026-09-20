@@ -22,19 +22,32 @@ export function selectQuestionPool(questions: SentenceQuestion[], difficulty: Di
  * shuffle can never cause a misgrade. Throws if the pool can't fill a round
  * -- a shipped question bank running short is a data bug, not a state to
  * render around (same convention as cardGeneration's generateCard).
+ *
+ * `excludeSentences` (the *previous* round's questions, in this session,
+ * keyed by `sentence` -- unique per bank by authoring convention) is a soft
+ * preference: sampling draws only from non-excluded questions as long as
+ * that leaves enough to fill the round, falling back to the full pool
+ * (allowing repeats) only if it doesn't -- so consecutive rounds don't
+ * reuse the same questions without ever failing a round that's otherwise
+ * fillable.
  */
 export function generateRound(
   pool: SentenceQuestion[],
   rng: () => number = Math.random,
   questionCount: number = DEFAULT_QUESTION_COUNT,
+  excludeSentences: ReadonlySet<string> = new Set(),
 ): SentenceQuestion[] {
   const targetCount = Math.max(MIN_QUESTION_COUNT, Math.min(MAX_QUESTION_COUNT, questionCount));
-  if (pool.length < targetCount) {
+  const shuffled = shuffle(pool, rng);
+  const preferred = shuffled.filter((q) => !excludeSentences.has(q.sentence));
+  const source = preferred.length >= targetCount ? preferred : shuffled;
+
+  if (source.length < targetCount) {
     throw new Error(
-      `Not enough questions to build a round: need ${targetCount}, got ${pool.length}. Add more questions to this category/difficulty.`,
+      `Not enough questions to build a round: need ${targetCount}, got ${source.length}. Add more questions to this category/difficulty.`,
     );
   }
-  const picked = shuffle(pool, rng).slice(0, targetCount);
+  const picked = source.slice(0, targetCount);
   return picked.map((q) => ({ ...q, options: shuffle(q.options, rng) }));
 }
 

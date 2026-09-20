@@ -19,6 +19,11 @@ import styles from './WordscapesGameScreen.module.css';
 
 interface Props {
   config: WordscapesConfig;
+  /** Words the *previous* puzzle (in this session) placed, if any -- passed
+   * back up via `onPuzzleStart` so `App.tsx` can hand it to the next
+   * puzzle, keeping consecutive puzzles from reusing the same words. */
+  excludeWords: string[];
+  onPuzzleStart: (words: string[]) => void;
   /** `assisted` is true if the player used any reveal help (a single-letter
    * hint and/or Give Up) at any point -- even if they went on to finish the
    * rest of the puzzle themselves. */
@@ -38,7 +43,7 @@ interface ClueHint {
   lines: string[];
 }
 
-export default function WordscapesGameScreen({ config, onComplete, onExit, reduceMotion }: Props) {
+export default function WordscapesGameScreen({ config, excludeWords, onPuzzleStart, onComplete, onExit, reduceMotion }: Props) {
   const bank = WORD_BANKS[config.category];
   const wordEntries = useMemo(
     () => (config.category === 'freeplay' ? [...bank.words, ...getFreeplayWords()] : bank.words),
@@ -49,7 +54,9 @@ export default function WordscapesGameScreen({ config, onComplete, onExit, reduc
     [wordEntries, config.category, config.difficulty],
   );
 
-  const [level, setLevel] = useState(() => generateLevel(pool, Math.random, config.wordCount));
+  const [level, setLevel] = useState(() =>
+    generateLevel(pool, Math.random, config.wordCount, new Set(excludeWords)),
+  );
   const [foundBonusWords, setFoundBonusWords] = useState<Set<string>>(new Set());
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [clueHint, setClueHint] = useState<ClueHint | null>(null);
@@ -62,6 +69,16 @@ export default function WordscapesGameScreen({ config, onComplete, onExit, reduc
   // it there: the player's own last word, repeated single-letter hints, or
   // Give Up. Once true, there's nothing left to do but continue.
   const complete = isLevelComplete(level.grid);
+
+  // Reports this puzzle's placed words back up to App.tsx once, so the
+  // *next* puzzle (started fresh after this component unmounts on the win
+  // screen) knows what to avoid repeating -- see generateLevel's
+  // excludeWords param. `level.grid.placedWords`'s reference never changes
+  // after generation (reveal actions only replace `cells`, not
+  // `placedWords`), so this only ever fires once per puzzle.
+  useEffect(() => {
+    onPuzzleStart(level.grid.placedWords.map((p) => p.word));
+  }, [level.grid.placedWords, onPuzzleStart]);
 
   function showFeedback(kind: Feedback['kind'], word: string) {
     setFeedback({ key: Date.now(), kind, word });

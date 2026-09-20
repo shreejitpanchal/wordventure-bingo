@@ -14,7 +14,7 @@ device/tablet each keep their own streaks/stats for every mode, all
 still stored only on-device. Tap the name button on the main menu (next to
 the settings gear) to switch player at any time.
 
-Three modes, picked from the main menu:
+Four modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
   The menu's **Call Speed** setting picks how many seconds the auto-caller
   waits between clues (10-60s, default 20s) — independent of difficulty, so
@@ -31,7 +31,20 @@ Three modes, picked from the main menu:
   specific grammar skills (Verb Tense, Prepositions, Synonyms & Antonyms,
   Idioms & Expressions, Grammar Basics) rather than Bingo/Wordscapes'
   vocabulary themes. Pick how many questions make up a round (5/10/15/20)
-  in the menu.
+  in the menu. Consecutive rounds avoid reusing the previous round's
+  questions where the pool allows it.
+- **Synonym Safari** — a two-column tap-to-connect matching game: tap a word
+  on the left, then its match on the right, to lock in a pair. Its own
+  category set (Synonyms, Antonyms / Opposites) picks the word relation
+  being tested rather than a vocabulary theme. **💡 Reveal a Pair** reveals
+  one random remaining pair if you're stuck (repeatable) — using it means
+  the round doesn't count toward your "rounds completed" stat, same as
+  Wordscapes' hint. Pick how many pairs make up a round (4-8) in the menu.
+  Consecutive rounds avoid repeating the previous round's words where
+  possible, so playing several rounds in a row doesn't keep dealing the
+  same small handful of pairs. Every round opens on a brief "get ready"
+  intro panel (a safari-themed graphic and the round's category/difficulty)
+  before the words themselves are revealed.
 
 ## Tech stack
 
@@ -173,6 +186,44 @@ To add a brand-new category:
 3. Add the new `SentenceQuestCategoryId` to the union in
    [src/types.ts](src/types.ts).
 
+## Adding new Synonym Safari pairs
+
+Synonym Safari's word-pair banks are separate from everything above —
+plain JSON in [src/data/synonymSafariBanks/](src/data/synonymSafariBanks/)
+(`synonyms.json` and `antonyms.json`), same no-build-step editing. Each file
+has this shape:
+
+```json
+{
+  "relation": "synonym",
+  "label": "Synonyms",
+  "pairs": [
+    { "word": "happy", "match": "joyful", "difficulty": "easy" }
+  ]
+}
+```
+
+Rules:
+- `word` and `match` are both required; `word` must be **unique within the
+  file** — a repeated `word` value risks the same source word appearing
+  twice in a generated round with two different correct matches.
+- There's no in-app "Mixed" category combining both files — each category
+  (Synonyms, Antonyms / Opposites) plays only from its own bank.
+- Each difficulty tier needs enough pairs that a generated round (up to 8
+  pairs) doesn't feel repetitive — see `CLAUDE.md`'s "Synonym Safari mode"
+  section for the target pool size and the reasoning behind it. Also note:
+  the game itself avoids repeating the *previous* round's words where the
+  pool allows it (see that same section), so pool size mainly matters for
+  variety across many rounds, not for avoiding an immediate repeat.
+
+To add a brand-new relation type (a 4th bank, e.g. "homophones"):
+1. Add a new JSON file under `src/data/synonymSafariBanks/`.
+2. Register it in
+   [src/data/synonymSafariBanks.ts](src/data/synonymSafariBanks.ts)
+   (`SYNONYM_SAFARI_BANKS` map and `SYNONYM_SAFARI_CATEGORY_ORDER`).
+3. Add the new `SynonymSafariCategoryId` to the union in
+   [src/types.ts](src/types.ts).
+
 ## How Wordscapes puzzles are generated
 
 Wordscapes has no fixed level list — every puzzle is built on the fly by
@@ -221,6 +272,10 @@ too sparse or too letter-diverse could theoretically fail to produce a
 puzzle (`generateLevel` throws loudly rather than rendering a broken one).
 All shipped categories were checked to generate reliably across every word
 count (3-10); re-check if you significantly change a word bank's contents.
+
+Consecutive puzzles avoid reusing the previous puzzle's words where the
+word bank allows it, same idea as Synonym Safari's round-to-round variety
+(see that section above).
 
 ## Installing the PWA
 
@@ -285,7 +340,7 @@ npm run test:coverage # with coverage report
 ```
 
 Unit tests cover the correctness-critical logic — card generation, win
-detection, clue selection/formatting, Wordscapes grid generation, and
-Sentence Quest round generation (`src/lib/*.test.ts`, including
-`src/lib/wordscapes/`). UI and animation behavior is verified manually
-in-browser (desktop + Android).
+detection, clue selection/formatting, Wordscapes grid generation, Sentence
+Quest round generation, and Synonym Safari round generation/matching
+(`src/lib/*.test.ts`, including `src/lib/wordscapes/`). UI and animation
+behavior is verified manually in-browser (desktop + Android).

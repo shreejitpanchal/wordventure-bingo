@@ -45,8 +45,9 @@ src/
     clueMatching.ts        -- Bingo: picks + formats a clue for a word
     caller.ts                -- Bingo: auto-caller queue + pace constants
     sentenceQuest.ts           -- Sentence Quest: round generation + grading
-    random.ts                    -- shared shuffle() etc., injectable rng
-    storage.ts                     -- the only localStorage access point
+    synonymSafari.ts             -- Synonym Safari: round generation + matching
+    random.ts                      -- shared shuffle() etc., injectable rng
+    storage.ts                       -- the only localStorage access point
     wordscapes/
       gridGeneration.ts              -- Wordscapes: puzzle generation + reveal logic
   hooks/                -- useSettings, useReducedMotion, useAppearance
@@ -55,6 +56,8 @@ src/
     wordbanks/*.json        -- word + clue content, plain data, no build step
     sentenceQuestBanks.ts  -- registers each category's JSON question bank
     sentenceQuestBanks/*.json -- sentence/options/answer/explanation content
+    synonymSafariBanks.ts  -- registers the synonym/antonym JSON pair banks
+    synonymSafariBanks/*.json -- word/match/difficulty pair content
   test/rng.ts           -- seededRng/sequenceRng test helpers
 
 docs/
@@ -87,6 +90,7 @@ stateDiagram-v2
     menu --> game: Start (Bingo)
     menu --> wordscapes_game: Start (Wordscapes)
     menu --> quest_game: Start (Sentence Quest)
+    menu --> safari_game: Start (Synonym Safari)
     menu --> settings: gear icon
     game --> win: a pattern completes
     win --> game: Play Again
@@ -97,12 +101,17 @@ stateDiagram-v2
     quest_game --> quest_win: last question answered
     quest_win --> quest_game: Play Again
     quest_win --> menu: Menu
+    safari_game --> safari_win: all pairs matched + Continue
+    safari_win --> safari_game: Next Round
+    safari_win --> menu: Menu
     settings --> menu: Back (returns to previousScreen)
 
     wordscapes_game: wordscapes-game
     wordscapes_win: wordscapes-win
     quest_game: sentence-quest-game
     quest_win: sentence-quest-win
+    safari_game: synonym-safari-game
+    safari_win: synonym-safari-win
 ```
 
 Notes that aren't obvious from the diagram:
@@ -154,9 +163,12 @@ The same shape repeats for Wordscapes (`WordscapesGameScreen` →
 `recordWordscapesCompletion` → `setScreen('wordscapes-win')`), Sentence
 Quest (`SentenceQuestScreen` → `onComplete(correctCount, totalCount)` →
 `App.tsx` → `recordSentenceQuestRound` → `setScreen('sentence-quest-win')`),
+Synonym Safari (`SynonymSafariScreen` → `onComplete(pairsMatched, assisted)`
+→ `App.tsx` → `recordSynonymSafariRound` → `setScreen('synonym-safari-win')`),
 and for profile selection (`ProfileScreen` → `onChoose(name)` → `App.tsx`
 calls `createProfile`, then reloads that profile's `streaks`/
-`wordscapesStats`/`sentenceQuestStats` before switching to `menu`).
+`wordscapesStats`/`sentenceQuestStats`/`synonymSafariStats` before switching
+to `menu`).
 
 ## Data & persistence
 
@@ -174,6 +186,7 @@ grep-able from one file.
 | Bingo streaks | per profile | `wordventure:streaks:<name>` |
 | Wordscapes stats | per profile | `wordventure:wordscapesStats:<name>` |
 | Sentence Quest stats | per profile | `wordventure:sentenceQuestStats:<name>` |
+| Synonym Safari stats | per profile | `wordventure:synonymSafariStats:<name>` |
 
 **Player profiles are local labels, not accounts** — no auth, no server,
 nothing that leaves the device. They exist purely so more than one player
@@ -192,7 +205,7 @@ hidden behind an implicit global.
 
 ## Game logic
 
-All three modes share the same shape: pure functions in `src/lib/` that
+All four modes share the same shape: pure functions in `src/lib/` that
 take an explicit `rng: () => number = Math.random` parameter, so tests can
 pass a seeded/sequenced generator (`src/test/rng.ts`) instead of mocking
 `Math.random` globally.
@@ -217,7 +230,10 @@ every puzzle is generated on demand from the same word banks:
    Bingo's difficulty tags are about vocabulary, not length).
 2. A stratified, length-interleaved sample is placed into an interlocking
    grid (`generateLevel`), avoiding the same-length clustering a naive
-   longest-first placement would produce.
+   longest-first placement would produce. Sampling prefers words not in the
+   caller-supplied `excludeWords` (the previous puzzle's words, passed down
+   from `App.tsx`) as long as enough others remain, so consecutive puzzles
+   don't repeat the same words.
 3. The letter wheel is derived from the placed words' max per-letter
    counts; a random letter per word is pre-revealed as a free hint.
 4. `revealWord` / `revealRandomLetter` / `revealAll` mutate the grid as the
@@ -230,16 +246,39 @@ every puzzle is generated on demand from the same word banks:
 (grammar concepts, not vocabulary themes) and its own question banks
 (`src/data/sentenceQuestBanks/`), entirely separate from Bingo/Wordscapes':
 1. `selectQuestionPool` filters a category's question bank by difficulty.
-2. `generateRound` samples `questionCount` unique questions and shuffles
-   each one's multiple-choice `options` order — grading is always by
-   string equality against `answer`, never by array index, so the shuffle
-   can never misgrade.
+2. `generateRound` samples `questionCount` unique questions (preferring
+   ones not in the caller-supplied `excludeSentences` — the previous
+   round's questions — the same soft-preference pattern as Wordscapes'
+   `excludeWords`) and shuffles each one's multiple-choice `options` order
+   — grading is always by string equality against `answer`, never by array
+   index, so the shuffle can never misgrade.
 3. `isCorrect`/`splitSentence` are small pure helpers `SentenceQuestScreen`
    uses for grading and rendering the sentence around its blank.
 
-See `CLAUDE.md`'s "Bingo mode", "Wordscapes mode", and "Sentence Quest
-mode" sections for the detailed *why* behind each of these (bugs they
-fixed, tradeoffs made).
+**Synonym Safari** (`synonymSafari.ts`) has its own relation-based category
+set (`synonyms | antonyms`, one bank file each, no combined "mixed" pool —
+see `CLAUDE.md`'s "Synonym Safari mode" for why that was tried and dropped)
+and its own pair banks (`src/data/synonymSafariBanks/`), entirely separate
+from every other mode's content:
+1. `selectSynonymSafariPool` reads a category's pairs, filtered by
+   difficulty.
+2. `generateRound` samples `pairCount` pairs from a shuffled pool while
+   tracking used `word`s *and* used `match`es, skipping anything that
+   collides with either, so a bank can never accidentally deal two
+   visually-identical cells. It also prefers skipping any `word` in the
+   caller-supplied `excludeWords` set (the previous round's words, passed
+   down from `App.tsx`), falling back to reusing them only if the pool is
+   too small to avoid it — this is what keeps back-to-back rounds from
+   repeating the same handful of words. Throws only if the pool can't fill
+   a round even allowing repeats.
+3. `checkMatch` grades a tapped word/match pair by plain string equality,
+   safe because `generateRound` already guarantees no duplicate word/match
+   within a round; `pickHintPair` uniformly picks a random still-unmatched
+   pair for the repeatable hint button.
+
+See `CLAUDE.md`'s "Bingo mode", "Wordscapes mode", "Sentence Quest mode",
+and "Synonym Safari mode" sections for the detailed *why* behind each of
+these (bugs they fixed, tradeoffs made).
 
 ## Build & packaging
 
@@ -270,4 +309,5 @@ Only `src/lib/` (game logic) is unit-tested — `src/lib/*.test.ts` and
 than with component tests, per `CLAUDE.md`'s testing conventions — the
 logic that actually needs correctness guarantees (card generation, win
 detection, clue selection, puzzle generation, Sentence Quest round
-generation) is already framework-free and sits entirely in `lib/`.
+generation, Synonym Safari round generation/matching) is already
+framework-free and sits entirely in `lib/`.

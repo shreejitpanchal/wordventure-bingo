@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Capacitor } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
-import type { GameConfig, ScreenName, SentenceQuestConfig, WinPattern, WordscapesConfig } from './types';
+import type { GameConfig, ScreenName, SentenceQuestConfig, SynonymSafariConfig, WinPattern, WordscapesConfig } from './types';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useAppearance } from './hooks/useAppearance';
@@ -12,9 +12,11 @@ import {
   getProfiles,
   getSentenceQuestStats,
   getStreaks,
+  getSynonymSafariStats,
   getWordscapesStats,
   recordGameResult,
   recordSentenceQuestRound,
+  recordSynonymSafariRound,
   recordWordscapesCompletion,
 } from './lib/storage';
 import ProfileScreen from './components/ProfileScreen';
@@ -25,6 +27,8 @@ import WordscapesGameScreen from './components/WordscapesGameScreen';
 import WordscapesWinScreen from './components/WordscapesWinScreen';
 import SentenceQuestScreen from './components/SentenceQuestScreen';
 import SentenceQuestWinScreen from './components/SentenceQuestWinScreen';
+import SynonymSafariScreen from './components/SynonymSafariScreen';
+import SynonymSafariWinScreen from './components/SynonymSafariWinScreen';
 import SettingsScreen from './components/SettingsScreen';
 
 interface WinInfo {
@@ -48,6 +52,13 @@ interface SentenceQuestWinInfo {
   totalCount: number;
 }
 
+interface SynonymSafariWinInfo {
+  config: SynonymSafariConfig;
+  pairsMatched: number;
+  /** True if the player used the hint button anywhere in this round. */
+  assisted: boolean;
+}
+
 export default function App() {
   // Named local profiles, not accounts -- see storage.ts. No profile yet
   // forces the picker screen before the menu; an existing one skips
@@ -63,10 +74,28 @@ export default function App() {
   const [wordscapesConfig, setWordscapesConfig] = useState<WordscapesConfig | null>(null);
   const [wordscapesWinInfo, setWordscapesWinInfo] = useState<WordscapesWinInfo | null>(null);
   const [wordscapesStats, setWordscapesStats] = useState(() => getWordscapesStats(currentProfile ?? ''));
+  // Words the most recently *started* Wordscapes puzzle placed, passed back
+  // into the next puzzle as words to avoid repeating -- mirrors
+  // synonymSafariRecentWords below (same reason: the screen unmounts
+  // between puzzles, so it can't remember this itself).
+  const [wordscapesRecentWords, setWordscapesRecentWords] = useState<string[]>([]);
 
   const [sentenceQuestConfig, setSentenceQuestConfig] = useState<SentenceQuestConfig | null>(null);
   const [sentenceQuestWinInfo, setSentenceQuestWinInfo] = useState<SentenceQuestWinInfo | null>(null);
   const [sentenceQuestStats, setSentenceQuestStats] = useState(() => getSentenceQuestStats(currentProfile ?? ''));
+  // Sentences the most recently *started* Sentence Quest round used --
+  // same pattern as wordscapesRecentWords/synonymSafariRecentWords.
+  const [sentenceQuestRecentSentences, setSentenceQuestRecentSentences] = useState<string[]>([]);
+
+  const [synonymSafariConfig, setSynonymSafariConfig] = useState<SynonymSafariConfig | null>(null);
+  const [synonymSafariWinInfo, setSynonymSafariWinInfo] = useState<SynonymSafariWinInfo | null>(null);
+  const [synonymSafariStats, setSynonymSafariStats] = useState(() => getSynonymSafariStats(currentProfile ?? ''));
+  // Words the most recently *started* Synonym Safari round used, passed back
+  // into the next round as words to avoid repeating -- see generateRound's
+  // excludeWords param. Lives here (not inside SynonymSafariScreen) because
+  // that screen unmounts between rounds (win screen in between), so it can't
+  // remember this itself.
+  const [synonymSafariRecentWords, setSynonymSafariRecentWords] = useState<string[]>([]);
 
   const { settings, updateSettings } = useSettings();
   const reduceMotion = useReducedMotion(settings.reduceMotion);
@@ -82,6 +111,7 @@ export default function App() {
     setStreaks(getStreaks(name));
     setWordscapesStats(getWordscapesStats(name));
     setSentenceQuestStats(getSentenceQuestStats(name));
+    setSynonymSafariStats(getSynonymSafariStats(name));
     setScreen('menu');
   }, []);
 
@@ -131,6 +161,10 @@ export default function App() {
     setScreen('wordscapes-game');
   }, [wordscapesWinInfo]);
 
+  const handleWordscapesPuzzleStart = useCallback((words: string[]) => {
+    setWordscapesRecentWords(words);
+  }, []);
+
   const startSentenceQuest = useCallback((config: SentenceQuestConfig) => {
     window.history.pushState(null, '');
     setSentenceQuestConfig(config);
@@ -155,6 +189,41 @@ export default function App() {
     setScreen('sentence-quest-game');
   }, [sentenceQuestWinInfo]);
 
+  const handleSentenceQuestRoundStart = useCallback((sentences: string[]) => {
+    setSentenceQuestRecentSentences(sentences);
+  }, []);
+
+  const startSynonymSafari = useCallback((config: SynonymSafariConfig) => {
+    window.history.pushState(null, '');
+    setSynonymSafariConfig(config);
+    setScreen('synonym-safari-game');
+  }, []);
+
+  const handleSynonymSafariComplete = useCallback(
+    (pairsMatched: number, assisted: boolean) => {
+      if (!synonymSafariConfig || !currentProfile) return;
+      // An assisted round (hint used) isn't a real solve -- `solved: !assisted`
+      // keeps it out of the "rounds completed" stat, but pairs genuinely
+      // matched are credited either way, same as Wordscapes' bonus words.
+      setSynonymSafariStats(
+        recordSynonymSafariRound(currentProfile, synonymSafariConfig.category, pairsMatched, !assisted),
+      );
+      setSynonymSafariWinInfo({ config: synonymSafariConfig, pairsMatched, assisted });
+      setScreen('synonym-safari-win');
+    },
+    [synonymSafariConfig, currentProfile],
+  );
+
+  const nextSynonymSafariRound = useCallback(() => {
+    if (!synonymSafariWinInfo) return;
+    setSynonymSafariConfig({ ...synonymSafariWinInfo.config });
+    setScreen('synonym-safari-game');
+  }, [synonymSafariWinInfo]);
+
+  const handleSynonymSafariRoundStart = useCallback((words: string[]) => {
+    setSynonymSafariRecentWords(words);
+  }, []);
+
   const goToMenu = useCallback(() => {
     setGameConfig(null);
     setWinInfo(null);
@@ -162,6 +231,8 @@ export default function App() {
     setWordscapesWinInfo(null);
     setSentenceQuestConfig(null);
     setSentenceQuestWinInfo(null);
+    setSynonymSafariConfig(null);
+    setSynonymSafariWinInfo(null);
     setScreen('menu');
   }, []);
 
@@ -184,8 +255,9 @@ export default function App() {
   // back always fell straight through to "exit," which read as "the app
   // just collapses and does nothing." Every function above that leaves
   // 'menu' for a divertable sub-flow (startGame, startWordscapes,
-  // startSentenceQuest, openSettings, switchProfile) now pushes one entry; goToMenu/
-  // closeSettings/the profile "back to menu" case deliberately do NOT push,
+  // startSentenceQuest, startSynonymSafari, openSettings, switchProfile) now
+  // pushes one entry; goToMenu/closeSettings/the profile "back to menu"
+  // case deliberately do NOT push,
   // since they're the functions THIS handler calls to consume that entry.
   // A screen only ever needs one entry regardless of how many further
   // screens it leads to before returning to 'menu' (e.g. game -> win both
@@ -202,6 +274,8 @@ export default function App() {
       case 'wordscapes-win':
       case 'sentence-quest-game':
       case 'sentence-quest-win':
+      case 'synonym-safari-game':
+      case 'synonym-safari-win':
         goToMenu();
         break;
       case 'settings':
@@ -274,9 +348,11 @@ export default function App() {
           streaks={streaks}
           wordscapesStats={wordscapesStats}
           sentenceQuestStats={sentenceQuestStats}
+          synonymSafariStats={synonymSafariStats}
           onStartBingo={startGame}
           onStartWordscapes={startWordscapes}
           onStartSentenceQuest={startSentenceQuest}
+          onStartSynonymSafari={startSynonymSafari}
           onOpenSettings={openSettings}
           onSwitchProfile={switchProfile}
           reduceMotion={reduceMotion}
@@ -308,6 +384,8 @@ export default function App() {
         <WordscapesGameScreen
           key="wordscapes-game"
           config={wordscapesConfig}
+          excludeWords={wordscapesRecentWords}
+          onPuzzleStart={handleWordscapesPuzzleStart}
           onComplete={handleWordscapesComplete}
           onExit={goToMenu}
           reduceMotion={reduceMotion}
@@ -329,6 +407,8 @@ export default function App() {
         <SentenceQuestScreen
           key="sentence-quest-game"
           config={sentenceQuestConfig}
+          excludeSentences={sentenceQuestRecentSentences}
+          onRoundStart={handleSentenceQuestRoundStart}
           onComplete={handleSentenceQuestComplete}
           onExit={goToMenu}
           reduceMotion={reduceMotion}
@@ -342,6 +422,29 @@ export default function App() {
           totalCount={sentenceQuestWinInfo.totalCount}
           stats={sentenceQuestStats}
           onPlayAgain={playSentenceQuestAgain}
+          onMenu={goToMenu}
+          reduceMotion={reduceMotion}
+        />
+      )}
+      {screen === 'synonym-safari-game' && synonymSafariConfig && (
+        <SynonymSafariScreen
+          key="synonym-safari-game"
+          config={synonymSafariConfig}
+          excludeWords={synonymSafariRecentWords}
+          onRoundStart={handleSynonymSafariRoundStart}
+          onComplete={handleSynonymSafariComplete}
+          onExit={goToMenu}
+          reduceMotion={reduceMotion}
+        />
+      )}
+      {screen === 'synonym-safari-win' && synonymSafariWinInfo && (
+        <SynonymSafariWinScreen
+          key="synonym-safari-win"
+          config={synonymSafariWinInfo.config}
+          pairsMatched={synonymSafariWinInfo.pairsMatched}
+          assisted={synonymSafariWinInfo.assisted}
+          stats={synonymSafariStats}
+          onNextRound={nextSynonymSafariRound}
           onMenu={goToMenu}
           reduceMotion={reduceMotion}
         />

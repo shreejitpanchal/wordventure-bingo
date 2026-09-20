@@ -296,14 +296,24 @@ function stratifiedSample(eligible: WordEntry[], rng: () => number, sampleSize: 
  * no valid puzzle could be assembled after several attempts -- a shipped
  * word bank too sparse to ever interlock is a data bug, not a state to
  * silently render around.
+ *
+ * `excludeWords` (the *previous* puzzle's placed words, in this session) is
+ * a soft preference, not a hard filter: sampling attempts draw only from
+ * words not in it as long as that leaves at least `SAMPLE_SIZE` eligible
+ * words to work with, so consecutive puzzles don't reuse the same words --
+ * but falls back to the full pool if excluding them would leave too little
+ * to reliably generate a good interlocking grid from.
  */
 export function generateLevel(
   pool: WordEntry[],
   rng: () => number = Math.random,
   wordCount: number = DEFAULT_WORD_COUNT,
+  excludeWords: ReadonlySet<string> = new Set(),
 ): WordscapesLevel {
   const targetWords = Math.max(MIN_WORD_COUNT, Math.min(MAX_WORD_COUNT, wordCount));
   const eligible = pool.filter((w) => w.word.length >= MIN_WORD_LENGTH);
+  const preferred = eligible.filter((w) => !excludeWords.has(w.word));
+  const samplingPool = preferred.length >= SAMPLE_SIZE ? preferred : eligible;
 
   for (let attempt = 0; attempt < MAX_GENERATION_ATTEMPTS; attempt++) {
     // Only the anchor (the unconditional first placement) is chosen for
@@ -313,7 +323,7 @@ export function generateLevel(
     // a strict longest-first sort exhausts one length group before ever
     // attempting a shorter word, so a small wordCount would only ever grab
     // that one cluster -- monotonous even with a length-diverse sample.
-    const raw = stratifiedSample(eligible, rng, SAMPLE_SIZE);
+    const raw = stratifiedSample(samplingPool, rng, SAMPLE_SIZE);
     if (raw.length === 0) continue; // nothing eligible at all -- keep looping to the loud failure below
 
     let longestIdx = 0;

@@ -1,4 +1,4 @@
-import type { Settings, SentenceQuestStats, Streaks, WordEntry, WordscapesStats } from '../types';
+import type { Settings, SentenceQuestStats, Streaks, SynonymSafariStats, WordEntry, WordscapesStats } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
@@ -26,10 +26,15 @@ function sentenceQuestStatsKey(profile: string): string {
   return `wordventure:sentenceQuestStats:${profile}`;
 }
 
+function synonymSafariStatsKey(profile: string): string {
+  return `wordventure:synonymSafariStats:${profile}`;
+}
+
 const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false, theme: 'system', fontSize: 'medium' };
 const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
 const DEFAULT_WORDSCAPES_STATS: WordscapesStats = { puzzlesCompleted: {}, bonusWordsFound: {} };
 const DEFAULT_SENTENCE_QUEST_STATS: SentenceQuestStats = { roundsCompleted: {}, correctAnswers: {}, questionsAnswered: {} };
+const DEFAULT_SYNONYM_SAFARI_STATS: SynonymSafariStats = { roundsCompleted: {}, pairsMatched: {} };
 
 /**
  * localStorage can throw (private browsing, disabled storage, quota) or
@@ -188,6 +193,39 @@ export function recordSentenceQuestRound(
   stats.correctAnswers[category] = (stats.correctAnswers[category] ?? 0) + correctCount;
   stats.questionsAnswered[category] = (stats.questionsAnswered[category] ?? 0) + totalCount;
   writeJSON(sentenceQuestStatsKey(profile), stats);
+  return stats;
+}
+
+// --- Synonym Safari stats (per profile) -------------------------------------
+//
+// Same no-legacy-migration situation as Sentence Quest: this feature was
+// added after profiles already existed, so it's profile-scoped from day one.
+
+export function getSynonymSafariStats(profile: string): SynonymSafariStats {
+  return { ...DEFAULT_SYNONYM_SAFARI_STATS, ...readJSON(synonymSafariStatsKey(profile), DEFAULT_SYNONYM_SAFARI_STATS) };
+}
+
+/**
+ * `solved` gates "rounds completed" only -- an assisted round (any hint
+ * used) still credits every pair genuinely locked in, it just doesn't count
+ * as a real, unaided completion. Mirrors recordWordscapesCompletion, not
+ * recordSentenceQuestRound: there's no wrong-pair outcome here to weigh
+ * pairsMatched against the way questionsAnswered weighs correctAnswers.
+ */
+export function recordSynonymSafariRound(
+  profile: string,
+  category: string,
+  pairsMatchedCount: number,
+  solved: boolean,
+): SynonymSafariStats {
+  const stats = getSynonymSafariStats(profile);
+  if (solved) {
+    stats.roundsCompleted[category] = (stats.roundsCompleted[category] ?? 0) + 1;
+  }
+  if (pairsMatchedCount > 0) {
+    stats.pairsMatched[category] = (stats.pairsMatched[category] ?? 0) + pairsMatchedCount;
+  }
+  writeJSON(synonymSafariStatsKey(profile), stats);
   return stats;
 }
 

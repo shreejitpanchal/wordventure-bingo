@@ -5,13 +5,15 @@ PWA — Windows (Chrome/Edge) and Android (installed to home screen). No backend
 no accounts, no ads, no network calls after first load. (Named local player
 profiles exist — see "Player profiles" below — but they're just labeled
 localStorage buckets on-device, not accounts: no auth, no network, nothing
-that leaves the device.) Three modes, chosen from
+that leaves the device.) Four modes, chosen from
 the main menu: **Bingo** (the original word-bingo game), **Wordscapes**
 (a word-connect crossword puzzle, in the style of PeopleFun's Wordscapes/Word
 Cross — named "Wordscapes" as an in-app mode label only; that name is a
 third party's trademark, so it must not appear in any app-store listing,
-package id, or branding if this is ever published), and **Sentence Quest**
-(a fill-in-the-blank grammar quiz — see "Sentence Quest mode" below).
+package id, or branding if this is ever published), **Sentence Quest**
+(a fill-in-the-blank grammar quiz — see "Sentence Quest mode" below), and
+**Synonym Safari** (a two-column tap-to-connect synonym/antonym matching
+game — see "Synonym Safari mode" below).
 
 For a diagram-first map of module boundaries, data flow, and the screen
 state machine, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — this file
@@ -43,26 +45,27 @@ they are; keep both in sync when either changes.
   add a new screen safely.
 - No router: `src/App.tsx` is a single explicit screen state machine
   (`profile | menu | game | win | settings | wordscapes-game |
-  wordscapes-win | sentence-quest-game | sentence-quest-win`) swapped via
-  `AnimatePresence`. Don't introduce React Router or similar for what is a
-  handful of screens. Mode selection (Bingo vs. Wordscapes vs. Sentence
-  Quest) happens inside `MenuScreen`, not as a separate screen.
+  wordscapes-win | sentence-quest-game | sentence-quest-win |
+  synonym-safari-game | synonym-safari-win`) swapped via `AnimatePresence`.
+  Don't introduce React Router or similar for what is a handful of screens.
+  Mode selection (Bingo vs. Wordscapes vs. Sentence Quest vs. Synonym
+  Safari) happens inside `MenuScreen`, not as a separate screen.
 - No backend, no global state library: all persistence is `localStorage`
   behind `src/lib/storage.ts` (settings, player profiles, Bingo streaks,
-  Wordscapes stats, Sentence Quest stats, the Free Play custom word list).
-  That file is the only place allowed to touch `localStorage` directly.
-  `App.tsx` holds the active profile name and the loaded streaks/stats in
-  React state and passes them down explicitly as props — components never
-  re-read "the current profile" from storage themselves, so who a given
-  render's data belongs to is always traceable through props, not an
-  implicit global.
+  Wordscapes stats, Sentence Quest stats, Synonym Safari stats, the Free
+  Play custom word list). That file is the only place allowed to touch
+  `localStorage` directly. `App.tsx` holds the active profile name and the
+  loaded streaks/stats in React state and passes them down explicitly as
+  props — components never re-read "the current profile" from storage
+  themselves, so who a given render's data belongs to is always traceable
+  through props, not an implicit global.
 - Game logic is framework-free and colocated in `src/lib/` (`cardGeneration`,
   `winDetection`, `clueMatching`, `caller` for Bingo; `wordscapes/gridGeneration`
-  for Wordscapes; `sentenceQuest` for Sentence Quest) — pure functions
-  taking an injectable `rng` parameter so they stay unit-testable without
-  mocking `Math.random`. Keep new game-rule logic there, not inside
-  components. Shared utilities (e.g. `shuffle`) live in `src/lib/random.ts`
-  — reuse it rather than re-implementing per module.
+  for Wordscapes; `sentenceQuest` for Sentence Quest; `synonymSafari` for
+  Synonym Safari) — pure functions taking an injectable `rng` parameter so
+  they stay unit-testable without mocking `Math.random`. Keep new game-rule
+  logic there, not inside components. Shared utilities (e.g. `shuffle`) live
+  in `src/lib/random.ts` — reuse it rather than re-implementing per module.
 
 ## Player profiles
 
@@ -274,6 +277,28 @@ they are; keep both in sync when either changes.
   are reused across words by re-tracing them, never consumed). Words that
   don't fit geometrically can still surface as optional "bonus words" if
   their letters are a sub-multiset of the wheel.
+- **Consecutive puzzles avoid reusing the previous puzzle's words where the
+  pool allows it.** `generateLevel` takes an `excludeWords` set (the
+  *previous* puzzle's placed words, in this session) and samples only from
+  non-excluded eligible words as long as that still leaves at least
+  `SAMPLE_SIZE` (20) to draw from — a soft preference, not a hard filter,
+  so it never fails a puzzle that's otherwise generatable; it just falls
+  back to the full pool if excluding would leave too little to reliably
+  interlock a grid from. `WordscapesGameScreen` reports the words it placed
+  back up to `App.tsx` via `onPuzzleStart` (fired once, right after
+  generation — `level.grid.placedWords`'s array reference never changes
+  after that, since reveal actions only replace `cells`), and `App.tsx`
+  hands that back in as the *next* puzzle's `excludeWords` — the screen
+  itself can't remember this across puzzles because it unmounts between
+  them (the win screen sits in between). Bonus-word discovery
+  (`findBonusWords`) deliberately still draws from the *full* eligible
+  pool, not the exclusion-preferring one — repeating an optional bonus word
+  is far less noticeable than repeating the puzzle's own main content, and
+  narrowing that pool too would just shrink bonus-word variety for no
+  benefit. Same mechanism as Synonym Safari's `excludeWords` and Sentence
+  Quest's `excludeSentences` (see their own sections) — all three followed
+  from the same underlying ask: playing several rounds/puzzles/games in a
+  row was visibly dealing the same small handful of words back to back.
 - **Wordscapes has its own difficulty axis, separate from Bingo's.** Bingo's
   `easy`/`medium`/`hard` tags mean vocabulary/reading difficulty — "easy"
   Bingo words like ELEPHANT or KANGAROO are simple to *read*, not short.
@@ -447,6 +472,16 @@ they are; keep both in sync when either changes.
   Wordscapes' `generateLevel`, it throws loudly if the pool can't fill a
   round rather than rendering a broken one — every category/difficulty
   needs at least `MAX_QUESTION_COUNT` (20) questions.
+- **Consecutive rounds avoid reusing the previous round's questions where
+  the pool allows it**, the same `excludeWords`-style mechanism as
+  Wordscapes/Synonym Safari: `generateRound` takes an `excludeSentences`
+  set (keyed by `sentence`, unique per bank by the duplicate-check
+  convention below) and samples from non-excluded questions first, falling
+  back to the full pool only if that wouldn't fill the round.
+  `SentenceQuestScreen` reports its round's sentences back to `App.tsx` via
+  `onRoundStart` once, right after the round is built, and `App.tsx` feeds
+  that back in as the next round's `excludeSentences` — same
+  can't-remember-across-unmounts reasoning as the other two modes.
 - **Every `sentence` must contain exactly one `"___"` marker** (checked by
   `splitSentence`, which throws otherwise) and **every question must have
   exactly 4 `options`, with `answer` equal to exactly one of them
@@ -533,12 +568,143 @@ they are; keep both in sync when either changes.
   distinction is the core feedback loop here, so it earns a real color
   rather than reusing the muted style.
 
+## Synonym Safari mode
+
+- **Two-column tap-to-connect matching, not a themed word bank.** Tap a
+  word on the left, tap its match on the right; a correct pair locks in
+  place, a wrong tap just clears the selection with a brief shake (nothing
+  is ever removed or penalized). Built with its own `SynonymSafariCategoryId`
+  (`synonyms | antonyms`) instead of Bingo/Wordscapes' `CategoryId`
+  (spelling/animals/geography/science/freeplay) — checked first: only 5 of
+  ~1400 existing word-bank entries have a `synonym` field filled in at all,
+  so that field wasn't reusable, the same reason Sentence Quest got its own
+  grammar-concept category set instead of reusing `CategoryId`. Content
+  lives in `src/data/synonymSafariBanks/synonyms.json` and `antonyms.json`
+  (`{relation, label, pairs: {word, match, difficulty}[]}`), registered in
+  `src/data/synonymSafariBanks.ts` (mirrors `wordBanks.ts`/
+  `sentenceQuestBanks.ts`'s pattern) — every category maps 1:1 to a bank
+  file, so its display label is always just `SYNONYM_SAFARI_BANKS[category]
+  .label`, no separate label map needed. The antonyms bank's label is
+  "Antonyms / Opposites" (not just "Antonyms") for clarity to a young
+  player. **There is deliberately no `'mixed'` category** — an earlier
+  version combined both banks into one pool, but that meant the same source
+  word could appear once per bank with two different, contradictory correct
+  matches (e.g. `"reluctant"` → `"hesitant"` as a synonym pair and
+  `"reluctant"` → `"eager"` as an antonym pair — both existed in the
+  seed data), which risked two visually-identical left-column cells with
+  different correct answers in the same round. Simpler to just not offer
+  that combination than to keep defending against it — if a real "mixed"
+  need comes back, solve the word-collision problem at the content level
+  (e.g. namespacing or filtering shared words) before reintroducing it, not
+  by re-adding the runtime dedup alone.
+- **`generateRound` still dedupes by both `word` AND `match`, not just
+  `word`, even without `mixed`.** Not defending against cross-bank
+  collisions anymore, but a single bank could still (accidentally) end up
+  with two different words sharing the same `match` text, which would be an
+  equally confusing right-column duplicate. `generateRound` samples from a
+  shuffled pool while tracking used `word`s and used `match`es, skipping
+  anything that collides with either set, and throws loudly (same
+  convention as `cardGeneration`'s `generateCard`) if the pool can't fill a
+  round afterward. This is why grading (`checkMatch`) can stay a plain
+  string comparison instead of needing pair IDs.
+- **Consecutive rounds avoid repeating the previous round's words, not just
+  relying on pool size + luck.** `generateRound` takes an `excludeWords`
+  set and does two passes over the shuffled pool: first only accepting
+  pairs whose `word` isn't excluded, then (only if that couldn't fill the
+  round) topping up with excluded words too — so it never fails a round it
+  could otherwise complete, it just prefers fresh words. Since
+  `SynonymSafariScreen` unmounts between rounds (the win screen sits in
+  between), it can't remember the previous round itself — `App.tsx` holds
+  `synonymSafariRecentWords` state instead, updated via the screen's
+  `onRoundStart(words)` callback (fired once per mount, right after
+  `generateRound` runs) and fed back in as the *next* round's
+  `excludeWords`. This is the same reason `App.tsx` owns every other
+  cross-screen mode's config/win-info state (see "Data flow" in
+  `docs/ARCHITECTURE.md`) — a screen can't persist anything across its own
+  unmount, so anything that needs to survive to the next round lives one
+  level up.
+- **Hint/`assisted` mirrors Wordscapes' shape, not Sentence Quest's.**
+  There's no "wrong pair" outcome to weigh a count against here (a
+  mismatched tap costs nothing, same as Wordscapes' mistyped-word
+  feedback) — so `recordSynonymSafariRound(profile, category,
+  pairsMatchedCount, solved)` mirrors `recordWordscapesCompletion`'s 4-arg
+  shape, not Sentence Quest's 5-arg accuracy-ratio shape. The repeatable
+  "💡 Reveal a Pair" hint button (`pickHintPair` in `synonymSafari.ts`)
+  auto-locks one random still-unmatched pair; `assisted` becomes `true` the
+  moment it's used and stays `true` for the rest of the round even if the
+  player finishes the rest unaided, and `solved = !assisted` gates only the
+  "rounds completed" stat (`pairsMatched` is always credited either way).
+  **Same bug shape Wordscapes already had and fixed:** `SynonymSafariScreen`
+  must never call `onComplete` from inside the tap-resolution success
+  branch, even on the round's last pair — `isRoundComplete` (derived:
+  `matchedWords.size === round.length`, not tracked separately) flips on
+  that render and swaps in a Continue panel first, so the player always
+  sees their own finished board before advancing to the win screen.
+- **Tap order is order-agnostic.** Either column can be tapped first — a
+  single `selected: {side, value} | null` slot resolves against whichever
+  column is tapped second, rather than hard-coding "left first" and
+  silently ignoring a right-first tap.
+- **Every round opens on an intro panel, not straight into a live grid** —
+  a `started` flag (`false` until the player taps "Start Matching") gates
+  `SynonymSafariScreen`'s top bar/columns/hint button behind a brief
+  "get ready" beat: a safari-emoji graphic, the category/difficulty label,
+  and the pair count. This app has no uploaded image assets anywhere else
+  (every other screen's iconography is emoji + CSS — MenuScreen's mode
+  chips, Wordscapes' hint buttons), so the graphic is an emoji cluster
+  (`INTRO_EMOJIS`) animated in with `zoomInVariants`, not a real
+  illustration — consistent with the rest of the app rather than
+  introducing its first image asset. The round itself (`generateRound`,
+  the `onRoundStart` exclude-words report) still happens immediately on
+  mount regardless of `started`, so the intro is purely a display gate, not
+  a delay on when the round is actually built.
+- **Layout scrolls instead of letterboxing, unlike Wordscapes' crossword
+  grid.** `CrosswordGrid` must scale to fit entirely on screen because
+  nothing in it may scroll out of view mid-solve; a two-column word list
+  has no such constraint, so `SynonymSafariScreen.module.css`'s one
+  flexible middle region uses plain `overflow-y: auto` (with the same
+  `min-height: 0` requirement Wordscapes' `.gridBox` comment documents, so
+  the flex child can actually shrink instead of growing `.screen` itself).
+- **Naming note, not a code collision:** Sentence Quest already has a
+  category called "Synonyms & Antonyms" (`sentenceQuestBanks/
+  synonymsAntonyms.json`) — a grammar quiz *about* the synonym/antonym
+  concept (fill-in-the-blank, multiple choice). Different type, different
+  file, unrelated to this mode's `synonyms`/`antonyms` categories — don't
+  try to "consolidate" them; they test different skills.
+- **Content pool-size target, using the same heuristic documented under
+  "Word banks" for Wordscapes' short-word pools** (repeat-chance ≈
+  roundSize / poolSize, target ≤~8%): max round size is `MAX_PAIR_COUNT = 8`
+  → `poolSize ≥ 8/0.08 = 100`. Target **~100 pairs per difficulty tier per
+  relation file** (~300/file, ~600 total) — sanity-checked against Sentence
+  Quest's own numbers (its max round of 20 against the same 8% target
+  implies ~250/category/difficulty, and its shipped counts of 210-232 land
+  right there). Started with only a small hand-written seed set (24 pairs
+  per file, matching Sentence Quest's "6 hand-written examples set the
+  tone/quality bar" precedent); bulk expansion followed the same process as
+  Sentence Quest's content (see "Sentence Quest mode" above): one
+  background agent per bank file, writing directly with no sub-agents,
+  saving incrementally, then the mandatory two-pass validation (structural
+  script + manual read-sample for kid-appropriateness/correctness) — the
+  structural pass alone has already missed real content bugs in this repo.
+  **Risk flag** mirroring the `idioms` precedent (capped below its siblings
+  because every entry must be a genuinely distinct, well-known idiom): 100
+  distinct, unambiguous, kid-appropriate synonym pairs per tier sharing no
+  source word is a real authoring ceiling — if a bulk pass came in lower
+  than 100/tier, that's the same quality-over-quota call idioms made, not a
+  bug to "fix" by loosening what counts as a good pair. The `generateRound`
+  exclude-recent-words mechanism above (not just raw pool size) is what
+  actually keeps back-to-back rounds from repeating in practice, even at a
+  more modest pool size — don't assume a low `poolSize` alone means the
+  repetition problem is back; check whether it's happening across
+  *non-consecutive* rounds (which pool size does control) before growing
+  content further.
+
 ## Testing
 
 - Unit tests are colocated as `*.test.ts` next to the module they cover in
   `src/lib/` (including `src/lib/wordscapes/`), using Vitest. They cover the
   correctness-critical logic only (card generation, win detection, clue
-  selection/formatting, Wordscapes grid generation) per the original spec —
+  selection/formatting, Wordscapes grid generation, Synonym Safari round
+  generation/matching) per the original spec —
   UI and animation are verified manually in-browser, not with component
   tests. Don't add `@testing-library/*`/`jsdom` back unless a future change
   actually needs DOM-level testing.
