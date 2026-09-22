@@ -79,14 +79,29 @@ they are; keep both in sync when either changes.
   purely so siblings/family sharing one device/tablet don't have to see
   each other's streaks. A small `👋 {name}` button on `MenuScreen` (mirrors
   the settings gear, opposite corner) re-opens the picker to switch.
-- **Only Bingo streaks and Wordscapes stats are scoped per profile**
-  (`streaksKey`/`wordscapesStatsKey` in `storage.ts`, suffixed by name) —
-  Settings and the Free Play word list stay device-wide. Those are a
-  device/accessibility preference and shared content respectively, not
-  per-player statistics, so scoping them per profile wasn't warranted; if
-  that changes, thread the profile name into `WordListEditor`/`useSettings`
-  the same explicit-prop way `App.tsx` already does for streaks/stats,
-  don't have `storage.ts` reach for "the current profile" internally.
+- **Every mode's stats are scoped per profile** (`streaksKey`/
+  `wordscapesStatsKey`/`sentenceQuestStatsKey`/`synonymSafariStatsKey` in
+  `storage.ts`, all suffixed by name) — Settings and the Free Play word
+  list stay device-wide. Those are a device/accessibility preference and
+  shared content respectively, not per-player statistics, so scoping them
+  per profile wasn't warranted; if that changes, thread the profile name
+  into `WordListEditor`/`useSettings` the same explicit-prop way `App.tsx`
+  already does for streaks/stats, don't have `storage.ts` reach for "the
+  current profile" internally.
+- **`SettingsScreen` shows a read-only "🏆 {name}'s Stats" summary — one
+  card per mode, each a small aggregate across every category** (total
+  games/wins/best streak for Bingo, puzzles/bonus words for Wordscapes,
+  rounds/correct answers for Sentence Quest, rounds/pairs for Synonym
+  Safari), not a category-by-category breakdown (that granularity already
+  exists contextually on each mode's own `MenuScreen` streak line and win
+  screen). This does **not** contradict "Settings stays device-wide" above
+  — `Settings` the persisted object is still device-wide and unchanged;
+  `SettingsScreen` the component just also *displays* the current
+  profile's stats, passed down from `App.tsx`'s already-held state
+  (`streaks`/`wordscapesStats`/`sentenceQuestStats`/`synonymSafariStats`)
+  as plain read-only props, exactly the explicit-prop pattern described
+  above — nothing new is persisted, and `SettingsScreen` still never reads
+  storage or "the current profile" itself.
 - **First-ever profile inherits pre-profile-era progress.** This feature
   shipped after the app already had real device-wide streaks/stats
   (unscoped `wordventure:streaks`/`wordventure:wordscapesStats` keys) — 

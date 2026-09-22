@@ -12,7 +12,10 @@ First launch asks "Who's playing?" — pick a name (or add a new one). This
 isn't a login: it's just a local label so siblings/family sharing one
 device/tablet each keep their own streaks/stats for every mode, all
 still stored only on-device. Tap the name button on the main menu (next to
-the settings gear) to switch player at any time.
+the settings gear) to switch player at any time. The settings gear also
+shows a "🏆 {name}'s Stats" summary — games played, wins, best streaks,
+puzzles/rounds completed, and so on across all four modes — for whoever's
+currently playing.
 
 Four modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).

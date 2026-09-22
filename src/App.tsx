@@ -452,6 +452,11 @@ export default function App() {
       {screen === 'settings' && (
         <SettingsScreen
           key="settings"
+          playerName={currentProfile ?? ''}
+          streaks={streaks}
+          wordscapesStats={wordscapesStats}
+          sentenceQuestStats={sentenceQuestStats}
+          synonymSafariStats={synonymSafariStats}
           settings={settings}
           onChange={updateSettings}
           onClose={closeSettings}

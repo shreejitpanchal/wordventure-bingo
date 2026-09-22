@@ -100,3 +100,42 @@
   border-color: var(--color-primary);
   color: white;
 }
+
+/* Two-column, like MenuScreen's option grid -- an odd number of stat cards
+   never happens here (always exactly 4, one per mode), so no last-child
+   spanning rule is needed the way MenuScreen's chip grid has one. */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.statCard {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.statCardTitle {
+  margin: 0 0 var(--space-2);
+  font-weight: 700;
+}
+
+.statLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.statLine + .statLine {
+  margin-top: var(--space-1);
+}
+
+.statLine strong {
+  color: var(--color-accent-dark);
+  font-size: 1rem;
+}
