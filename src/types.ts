@@ -49,7 +49,7 @@ export interface WinResult {
  * screens they render is decided by the active mode session in App.tsx (see
  * src/modes/), not by a per-mode screen name -- adding a mode never touches
  * this union. */
-export type ScreenName = 'profile' | 'menu' | 'settings' | 'game' | 'win';
+export type ScreenName = 'profile' | 'menu' | 'settings' | 'trophies' | 'game' | 'win';
 
 /** One id per mode descriptor registered in src/modes/index.ts. */
 export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest' | 'synonym-safari';
@@ -63,9 +63,19 @@ export type ThemePreference = 'system' | 'light' | 'dark';
 export type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
 
 export interface Settings {
+  /** Synthesised Web Audio effects (src/lib/sound.ts) -- no audio assets. */
+  soundEnabled: boolean;
   reduceMotion: boolean;
   theme: ThemePreference;
   fontSize: FontSize;
+}
+
+/** Daily-challenge progress, per profile -- see src/modes/daily.ts. */
+export interface DailyRecord {
+  /** YYYY-MM-DD (local) of the last completed daily challenge, or null. */
+  lastCompleted: string | null;
+  /** Consecutive days with a completed challenge, ending on lastCompleted. */
+  streak: number;
 }
 
 // The four per-mode stats records are `type` aliases, not interfaces, on

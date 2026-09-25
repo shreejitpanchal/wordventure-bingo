@@ -3,22 +3,25 @@ import type { SentenceQuestConfig, SentenceQuestResult, SentenceQuestStats } fro
 import type { ModeWinScreenProps } from '../modes/types';
 import { SENTENCE_QUEST_LABELS } from '../data/sentenceQuestLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
-import Confetti from './Confetti';
+import Celebration from './Celebration';
+import CountUp from './CountUp';
 import styles from './WinScreen.module.css';
 
 type Props = ModeWinScreenProps<SentenceQuestConfig, SentenceQuestResult, SentenceQuestStats>;
 
 // A round doesn't need to be perfect to feel like a win -- 70%+ correct
-// gets the celebratory tone/confetti, matching how Wordscapes only skips
-// confetti for an assisted (not genuinely solved) puzzle rather than
-// demanding perfection.
+// gets the celebratory tone/confetti; a perfect round gets the fireworks.
 const PASS_RATIO = 0.7;
 
-export default function SentenceQuestWinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+const GLYPHS = ['✅', '📝', '✨', '💯'];
+
+export default function SentenceQuestWinScreen({ config, result, stats, context, onPlayAgain, onMenu, reduceMotion }: Props) {
   const { correctCount, totalCount } = result;
   const label = SENTENCE_QUEST_LABELS[config.category];
   const passed = totalCount > 0 && correctCount / totalCount >= PASS_RATIO;
+  const perfect = totalCount > 0 && correctCount === totalCount;
   const roundsCompleted = stats.roundsCompleted[config.category] ?? 0;
+  const tier = perfect ? 'big' : passed ? 'small' : 'none';
 
   return (
     <motion.main
@@ -28,7 +31,7 @@ export default function SentenceQuestWinScreen({ config, result, stats, onPlayAg
       animate="animate"
       exit="exit"
     >
-      {passed && <Confetti reduceMotion={reduceMotion} />}
+      <Celebration tier={tier} glyphs={GLYPHS} headline="★ PERFECT ROUND! ★" reduceMotion={reduceMotion} sound={context.sound} />
 
       <motion.div
         className={styles.banner}
@@ -38,7 +41,7 @@ export default function SentenceQuestWinScreen({ config, result, stats, onPlayAg
       >
         <h1 className={styles.bingo}>{passed ? 'GREAT JOB!' : 'KEEP PRACTICING!'}</h1>
         <p className={styles.patterns}>
-          {correctCount} / {totalCount} correct
+          <CountUp value={correctCount} reduceMotion={reduceMotion} /> / {totalCount} correct
         </p>
       </motion.div>
 
@@ -47,7 +50,10 @@ export default function SentenceQuestWinScreen({ config, result, stats, onPlayAg
           {label} · {config.difficulty}
         </p>
         <p>
-          📝 Rounds completed in {label}: <strong>{roundsCompleted}</strong>
+          📝 Rounds completed in {label}:{' '}
+          <strong>
+            <CountUp value={roundsCompleted} reduceMotion={reduceMotion} />
+          </strong>
         </p>
       </div>
 

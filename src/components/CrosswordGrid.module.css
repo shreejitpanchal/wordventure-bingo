@@ -57,3 +57,12 @@
 .blank {
   aspect-ratio: 1;
 }
+
+/* A revealed cell fills with the mode colour so solved words read as a
+   shape, not just letters on white. */
+.cellRevealed {
+  background: var(--color-cell-marked);
+  border-color: var(--color-cell-marked);
+  color: white;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

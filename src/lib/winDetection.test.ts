@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { CardCell } from '../types';
-import { checkWin } from './winDetection';
+import { checkWin, nearWinIndices } from './winDetection';
 import { FREE_INDEX, TOTAL_CELLS } from './cardGeneration';
 
 function buildCells(markedIndices: number[]): CardCell[] {
@@ -58,5 +58,28 @@ describe('checkWin', () => {
   it('does not confuse a near-complete line with a win', () => {
     const result = checkWin(buildCells([0, 1, 2, 3])); // row missing index 4
     expect(result.won).toBe(false);
+  });
+});
+
+describe('nearWinIndices', () => {
+  it('is empty on a fresh card (only the FREE centre is marked)', () => {
+    // FREE alone leaves every line 4 short, never 1.
+    expect(nearWinIndices(buildCells([]))).toEqual([]);
+  });
+
+  it('names the single missing cell of a row that is one mark short', () => {
+    // Row 0 = indices 0..4; mark 0,1,2,3 -> 4 completes it.
+    expect(nearWinIndices(buildCells([0, 1, 2, 3]))).toEqual([4]);
+  });
+
+  it('collects one cell per near-complete line, deduplicated and sorted', () => {
+    // Middle row (10..14, FREE at 12 already marked) missing 14; middle
+    // column (2,7,12,17,22) missing 22; corners (0,4,20,24) missing 24.
+    const cells = buildCells([10, 11, 13, 2, 7, 17, 0, 4, 20]);
+    expect(nearWinIndices(cells)).toEqual([14, 22, 24]);
+  });
+
+  it('does not report a line that is already complete', () => {
+    expect(nearWinIndices(buildCells([0, 1, 2, 3, 4]))).not.toContain(4);
   });
 });

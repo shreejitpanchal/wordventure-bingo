@@ -7,7 +7,7 @@ import { generateCard, markWord, selectWordPool } from '../lib/cardGeneration';
 import { checkWin } from '../lib/winDetection';
 import { buildCallQueue, clueForWord } from '../lib/caller';
 import { screenVariants, withReducedMotion } from '../lib/motion';
-import BingoCard from './BingoCard';
+import BingoCard, { type WrongTap } from './BingoCard';
 import ClueBanner from './ClueBanner';
 import styles from './GameScreen.module.css';
 
@@ -15,7 +15,12 @@ import styles from './GameScreen.module.css';
 // a 24+ pool is already varied), so excludeItems/onRoundStart go unused.
 type Props = ModeGameScreenProps<GameConfig, BingoResult>;
 
-export default function GameScreen({ config, context, onComplete, onExit, reduceMotion }: Props) {
+/** Fraction of the call timer after which the clue card starts to heartbeat
+ * and a tick sounds -- the "hurry up" stretch. */
+const URGENT_AT = 0.75;
+
+export default function GameScreen({ config, context, rng, onComplete, onExit, reduceMotion }: Props) {
+  const { sound } = context;
   const bank = WORD_BANKS[config.category];
   const wordEntries = useMemo(
     () => (config.category === 'freeplay' ? [...bank.words, ...context.freeplayWords] : bank.words),
@@ -27,13 +32,15 @@ export default function GameScreen({ config, context, onComplete, onExit, reduce
   );
 
   const [cards, setCards] = useState<BingoCardType[]>(() =>
-    Array.from({ length: config.players }, () => generateCard(pool)),
+    Array.from({ length: config.players }, () => generateCard(pool, rng)),
   );
   // Built once from the initial deal and never recomputed -- cards gets a new
   // array reference on every mark, so memoizing on `cards` would reshuffle
   // the whole call order on every tap instead of just advancing through it.
-  const [callQueue] = useState(() => buildCallQueue(cards));
+  const [callQueue] = useState(() => buildCallQueue(cards, rng));
   const [callIndex, setCallIndex] = useState(0);
+  const [urgent, setUrgent] = useState(false);
+  const [wrongTaps, setWrongTaps] = useState<(WrongTap | null)[]>(() => cards.map(() => null));
 
   const currentClue = useMemo(
     () => (callQueue.length ? clueForWord(callQueue[callIndex], pool, config.difficulty) : null),
@@ -45,16 +52,32 @@ export default function GameScreen({ config, context, onComplete, onExit, reduce
   // Auto-caller: advances to the next clue on a timer. A correct tap also
   // advances callIndex directly, which resets this effect's timeout too --
   // one mechanism handles both the timed and the responsive-tap path.
+  // The same effect arms the "hurry" beat: at URGENT_AT of the pace the
+  // clue card starts to heartbeat and a tick plays.
   useEffect(() => {
     if (!callQueue.length) return;
+    setUrgent(false);
+    const urgentId = setTimeout(() => {
+      setUrgent(true);
+      sound.play('tick');
+    }, paceMs * URGENT_AT);
     const id = setTimeout(() => {
       setCallIndex((i) => (i + 1) % callQueue.length);
     }, paceMs);
-    return () => clearTimeout(id);
-  }, [callIndex, callQueue.length, paceMs]);
+    return () => {
+      clearTimeout(urgentId);
+      clearTimeout(id);
+    };
+  }, [callIndex, callQueue.length, paceMs, sound]);
 
   function handleCellClick(cardIndex: number, word: string) {
-    if (!currentClue || word !== currentClue.word) return;
+    if (!currentClue) return;
+    if (word !== currentClue.word) {
+      const index = cards[cardIndex].cells.findIndex((c) => c.word === word);
+      setWrongTaps((prev) => prev.map((t, i) => (i === cardIndex ? { index, token: Date.now() } : t)));
+      sound.play('wrong');
+      return;
+    }
 
     const updatedCard = markWord(cards[cardIndex], word);
     const result = checkWin(updatedCard.cells);
@@ -67,6 +90,7 @@ export default function GameScreen({ config, context, onComplete, onExit, reduce
       });
       return;
     }
+    sound.play('correct');
     setCallIndex((i) => (i + 1) % callQueue.length);
   }
 
@@ -95,7 +119,7 @@ export default function GameScreen({ config, context, onComplete, onExit, reduce
         />
       </div>
 
-      <ClueBanner clue={currentClue} reduceMotion={reduceMotion} />
+      <ClueBanner clue={currentClue} urgent={urgent} reduceMotion={reduceMotion} />
 
       <div className={config.players === 2 ? styles.cardsRow : styles.cardsSingle}>
         {cards.map((card, i) => (
@@ -103,6 +127,8 @@ export default function GameScreen({ config, context, onComplete, onExit, reduce
             key={i}
             card={card}
             highlightedIndices={[]}
+            wrongTap={wrongTaps[i]}
+            reduceMotion={reduceMotion}
             onCellClick={(word) => handleCellClick(i, word)}
             label={config.players === 2 ? `Player ${i + 1}` : undefined}
           />

@@ -3,7 +3,8 @@ import type { BingoResult, GameConfig, Streaks, WinPattern } from '../types';
 import type { ModeWinScreenProps } from '../modes/types';
 import { WORD_BANK_LABELS } from '../data/wordBankLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
-import Confetti from './Confetti';
+import Celebration, { type Milestone } from './Celebration';
+import CountUp from './CountUp';
 import styles from './WinScreen.module.css';
 
 type Props = ModeWinScreenProps<GameConfig, BingoResult, Streaks>;
@@ -16,11 +17,24 @@ const PATTERN_LABEL: Record<WinPattern, string> = {
   blackout: 'Blackout',
 };
 
-export default function WinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+const GLYPHS = ['⭐', '🎯', '✨', '🌟'];
+
+/** Streak lengths that earn a trophy toast on the win screen. */
+const STREAK_MILESTONES: Record<number, Milestone> = {
+  3: { emoji: '🔥', title: '3 in a row!', subtitle: 'On a roll!' },
+  5: { emoji: '🏆', title: '5 in a row!', subtitle: 'Unstoppable!' },
+  10: { emoji: '👑', title: '10 in a row!', subtitle: 'Bingo Royalty!' },
+};
+
+export default function WinScreen({ config, result, stats, context, onPlayAgain, onMenu, reduceMotion }: Props) {
   const label = WORD_BANK_LABELS[config.category];
   const currentStreak = stats.currentStreak[config.category] ?? 0;
   const bestStreak = stats.bestStreak[config.category] ?? 0;
   const uniquePatterns = Array.from(new Set(result.patterns));
+  // A blackout or a multi-line finish is the big one; a single line is a
+  // regular win.
+  const big = uniquePatterns.includes('blackout') || result.patterns.length > 1;
+  const milestone = STREAK_MILESTONES[currentStreak] ?? null;
 
   return (
     <motion.main
@@ -30,7 +44,14 @@ export default function WinScreen({ config, result, stats, onPlayAgain, onMenu, 
       animate="animate"
       exit="exit"
     >
-      <Confetti reduceMotion={reduceMotion} />
+      <Celebration
+        tier={big ? 'big' : 'small'}
+        glyphs={GLYPHS}
+        headline={uniquePatterns.includes('blackout') ? '★ BLACKOUT! ★' : '★ DOUBLE BINGO! ★'}
+        milestone={milestone}
+        reduceMotion={reduceMotion}
+        sound={context.sound}
+      />
 
       <motion.div
         className={styles.banner}
@@ -48,7 +69,14 @@ export default function WinScreen({ config, result, stats, onPlayAgain, onMenu, 
           {label} · {config.difficulty}
         </p>
         <p>
-          🔥 Current streak: <strong>{currentStreak}</strong> &nbsp;|&nbsp; Best: <strong>{bestStreak}</strong>
+          🔥 Current streak:{' '}
+          <strong>
+            <CountUp value={currentStreak} reduceMotion={reduceMotion} />
+          </strong>{' '}
+          &nbsp;|&nbsp; Best:{' '}
+          <strong>
+            <CountUp value={bestStreak} reduceMotion={reduceMotion} />
+          </strong>
         </p>
       </div>
 

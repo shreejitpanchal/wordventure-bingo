@@ -56,3 +56,10 @@
   border-color: var(--color-primary);
   color: white;
 }
+
+.chipEmoji {
+  display: inline-block;
+  margin-right: var(--space-1);
+  font-size: 1.1em;
+  line-height: 1;
+}

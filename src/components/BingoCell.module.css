@@ -39,6 +39,25 @@
   box-shadow: 0 0 0 3px var(--color-success), var(--shadow-lift);
 }
 
+/* "One more and that's a line!" -- a soft pulsing glow on the exact cell
+   that would complete a row/column/diagonal/corners. */
+.nearWin {
+  animation: nearWinPulse 1.4s ease-in-out infinite;
+}
+.nearWinStatic {
+  box-shadow: 0 0 0 3px var(--color-accent);
+}
+
+@keyframes nearWinPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--color-accent);
+  }
+  50% {
+    box-shadow: 0 0 0 4px var(--color-accent), 0 0 18px var(--color-accent);
+  }
+}
+
 .stamp {
   position: absolute;
   top: 2px;
@@ -46,4 +65,12 @@
   font-size: 1.1rem;
   color: white;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.ripple {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  border: 3px solid white;
+  pointer-events: none;
 }

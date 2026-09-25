@@ -114,7 +114,29 @@
   margin-top: var(--space-4);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: left;
+}
+
+/* The empty blank fidgets gently until it's answered -- a quiet "fill me". */
+.blankWiggle {
+  animation: wiggle 2.4s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  40% {
+    transform: translateY(1px) rotate(1deg);
+  }
 }
 
 .feedbackCorrect {
@@ -130,7 +152,7 @@
 }
 
 .explanation {
-  margin: 0 0 var(--space-4);
+  margin: 0;
   color: var(--color-text-muted);
   font-size: 0.95rem;
   line-height: 1.5;

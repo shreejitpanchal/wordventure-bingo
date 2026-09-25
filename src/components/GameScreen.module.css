@@ -50,9 +50,12 @@
   background: var(--color-accent);
   width: 100%;
   transform-origin: left;
-  animation-name: drain;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
+  /* Both keyframes share the inline animation-duration GameScreen sets
+     (= the call pace): the bar drains AND heats from accent -> orange ->
+     red over the same interval, so the colour alone says how long is left. */
+  animation-name: drain, heat;
+  animation-timing-function: linear, linear;
+  animation-fill-mode: forwards, forwards;
 }
 
 .progressFillStatic {
@@ -67,6 +70,19 @@
   }
   to {
     transform: scaleX(0);
+  }
+}
+
+@keyframes heat {
+  0%,
+  50% {
+    background: var(--color-accent);
+  }
+  75% {
+    background: #f97316;
+  }
+  100% {
+    background: var(--color-danger);
   }
 }
 

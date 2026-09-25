@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import type { SynonymSafariConfig, SynonymSafariResult } from '../types';
 import type { ModeGameScreenProps } from '../modes/types';
@@ -6,6 +6,7 @@ import { SYNONYM_SAFARI_BANKS } from '../data/synonymSafariBanks';
 import { checkMatch, generateRound, pickHintPair, selectSynonymSafariPool } from '../lib/synonymSafari';
 import { shuffle } from '../lib/random';
 import { screenVariants, withReducedMotion, zoomInVariants } from '../lib/motion';
+import Mascot from './Mascot';
 import styles from './SynonymSafariScreen.module.css';
 
 // Safari-themed, not an uploaded image asset -- this app has no illustration
@@ -29,11 +30,29 @@ interface WrongFlash {
   match: string;
 }
 
-export default function SynonymSafariScreen({ config, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
+interface Link {
+  word: string;
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+
+export default function SynonymSafariScreen({
+  config,
+  context,
+  rng,
+  excludeItems,
+  onRoundStart,
+  onComplete,
+  onExit,
+  reduceMotion,
+}: Props) {
+  const { sound } = context;
   const bank = SYNONYM_SAFARI_BANKS[config.category];
   const pool = useMemo(() => selectSynonymSafariPool(bank.pairs, config.difficulty), [bank, config.difficulty]);
-  const [round] = useState(() => generateRound(pool, Math.random, config.pairCount, new Set(excludeItems)));
-  const [rightColumn] = useState(() => shuffle(round, Math.random));
+  const [round] = useState(() => generateRound(pool, rng, config.pairCount, new Set(excludeItems)));
+  const [rightColumn] = useState(() => shuffle(round, rng));
 
   // Gates the matching grid behind a brief "get ready" beat shown before
   // every round -- the words themselves aren't visible until the player
@@ -47,6 +66,12 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
   // used and never clears, regardless of how the round eventually finishes
   // -- mirrors Wordscapes' `assisted` exactly.
   const [assisted, setAssisted] = useState(false);
+
+  // Connector lines between matched pairs, measured from the cells' rects
+  // (scoped to this screen's columns container) whenever the matched set
+  // changes -- same measure-in-a-layout-effect approach as LetterWheel.
+  const columnsRef = useRef<HTMLDivElement>(null);
+  const [links, setLinks] = useState<Link[]>([]);
 
   const matchedMatches = useMemo(
     () => new Set(round.filter((p) => matchedWords.has(p.word)).map((p) => p.match)),
@@ -74,12 +99,36 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
     return () => clearTimeout(id);
   }, [wrongFlash]);
 
+  useLayoutEffect(() => {
+    const container = columnsRef.current;
+    if (!container) return;
+    const box = container.getBoundingClientRect();
+    const next: Link[] = [];
+    for (const pair of round) {
+      if (!matchedWords.has(pair.word)) continue;
+      const left = container.querySelector<HTMLElement>(`[data-side="left"][data-value="${CSS.escape(pair.word)}"]`);
+      const right = container.querySelector<HTMLElement>(`[data-side="right"][data-value="${CSS.escape(pair.match)}"]`);
+      if (!left || !right) continue;
+      const l = left.getBoundingClientRect();
+      const r = right.getBoundingClientRect();
+      next.push({
+        word: pair.word,
+        x1: l.right - box.left,
+        y1: l.top - box.top + l.height / 2,
+        x2: r.left - box.left,
+        y2: r.top - box.top + r.height / 2,
+      });
+    }
+    setLinks(next);
+  }, [matchedWords, round, started]);
+
   function handleTapCell(side: 'left' | 'right', value: string) {
     if (isRoundComplete) return;
     const alreadyMatched = side === 'left' ? matchedWords.has(value) : matchedMatches.has(value);
     if (alreadyMatched) return;
 
     if (!selected || selected.side === side) {
+      sound.play('tap');
       setSelected({ side, value });
       return;
     }
@@ -91,8 +140,10 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
     setSelected(null);
     if (checkMatch(round, word, match)) {
       setMatchedWords((prev) => new Set(prev).add(word));
+      sound.play('correct');
     } else {
       setWrongFlash({ key: Date.now(), word, match });
+      sound.play('wrong');
     }
   }
 
@@ -100,11 +151,12 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
   // player to keep going, same shape as Wordscapes' reveal-a-letter button.
   function handleHint() {
     if (isRoundComplete) return;
-    const hint = pickHintPair(round, matchedWords, Math.random);
+    const hint = pickHintPair(round, matchedWords, rng);
     setMatchedWords((prev) => new Set(prev).add(hint.word));
     setAssisted(true);
     setSelected(null);
     setWrongFlash(null);
+    sound.play('select');
   }
 
   function cellClass(side: 'left' | 'right', value: string): string {
@@ -123,6 +175,34 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
     }
 
     return styles.cell;
+  }
+
+  function renderCell(side: 'left' | 'right', value: string) {
+    const matched = side === 'left' ? matchedWords.has(value) : matchedMatches.has(value);
+    return (
+      <motion.button
+        key={value}
+        type="button"
+        data-side={side}
+        data-value={value}
+        className={cellClass(side, value)}
+        onClick={() => handleTapCell(side, value)}
+        // A fresh match pops once; a selected cell lifts slightly.
+        animate={
+          reduceMotion
+            ? undefined
+            : matched
+              ? { scale: [1, 1.1, 1], y: 0 }
+              : selected?.side === side && selected.value === value
+                ? { scale: 1.04, y: -2 }
+                : { scale: 1, y: 0 }
+        }
+        transition={{ duration: 0.35 }}
+        whileTap={matched || reduceMotion ? undefined : { scale: 0.95 }}
+      >
+        {value}
+      </motion.button>
+    );
   }
 
   return (
@@ -158,7 +238,10 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
               className={styles.startButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setStarted(true)}
+              onClick={() => {
+                sound.play('select');
+                setStarted(true);
+              }}
             >
               Start Matching
             </motion.button>
@@ -179,36 +262,34 @@ export default function SynonymSafariScreen({ config, excludeItems, onRoundStart
           </div>
 
           <div className={styles.middleRegion}>
-            <div className={styles.columns}>
-              <div className={styles.column}>
-                {round.map((pair) => (
-                  <button
-                    key={pair.word}
-                    type="button"
-                    className={cellClass('left', pair.word)}
-                    onClick={() => handleTapCell('left', pair.word)}
-                  >
-                    {pair.word}
-                  </button>
-                ))}
-              </div>
-              <div className={styles.column}>
-                {rightColumn.map((pair) => (
-                  <button
-                    key={pair.match}
-                    type="button"
-                    className={cellClass('right', pair.match)}
-                    onClick={() => handleTapCell('right', pair.match)}
-                  >
-                    {pair.match}
-                  </button>
-                ))}
-              </div>
+            <div className={styles.columns} ref={columnsRef}>
+              {links.length > 0 && (
+                <svg className={styles.links} aria-hidden="true">
+                  {links.map((link) => (
+                    <motion.line
+                      key={link.word}
+                      x1={link.x1}
+                      y1={link.y1}
+                      x2={link.x2}
+                      y2={link.y2}
+                      stroke="var(--color-success)"
+                      strokeWidth={4}
+                      strokeLinecap="round"
+                      initial={reduceMotion ? { pathLength: 1 } : { pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.35, ease: 'easeOut' }}
+                    />
+                  ))}
+                </svg>
+              )}
+              <div className={styles.column}>{round.map((pair) => renderCell('left', pair.word))}</div>
+              <div className={styles.column}>{rightColumn.map((pair) => renderCell('right', pair.match))}</div>
             </div>
           </div>
 
           {isRoundComplete ? (
             <div className={styles.continuePanel}>
+              <Mascot mood="happy" reduceMotion={reduceMotion} size="sm" />
               <p className={styles.continueMessage}>All pairs matched!</p>
               <motion.button
                 className={styles.continueButton}

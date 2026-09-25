@@ -50,9 +50,18 @@ src/
     wordscapes.ts
     sentenceQuest.ts
     synonymSafari.ts
+    menuSelection.ts     -- per-profile "remember my menu picks" + repair
+    badges.ts            -- badges + level, derived from statsByMode (nothing stored)
+    daily.ts             -- daily challenge (date-seeded) + streak record logic
     modes.test.ts        -- manifest invariants + each mode's stats arithmetic
+    engagement.test.ts   -- badges, level curve, daily challenge
   components/          -- one screen or widget per file + colocated .module.css
     ErrorBoundary.tsx    -- catches a screen crash; "Back to Menu" recovery
+    Backdrop.tsx         -- drifting colour blobs behind every screen (mode-tinted)
+    Mascot.tsx           -- the owl: emoji + CSS moods
+    Celebration.tsx      -- tiered win celebration (confetti/fireworks/headline/toast)
+    Confetti.tsx / CountUp.tsx / LevelBar.tsx / DailyCard.tsx
+    TrophyScreen.tsx     -- badge grid + level bar ('trophies' screen)
     OptionSection.tsx    -- the shared single-select chip group every menu section uses
     *MenuOptions.tsx     -- each mode's extra menu sections (players, word count, ...)
   lib/                  -- framework-free game logic, unit-tested
@@ -62,11 +71,12 @@ src/
     caller.ts                -- Bingo: auto-caller queue + pace constants
     sentenceQuest.ts           -- Sentence Quest: round generation + grading
     synonymSafari.ts             -- Synonym Safari: round generation + matching
-    random.ts                      -- shared shuffle() etc., injectable rng
+    random.ts                      -- shared shuffle() + seededRng, injectable rng
+    sound.ts                         -- Web Audio synthesised effects (SoundPlayer factory)
     storage.ts                       -- the only localStorage access point
     wordscapes/
       gridGeneration.ts              -- Wordscapes: puzzle generation + reveal logic
-  hooks/                -- useSettings, useReducedMotion, useAppearance
+  hooks/                -- useSettings, useReducedMotion, useAppearance, useModeTheme, useIdle
   data/
     wordBanks.ts          -- registers each category's JSON word bank (content only)
     wordBankLabels.ts     -- category menu order + labels, no JSON import
@@ -144,11 +154,14 @@ stateDiagram-v2
     menu --> profile: switch player
     menu --> game: Start (any mode; session = {mode, config})
     menu --> settings: gear icon
+    menu --> trophies: 🏆 button
+    menu --> game: Play Today's Challenge (daily session, seeded rng)
     game --> win: mode.GameScreen calls onComplete(result)
     game --> menu: Menu / hardware back (mode.stats.recordAbandon, if any)
     win --> game: Play Again / Next (same config)
     win --> menu: Menu
     settings --> menu: Back
+    trophies --> menu: Back
 ```
 
 Notes that aren't obvious from the diagram:
@@ -222,12 +235,14 @@ a corrupted or hand-edited value.
 
 | What | Scope | Key(s) |
 | --- | --- | --- |
-| Settings (reduce motion, theme, font size) | device-wide | `wordventure:settings` |
+| Settings (sound, reduce motion, theme, font size) | device-wide | `wordventure:settings` |
 | Free Play custom word list | device-wide | `wordventure:freeplayWords` |
 | Known player profile names | device-wide | `wordventure:profiles` |
 | Active profile | device-wide | `wordventure:currentProfile` |
 | One stats record per mode | per profile | `wordventure:<mode.stats.key>:<name>` |
 | Last menu picks (mode, difficulty, each mode's options) | per profile | `wordventure:menuSelection:<name>` |
+| Daily challenge record (last completed day, streak) | per profile | `wordventure:daily:<name>` |
+| Avatar emoji per profile name | device-wide map | `wordventure:avatars` |
 
 The per-mode key segments are `streaks` (Bingo), `wordscapesStats`,
 `sentenceQuestStats` and `synonymSafariStats` — the first two are pinned to

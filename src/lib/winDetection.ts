@@ -17,6 +17,14 @@ function cornerIndices(): number[] {
   return [0, last, last * CARD_SIZE, last * CARD_SIZE + last];
 }
 
+/** Every line-type pattern (not blackout) as its cell indices. */
+function allLines(): number[][] {
+  const lines: number[][] = [];
+  for (let i = 0; i < CARD_SIZE; i++) lines.push(rowIndices(i), colIndices(i));
+  lines.push(diagonalIndices('main'), diagonalIndices('anti'), cornerIndices());
+  return lines;
+}
+
 function isLineComplete(cells: CardCell[], indices: number[]): boolean {
   return indices.every((i) => cells[i].marked);
 }
@@ -70,4 +78,19 @@ export function checkWin(cells: CardCell[]): WinResult {
     patterns,
     cellIndices: Array.from(cellIndices),
   };
+}
+
+/**
+ * The unmarked cells that would each complete a line (row/column/diagonal/
+ * corners) on their own -- i.e. every line that is exactly one mark short.
+ * Purely for the "you're one away!" glow on the card: it doesn't change
+ * the rules, it just tells a kid where to look.
+ */
+export function nearWinIndices(cells: CardCell[]): number[] {
+  const near = new Set<number>();
+  for (const line of allLines()) {
+    const missing = line.filter((i) => !cells[i].marked);
+    if (missing.length === 1) near.add(missing[0]);
+  }
+  return Array.from(near).sort((a, b) => a - b);
 }

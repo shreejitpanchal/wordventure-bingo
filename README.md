@@ -17,6 +17,16 @@ shows a "🏆 {name}'s Stats" summary — games played, wins, best streaks,
 puzzles/rounds completed, and so on across all four modes — for whoever's
 currently playing.
 
+The app is built to keep kids engaged: each mode has its own colour
+world (the whole screen recolours when you pick a mode), an owl mascot
+that cheers, sulks, points at the Start button and eventually dozes off, a
+badge collection in the 🏆 Trophy Room and a level bar that fills as you
+finish games, a **Today's Challenge** card (the same puzzle for everyone
+that day, with a days-in-a-row flame), tiered win celebrations (confetti,
+fireworks for the big ones, streak trophies), and short synthesised sound
+effects (toggle in Settings; no audio files are downloaded). Everything
+respects the Reduce Motion setting and the OS preference.
+
 Four modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
   The menu's **Call Speed** setting picks how many seconds the auto-caller

@@ -1,0 +1,70 @@
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(135deg, var(--color-card-bg) 60%, var(--color-cell));
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-dark);
+}
+
+.flame {
+  display: inline-block;
+  font-weight: 800;
+  color: var(--color-accent-dark);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-pill);
+  padding: 2px var(--space-2);
+}
+
+.setup {
+  margin: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.modeEmoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.done {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.playButton {
+  align-self: flex-start;
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}

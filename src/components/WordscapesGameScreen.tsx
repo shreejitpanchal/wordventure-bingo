@@ -34,7 +34,8 @@ interface ClueHint {
   lines: string[];
 }
 
-export default function WordscapesGameScreen({ config, context, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
+export default function WordscapesGameScreen({ config, context, rng, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
+  const { sound } = context;
   const bank = WORD_BANKS[config.category];
   const wordEntries = useMemo(
     () => (config.category === 'freeplay' ? [...bank.words, ...context.freeplayWords] : bank.words),
@@ -46,7 +47,7 @@ export default function WordscapesGameScreen({ config, context, excludeItems, on
   );
 
   const [level, setLevel] = useState(() =>
-    generateLevel(pool, Math.random, config.wordCount, new Set(excludeItems)),
+    generateLevel(pool, rng, config.wordCount, new Set(excludeItems)),
   );
   const [foundBonusWords, setFoundBonusWords] = useState<Set<string>>(new Set());
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -92,6 +93,7 @@ export default function WordscapesGameScreen({ config, context, excludeItems, on
       const nextGrid = revealWord(level.grid, word);
       setLevel((prev) => ({ ...prev, grid: nextGrid }));
       showFeedback('correct', word);
+      sound.play('correct');
       setClueHint(null); // that hint's job is done
       // Don't call onComplete here even if this was the last word -- `complete`
       // (derived below from grid state) will flip true on this render and swap
@@ -104,18 +106,21 @@ export default function WordscapesGameScreen({ config, context, excludeItems, on
     if (level.bonusWords.includes(word) && !foundBonusWords.has(word)) {
       setFoundBonusWords((prev) => new Set(prev).add(word));
       showFeedback('bonus', word);
+      sound.play('select');
       return;
     }
 
     showFeedback('invalid', word);
+    sound.play('wrong');
   }
 
   // Repeatable hint: reveals one random still-hidden letter and leaves the
   // player to keep playing. Pressing it enough times eventually reveals
   // everything (the `complete` panel then takes over automatically).
   function handleRevealLetter() {
-    setLevel((prev) => ({ ...prev, grid: revealRandomLetter(prev.grid, Math.random) }));
+    setLevel((prev) => ({ ...prev, grid: revealRandomLetter(prev.grid, rng) }));
     setAssisted(true);
+    sound.play('select');
     setClueHint(null);
     setFeedback(null);
   }
@@ -126,6 +131,7 @@ export default function WordscapesGameScreen({ config, context, excludeItems, on
   function handleGiveUp() {
     setLevel((prev) => ({ ...prev, grid: revealAll(prev.grid) }));
     setAssisted(true);
+    sound.play('select');
     setClueHint(null);
     setFeedback(null);
   }
@@ -233,7 +239,7 @@ export default function WordscapesGameScreen({ config, context, excludeItems, on
         </div>
       ) : (
         <div className={styles.bottomControls}>
-          <LetterWheel tiles={level.wheel} onWordTraced={handleWordTraced} reduceMotion={reduceMotion} />
+          <LetterWheel tiles={level.wheel} onWordTraced={handleWordTraced} sound={sound} reduceMotion={reduceMotion} />
           <div className={styles.assistRow}>
             <button className={styles.assistButton} onClick={handleRevealLetter}>
               💡 Reveal a Letter

@@ -797,6 +797,83 @@ they are; keep both in sync when either changes.
   *non-consecutive* rounds (which pool size does control) before growing
   content further.
 
+## Engagement layer (animation, colour, rewards, sound)
+
+Added in one pass to make the app feel alive for a 10-year-old. Every
+piece here is *presentation or derived state* -- the only new persisted
+data is the daily-challenge record and the per-name avatar map.
+
+- **Per-mode palettes via `html[data-mode]`** (`useModeTheme.ts`,
+  `theme.css`). Same attribute-swap mechanism as theme/font-size: each
+  mode overrides only accent-type tokens (`--color-primary/-dark`,
+  `--color-accent/-dark`, `--color-cell-marked`, shadows, and the
+  `--color-blob-*` backdrop colours), never `--color-bg`/`--color-text`/
+  `--color-cell`, so every palette is safe in light *and* dark. The
+  attribute follows the mode being played, else the menu's selected mode,
+  so tapping a mode chip recolours the whole screen. Components stay
+  unaware; don't thread a palette through props.
+- **`Backdrop.tsx`**: three blurred blobs drifting behind every screen on
+  CSS keyframes (no per-frame JS), `position: fixed; z-index: -1`, tinted
+  from the blob tokens. Static under reduced motion.
+- **Kid-scale micro-interactions** (all gated on `reduceMotion`):
+  `OptionSection` chips jelly-bounce on select and carry a category emoji
+  (`ModeCategory.emoji` in the `*Labels.ts` files); Bingo cells ripple +
+  overshoot on mark, head-shake on a wrong tap (`BingoCard`'s `wrongTap`),
+  and glow on the exact cell that would complete a line
+  (`nearWinIndices` in `winDetection.ts` -- pure, tested); the caller bar
+  heats accent → orange → red and the clue card heartbeats + ticks in the
+  last quarter (`URGENT_AT` in `GameScreen`); `ClueBanner` swooshes
+  sideways; `LetterWheel` draws an SVG connector through traced tiles and
+  on to the finger (tile centres measured in a layout effect scoped to the
+  wheel container); `CrosswordGrid` letters drop in staggered by
+  position and revealed cells fill with the mode colour; Sentence Quest's
+  blank wiggles, the right option bounces, a wrong pick shakes, and the
+  explanation is delivered as the mascot's speech bubble; Synonym Safari
+  draws connector lines between matched pairs (measured the same way as
+  the wheel).
+- **Tiered celebrations (`Celebration.tsx`)**: one component for every win
+  screen so tiers stay consistent -- `'small'` = confetti + cheering owl,
+  `'big'` adds a radial firework burst (`Confetti` `tier`) and a bouncing
+  headline, `'none'` (assisted/failed) = sympathetic owl, no confetti.
+  Each win screen decides its tier (Bingo: blackout or multi-line;
+  Wordscapes: unaided + 2 bonus words; Sentence Quest: perfect; Safari:
+  unaided at max pairs) and its confetti `glyphs`. Stats roll up with
+  `CountUp`. Bingo shows a streak toast at 3/5/10 (`STREAK_MILESTONES`).
+- **Badges + level (`src/modes/badges.ts`)** are *computed* from
+  `statsByMode` -- nothing stored, so they can't drift from the stats and
+  a new badge is one `BADGE_RULES` entry. `TrophyScreen` (new
+  `'trophies'` screen, 🏆 button on the menu) shows them; locked ones
+  wobble on tap and reveal their unlock hint. `computeLevel` sums every
+  mode's completion counter; level n starts at 5·n·(n−1)/2 so early
+  levels come fast. `LevelBar` sits on the menu and the trophy room.
+- **Mascot (`Mascot.tsx`)**: 🦉 + CSS keyframes, moods `idle | happy | sad |
+  sleepy | point | think`. On the menu it idles, points at Start after
+  12s idle and dozes after 40s (`useIdle`, resets on any pointer/key);
+  win screens cheer/droop; Sentence Quest uses its speech bubble.
+- **Avatars**: an emoji per profile name (`AVATARS` in `ProfileScreen`),
+  chosen when a new name is added, stored device-wide in
+  `wordventure:avatars` (a name→emoji map; `getAvatars`/`saveAvatar`).
+  Shown on the profile chips and the menu's profile button.
+- **Sound (`src/lib/sound.ts`)**: Web Audio synthesised effects (`tap |
+  select | correct | wrong | tick | win | bigWin`) -- no audio assets, so
+  nothing to precache. A factory, not a singleton: `App.tsx` owns the one
+  `SoundPlayer`, gates it on `Settings.soundEnabled` (toggle restored,
+  default on) and hands it down via `ModeContext.sound` /
+  `ModeMenuOptionsProps.sound` / plain props. The AudioContext is created
+  lazily on first `play()` (browsers refuse to start one before a user
+  gesture) and everything degrades to a no-op when Web Audio is missing.
+- **Daily challenge (`src/modes/daily.ts`)**: one fixed mode/category/
+  difficulty per local calendar day (`dailyChallenge(dateKey, MODES)`,
+  FNV-hashed date → `seededRng`), and the game screen generates from that
+  seeded rng via the new `ModeGameScreenProps.rng` -- **game screens must
+  use `rng`, never `Math.random`, for generation**, or the daily puzzle
+  stops being the same for everyone. `seededRng` moved from the test
+  helpers into `src/lib/random.ts` for this (test/rng.ts re-exports it).
+  Completing it advances a per-profile `DailyRecord` streak
+  (`wordventure:daily:<name>`; consecutive days +1, a gap restarts at 1,
+  same day is a no-op). `DailyCard` on the menu shows the setup, the
+  flame, and Done-for-today.
+
 ## Testing
 
 - Unit tests are colocated as `*.test.ts` next to the module they cover in
@@ -809,7 +886,10 @@ they are; keep both in sync when either changes.
   invariants in `src/data/banks.test.ts` — word counts per tier, unique
   words, one blank/4 options/answer present per question, static-label ↔
   JSON-label sync, and that every category/difficulty/word-count combo
-  actually generates) per the original spec —
+  actually generates; `src/modes/engagement.test.ts` covers badges, the
+  level curve and the daily challenge/streak; `src/lib/sound.test.ts`
+  covers the sound player against a fake AudioContext) per the original
+  spec —
   UI and animation are verified manually in-browser, not with component
   tests. Don't add `@testing-library/*`/`jsdom` back unless a future change
   actually needs DOM-level testing.

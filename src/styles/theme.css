@@ -80,3 +80,85 @@ html[data-font-size='large'] {
 html[data-font-size='xlarge'] {
   font-size: 125%;
 }
+
+/* --- Engagement layer: per-mode palettes + backdrop blobs -----------------
+   useModeTheme.ts sets html[data-mode] to the selected/active mode, the
+   same attribute-swap mechanism as theme/font-size above, so every
+   component recolors through the variables it already consumes. Only
+   accent-type tokens are overridden (never --color-bg/--color-text/
+   --color-cell), so each palette is safe in both light and dark themes.
+   The blob tokens feed Backdrop.tsx. */
+:root {
+  --color-blob-1: #c4b5fd;
+  --color-blob-2: #fdba74;
+  --color-blob-3: #a5f3fc;
+  --blob-opacity: 0.55;
+}
+:root[data-theme='dark'],
+:root:not([data-theme='light']) {
+  --blob-opacity: 0.55;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --blob-opacity: 0.3;
+  }
+}
+:root[data-theme='dark'] {
+  --blob-opacity: 0.3;
+}
+
+/* Bingo: carnival orange + sunshine yellow */
+html[data-mode='bingo'] {
+  --color-primary: #ea580c;
+  --color-primary-dark: #c2410c;
+  --color-accent: #f59e0b;
+  --color-accent-dark: #b45309;
+  --color-cell-marked: #f97316;
+  --color-blob-1: #fdba74;
+  --color-blob-2: #fde68a;
+  --color-blob-3: #fca5a5;
+  --shadow-soft: 0 4px 14px rgba(234, 88, 12, 0.18);
+  --shadow-lift: 0 8px 24px rgba(234, 88, 12, 0.28);
+}
+
+/* Wordscapes: sea teal + emerald */
+html[data-mode='wordscapes'] {
+  --color-primary: #0d9488;
+  --color-primary-dark: #0f766e;
+  --color-accent: #10b981;
+  --color-accent-dark: #047857;
+  --color-cell-marked: #10b981;
+  --color-blob-1: #99f6e4;
+  --color-blob-2: #a7f3d0;
+  --color-blob-3: #bae6fd;
+  --shadow-soft: 0 4px 14px rgba(13, 148, 136, 0.18);
+  --shadow-lift: 0 8px 24px rgba(13, 148, 136, 0.28);
+}
+
+/* Sentence Quest: sky blue + lime */
+html[data-mode='sentence-quest'] {
+  --color-primary: #0284c7;
+  --color-primary-dark: #075985;
+  --color-accent: #65a30d;
+  --color-accent-dark: #4d7c0f;
+  --color-cell-marked: #0ea5e9;
+  --color-blob-1: #bae6fd;
+  --color-blob-2: #d9f99d;
+  --color-blob-3: #fef08a;
+  --shadow-soft: 0 4px 14px rgba(2, 132, 199, 0.18);
+  --shadow-lift: 0 8px 24px rgba(2, 132, 199, 0.28);
+}
+
+/* Synonym Safari: savanna amber + jungle green */
+html[data-mode='synonym-safari'] {
+  --color-primary: #d97706;
+  --color-primary-dark: #92400e;
+  --color-accent: #16a34a;
+  --color-accent-dark: #15803d;
+  --color-cell-marked: #16a34a;
+  --color-blob-1: #fde68a;
+  --color-blob-2: #bbf7d0;
+  --color-blob-3: #fdba74;
+  --shadow-soft: 0 4px 14px rgba(217, 119, 6, 0.18);
+  --shadow-lift: 0 8px 24px rgba(217, 119, 6, 0.28);
+}

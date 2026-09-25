@@ -119,8 +119,24 @@
 }
 
 .columns {
+  position: relative; /* anchors the matched-pair connector SVG */
   display: flex;
   gap: var(--space-3);
+}
+
+/* Lines joining each matched left/right pair, drawn under the cells. */
+.links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.column {
+  position: relative;
+  z-index: 1;
 }
 
 .column {
@@ -161,8 +177,9 @@
   border-color: var(--color-success);
   background: var(--color-success);
   color: white;
-  opacity: 0.7;
+  opacity: 0.85;
   cursor: default;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
 }
 
 .cellMatched::after {

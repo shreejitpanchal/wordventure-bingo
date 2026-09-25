@@ -1,0 +1,52 @@
+.wrapper {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+}
+
+.levelBadge {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 800;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+}
+
+.title {
+  flex: 1;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.toNext {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.track {
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cell);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* Sits above the option sections; the level bar has no bottom margin of its own. */
+.wrapper {
+  margin-bottom: var(--space-4);
+}

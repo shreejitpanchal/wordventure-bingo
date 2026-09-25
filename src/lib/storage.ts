@@ -1,10 +1,11 @@
-import type { Settings, WordEntry } from '../types';
+import type { DailyRecord, Settings, WordEntry } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
   freeplayWords: 'wordventure:freeplayWords',
   profiles: 'wordventure:profiles',
   currentProfile: 'wordventure:currentProfile',
+  avatars: 'wordventure:avatars',
 } as const;
 
 // Pre-profile-era keys: the device-wide stats this app used before named
@@ -23,7 +24,7 @@ function modeStatsKey(statsKey: string, profile: string): string {
   return `wordventure:${statsKey}:${profile}`;
 }
 
-const DEFAULT_SETTINGS: Settings = { reduceMotion: false, theme: 'system', fontSize: 'medium' };
+const DEFAULT_SETTINGS: Settings = { soundEnabled: true, reduceMotion: false, theme: 'system', fontSize: 'medium' };
 
 // --- Shape guards -----------------------------------------------------------
 //
@@ -39,6 +40,19 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((v) => typeof v === 'string');
+}
+
+function isStringRecord(value: unknown): value is Record<string, string> {
+  return isPlainObject(value) && Object.values(value).every((v) => typeof v === 'string');
+}
+
+function isDailyRecord(value: unknown): value is DailyRecord {
+  return (
+    isPlainObject(value) &&
+    (value.lastCompleted === null || typeof value.lastCompleted === 'string') &&
+    typeof value.streak === 'number' &&
+    Number.isFinite(value.streak)
+  );
 }
 
 function isNumberRecord(value: unknown): value is Record<string, number> {
@@ -134,6 +148,30 @@ export function createProfile(name: string): void {
     if (legacyStreaks) writeJSON(modeStatsKey(LEGACY_MODE_STATS_KEYS.streaks, trimmed), legacyStreaks);
     if (legacyStats) writeJSON(modeStatsKey(LEGACY_MODE_STATS_KEYS.wordscapesStats, trimmed), legacyStats);
   }
+}
+
+// --- Avatars (one emoji per profile name, device-wide map) -----------------
+
+export function getAvatars(): Record<string, string> {
+  return readJSON<Record<string, string>>(KEYS.avatars, {}, isStringRecord);
+}
+
+export function saveAvatar(profile: string, emoji: string): void {
+  writeJSON(KEYS.avatars, { ...getAvatars(), [profile]: emoji });
+}
+
+// --- Daily challenge (per profile) ------------------------------------------
+
+function dailyKey(profile: string): string {
+  return `wordventure:daily:${profile}`;
+}
+
+export function getDailyRecord(profile: string): DailyRecord {
+  return readJSON<DailyRecord>(dailyKey(profile), { lastCompleted: null, streak: 0 }, isDailyRecord);
+}
+
+export function saveDailyRecord(profile: string, record: DailyRecord): void {
+  writeJSON(dailyKey(profile), record);
 }
 
 // --- Per-mode stats (per profile) -------------------------------------------

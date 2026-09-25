@@ -3,15 +3,23 @@ import type { WordscapesConfig, WordscapesResult, WordscapesStats } from '../typ
 import type { ModeWinScreenProps } from '../modes/types';
 import { WORD_BANK_LABELS } from '../data/wordBankLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
-import Confetti from './Confetti';
+import Celebration from './Celebration';
+import CountUp from './CountUp';
 import styles from './WinScreen.module.css';
 
 type Props = ModeWinScreenProps<WordscapesConfig, WordscapesResult, WordscapesStats>;
 
-export default function WordscapesWinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+const GLYPHS = ['🅰', '🅱', '🆎', '🔤', '🧩', '✨'];
+
+export default function WordscapesWinScreen({ config, result, stats, context, onPlayAgain, onMenu, reduceMotion }: Props) {
   const { bonusWordsFound, assisted } = result;
   const label = WORD_BANK_LABELS[config.category];
   const totalCompleted = stats.puzzlesCompleted[config.category] ?? 0;
+  // An unaided solve with bonus words on top is the big one; unaided alone
+  // is a regular win; an assisted finish gets the sympathetic owl and no
+  // confetti -- it wasn't fully solved unaided, celebrating it the same way
+  // as a real win would ring hollow.
+  const tier = assisted ? 'none' : bonusWordsFound >= 2 ? 'big' : 'small';
 
   return (
     <motion.main
@@ -21,9 +29,7 @@ export default function WordscapesWinScreen({ config, result, stats, onPlayAgain
       animate="animate"
       exit="exit"
     >
-      {/* No confetti for an assisted puzzle -- it wasn't fully solved
-          unaided, celebrating it the same way as a real win would ring hollow. */}
-      {!assisted && <Confetti reduceMotion={reduceMotion} />}
+      <Celebration tier={tier} glyphs={GLYPHS} headline="★ WORD WIZARD! ★" reduceMotion={reduceMotion} sound={context.sound} />
 
       <motion.div
         className={styles.banner}
@@ -32,7 +38,9 @@ export default function WordscapesWinScreen({ config, result, stats, onPlayAgain
         animate="animate"
       >
         <h1 className={styles.bingo}>{assisted ? 'NICE TRY!' : 'PUZZLE SOLVED!'}</h1>
-        <p className={styles.patterns}>{bonusWordsFound} bonus word{bonusWordsFound === 1 ? '' : 's'} found</p>
+        <p className={styles.patterns}>
+          <CountUp value={bonusWordsFound} reduceMotion={reduceMotion} /> bonus word{bonusWordsFound === 1 ? '' : 's'} found
+        </p>
       </motion.div>
 
       <div className={styles.stats}>
@@ -40,7 +48,10 @@ export default function WordscapesWinScreen({ config, result, stats, onPlayAgain
           {label} · {config.difficulty}
         </p>
         <p>
-          🧩 Puzzles completed in {label}: <strong>{totalCompleted}</strong>
+          🧩 Puzzles completed in {label}:{' '}
+          <strong>
+            <CountUp value={totalCompleted} reduceMotion={reduceMotion} />
+          </strong>
         </p>
       </div>
 

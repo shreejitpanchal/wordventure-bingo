@@ -1,5 +1,6 @@
 import type { ComponentType, LazyExoticComponent } from 'react';
 import type { Difficulty, GameMode, WordEntry } from '../types';
+import type { SoundPlayer } from '../lib/sound';
 
 /**
  * The contract every game mode fulfils so App.tsx, MenuScreen and
@@ -20,18 +21,26 @@ export interface ModeConfigBase {
   difficulty: Difficulty;
 }
 
-/** Device-wide inputs a game screen may need that aren't part of its own
- * config. Owned and loaded by App.tsx (via storage.ts) and passed down --
- * screens never read storage themselves. */
+/** Device-wide inputs a game/win screen may need that aren't part of its
+ * own config. Owned by App.tsx and passed down -- screens never read
+ * storage or reach for a global themselves. */
 export interface ModeContext {
   /** The parent-edited Free Play word list, merged into the `freeplay`
    * category by the modes that use word banks. */
   freeplayWords: WordEntry[];
+  /** The app's one sound player (src/lib/sound.ts), already gated on the
+   * Sound setting -- screens just call play(). */
+  sound: SoundPlayer;
 }
 
 export interface ModeGameScreenProps<TConfig, TResult> {
   config: TConfig;
   context: ModeContext;
+  /** Use this for every random draw in generation (cards, grids, rounds),
+   * never Math.random directly: a normal game passes Math.random, the
+   * daily challenge passes a date-seeded rng so everyone gets the same
+   * puzzle that day. */
+  rng: () => number;
   /** Whatever the *previous* round of this mode (in this session) reported
    * via `onRoundStart` -- words, sentences, ... -- so the generator can
    * avoid dealing the same content back to back. Empty on the first round. */
@@ -48,6 +57,7 @@ export interface ModeWinScreenProps<TConfig, TResult, TStats> {
   config: TConfig;
   result: TResult;
   stats: TStats;
+  context: ModeContext;
   onPlayAgain: () => void;
   onMenu: () => void;
   reduceMotion: boolean;
@@ -59,6 +69,8 @@ export interface ModeWinScreenProps<TConfig, TResult, TStats> {
 export interface ModeMenuOptionsProps<TConfig, TStats> {
   config: TConfig;
   stats: TStats;
+  sound: SoundPlayer;
+  reduceMotion: boolean;
   onChange: (config: TConfig) => void;
 }
 
@@ -70,6 +82,13 @@ export interface ModeStatLine {
 /** Every mode's stats record: named fields, each a per-category number map. */
 export type ModeStatsRecord = Record<string, Record<string, number>>;
 
+export interface ModeCategory<TId extends string> {
+  id: TId;
+  label: string;
+  /** Shown on the menu chip in front of the label. */
+  emoji?: string;
+}
+
 export interface ModeDescriptor<TConfig extends ModeConfigBase, TResult, TStats extends ModeStatsRecord> {
   id: GameMode;
   label: string;
@@ -77,7 +96,7 @@ export interface ModeDescriptor<TConfig extends ModeConfigBase, TResult, TStats 
   /** Menu order and display labels. Kept as a small static list (not read
    * from the bank JSON) so the menu never has to load a mode's content
    * chunk just to list its categories. */
-  categories: readonly { id: TConfig['category']; label: string }[];
+  categories: readonly ModeCategory<TConfig['category']>[];
   defaultConfig: TConfig;
   MenuOptions: ComponentType<ModeMenuOptionsProps<TConfig, TStats>>;
   /** One-line per-category progress shown under the menu options, or null

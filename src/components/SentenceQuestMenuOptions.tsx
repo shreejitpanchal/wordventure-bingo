@@ -8,6 +8,8 @@ const OPTIONS = QUESTION_COUNT_OPTIONS.map((n) => ({ id: n, label: `${n}` }));
 /** Sentence Quest's extra menu section: questions per round. */
 export default function SentenceQuestMenuOptions({
   config,
+  sound,
+  reduceMotion,
   onChange,
 }: ModeMenuOptionsProps<SentenceQuestConfig, SentenceQuestStats>) {
   return (
@@ -16,6 +18,8 @@ export default function SentenceQuestMenuOptions({
       options={OPTIONS}
       value={config.questionCount}
       onChange={(questionCount) => onChange({ ...config, questionCount })}
+      sound={sound}
+      reduceMotion={reduceMotion}
     />
   );
 }

@@ -8,6 +8,8 @@ const OPTIONS = PAIR_COUNT_OPTIONS.map((n) => ({ id: n, label: `${n}` }));
 /** Synonym Safari's extra menu section: pairs per round. */
 export default function SynonymSafariMenuOptions({
   config,
+  sound,
+  reduceMotion,
   onChange,
 }: ModeMenuOptionsProps<SynonymSafariConfig, SynonymSafariStats>) {
   return (
@@ -16,6 +18,8 @@ export default function SynonymSafariMenuOptions({
       options={OPTIONS}
       value={config.pairCount}
       onChange={(pairCount) => onChange({ ...config, pairCount })}
+      sound={sound}
+      reduceMotion={reduceMotion}
     />
   );
 }

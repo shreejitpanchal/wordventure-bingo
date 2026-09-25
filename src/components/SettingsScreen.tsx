@@ -82,6 +82,14 @@ export default function SettingsScreen({
 
       <section className={styles.section}>
         <label className={styles.toggleRow}>
+          <span>Sound effects</span>
+          <input
+            type="checkbox"
+            checked={settings.soundEnabled}
+            onChange={(e) => onChange({ soundEnabled: e.target.checked })}
+          />
+        </label>
+        <label className={styles.toggleRow}>
           <span>Reduce motion</span>
           <input
             type="checkbox"

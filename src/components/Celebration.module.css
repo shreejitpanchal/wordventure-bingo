@@ -1,0 +1,46 @@
+.mascotRow {
+  display: flex;
+  justify-content: center;
+}
+
+.headline {
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: white;
+  background: linear-gradient(120deg, var(--color-accent), var(--color-primary));
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lift);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-lift);
+  text-align: left;
+}
+
+.milestoneEmoji {
+  display: inline-block;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.milestoneTitle {
+  margin: 0;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.milestoneSubtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}

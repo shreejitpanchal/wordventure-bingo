@@ -94,3 +94,47 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+/* Avatar picker (emoji grid) shown while adding a new player, and the
+   avatar shown on each existing player's chip. */
+.chipAvatar {
+  display: inline-block;
+  margin-right: var(--space-1);
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.avatarLabel {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.avatarGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  max-width: 360px;
+  margin-bottom: var(--space-3);
+}
+
+.avatarChip {
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-card-bg);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarChipActive {
+  border-color: var(--color-primary);
+  background: var(--color-cell);
+  box-shadow: var(--shadow-soft);
+}

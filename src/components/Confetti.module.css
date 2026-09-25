@@ -13,3 +13,17 @@
   height: 14px;
   border-radius: 2px;
 }
+
+.glyph {
+  position: absolute;
+  top: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Burst pieces start at the middle of the screen and fly outward. */
+.spark {
+  top: 40%;
+  left: 50%;
+}

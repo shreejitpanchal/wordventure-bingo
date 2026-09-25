@@ -1,12 +1,19 @@
-import { useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import { useLayoutEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 import { motion } from 'framer-motion';
 import type { WheelTile } from '../types';
+import type { SoundPlayer } from '../lib/sound';
 import styles from './LetterWheel.module.css';
 
 interface Props {
   tiles: WheelTile[];
   onWordTraced: (word: string) => void;
+  sound: SoundPlayer;
   reduceMotion: boolean;
+}
+
+interface Point {
+  x: number;
+  y: number;
 }
 
 /**
@@ -34,11 +41,18 @@ interface Props {
  * against a `data-tile-index` attribute, rather than manually tracked DOM
  * rects -- this stays correct even while a tile is mid-scale-animation
  * (Framer Motion's `animate` on tap), which briefly perturbs a cached rect.
+ *
+ * A connector line (SVG overlay) is drawn through the traced tiles' centres
+ * and on to the finger while dragging -- the classic word-connect feel. Its
+ * points are measured from the tiles' rects in a layout effect whenever the
+ * trace changes, scoped to this container.
  */
-export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props) {
+export default function LetterWheel({ tiles, onWordTraced, sound, reduceMotion }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [traced, setTraced] = useState<number[]>([]);
   const [isPressing, setIsPressing] = useState(false);
+  const [points, setPoints] = useState<Point[]>([]);
+  const [pointer, setPointer] = useState<Point | null>(null);
   const visitedThisPress = useRef<number[]>([]);
 
   function tileIndexAt(clientX: number, clientY: number): number | null {
@@ -47,6 +61,37 @@ export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props
     if (!tileEl) return null;
     const idx = Number(tileEl.dataset.tileIndex);
     return Number.isNaN(idx) ? null : idx;
+  }
+
+  function relativePoint(clientX: number, clientY: number): Point | null {
+    const box = containerRef.current?.getBoundingClientRect();
+    if (!box) return null;
+    return { x: clientX - box.left, y: clientY - box.top };
+  }
+
+  // Re-measure the traced tiles' centres (relative to the wheel) whenever
+  // the trace changes, so the connector follows the real layout.
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const box = container.getBoundingClientRect();
+    const next: Point[] = [];
+    for (const idx of traced) {
+      const el = container.querySelector<HTMLElement>(`[data-tile-index="${idx}"]`);
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      next.push({ x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 });
+    }
+    setPoints(next);
+  }, [traced, tiles]);
+
+  function addTile(idx: number) {
+    // Re-tapping a selected tile is a no-op. The sound plays out here, not
+    // inside the updater (updaters must stay pure); within one press
+    // visitedThisPress already guarantees each idx arrives once.
+    if (traced.includes(idx)) return;
+    sound.play('tap');
+    setTraced((prev) => (prev.includes(idx) ? prev : [...prev, idx]));
   }
 
   function submit() {
@@ -65,22 +110,24 @@ export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props
     if (idx === null) return;
     containerRef.current?.setPointerCapture(e.pointerId);
     setIsPressing(true);
+    setPointer(relativePoint(e.clientX, e.clientY));
     visitedThisPress.current = [idx];
-
-    setTraced((prev) => (prev.includes(idx) ? prev : [...prev, idx])); // re-tapping a selected tile is a no-op
+    addTile(idx);
   }
 
   function handlePointerMove(e: ReactPointerEvent) {
     if (!isPressing) return;
+    setPointer(relativePoint(e.clientX, e.clientY));
     const idx = tileIndexAt(e.clientX, e.clientY);
     if (idx === null || visitedThisPress.current.includes(idx)) return;
     visitedThisPress.current.push(idx);
-    setTraced((prev) => (prev.includes(idx) ? prev : [...prev, idx]));
+    addTile(idx);
   }
 
   function handlePointerUp() {
     if (!isPressing) return;
     setIsPressing(false);
+    setPointer(null);
     // A real drag (visited 2+ tiles in this press) submits on release, like
     // a swipe. A simple click (1 tile, no movement) just leaves it selected.
     if (visitedThisPress.current.length > 1) submit();
@@ -88,15 +135,17 @@ export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props
 
   function handlePointerCancel() {
     setIsPressing(false);
+    setPointer(null);
   }
 
   const tracedWord = traced.map((i) => tiles[i].letter).join('');
+  const linePoints = pointer && isPressing ? [...points, pointer] : points;
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.previewRow}>
         <div className={styles.preview} aria-live="polite">
-          {tracedWord || ' ' /* reserve the line's height so the wheel doesn't jump */}
+          {tracedWord || ' ' /* reserve the line's height so the wheel doesn't jump */}
         </div>
         {traced.length > 0 && (
           <div className={styles.previewActions}>
@@ -117,6 +166,19 @@ export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerCancel}
       >
+        {linePoints.length > 1 && (
+          <svg className={styles.connector} aria-hidden="true">
+            <polyline
+              points={linePoints.map((p) => `${p.x},${p.y}`).join(' ')}
+              fill="none"
+              stroke="var(--color-accent)"
+              strokeWidth={6}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity={0.85}
+            />
+          </svg>
+        )}
         {tiles.map((tile, i) => {
           const isTraced = traced.includes(i);
           return (
@@ -124,8 +186,8 @@ export default function LetterWheel({ tiles, onWordTraced, reduceMotion }: Props
               key={tile.id}
               data-tile-index={i}
               className={`${styles.tile} ${isTraced ? styles.tileTraced : ''}`}
-              animate={reduceMotion ? undefined : { scale: isTraced ? 1.12 : 1 }}
-              transition={{ duration: 0.12 }}
+              animate={reduceMotion ? undefined : { scale: isTraced ? 1.14 : 1, rotate: isTraced ? -6 : 0 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 18 }}
             >
               {tile.letter}
             </motion.div>

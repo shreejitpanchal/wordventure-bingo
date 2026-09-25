@@ -11,13 +11,20 @@ const WORD_COUNT_OPTIONS = Array.from({ length: MAX_WORD_COUNT - MIN_WORD_COUNT 
 });
 
 /** Wordscapes' extra menu section: how many words the puzzle should target. */
-export default function WordscapesMenuOptions({ config, onChange }: ModeMenuOptionsProps<WordscapesConfig, WordscapesStats>) {
+export default function WordscapesMenuOptions({
+  config,
+  sound,
+  reduceMotion,
+  onChange,
+}: ModeMenuOptionsProps<WordscapesConfig, WordscapesStats>) {
   return (
     <OptionSection
       title="Word Count"
       options={WORD_COUNT_OPTIONS}
       value={config.wordCount}
       onChange={(wordCount) => onChange({ ...config, wordCount })}
+      sound={sound}
+      reduceMotion={reduceMotion}
     />
   );
 }
