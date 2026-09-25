@@ -44,21 +44,70 @@ they are; keep both in sync when either changes.
   correctly for this (see `index.css`) — nothing else needs to change to
   add a new screen safely.
 - No router: `src/App.tsx` is a single explicit screen state machine
-  (`profile | menu | game | win | settings | wordscapes-game |
-  wordscapes-win | sentence-quest-game | sentence-quest-win |
-  synonym-safari-game | synonym-safari-win`) swapped via `AnimatePresence`.
-  Don't introduce React Router or similar for what is a handful of screens.
-  Mode selection (Bingo vs. Wordscapes vs. Sentence Quest vs. Synonym
-  Safari) happens inside `MenuScreen`, not as a separate screen.
+  (`profile | menu | settings | game | win`) swapped via `AnimatePresence`.
+  `game`/`win` are generic: *which* mode's screens they render comes from
+  the active mode session (below), so adding a mode never adds a screen
+  name. Don't introduce React Router or similar for what is a handful of
+  screens. Mode selection happens inside `MenuScreen`, not as a separate
+  screen.
+- **Modes are plugins behind one contract (`src/modes/`).** Each mode is a
+  descriptor (`ModeDescriptor<TConfig, TResult, TStats>` in
+  `src/modes/types.ts`; `bingo.ts` is the template) declaring its id/
+  label/emoji, its category list, default config, a `MenuOptions`
+  component for its extra menu sections, lazy `GameScreen`/`WinScreen`
+  components, and a `stats` block (storage key, defaults, pure
+  `record`/optional `recordAbandon`/`summary` functions). `src/modes/
+  index.ts`'s `MODES` list is the manifest. `App.tsx`, `MenuScreen` and
+  `SettingsScreen` are written against `AnyMode` only and know nothing
+  about any specific mode — **adding a mode is: one descriptor file, its
+  screens/lib/data, one `GameMode` union member in `types.ts`, one line
+  in `MODES`.** Disabling one is commenting that line out. Before this
+  registry existed each mode was a copy-pasted block of state + handlers
+  in `App.tsx`, an `if`-chain in `MenuScreen`, a card in
+  `SettingsScreen`, a stats trio in `storage.ts` and two `ScreenName`
+  members — six files per mode, all edited in lockstep. Game screens all
+  take the same `ModeGameScreenProps` (`config`, `context`,
+  `excludeItems`/`onRoundStart`, `onComplete(result)`, `onExit`,
+  `reduceMotion`); win screens all take `ModeWinScreenProps` (`config`,
+  `result`, `stats`, `onPlayAgain`, `onMenu`, `reduceMotion`). A mode
+  with no repeat-avoidance concept (Bingo) simply never calls
+  `onRoundStart`.
+- **Mode screens and their content banks are lazy-loaded per mode.** The
+  descriptor's `GameScreen`/`WinScreen` are `React.lazy`, and the bank
+  registries (`wordBanks.ts`/`sentenceQuestBanks.ts`/
+  `synonymSafariBanks.ts`) are only imported from those screens, so
+  Vite puts each mode's JSON (Sentence Quest's five banks alone are ~1 MB)
+  in that mode's chunk instead of the initial bundle. Anything the menu or
+  a win screen needs eagerly — category order/labels — therefore lives in
+  small static maps (`src/data/*Labels.ts`), **not** read from the JSON;
+  `src/data/banks.test.ts` asserts each static label equals its JSON
+  `label` so they can't drift. Don't import a `*Banks.ts` registry from
+  anything that renders before a mode is chosen, or the split is silently
+  undone. Workbox still precaches every chunk, so this costs nothing
+  offline.
+- **A React error boundary (`ErrorBoundary.tsx`, the one class component
+  here — React has no hook for it) wraps the screen switcher in
+  `App.tsx`.** Every `src/lib` generator throws loudly on a data bug by
+  design; without the boundary that throw inside a screen's `useState`
+  initializer unmounted the whole tree and left a kid on a blank page.
+  The boundary shows the (actionable) message and a "Back to Menu" button
+  that resets to the menu with no stats side effects.
 - No backend, no global state library: all persistence is `localStorage`
-  behind `src/lib/storage.ts` (settings, player profiles, Bingo streaks,
-  Wordscapes stats, Sentence Quest stats, Synonym Safari stats, the Free
-  Play custom word list). That file is the only place allowed to touch
-  `localStorage` directly. `App.tsx` holds the active profile name and the
-  loaded streaks/stats in React state and passes them down explicitly as
-  props — components never re-read "the current profile" from storage
-  themselves, so who a given render's data belongs to is always traceable
-  through props, not an implicit global.
+  behind `src/lib/storage.ts` (settings, player profiles, every mode's
+  per-profile stats via the generic `getModeStats`/`saveModeStats`, the
+  Free Play custom word list). That file is the only place allowed to touch
+  `localStorage` directly, and **`App.tsx` (plus `useSettings`) is the
+  only place allowed to call it** — it holds the active profile name, every
+  mode's loaded stats (`statsByMode`), and the Free Play word list in
+  React state and passes them down explicitly as props (game screens get
+  the word list via `ModeContext`; `SettingsScreen`/`WordListEditor` get
+  it plus an `onFreeplayWordsChange` callback). Components never re-read
+  "the current profile" or the word list from storage themselves, so who
+  a given render's data belongs to is always traceable through props, not
+  an implicit global. Every `storage.ts` read also shape-checks the parsed
+  JSON (a corrupted or hand-edited value falls back to its default
+  field-by-field rather than crashing the app) — keep that when adding a
+  key.
 - Game logic is framework-free and colocated in `src/lib/` (`cardGeneration`,
   `winDetection`, `clueMatching`, `caller` for Bingo; `wordscapes/gridGeneration`
   for Wordscapes; `sentenceQuest` for Sentence Quest; `synonymSafari` for
@@ -79,10 +128,23 @@ they are; keep both in sync when either changes.
   purely so siblings/family sharing one device/tablet don't have to see
   each other's streaks. A small `👋 {name}` button on `MenuScreen` (mirrors
   the settings gear, opposite corner) re-opens the picker to switch.
-- **Every mode's stats are scoped per profile** (`streaksKey`/
-  `wordscapesStatsKey`/`sentenceQuestStatsKey`/`synonymSafariStatsKey` in
-  `storage.ts`, all suffixed by name) — Settings and the Free Play word
-  list stay device-wide. Those are a device/accessibility preference and
+- **Every mode's stats are scoped per profile** (one
+  `wordventure:<mode.stats.key>:<name>` bucket per mode, via
+  `getModeStats`/`saveModeStats` in `storage.ts`; the key segment is the
+  mode descriptor's `stats.key`, and Bingo's/Wordscapes' are pinned to
+  their historical `streaks`/`wordscapesStats` values so pre-registry
+  data still loads) — Settings and the Free Play word list stay device-wide.
+- **The menu remembers its last picks, per profile** (`wordventure:
+  menuSelection:<name>`; `MenuSelection` in `src/modes/types.ts`: mode id,
+  the shared difficulty, and every mode's own draft config). `MenuScreen`
+  is a *controlled* component — `App.tsx` holds the selection and saves
+  every change — because the screen unmounts while a game is on and used
+  to come back on Bingo/Spelling/Easy every time. `storage.ts` only
+  checks the stored value is an object; `src/modes/menuSelection.ts`'s
+  `resolveMenuSelection` does the mode-aware repair (unknown mode → first
+  mode, unknown category → the mode's default, each option kept only if
+  its type matches the default config's) so a renamed mode or removed
+  option can't leak a bad config into a game screen. Those are a device/accessibility preference and
   shared content respectively, not per-player statistics, so scoping them
   per profile wasn't warranted; if that changes, thread the profile name
   into `WordListEditor`/`useSettings` the same explicit-prop way `App.tsx`
@@ -94,7 +156,8 @@ they are; keep both in sync when either changes.
   rounds/correct answers for Sentence Quest, rounds/pairs for Synonym
   Safari), not a category-by-category breakdown (that granularity already
   exists contextually on each mode's own `MenuScreen` streak line and win
-  screen). This does **not** contradict "Settings stays device-wide" above
+  screen). The cards are rendered from `MODES`, each mode's
+  `stats.summary` providing its lines — a new mode gets its card for free. This does **not** contradict "Settings stays device-wide" above
   — `Settings` the persisted object is still device-wide and unchanged;
   `SettingsScreen` the component just also *displays* the current
   profile's stats, passed down from `App.tsx`'s already-held state
@@ -269,6 +332,20 @@ they are; keep both in sync when either changes.
 
 ## Bingo mode
 
+- **Leaving a Bingo game before anyone wins is recorded as a loss**
+  (`recordBingoLoss` in `src/modes/bingo.ts`, wired through the
+  descriptor's `stats.recordAbandon`, which `App.tsx`'s `goToMenu` applies
+  whenever the `game` screen is left — visible Menu button and hardware
+  back alike). Before this, the only path that ever touched streaks was
+  `recordGameResult(..., won: true)`: nothing recorded a loss, so
+  `gamesPlayed` always equalled `wins` and a "streak" could never break,
+  which made the streak stat meaningless. A quit is the only way a Bingo
+  game ends without a win, so it *is* the loss event. In Pass & Play the
+  win is credited to the active profile whichever card won — the profile
+  is the device's named player and the second card is an unnamed guest.
+  The error boundary's recovery path deliberately does **not** record a
+  loss (a crash isn't a quit).
+
 - Auto-caller pace (`GameScreen.tsx`'s `paceMs`) is `config.callSeconds *
   1000`, a **menu setting** (`GameConfig.callSeconds`, options in
   `CALL_SECONDS_OPTIONS`, `src/lib/caller.ts`) — not derived from
@@ -300,12 +377,15 @@ they are; keep both in sync when either changes.
   so it never fails a puzzle that's otherwise generatable; it just falls
   back to the full pool if excluding would leave too little to reliably
   interlock a grid from. `WordscapesGameScreen` reports the words it placed
-  back up to `App.tsx` via `onPuzzleStart` (fired once, right after
+  back up to `App.tsx` via `onRoundStart` (the generic mode-contract
+  callback; fired once, right after
   generation — `level.grid.placedWords`'s array reference never changes
   after that, since reveal actions only replace `cells`), and `App.tsx`
-  hands that back in as the *next* puzzle's `excludeWords` — the screen
-  itself can't remember this across puzzles because it unmounts between
-  them (the win screen sits in between). Bonus-word discovery
+  hands that back in as the *next* puzzle's `excludeItems` (→
+  `generateLevel`'s `excludeWords`) — the screen itself can't remember
+  this across puzzles because it unmounts between them (the win screen
+  sits in between). `App.tsx` keeps this per mode in one `recentByMode`
+  map; every mode with a repeat-avoidance concept uses the same callback. Bonus-word discovery
   (`findBonusWords`) deliberately still draws from the *full* eligible
   pool, not the exclusion-preferring one — repeating an optional bonus word
   is far less noticeable than repeating the puzzle's own main content, and
@@ -454,12 +534,13 @@ they are; keep both in sync when either changes.
 - **`assisted` (was named `gaveUp`) is sticky for the rest of the puzzle**:
   it becomes `true` the moment *any* reveal help is used — even a single
   hint — and stays `true` even if the player goes on to finish the rest
-  themselves. Threads through `onComplete(bonusWordsFound, assisted)` →
-  `App.tsx` → `recordWordscapesCompletion(category, bonusWords, solved)`:
-  `solved` (`= !assisted`) gates only the "puzzles completed" counter (an
-  assisted finish isn't a real solve), while bonus words found are still
-  credited either way — don't conflate those two independent stat updates
-  again by skipping the whole storage call when `assisted` is true.
+  themselves. Threads through `onComplete({ bonusWordsFound, assisted })` →
+  `App.tsx` → the descriptor's `stats.record` →
+  `recordWordscapesCompletion` (`src/modes/wordscapes.ts`): `assisted`
+  gates only the "puzzles completed" counter (an assisted finish isn't a
+  real solve), while bonus words found are still credited either way —
+  don't conflate those two independent stat updates again by skipping the
+  whole update when `assisted` is true.
   `WordscapesWinScreen` also reads `assisted` to skip the confetti and
   swap the heading to "NICE TRY!".
 
@@ -495,29 +576,29 @@ they are; keep both in sync when either changes.
   back to the full pool only if that wouldn't fill the round.
   `SentenceQuestScreen` reports its round's sentences back to `App.tsx` via
   `onRoundStart` once, right after the round is built, and `App.tsx` feeds
-  that back in as the next round's `excludeSentences` — same
-  can't-remember-across-unmounts reasoning as the other two modes.
+  that back in as the next round's `excludeItems` (→ `excludeSentences`) —
+  same can't-remember-across-unmounts reasoning as the other two modes.
 - **Every `sentence` must contain exactly one `"___"` marker** (checked by
   `splitSentence`, which throws otherwise) and **every question must have
   exactly 4 `options`, with `answer` equal to exactly one of them
   string-for-string.** These invariants are enforced by convention/review,
-  not by a runtime guard in the game code itself — when adding or editing
-  question-bank content, verify it with a script (see below), not by eye.
+  not by a runtime guard in the game code itself — `src/data/banks.test.ts`
+  checks them (and every other structural bank rule in this file) on every
+  `test` run, so a broken edit fails the gate rather than a kid's round.
 - **`explanation` is the actual teaching moment, not a footnote.**
   `SentenceQuestScreen` shows it immediately after the player answers,
   regardless of right or wrong — the point of this mode is building
   grammar understanding, so seeing *why* an answer is correct matters more
   than the score. Don't make `explanation` optional or skip rendering it
   to save space.
-- **Stats are per-profile** (`SentenceQuestStats`, `sentenceQuestStatsKey`
-  in `storage.ts`), same pattern as Wordscapes: `recordSentenceQuestRound`
-  splits `roundsCompleted` (gated on `completed: true` — currently always
-  true, since a round can only be reported via
-  `SentenceQuestScreen`'s own completion flow, but the parameter exists
-  for the same reason Wordscapes' `solved` flag does: an abandoned-partway
-  round should be able to credit correct answers without counting as a
-  full completion, if that path gets built later) from `correctAnswers`/
-  `questionsAnswered`, which are always credited regardless. Unlike Bingo/
+- **Stats are per-profile** (`SentenceQuestStats`, stats key
+  `sentenceQuestStats` in `src/modes/sentenceQuest.ts`), same pattern as
+  Wordscapes: `recordSentenceQuestRound` keeps `roundsCompleted` separate
+  from `correctAnswers`/`questionsAnswered` for the same reason
+  Wordscapes splits bonus words from puzzles completed: an
+  abandoned-partway round should be able to credit the questions actually
+  answered without counting as a full completion, if that path (a
+  `recordAbandon` on this mode's descriptor) gets built later. Unlike Bingo/
   Wordscapes, there's no pre-profile-era legacy key to migrate — this
   feature was added after profiles already existed, so it's profile-scoped
   from day one with nothing to inherit.
@@ -630,10 +711,10 @@ they are; keep both in sync when either changes.
   could otherwise complete, it just prefers fresh words. Since
   `SynonymSafariScreen` unmounts between rounds (the win screen sits in
   between), it can't remember the previous round itself — `App.tsx` holds
-  `synonymSafariRecentWords` state instead, updated via the screen's
+  it in its per-mode `recentByMode` map instead, updated via the screen's
   `onRoundStart(words)` callback (fired once per mount, right after
   `generateRound` runs) and fed back in as the *next* round's
-  `excludeWords`. This is the same reason `App.tsx` owns every other
+  `excludeItems` (→ `generateRound`'s `excludeWords`). This is the same reason `App.tsx` owns every other
   cross-screen mode's config/win-info state (see "Data flow" in
   `docs/ARCHITECTURE.md`) — a screen can't persist anything across its own
   unmount, so anything that needs to survive to the next round lives one
@@ -641,9 +722,12 @@ they are; keep both in sync when either changes.
 - **Hint/`assisted` mirrors Wordscapes' shape, not Sentence Quest's.**
   There's no "wrong pair" outcome to weigh a count against here (a
   mismatched tap costs nothing, same as Wordscapes' mistyped-word
-  feedback) — so `recordSynonymSafariRound(profile, category,
-  pairsMatchedCount, solved)` mirrors `recordWordscapesCompletion`'s 4-arg
-  shape, not Sentence Quest's 5-arg accuracy-ratio shape. The repeatable
+  feedback) — so `recordSynonymSafariRound` (`src/modes/synonymSafari.ts`) mirrors
+  `recordWordscapesCompletion`'s assisted-gates-completion-only shape, not
+  Sentence Quest's accuracy-ratio shape. `selectSynonymSafariPool` takes
+  the bank's `pairs` (the screen passes `SYNONYM_SAFARI_BANKS[category]
+  .pairs`) rather than a category id, so `src/lib/synonymSafari.ts` has no
+  data import — same as every other `src/lib` generator. The repeatable
   "💡 Reveal a Pair" hint button (`pickHintPair` in `synonymSafari.ts`)
   auto-locks one random still-unmatched pair; `assisted` becomes `true` the
   moment it's used and stays `true` for the rest of the round even if the
@@ -716,10 +800,16 @@ they are; keep both in sync when either changes.
 ## Testing
 
 - Unit tests are colocated as `*.test.ts` next to the module they cover in
-  `src/lib/` (including `src/lib/wordscapes/`), using Vitest. They cover the
-  correctness-critical logic only (card generation, win detection, clue
-  selection/formatting, Wordscapes grid generation, Synonym Safari round
-  generation/matching) per the original spec —
+  `src/lib/` (including `src/lib/wordscapes/`), `src/modes/` and
+  `src/data/`, using Vitest. They cover the correctness-critical logic
+  only (card generation, win detection, clue selection/formatting,
+  Wordscapes grid generation, Sentence Quest/Synonym Safari round
+  generation, the mode registry's stats arithmetic and manifest invariants
+  in `src/modes/modes.test.ts`, and the shipped content banks' structural
+  invariants in `src/data/banks.test.ts` — word counts per tier, unique
+  words, one blank/4 options/answer present per question, static-label ↔
+  JSON-label sync, and that every category/difficulty/word-count combo
+  actually generates) per the original spec —
   UI and animation are verified manually in-browser, not with component
   tests. Don't add `@testing-library/*`/`jsdom` back unless a future change
   actually needs DOM-level testing.

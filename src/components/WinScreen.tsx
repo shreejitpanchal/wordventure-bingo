@@ -1,18 +1,12 @@
 import { motion } from 'framer-motion';
-import type { GameConfig, Streaks, WinPattern } from '../types';
-import { WORD_BANKS } from '../data/wordBanks';
+import type { BingoResult, GameConfig, Streaks, WinPattern } from '../types';
+import type { ModeWinScreenProps } from '../modes/types';
+import { WORD_BANK_LABELS } from '../data/wordBankLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
 import Confetti from './Confetti';
 import styles from './WinScreen.module.css';
 
-interface Props {
-  config: GameConfig;
-  patterns: WinPattern[];
-  streaks: Streaks;
-  onPlayAgain: () => void;
-  onMenu: () => void;
-  reduceMotion: boolean;
-}
+type Props = ModeWinScreenProps<GameConfig, BingoResult, Streaks>;
 
 const PATTERN_LABEL: Record<WinPattern, string> = {
   row: 'Row',
@@ -22,11 +16,11 @@ const PATTERN_LABEL: Record<WinPattern, string> = {
   blackout: 'Blackout',
 };
 
-export default function WinScreen({ config, patterns, streaks, onPlayAgain, onMenu, reduceMotion, winnerLabel }: Props & { winnerLabel?: string }) {
-  const bank = WORD_BANKS[config.category];
-  const currentStreak = streaks.currentStreak[config.category] ?? 0;
-  const bestStreak = streaks.bestStreak[config.category] ?? 0;
-  const uniquePatterns = Array.from(new Set(patterns));
+export default function WinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+  const label = WORD_BANK_LABELS[config.category];
+  const currentStreak = stats.currentStreak[config.category] ?? 0;
+  const bestStreak = stats.bestStreak[config.category] ?? 0;
+  const uniquePatterns = Array.from(new Set(result.patterns));
 
   return (
     <motion.main
@@ -45,13 +39,13 @@ export default function WinScreen({ config, patterns, streaks, onPlayAgain, onMe
         animate="animate"
       >
         <h1 className={styles.bingo}>BINGO!</h1>
-        {winnerLabel && <p className={styles.winner}>{winnerLabel} wins!</p>}
+        {result.winnerLabel && <p className={styles.winner}>{result.winnerLabel} wins!</p>}
         <p className={styles.patterns}>{uniquePatterns.map((p) => PATTERN_LABEL[p]).join(' + ')}</p>
       </motion.div>
 
       <div className={styles.stats}>
         <p>
-          {bank.label} · {config.difficulty}
+          {label} · {config.difficulty}
         </p>
         <p>
           🔥 Current streak: <strong>{currentStreak}</strong> &nbsp;|&nbsp; Best: <strong>{bestStreak}</strong>

@@ -1,29 +1,40 @@
 import { useState } from 'react';
 import type { WordEntry } from '../types';
-import { getFreeplayWords, saveFreeplayWords } from '../lib/storage';
 import styles from './WordListEditor.module.css';
 
-export default function WordListEditor() {
-  const [words, setWords] = useState<WordEntry[]>(() => getFreeplayWords());
+interface Props {
+  /** The current device-wide Free Play list, owned by App.tsx (which is
+   * what persists it) -- this editor never touches storage itself. */
+  words: WordEntry[];
+  onChange: (words: WordEntry[]) => void;
+}
+
+export default function WordListEditor({ words, onChange }: Props) {
   const [word, setWord] = useState('');
   const [definition, setDefinition] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   function addWord() {
     const trimmedWord = word.trim().toUpperCase();
     const trimmedDefinition = definition.trim();
     if (!trimmedWord || !trimmedDefinition) return;
 
-    const next = [...words, { word: trimmedWord, difficulty: 'easy' as const, definition: trimmedDefinition }];
-    setWords(next);
-    saveFreeplayWords(next);
+    // `word` doubles as the list's identity (React key, removeWord target,
+    // Bingo cell matching), so a duplicate would render two identical
+    // entries and remove both at once -- reject it with a visible reason.
+    if (words.some((w) => w.word === trimmedWord)) {
+      setError(`"${trimmedWord}" is already in the list.`);
+      return;
+    }
+
+    onChange([...words, { word: trimmedWord, difficulty: 'easy', definition: trimmedDefinition }]);
     setWord('');
     setDefinition('');
+    setError(null);
   }
 
   function removeWord(target: string) {
-    const next = words.filter((w) => w.word !== target);
-    setWords(next);
-    saveFreeplayWords(next);
+    onChange(words.filter((w) => w.word !== target));
   }
 
   return (
@@ -33,7 +44,10 @@ export default function WordListEditor() {
           className={styles.input}
           placeholder="Word (e.g. TREEHOUSE)"
           value={word}
-          onChange={(e) => setWord(e.target.value)}
+          onChange={(e) => {
+            setWord(e.target.value);
+            setError(null);
+          }}
           maxLength={20}
         />
         <input
@@ -47,6 +61,11 @@ export default function WordListEditor() {
           Add
         </button>
       </div>
+      {error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
 
       {words.length === 0 ? (
         <p className={styles.empty}>No custom words yet. Add some above!</p>

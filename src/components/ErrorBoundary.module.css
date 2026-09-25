@@ -1,0 +1,38 @@
+.screen {
+  /* 100% of body's safe-area-inset box, not 100vh -- see GameScreen
+     .module.css's .screen for why. */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: var(--color-danger);
+  margin: 0;
+}
+
+.message {
+  max-width: 480px;
+  color: var(--color-text-muted);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.button {
+  min-width: 220px;
+  min-height: 56px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lift);
+  cursor: pointer;
+}

@@ -1,39 +1,23 @@
 import { motion } from 'framer-motion';
-import type {
-  FontSize,
-  SentenceQuestStats,
-  Settings,
-  Streaks,
-  SynonymSafariStats,
-  ThemePreference,
-  WordscapesStats,
-} from '../types';
+import type { FontSize, GameMode, Settings, ThemePreference, WordEntry } from '../types';
+import type { ModeStatsRecord } from '../modes/types';
+import { MODES } from '../modes';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import WordListEditor from './WordListEditor';
 import styles from './SettingsScreen.module.css';
 
 interface Props {
   playerName: string;
-  streaks: Streaks;
-  wordscapesStats: WordscapesStats;
-  sentenceQuestStats: SentenceQuestStats;
-  synonymSafariStats: SynonymSafariStats;
+  /** Read-only: rendered as an at-a-glance summary card per mode. Settings
+   * (the persisted object) stays device-wide; only this display is
+   * per-profile, fed from App.tsx's already-held state. */
+  statsByMode: Record<GameMode, ModeStatsRecord>;
   settings: Settings;
   onChange: (patch: Partial<Settings>) => void;
+  freeplayWords: WordEntry[];
+  onFreeplayWordsChange: (words: WordEntry[]) => void;
   onClose: () => void;
   reduceMotion: boolean;
-}
-
-/** Sums a per-category Record<string, number> into one overall total --
- * this screen shows an at-a-glance summary across every category, not a
- * category-by-category breakdown (that's what each mode's own MenuScreen
- * streak line and win screen are for). */
-function sumValues(record: Record<string, number>): number {
-  return Object.values(record).reduce((total, n) => total + n, 0);
-}
-
-function maxValue(record: Record<string, number>): number {
-  return Object.values(record).reduce((max, n) => Math.max(max, n), 0);
 }
 
 const THEMES: { id: ThemePreference; label: string }[] = [
@@ -51,25 +35,14 @@ const FONT_SIZES: { id: FontSize; label: string }[] = [
 
 export default function SettingsScreen({
   playerName,
-  streaks,
-  wordscapesStats,
-  sentenceQuestStats,
-  synonymSafariStats,
+  statsByMode,
   settings,
   onChange,
+  freeplayWords,
+  onFreeplayWordsChange,
   onClose,
   reduceMotion,
 }: Props) {
-  const bingoGamesPlayed = sumValues(streaks.gamesPlayed);
-  const bingoWins = sumValues(streaks.wins);
-  const bingoBestStreak = maxValue(streaks.bestStreak);
-  const puzzlesCompleted = sumValues(wordscapesStats.puzzlesCompleted);
-  const bonusWordsFound = sumValues(wordscapesStats.bonusWordsFound);
-  const sentenceQuestRounds = sumValues(sentenceQuestStats.roundsCompleted);
-  const sentenceQuestCorrect = sumValues(sentenceQuestStats.correctAnswers);
-  const synonymSafariRounds = sumValues(synonymSafariStats.roundsCompleted);
-  const synonymSafariPairs = sumValues(synonymSafariStats.pairsMatched);
-
   return (
     <motion.main
       className={styles.screen}
@@ -88,57 +61,26 @@ export default function SettingsScreen({
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>🏆 {playerName}'s Stats</h2>
         <div className={styles.statsGrid}>
-          <div className={styles.statCard}>
-            <p className={styles.statCardTitle}>🎯 Bingo</p>
-            <p className={styles.statLine}>
-              Games played <strong>{bingoGamesPlayed}</strong>
-            </p>
-            <p className={styles.statLine}>
-              Wins <strong>{bingoWins}</strong>
-            </p>
-            <p className={styles.statLine}>
-              Best streak <strong>{bingoBestStreak}</strong>
-            </p>
-          </div>
-          <div className={styles.statCard}>
-            <p className={styles.statCardTitle}>🧩 Wordscapes</p>
-            <p className={styles.statLine}>
-              Puzzles completed <strong>{puzzlesCompleted}</strong>
-            </p>
-            <p className={styles.statLine}>
-              Bonus words found <strong>{bonusWordsFound}</strong>
-            </p>
-          </div>
-          <div className={styles.statCard}>
-            <p className={styles.statCardTitle}>📝 Sentence Quest</p>
-            <p className={styles.statLine}>
-              Rounds completed <strong>{sentenceQuestRounds}</strong>
-            </p>
-            <p className={styles.statLine}>
-              Correct answers <strong>{sentenceQuestCorrect}</strong>
-            </p>
-          </div>
-          <div className={styles.statCard}>
-            <p className={styles.statCardTitle}>🔗 Synonym Safari</p>
-            <p className={styles.statLine}>
-              Rounds completed <strong>{synonymSafariRounds}</strong>
-            </p>
-            <p className={styles.statLine}>
-              Pairs matched <strong>{synonymSafariPairs}</strong>
-            </p>
-          </div>
+          {/* One card per mode, each an all-category aggregate -- the
+              per-category breakdown lives on each mode's own menu line and
+              win screen. The lines come from the mode descriptor, so a new
+              mode gets its card for free. */}
+          {MODES.map((mode) => (
+            <div key={mode.id} className={styles.statCard}>
+              <p className={styles.statCardTitle}>
+                {mode.emoji} {mode.label}
+              </p>
+              {mode.stats.summary(statsByMode[mode.id]).map((line) => (
+                <p key={line.label} className={styles.statLine}>
+                  {line.label} <strong>{line.value}</strong>
+                </p>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
       <section className={styles.section}>
-        <label className={styles.toggleRow}>
-          <span>Sound effects</span>
-          <input
-            type="checkbox"
-            checked={settings.soundEnabled}
-            onChange={(e) => onChange({ soundEnabled: e.target.checked })}
-          />
-        </label>
         <label className={styles.toggleRow}>
           <span>Reduce motion</span>
           <input
@@ -156,6 +98,7 @@ export default function SettingsScreen({
             <button
               key={t.id}
               className={`${styles.chip} ${settings.theme === t.id ? styles.chipActive : ''}`}
+              aria-pressed={settings.theme === t.id}
               onClick={() => onChange({ theme: t.id })}
             >
               {t.label}
@@ -171,6 +114,7 @@ export default function SettingsScreen({
             <button
               key={f.id}
               className={`${styles.chip} ${settings.fontSize === f.id ? styles.chipActive : ''}`}
+              aria-pressed={settings.fontSize === f.id}
               onClick={() => onChange({ fontSize: f.id })}
             >
               {f.label}
@@ -182,7 +126,7 @@ export default function SettingsScreen({
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Free Play Word List</h2>
         <p className={styles.hint}>Add your own words for the Free Play category.</p>
-        <WordListEditor />
+        <WordListEditor words={freeplayWords} onChange={onFreeplayWordsChange} />
       </section>
     </motion.main>
   );

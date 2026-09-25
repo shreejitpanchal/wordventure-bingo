@@ -140,8 +140,16 @@ Rules:
 
 To add a brand-new category:
 1. Add a new JSON file under `src/data/wordbanks/`.
-2. Register it in [src/data/wordBanks.ts](src/data/wordBanks.ts) (`WORD_BANKS` map and `CATEGORY_ORDER`).
-3. Add the new `CategoryId` to the union in [src/types.ts](src/types.ts).
+2. Register it in [src/data/wordBanks.ts](src/data/wordBanks.ts) (`WORD_BANKS` map).
+3. Add its menu label to [src/data/wordBankLabels.ts](src/data/wordBankLabels.ts)
+   (`WORD_BANK_CATEGORIES` -- this list is also the menu order; the label
+   must match the JSON's `label` exactly, `npm test` checks it).
+4. Add the new `CategoryId` to the union in [src/types.ts](src/types.ts).
+
+Every rule above (24+ words per tier, unique words, matching labels, and
+that Wordscapes can actually generate a puzzle from every tier) is checked
+by `src/data/banks.test.ts`, so `npm test` fails on a broken bank before
+it ever reaches a player.
 
 The **Free Play** category (`src/data/wordbanks/freeplay.json`) additionally
 merges in whatever a parent adds through the in-app Settings → Free Play Word
@@ -185,9 +193,19 @@ Rules:
 To add a brand-new category:
 1. Add a new JSON file under `src/data/sentenceQuestBanks/`.
 2. Register it in [src/data/sentenceQuestBanks.ts](src/data/sentenceQuestBanks.ts)
-   (`SENTENCE_QUEST_BANKS` map and `SENTENCE_QUEST_CATEGORY_ORDER`).
-3. Add the new `SentenceQuestCategoryId` to the union in
+   (`SENTENCE_QUEST_BANKS` map).
+3. Add its menu label to
+   [src/data/sentenceQuestLabels.ts](src/data/sentenceQuestLabels.ts)
+   (`SENTENCE_QUEST_CATEGORIES` -- also the menu order; must match the
+   JSON's `label`).
+4. Add the new `SentenceQuestCategoryId` to the union in
    [src/types.ts](src/types.ts).
+
+The structural rules above are checked by `src/data/banks.test.ts` on every
+`npm test` (one blank, 4 distinct options, answer present once, unique
+sentences, no doubled words, 20+ per tier). That pass is necessary, not
+sufficient -- also read a real sample of any new sentences for grammar,
+sense and kid-appropriateness; see `CLAUDE.md`'s "Sentence Quest mode".
 
 ## Adding new Synonym Safari pairs
 
@@ -223,9 +241,17 @@ To add a brand-new relation type (a 4th bank, e.g. "homophones"):
 1. Add a new JSON file under `src/data/synonymSafariBanks/`.
 2. Register it in
    [src/data/synonymSafariBanks.ts](src/data/synonymSafariBanks.ts)
-   (`SYNONYM_SAFARI_BANKS` map and `SYNONYM_SAFARI_CATEGORY_ORDER`).
-3. Add the new `SynonymSafariCategoryId` to the union in
+   (`SYNONYM_SAFARI_BANKS` map).
+3. Add its menu label to
+   [src/data/synonymSafariLabels.ts](src/data/synonymSafariLabels.ts)
+   (`SYNONYM_SAFARI_CATEGORIES` -- also the menu order; must match the
+   JSON's `label`).
+4. Add the new `SynonymSafariCategoryId` to the union in
    [src/types.ts](src/types.ts).
+
+`src/data/banks.test.ts` checks the rules above on every `npm test`
+(unique `word` per file, no repeated `match` within a tier, 8+ pairs per
+tier, no pair matching a word to itself).
 
 ## How Wordscapes puzzles are generated
 
@@ -345,5 +371,7 @@ npm run test:coverage # with coverage report
 Unit tests cover the correctness-critical logic — card generation, win
 detection, clue selection/formatting, Wordscapes grid generation, Sentence
 Quest round generation, and Synonym Safari round generation/matching
-(`src/lib/*.test.ts`, including `src/lib/wordscapes/`). UI and animation
-behavior is verified manually in-browser (desktop + Android).
+(`src/lib/*.test.ts`, including `src/lib/wordscapes/`) — plus the mode
+registry's stats arithmetic (`src/modes/modes.test.ts`) and the shipped
+content banks' structural invariants (`src/data/banks.test.ts`). UI and
+animation behavior is verified manually in-browser (desktop + Android).

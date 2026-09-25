@@ -1,31 +1,16 @@
 import { motion } from 'framer-motion';
-import type { SynonymSafariConfig, SynonymSafariStats } from '../types';
-import { SYNONYM_SAFARI_BANKS } from '../data/synonymSafariBanks';
+import type { SynonymSafariConfig, SynonymSafariResult, SynonymSafariStats } from '../types';
+import type { ModeWinScreenProps } from '../modes/types';
+import { SYNONYM_SAFARI_LABELS } from '../data/synonymSafariLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
 import Confetti from './Confetti';
 import styles from './WinScreen.module.css';
 
-interface Props {
-  config: SynonymSafariConfig;
-  pairsMatched: number;
-  /** True if the player used the hint button anywhere in this round. */
-  assisted: boolean;
-  stats: SynonymSafariStats;
-  onNextRound: () => void;
-  onMenu: () => void;
-  reduceMotion: boolean;
-}
+type Props = ModeWinScreenProps<SynonymSafariConfig, SynonymSafariResult, SynonymSafariStats>;
 
-export default function SynonymSafariWinScreen({
-  config,
-  pairsMatched,
-  assisted,
-  stats,
-  onNextRound,
-  onMenu,
-  reduceMotion,
-}: Props) {
-  const label = SYNONYM_SAFARI_BANKS[config.category].label;
+export default function SynonymSafariWinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+  const { pairsMatched, assisted } = result;
+  const label = SYNONYM_SAFARI_LABELS[config.category];
   const roundsCompleted = stats.roundsCompleted[config.category] ?? 0;
 
   return (
@@ -64,7 +49,7 @@ export default function SynonymSafariWinScreen({
           className={styles.primaryButton}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onNextRound}
+          onClick={onPlayAgain}
         >
           Next Round
         </motion.button>

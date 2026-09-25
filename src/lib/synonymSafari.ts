@@ -1,5 +1,4 @@
-import type { Difficulty, SynonymSafariCategoryId, WordPair } from '../types';
-import { SYNONYM_SAFARI_BANKS } from '../data/synonymSafariBanks';
+import type { Difficulty, WordPair } from '../types';
 import { shuffle } from './random';
 
 // Smaller/denser than Sentence Quest's QUESTION_COUNT_OPTIONS (5/10/15/20):
@@ -10,8 +9,11 @@ export const MIN_PAIR_COUNT = PAIR_COUNT_OPTIONS[0];
 export const MAX_PAIR_COUNT = PAIR_COUNT_OPTIONS[PAIR_COUNT_OPTIONS.length - 1];
 export const DEFAULT_PAIR_COUNT = 6;
 
-export function selectSynonymSafariPool(category: SynonymSafariCategoryId, difficulty: Difficulty): WordPair[] {
-  return SYNONYM_SAFARI_BANKS[category].pairs.filter((p) => p.difficulty === difficulty);
+/** Difficulty filter over a bank's pairs. Takes the pairs rather than a
+ * category id so this module stays free of any data import, like every
+ * other src/lib generator (selectWordPool, selectQuestionPool). */
+export function selectSynonymSafariPool(pairs: WordPair[], difficulty: Difficulty): WordPair[] {
+  return pairs.filter((p) => p.difficulty === difficulty);
 }
 
 /**

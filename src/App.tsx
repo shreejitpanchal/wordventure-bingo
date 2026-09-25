@@ -1,62 +1,44 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Capacitor } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
-import type { GameConfig, ScreenName, SentenceQuestConfig, SynonymSafariConfig, WinPattern, WordscapesConfig } from './types';
+import type { GameMode, ScreenName, WordEntry } from './types';
+import type { AnyMode, MenuSelection, ModeConfigBase, ModeContext, ModeStatsRecord } from './modes/types';
+import { MODES } from './modes';
+import { resolveMenuSelection } from './modes/menuSelection';
 import { useSettings } from './hooks/useSettings';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useAppearance } from './hooks/useAppearance';
 import {
   createProfile,
   getCurrentProfile,
+  getFreeplayWords,
+  getMenuSelection,
+  getModeStats,
   getProfiles,
-  getSentenceQuestStats,
-  getStreaks,
-  getSynonymSafariStats,
-  getWordscapesStats,
-  recordGameResult,
-  recordSentenceQuestRound,
-  recordSynonymSafariRound,
-  recordWordscapesCompletion,
+  saveFreeplayWords,
+  saveMenuSelection,
+  saveModeStats,
 } from './lib/storage';
+import ErrorBoundary from './components/ErrorBoundary';
 import ProfileScreen from './components/ProfileScreen';
 import MenuScreen from './components/MenuScreen';
-import GameScreen from './components/GameScreen';
-import WinScreen from './components/WinScreen';
-import WordscapesGameScreen from './components/WordscapesGameScreen';
-import WordscapesWinScreen from './components/WordscapesWinScreen';
-import SentenceQuestScreen from './components/SentenceQuestScreen';
-import SentenceQuestWinScreen from './components/SentenceQuestWinScreen';
-import SynonymSafariScreen from './components/SynonymSafariScreen';
-import SynonymSafariWinScreen from './components/SynonymSafariWinScreen';
 import SettingsScreen from './components/SettingsScreen';
 
-interface WinInfo {
-  config: GameConfig;
-  patterns: WinPattern[];
-  winnerLabel?: string;
+type StatsByMode = Record<GameMode, ModeStatsRecord>;
+
+/** The mode currently being played (or whose win screen is showing), with
+ * the config it was started from and -- once finished -- its result. */
+interface Session {
+  mode: AnyMode;
+  config: ModeConfigBase;
+  result: unknown | null;
 }
 
-interface WordscapesWinInfo {
-  config: WordscapesConfig;
-  bonusWordsFound: number;
-  /** True if the player used any reveal help (single-letter hints and/or
-   * Give Up) at any point in this puzzle, even if they finished the rest
-   * of it themselves. */
-  assisted: boolean;
-}
-
-interface SentenceQuestWinInfo {
-  config: SentenceQuestConfig;
-  correctCount: number;
-  totalCount: number;
-}
-
-interface SynonymSafariWinInfo {
-  config: SynonymSafariConfig;
-  pairsMatched: number;
-  /** True if the player used the hint button anywhere in this round. */
-  assisted: boolean;
+function loadAllStats(profile: string): StatsByMode {
+  return Object.fromEntries(
+    MODES.map((mode) => [mode.id, getModeStats(mode.stats.key, profile, mode.stats.defaults)]),
+  ) as StatsByMode;
 }
 
 export default function App() {
@@ -66,36 +48,30 @@ export default function App() {
   const [currentProfile, setCurrentProfile] = useState<string | null>(() => getCurrentProfile());
   const [profiles, setProfiles] = useState<string[]>(() => getProfiles());
   const [screen, setScreen] = useState<ScreenName>(() => (getCurrentProfile() ? 'menu' : 'profile'));
-  const [previousScreen, setPreviousScreen] = useState<ScreenName>('menu');
-  const [gameConfig, setGameConfig] = useState<GameConfig | null>(null);
-  const [winInfo, setWinInfo] = useState<WinInfo | null>(null);
-  const [streaks, setStreaks] = useState(() => getStreaks(currentProfile ?? ''));
 
-  const [wordscapesConfig, setWordscapesConfig] = useState<WordscapesConfig | null>(null);
-  const [wordscapesWinInfo, setWordscapesWinInfo] = useState<WordscapesWinInfo | null>(null);
-  const [wordscapesStats, setWordscapesStats] = useState(() => getWordscapesStats(currentProfile ?? ''));
-  // Words the most recently *started* Wordscapes puzzle placed, passed back
-  // into the next puzzle as words to avoid repeating -- mirrors
-  // synonymSafariRecentWords below (same reason: the screen unmounts
-  // between puzzles, so it can't remember this itself).
-  const [wordscapesRecentWords, setWordscapesRecentWords] = useState<string[]>([]);
+  // Everything mode-specific is held generically, keyed by mode id, and the
+  // mode's own descriptor (src/modes/) says what to do with it. This is what
+  // keeps App.tsx the same size for four modes or fourteen.
+  const [session, setSession] = useState<Session | null>(null);
+  const [statsByMode, setStatsByMode] = useState<StatsByMode>(() => loadAllStats(currentProfile ?? ''));
+  // What each mode's most recently *started* round reported via
+  // onRoundStart (words placed, sentences used, ...), handed back to that
+  // mode's next round as items to avoid repeating. Lives here, not in the
+  // game screens, because they unmount between rounds (the win screen sits
+  // in between) and so can't remember it themselves.
+  const [recentByMode, setRecentByMode] = useState<Partial<Record<GameMode, string[]>>>({});
+  // The menu's last picks, per profile. Held here (MenuScreen is controlled)
+  // because MenuScreen unmounts while a game is on -- and persisted so a
+  // reopened app comes back to the same mode/category/difficulty/options.
+  const [menuSelection, setMenuSelection] = useState<MenuSelection>(() =>
+    resolveMenuSelection(getMenuSelection(currentProfile ?? '')),
+  );
 
-  const [sentenceQuestConfig, setSentenceQuestConfig] = useState<SentenceQuestConfig | null>(null);
-  const [sentenceQuestWinInfo, setSentenceQuestWinInfo] = useState<SentenceQuestWinInfo | null>(null);
-  const [sentenceQuestStats, setSentenceQuestStats] = useState(() => getSentenceQuestStats(currentProfile ?? ''));
-  // Sentences the most recently *started* Sentence Quest round used --
-  // same pattern as wordscapesRecentWords/synonymSafariRecentWords.
-  const [sentenceQuestRecentSentences, setSentenceQuestRecentSentences] = useState<string[]>([]);
-
-  const [synonymSafariConfig, setSynonymSafariConfig] = useState<SynonymSafariConfig | null>(null);
-  const [synonymSafariWinInfo, setSynonymSafariWinInfo] = useState<SynonymSafariWinInfo | null>(null);
-  const [synonymSafariStats, setSynonymSafariStats] = useState(() => getSynonymSafariStats(currentProfile ?? ''));
-  // Words the most recently *started* Synonym Safari round used, passed back
-  // into the next round as words to avoid repeating -- see generateRound's
-  // excludeWords param. Lives here (not inside SynonymSafariScreen) because
-  // that screen unmounts between rounds (win screen in between), so it can't
-  // remember this itself.
-  const [synonymSafariRecentWords, setSynonymSafariRecentWords] = useState<string[]>([]);
+  // Device-wide Free Play list: App owns it so the editor (Settings) and the
+  // consumers (word-bank modes) share one source of truth through props,
+  // instead of each reading storage on its own.
+  const [freeplayWords, setFreeplayWords] = useState<WordEntry[]>(() => getFreeplayWords());
+  const modeContext = useMemo<ModeContext>(() => ({ freeplayWords }), [freeplayWords]);
 
   const { settings, updateSettings } = useSettings();
   const reduceMotion = useReducedMotion(settings.reduceMotion);
@@ -108,143 +84,94 @@ export default function App() {
     createProfile(name);
     setCurrentProfile(name);
     setProfiles(getProfiles());
-    setStreaks(getStreaks(name));
-    setWordscapesStats(getWordscapesStats(name));
-    setSentenceQuestStats(getSentenceQuestStats(name));
-    setSynonymSafariStats(getSynonymSafariStats(name));
+    setStatsByMode(loadAllStats(name));
+    setMenuSelection(resolveMenuSelection(getMenuSelection(name)));
     setScreen('menu');
   }, []);
+
+  const updateMenuSelection = useCallback(
+    (next: MenuSelection) => {
+      setMenuSelection(next);
+      if (currentProfile) saveMenuSelection(currentProfile, next);
+    },
+    [currentProfile],
+  );
 
   const switchProfile = useCallback(() => {
     window.history.pushState(null, '');
     setScreen('profile');
   }, []);
 
-  const startGame = useCallback((config: GameConfig) => {
+  const startMode = useCallback((mode: AnyMode, config: ModeConfigBase) => {
     window.history.pushState(null, '');
-    setGameConfig(config);
+    setSession({ mode, config, result: null });
     setScreen('game');
   }, []);
 
-  const handleWin = useCallback((patterns: WinPattern[], winnerLabel?: string) => {
-    if (!gameConfig || !currentProfile) return;
-    setStreaks(recordGameResult(currentProfile, gameConfig.category, true));
-    setWinInfo({ config: gameConfig, patterns, winnerLabel });
-    setScreen('win');
-  }, [gameConfig, currentProfile]);
+  const handleRoundStart = useCallback(
+    (items: string[]) => {
+      if (!session) return;
+      setRecentByMode((prev) => ({ ...prev, [session.mode.id]: items }));
+    },
+    [session],
+  );
+
+  const handleComplete = useCallback(
+    (result: unknown) => {
+      if (!session || !currentProfile) return;
+      const { mode, config } = session;
+      const next = mode.stats.record(statsByMode[mode.id], config, result);
+      saveModeStats(mode.stats.key, currentProfile, next);
+      setStatsByMode((prev) => ({ ...prev, [mode.id]: next }));
+      setSession({ mode, config, result });
+      setScreen('win');
+    },
+    [session, currentProfile, statsByMode],
+  );
 
   const playAgain = useCallback(() => {
-    if (!winInfo) return;
-    setGameConfig({ ...winInfo.config });
+    if (!session) return;
+    setSession({ ...session, result: null });
     setScreen('game');
-  }, [winInfo]);
-
-  const startWordscapes = useCallback((config: WordscapesConfig) => {
-    window.history.pushState(null, '');
-    setWordscapesConfig(config);
-    setScreen('wordscapes-game');
-  }, []);
-
-  const handleWordscapesComplete = useCallback((bonusWordsFound: number, assisted: boolean) => {
-    if (!wordscapesConfig || !currentProfile) return;
-    // An assisted puzzle (any hint used, or Give Up) isn't a real solve --
-    // `solved: !assisted` keeps it out of the "puzzles completed" stat, but
-    // bonus words genuinely found are credited either way.
-    setWordscapesStats(recordWordscapesCompletion(currentProfile, wordscapesConfig.category, bonusWordsFound, !assisted));
-    setWordscapesWinInfo({ config: wordscapesConfig, bonusWordsFound, assisted });
-    setScreen('wordscapes-win');
-  }, [wordscapesConfig, currentProfile]);
-
-  const nextWordscapesPuzzle = useCallback(() => {
-    if (!wordscapesWinInfo) return;
-    setWordscapesConfig({ ...wordscapesWinInfo.config });
-    setScreen('wordscapes-game');
-  }, [wordscapesWinInfo]);
-
-  const handleWordscapesPuzzleStart = useCallback((words: string[]) => {
-    setWordscapesRecentWords(words);
-  }, []);
-
-  const startSentenceQuest = useCallback((config: SentenceQuestConfig) => {
-    window.history.pushState(null, '');
-    setSentenceQuestConfig(config);
-    setScreen('sentence-quest-game');
-  }, []);
-
-  const handleSentenceQuestComplete = useCallback(
-    (correctCount: number, totalCount: number) => {
-      if (!sentenceQuestConfig || !currentProfile) return;
-      setSentenceQuestStats(
-        recordSentenceQuestRound(currentProfile, sentenceQuestConfig.category, correctCount, totalCount, true),
-      );
-      setSentenceQuestWinInfo({ config: sentenceQuestConfig, correctCount, totalCount });
-      setScreen('sentence-quest-win');
-    },
-    [sentenceQuestConfig, currentProfile],
-  );
-
-  const playSentenceQuestAgain = useCallback(() => {
-    if (!sentenceQuestWinInfo) return;
-    setSentenceQuestConfig({ ...sentenceQuestWinInfo.config });
-    setScreen('sentence-quest-game');
-  }, [sentenceQuestWinInfo]);
-
-  const handleSentenceQuestRoundStart = useCallback((sentences: string[]) => {
-    setSentenceQuestRecentSentences(sentences);
-  }, []);
-
-  const startSynonymSafari = useCallback((config: SynonymSafariConfig) => {
-    window.history.pushState(null, '');
-    setSynonymSafariConfig(config);
-    setScreen('synonym-safari-game');
-  }, []);
-
-  const handleSynonymSafariComplete = useCallback(
-    (pairsMatched: number, assisted: boolean) => {
-      if (!synonymSafariConfig || !currentProfile) return;
-      // An assisted round (hint used) isn't a real solve -- `solved: !assisted`
-      // keeps it out of the "rounds completed" stat, but pairs genuinely
-      // matched are credited either way, same as Wordscapes' bonus words.
-      setSynonymSafariStats(
-        recordSynonymSafariRound(currentProfile, synonymSafariConfig.category, pairsMatched, !assisted),
-      );
-      setSynonymSafariWinInfo({ config: synonymSafariConfig, pairsMatched, assisted });
-      setScreen('synonym-safari-win');
-    },
-    [synonymSafariConfig, currentProfile],
-  );
-
-  const nextSynonymSafariRound = useCallback(() => {
-    if (!synonymSafariWinInfo) return;
-    setSynonymSafariConfig({ ...synonymSafariWinInfo.config });
-    setScreen('synonym-safari-game');
-  }, [synonymSafariWinInfo]);
-
-  const handleSynonymSafariRoundStart = useCallback((words: string[]) => {
-    setSynonymSafariRecentWords(words);
-  }, []);
+  }, [session]);
 
   const goToMenu = useCallback(() => {
-    setGameConfig(null);
-    setWinInfo(null);
-    setWordscapesConfig(null);
-    setWordscapesWinInfo(null);
-    setSentenceQuestConfig(null);
-    setSentenceQuestWinInfo(null);
-    setSynonymSafariConfig(null);
-    setSynonymSafariWinInfo(null);
+    // Leaving mid-game (visible Menu button or hardware back) is the mode's
+    // "abandon" event, if it has one -- e.g. Bingo counts it as the loss
+    // that lets a streak actually break. Computed from current state, not
+    // inside a setState updater, so the storage write runs exactly once.
+    if (screen === 'game' && session && currentProfile && session.mode.stats.recordAbandon) {
+      const { mode, config } = session;
+      const next = mode.stats.recordAbandon(statsByMode[mode.id], config);
+      saveModeStats(mode.stats.key, currentProfile, next);
+      setStatsByMode((prev) => ({ ...prev, [mode.id]: next }));
+    }
+    setSession(null);
+    setScreen('menu');
+  }, [screen, session, currentProfile, statsByMode]);
+
+  // Recovery path for the error boundary: back to the menu with no stats
+  // side effects -- a crash isn't a loss.
+  const resetToMenu = useCallback(() => {
+    setSession(null);
     setScreen('menu');
   }, []);
 
   const openSettings = useCallback(() => {
     window.history.pushState(null, '');
-    setPreviousScreen(screen);
     setScreen('settings');
-  }, [screen]);
+  }, []);
 
+  // Settings is only reachable from the menu, so closing always returns
+  // there -- no "where was it opened from" bookkeeping needed.
   const closeSettings = useCallback(() => {
-    setScreen(previousScreen);
-  }, [previousScreen]);
+    setScreen('menu');
+  }, []);
+
+  const updateFreeplayWords = useCallback((words: WordEntry[]) => {
+    saveFreeplayWords(words);
+    setFreeplayWords(words);
+  }, []);
 
   // Wires the Android hardware/gesture back button (and desktop browser
   // back) to this same in-app navigation instead of letting it silently
@@ -254,50 +181,48 @@ export default function App() {
   // entry beyond the initial page load, that condition was never met, so
   // back always fell straight through to "exit," which read as "the app
   // just collapses and does nothing." Every function above that leaves
-  // 'menu' for a divertable sub-flow (startGame, startWordscapes,
-  // startSentenceQuest, startSynonymSafari, openSettings, switchProfile) now
-  // pushes one entry; goToMenu/closeSettings/the profile "back to menu"
-  // case deliberately do NOT push,
-  // since they're the functions THIS handler calls to consume that entry.
-  // A screen only ever needs one entry regardless of how many further
-  // screens it leads to before returning to 'menu' (e.g. game -> win both
-  // resolve back to 'menu' in one hop, matching their own visible
-  // exit/Menu buttons), so no stack bookkeeping is needed here -- just a
-  // direct mapping from "current screen" to "what its own back/exit/menu
-  // button already does".
+  // 'menu' for a divertable sub-flow (startMode, openSettings,
+  // switchProfile) pushes one entry; goToMenu/closeSettings/the profile
+  // "back to menu" case deliberately do NOT push, since they're the
+  // functions THIS handler calls to consume that entry. A screen only ever
+  // needs one entry regardless of how many further screens it leads to
+  // before returning to 'menu' (game -> win both resolve back to 'menu' in
+  // one hop, matching their own visible exit/Menu buttons), so no stack
+  // bookkeeping is needed -- just a direct mapping from "current screen"
+  // to "what its own back/exit/menu button already does".
+  //
+  // Kept in a ref (assigned from an effect, never during render -- refs
+  // written in render break React's rendering rules) so both listeners
+  // below can be registered once yet always call the latest closure.
   const handleBackRef = useRef<() => void>(() => {});
-  handleBackRef.current = () => {
-    switch (screen) {
-      case 'game':
-      case 'win':
-      case 'wordscapes-game':
-      case 'wordscapes-win':
-      case 'sentence-quest-game':
-      case 'sentence-quest-win':
-      case 'synonym-safari-game':
-      case 'synonym-safari-win':
-        goToMenu();
-        break;
-      case 'settings':
-        closeSettings();
-        break;
-      case 'profile':
-        if (currentProfile) {
-          setScreen('menu');
-        } else {
-          // First-launch picker: nothing to go back to. Re-push so this
-          // press is fully absorbed rather than draining history toward
-          // an unexpected exit on some later, unrelated press.
-          window.history.pushState(null, '');
-        }
-        break;
-      default:
-        // 'menu': the root screen. Nothing left to go back to in-app --
-        // let the browser/Capacitor's own "no history left" fallback
-        // (exit/background) happen, same as any Android app's home screen.
-        break;
-    }
-  };
+  useEffect(() => {
+    handleBackRef.current = () => {
+      switch (screen) {
+        case 'game':
+        case 'win':
+          goToMenu();
+          break;
+        case 'settings':
+          closeSettings();
+          break;
+        case 'profile':
+          if (currentProfile) {
+            setScreen('menu');
+          } else {
+            // First-launch picker: nothing to go back to. Re-push so this
+            // press is fully absorbed rather than draining history toward
+            // an unexpected exit on some later, unrelated press.
+            window.history.pushState(null, '');
+          }
+          break;
+        default:
+          // 'menu': the root screen. Nothing left to go back to in-app --
+          // let the browser/Capacitor's own "no history left" fallback
+          // (exit/background) happen, same as any Android app's home screen.
+          break;
+      }
+    };
+  }, [screen, currentProfile, goToMenu, closeSettings]);
 
   useEffect(() => {
     function onPopState() {
@@ -330,139 +255,79 @@ export default function App() {
     };
   }, []);
 
+  const mode = session?.mode;
+
   return (
-    <AnimatePresence mode="wait">
-      {screen === 'profile' && (
-        <ProfileScreen
-          key="profile"
-          profiles={profiles}
-          onChoose={chooseProfile}
-          onCancel={currentProfile ? () => setScreen('menu') : undefined}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'menu' && currentProfile && (
-        <MenuScreen
-          key="menu"
-          playerName={currentProfile}
-          streaks={streaks}
-          wordscapesStats={wordscapesStats}
-          sentenceQuestStats={sentenceQuestStats}
-          synonymSafariStats={synonymSafariStats}
-          onStartBingo={startGame}
-          onStartWordscapes={startWordscapes}
-          onStartSentenceQuest={startSentenceQuest}
-          onStartSynonymSafari={startSynonymSafari}
-          onOpenSettings={openSettings}
-          onSwitchProfile={switchProfile}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'game' && gameConfig && (
-        <GameScreen
-          key="game"
-          config={gameConfig}
-          onWin={handleWin}
-          onExit={goToMenu}
-          reduceMotion={reduceMotion}
-          soundEnabled={settings.soundEnabled}
-        />
-      )}
-      {screen === 'win' && winInfo && (
-        <WinScreen
-          key="win"
-          config={winInfo.config}
-          patterns={winInfo.patterns}
-          winnerLabel={winInfo.winnerLabel}
-          streaks={streaks}
-          onPlayAgain={playAgain}
-          onMenu={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'wordscapes-game' && wordscapesConfig && (
-        <WordscapesGameScreen
-          key="wordscapes-game"
-          config={wordscapesConfig}
-          excludeWords={wordscapesRecentWords}
-          onPuzzleStart={handleWordscapesPuzzleStart}
-          onComplete={handleWordscapesComplete}
-          onExit={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'wordscapes-win' && wordscapesWinInfo && (
-        <WordscapesWinScreen
-          key="wordscapes-win"
-          config={wordscapesWinInfo.config}
-          bonusWordsFound={wordscapesWinInfo.bonusWordsFound}
-          assisted={wordscapesWinInfo.assisted}
-          stats={wordscapesStats}
-          onNextPuzzle={nextWordscapesPuzzle}
-          onMenu={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'sentence-quest-game' && sentenceQuestConfig && (
-        <SentenceQuestScreen
-          key="sentence-quest-game"
-          config={sentenceQuestConfig}
-          excludeSentences={sentenceQuestRecentSentences}
-          onRoundStart={handleSentenceQuestRoundStart}
-          onComplete={handleSentenceQuestComplete}
-          onExit={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'sentence-quest-win' && sentenceQuestWinInfo && (
-        <SentenceQuestWinScreen
-          key="sentence-quest-win"
-          config={sentenceQuestWinInfo.config}
-          correctCount={sentenceQuestWinInfo.correctCount}
-          totalCount={sentenceQuestWinInfo.totalCount}
-          stats={sentenceQuestStats}
-          onPlayAgain={playSentenceQuestAgain}
-          onMenu={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'synonym-safari-game' && synonymSafariConfig && (
-        <SynonymSafariScreen
-          key="synonym-safari-game"
-          config={synonymSafariConfig}
-          excludeWords={synonymSafariRecentWords}
-          onRoundStart={handleSynonymSafariRoundStart}
-          onComplete={handleSynonymSafariComplete}
-          onExit={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'synonym-safari-win' && synonymSafariWinInfo && (
-        <SynonymSafariWinScreen
-          key="synonym-safari-win"
-          config={synonymSafariWinInfo.config}
-          pairsMatched={synonymSafariWinInfo.pairsMatched}
-          assisted={synonymSafariWinInfo.assisted}
-          stats={synonymSafariStats}
-          onNextRound={nextSynonymSafariRound}
-          onMenu={goToMenu}
-          reduceMotion={reduceMotion}
-        />
-      )}
-      {screen === 'settings' && (
-        <SettingsScreen
-          key="settings"
-          playerName={currentProfile ?? ''}
-          streaks={streaks}
-          wordscapesStats={wordscapesStats}
-          sentenceQuestStats={sentenceQuestStats}
-          synonymSafariStats={synonymSafariStats}
-          settings={settings}
-          onChange={updateSettings}
-          onClose={closeSettings}
-          reduceMotion={reduceMotion}
-        />
-      )}
-    </AnimatePresence>
+    // Every src/lib generator throws loudly on a data bug; without this the
+    // throw would blank the whole app. The boundary shows the message and
+    // offers a way back to the menu instead -- see ErrorBoundary.tsx.
+    <ErrorBoundary onReset={resetToMenu}>
+      <AnimatePresence mode="wait">
+        {screen === 'profile' && (
+          <ProfileScreen
+            key="profile"
+            profiles={profiles}
+            onChoose={chooseProfile}
+            onCancel={currentProfile ? () => setScreen('menu') : undefined}
+            reduceMotion={reduceMotion}
+          />
+        )}
+        {screen === 'menu' && currentProfile && (
+          <MenuScreen
+            key="menu"
+            playerName={currentProfile}
+            statsByMode={statsByMode}
+            selection={menuSelection}
+            onSelectionChange={updateMenuSelection}
+            onStart={startMode}
+            onOpenSettings={openSettings}
+            onSwitchProfile={switchProfile}
+            reduceMotion={reduceMotion}
+          />
+        )}
+        {/* Mode screens are lazy (their chunk includes the mode's content
+            banks), so they sit inside Suspense. The chunk is precached by
+            the service worker, so the null fallback is a one-frame blank at
+            most, and only the first time a mode is played. */}
+        {screen === 'game' && session && mode && (
+          <Suspense key={`game:${mode.id}`} fallback={null}>
+            <mode.GameScreen
+              config={session.config}
+              context={modeContext}
+              excludeItems={recentByMode[mode.id] ?? []}
+              onRoundStart={handleRoundStart}
+              onComplete={handleComplete}
+              onExit={goToMenu}
+              reduceMotion={reduceMotion}
+            />
+          </Suspense>
+        )}
+        {screen === 'win' && session && mode && session.result !== null && (
+          <Suspense key={`win:${mode.id}`} fallback={null}>
+            <mode.WinScreen
+              config={session.config}
+              result={session.result}
+              stats={statsByMode[mode.id]}
+              onPlayAgain={playAgain}
+              onMenu={goToMenu}
+              reduceMotion={reduceMotion}
+            />
+          </Suspense>
+        )}
+        {screen === 'settings' && (
+          <SettingsScreen
+            key="settings"
+            playerName={currentProfile ?? ''}
+            statsByMode={statsByMode}
+            settings={settings}
+            onChange={updateSettings}
+            freeplayWords={freeplayWords}
+            onFreeplayWordsChange={updateFreeplayWords}
+            onClose={closeSettings}
+            reduceMotion={reduceMotion}
+          />
+        )}
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 }

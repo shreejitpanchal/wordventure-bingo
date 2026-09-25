@@ -1,36 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import type { SentenceQuestConfig } from '../types';
+import type { SentenceQuestConfig, SentenceQuestResult } from '../types';
+import type { ModeGameScreenProps } from '../modes/types';
 import { SENTENCE_QUEST_BANKS } from '../data/sentenceQuestBanks';
 import { generateRound, isCorrect, selectQuestionPool, splitSentence } from '../lib/sentenceQuest';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import styles from './SentenceQuestScreen.module.css';
 
-interface Props {
-  config: SentenceQuestConfig;
-  /** Sentences the *previous* round (in this session) used, if any --
-   * passed back up via `onRoundStart` so `App.tsx` can hand it to the next
-   * round, keeping consecutive rounds from reusing the same questions. */
-  excludeSentences: string[];
-  onRoundStart: (sentences: string[]) => void;
-  onComplete: (correctCount: number, totalCount: number) => void;
-  onExit: () => void;
-  reduceMotion: boolean;
-}
+// excludeItems/onRoundStart carry the previous round's *sentences* (unique
+// per bank by authoring convention) -- see generateRound's excludeSentences.
+type Props = ModeGameScreenProps<SentenceQuestConfig, SentenceQuestResult>;
 
-export default function SentenceQuestScreen({
-  config,
-  excludeSentences,
-  onRoundStart,
-  onComplete,
-  onExit,
-  reduceMotion,
-}: Props) {
+export default function SentenceQuestScreen({ config, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
   const bank = SENTENCE_QUEST_BANKS[config.category];
   const pool = useMemo(() => selectQuestionPool(bank.questions, config.difficulty), [bank, config.difficulty]);
-  const [round] = useState(() =>
-    generateRound(pool, Math.random, config.questionCount, new Set(excludeSentences)),
-  );
+  const [round] = useState(() => generateRound(pool, Math.random, config.questionCount, new Set(excludeItems)));
 
   // Reports this round's questions back up to App.tsx once, right after
   // mount, so the *next* round knows what to avoid repeating -- see
@@ -61,7 +45,7 @@ export default function SentenceQuestScreen({
       // correctCount already reflects this question's result -- chooseOption
       // updates it (and answered/selected, which is what gates this button
       // being clickable at all) in the same state update.
-      onComplete(correctCount, round.length);
+      onComplete({ correctCount, totalCount: round.length });
       return;
     }
     setIndex((i) => i + 1);

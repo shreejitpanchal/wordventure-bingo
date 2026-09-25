@@ -45,19 +45,13 @@ export interface WinResult {
   cellIndices: number[];
 }
 
-export type ScreenName =
-  | 'profile'
-  | 'menu'
-  | 'game'
-  | 'win'
-  | 'settings'
-  | 'wordscapes-game'
-  | 'wordscapes-win'
-  | 'sentence-quest-game'
-  | 'sentence-quest-win'
-  | 'synonym-safari-game'
-  | 'synonym-safari-win';
+/** The app's five screens. `game`/`win` are generic: which mode's
+ * screens they render is decided by the active mode session in App.tsx (see
+ * src/modes/), not by a per-mode screen name -- adding a mode never touches
+ * this union. */
+export type ScreenName = 'profile' | 'menu' | 'settings' | 'game' | 'win';
 
+/** One id per mode descriptor registered in src/modes/index.ts. */
 export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest' | 'synonym-safari';
 
 /** 'system' follows the OS/browser's own light/dark preference; 'light'/'dark'
@@ -69,13 +63,17 @@ export type ThemePreference = 'system' | 'light' | 'dark';
 export type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
 
 export interface Settings {
-  soundEnabled: boolean;
   reduceMotion: boolean;
   theme: ThemePreference;
   fontSize: FontSize;
 }
 
-export interface Streaks {
+// The four per-mode stats records are `type` aliases, not interfaces, on
+// purpose: each must satisfy src/modes/types.ts's ModeStatsRecord
+// (Record<string, Record<string, number>>) so storage.ts can persist any
+// mode's stats generically, and only a type alias gets the implicit index
+// signature that makes a fixed set of Record fields assignable to that.
+export type Streaks = {
   /** Total games played per category. */
   gamesPlayed: Record<string, number>;
   /** Total wins per category. */
@@ -84,6 +82,13 @@ export interface Streaks {
   currentStreak: Record<string, number>;
   /** Best consecutive-win streak per category, ever. */
   bestStreak: Record<string, number>;
+};
+
+/** What a finished Bingo game reports back to App.tsx. */
+export interface BingoResult {
+  patterns: WinPattern[];
+  /** Pass-and-play only: which player's card won. */
+  winnerLabel?: string;
 }
 
 export interface GameConfig {
@@ -141,10 +146,18 @@ export interface WordscapesLevel {
   bonusWords: string[];
 }
 
-export interface WordscapesStats {
+export interface WordscapesResult {
+  bonusWordsFound: number;
+  /** True if the player used any reveal help (single-letter hints and/or
+   * Give Up) at any point in this puzzle, even if they finished the rest
+   * of it themselves. */
+  assisted: boolean;
+}
+
+export type WordscapesStats = {
   puzzlesCompleted: Record<string, number>;
   bonusWordsFound: Record<string, number>;
-}
+};
 
 // --- Sentence Quest (fill-in-the-blank grammar mode) --------------------
 
@@ -182,14 +195,19 @@ export interface SentenceQuestConfig {
   questionCount: number;
 }
 
-export interface SentenceQuestStats {
+export interface SentenceQuestResult {
+  correctCount: number;
+  totalCount: number;
+}
+
+export type SentenceQuestStats = {
   roundsCompleted: Record<string, number>;
   /** Every correct answer ever, per category -- tracked independently of
    * roundsCompleted so a round abandoned partway through (exiting to menu
    * mid-round) still credits whatever was genuinely answered correctly. */
   correctAnswers: Record<string, number>;
   questionsAnswered: Record<string, number>;
-}
+};
 
 // --- Synonym Safari (tap-to-connect matching mode) ----------------------
 
@@ -219,7 +237,13 @@ export interface SynonymSafariConfig {
   pairCount: number;
 }
 
-export interface SynonymSafariStats {
+export interface SynonymSafariResult {
+  pairsMatched: number;
+  /** True if the player used the hint button anywhere in this round. */
+  assisted: boolean;
+}
+
+export type SynonymSafariStats = {
   roundsCompleted: Record<string, number>;
   /** Every pair locked in ever, per category -- credited the same way
    * regardless of whether the round was solved unaided or via the hint
@@ -227,4 +251,4 @@ export interface SynonymSafariStats {
    * correctAnswers -- there's no "wrong pair" outcome here to weigh it
    * against). */
   pairsMatched: Record<string, number>;
-}
+};

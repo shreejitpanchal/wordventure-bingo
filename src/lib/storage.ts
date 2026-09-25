@@ -1,4 +1,4 @@
-import type { Settings, SentenceQuestStats, Streaks, SynonymSafariStats, WordEntry, WordscapesStats } from '../types';
+import type { Settings, WordEntry } from '../types';
 
 const KEYS = {
   settings: 'wordventure:settings',
@@ -9,42 +9,61 @@ const KEYS = {
 
 // Pre-profile-era keys: the device-wide stats this app used before named
 // local profiles existed. Read only once, by createProfile's migration.
+// They migrate into the per-profile buckets whose mode `stats.key` values
+// ('streaks', 'wordscapesStats' -- see src/modes/) are kept identical to
+// the historical per-profile key names so existing players' data loads.
 const LEGACY_KEYS = {
   streaks: 'wordventure:streaks',
   wordscapesStats: 'wordventure:wordscapesStats',
 } as const;
+const LEGACY_MODE_STATS_KEYS = { streaks: 'streaks', wordscapesStats: 'wordscapesStats' } as const;
 
-function streaksKey(profile: string): string {
-  return `wordventure:streaks:${profile}`;
+/** Per-profile stats bucket for one mode -- see ModeDescriptor.stats.key. */
+function modeStatsKey(statsKey: string, profile: string): string {
+  return `wordventure:${statsKey}:${profile}`;
 }
 
-function wordscapesStatsKey(profile: string): string {
-  return `wordventure:wordscapesStats:${profile}`;
+const DEFAULT_SETTINGS: Settings = { reduceMotion: false, theme: 'system', fontSize: 'medium' };
+
+// --- Shape guards -----------------------------------------------------------
+//
+// localStorage is this app's one external input: anything could be sitting
+// under our keys (a corrupted write, a hand-edited value, an older schema).
+// Every read validates the parsed JSON's shape before trusting it and falls
+// back to the default otherwise -- a bad stored value must never take the
+// app down, since the player has no way to fix it from inside the app.
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function sentenceQuestStatsKey(profile: string): string {
-  return `wordventure:sentenceQuestStats:${profile}`;
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((v) => typeof v === 'string');
 }
 
-function synonymSafariStatsKey(profile: string): string {
-  return `wordventure:synonymSafariStats:${profile}`;
+function isNumberRecord(value: unknown): value is Record<string, number> {
+  return isPlainObject(value) && Object.values(value).every((n) => typeof n === 'number' && Number.isFinite(n));
 }
 
-const DEFAULT_SETTINGS: Settings = { soundEnabled: false, reduceMotion: false, theme: 'system', fontSize: 'medium' };
-const DEFAULT_STREAKS: Streaks = { gamesPlayed: {}, wins: {}, currentStreak: {}, bestStreak: {} };
-const DEFAULT_WORDSCAPES_STATS: WordscapesStats = { puzzlesCompleted: {}, bonusWordsFound: {} };
-const DEFAULT_SENTENCE_QUEST_STATS: SentenceQuestStats = { roundsCompleted: {}, correctAnswers: {}, questionsAnswered: {} };
-const DEFAULT_SYNONYM_SAFARI_STATS: SynonymSafariStats = { roundsCompleted: {}, pairsMatched: {} };
+function isWordEntryArray(value: unknown): value is WordEntry[] {
+  return (
+    Array.isArray(value) &&
+    value.every((w) => isPlainObject(w) && typeof w.word === 'string' && typeof w.definition === 'string')
+  );
+}
 
 /**
  * localStorage can throw (private browsing, disabled storage, quota) or
  * simply be absent -- this is the one boundary in the app that touches an
  * external API, so it's the one place that needs a try/catch fallback.
+ * `isValid` rejects a parsed value of the wrong shape the same way.
  */
-function readJSON<T>(key: string, fallback: T): T {
+function readJSON<T>(key: string, fallback: T, isValid: (value: unknown) => value is T): T {
   try {
     const raw = localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
+    if (!raw) return fallback;
+    const parsed: unknown = JSON.parse(raw);
+    return isValid(parsed) ? parsed : fallback;
   } catch {
     return fallback;
   }
@@ -59,8 +78,14 @@ function writeJSON(key: string, value: unknown): void {
   }
 }
 
+// --- Settings (device-wide) -------------------------------------------------
+
 export function getSettings(): Settings {
-  return { ...DEFAULT_SETTINGS, ...readJSON(KEYS.settings, DEFAULT_SETTINGS) };
+  // Merge over defaults so a setting added after a player first saved
+  // settings still gets its default rather than `undefined`. Stale keys
+  // from removed settings ride along harmlessly.
+  const stored = readJSON<Record<string, unknown>>(KEYS.settings, {}, isPlainObject) as Partial<Settings>;
+  return { ...DEFAULT_SETTINGS, ...stored };
 }
 
 export function saveSettings(settings: Settings): void {
@@ -71,17 +96,17 @@ export function saveSettings(settings: Settings): void {
 //
 // Named local profiles, not accounts: no auth, no network, just separate
 // localStorage buckets on this device so siblings/family sharing one
-// device/tablet each keep their own Bingo streaks and Wordscapes stats.
-// Everything else (settings, the Free Play word list) stays device-wide --
-// those are device/accessibility preferences and shared content, not
-// per-player statistics, so scoping them per profile isn't warranted.
+// device/tablet each keep their own per-mode stats. Everything else
+// (settings, the Free Play word list) stays device-wide -- those are
+// device/accessibility preferences and shared content, not per-player
+// statistics, so scoping them per profile isn't warranted.
 
 export function getProfiles(): string[] {
-  return readJSON<string[]>(KEYS.profiles, []);
+  return readJSON<string[]>(KEYS.profiles, [], isStringArray);
 }
 
 export function getCurrentProfile(): string | null {
-  return readJSON<string | null>(KEYS.currentProfile, null);
+  return readJSON<string | null>(KEYS.currentProfile, null, (v): v is string | null => typeof v === 'string');
 }
 
 /**
@@ -104,135 +129,68 @@ export function createProfile(name: string): void {
   writeJSON(KEYS.currentProfile, trimmed);
 
   if (isFirstEverProfile) {
-    const legacyStreaks = readJSON<Streaks | null>(LEGACY_KEYS.streaks, null);
-    const legacyStats = readJSON<WordscapesStats | null>(LEGACY_KEYS.wordscapesStats, null);
-    if (legacyStreaks) writeJSON(streaksKey(trimmed), legacyStreaks);
-    if (legacyStats) writeJSON(wordscapesStatsKey(trimmed), legacyStats);
+    const legacyStreaks = readJSON<Record<string, unknown> | null>(LEGACY_KEYS.streaks, null, isPlainObject);
+    const legacyStats = readJSON<Record<string, unknown> | null>(LEGACY_KEYS.wordscapesStats, null, isPlainObject);
+    if (legacyStreaks) writeJSON(modeStatsKey(LEGACY_MODE_STATS_KEYS.streaks, trimmed), legacyStreaks);
+    if (legacyStats) writeJSON(modeStatsKey(LEGACY_MODE_STATS_KEYS.wordscapesStats, trimmed), legacyStats);
   }
 }
 
-// --- Bingo streaks (per profile) -------------------------------------------
-
-export function getStreaks(profile: string): Streaks {
-  return { ...DEFAULT_STREAKS, ...readJSON(streaksKey(profile), DEFAULT_STREAKS) };
-}
-
-export function recordGameResult(profile: string, category: string, won: boolean): Streaks {
-  const streaks = getStreaks(profile);
-  streaks.gamesPlayed[category] = (streaks.gamesPlayed[category] ?? 0) + 1;
-  if (won) {
-    streaks.wins[category] = (streaks.wins[category] ?? 0) + 1;
-    streaks.currentStreak[category] = (streaks.currentStreak[category] ?? 0) + 1;
-    streaks.bestStreak[category] = Math.max(
-      streaks.bestStreak[category] ?? 0,
-      streaks.currentStreak[category],
-    );
-  } else {
-    streaks.currentStreak[category] = 0;
-  }
-  writeJSON(streaksKey(profile), streaks);
-  return streaks;
-}
-
-// --- Wordscapes stats (per profile) -----------------------------------------
-
-export function getWordscapesStats(profile: string): WordscapesStats {
-  return { ...DEFAULT_WORDSCAPES_STATS, ...readJSON(wordscapesStatsKey(profile), DEFAULT_WORDSCAPES_STATS) };
-}
-
-/**
- * `solved` gates the "puzzles completed" counter only -- a puzzle given up
- * on (grid revealed via the give-up button, not actually solved) still
- * credits any bonus words genuinely found first, it just doesn't count as
- * a completion.
- */
-export function recordWordscapesCompletion(
-  profile: string,
-  category: string,
-  bonusWordsFoundCount: number,
-  solved: boolean,
-): WordscapesStats {
-  const stats = getWordscapesStats(profile);
-  if (solved) {
-    stats.puzzlesCompleted[category] = (stats.puzzlesCompleted[category] ?? 0) + 1;
-  }
-  if (bonusWordsFoundCount > 0) {
-    stats.bonusWordsFound[category] = (stats.bonusWordsFound[category] ?? 0) + bonusWordsFoundCount;
-  }
-  writeJSON(wordscapesStatsKey(profile), stats);
-  return stats;
-}
-
-// --- Sentence Quest stats (per profile) -------------------------------------
+// --- Per-mode stats (per profile) -------------------------------------------
 //
-// Unlike Bingo streaks/Wordscapes stats, there's no pre-profile-era legacy
-// key to migrate here -- this feature was added after profiles already
-// existed, so it's profile-scoped from day one with nothing to inherit.
-
-export function getSentenceQuestStats(profile: string): SentenceQuestStats {
-  return { ...DEFAULT_SENTENCE_QUEST_STATS, ...readJSON(sentenceQuestStatsKey(profile), DEFAULT_SENTENCE_QUEST_STATS) };
-}
+// Generic over the mode: every mode's stats record is an object of
+// per-category number maps (e.g. { wins: { animals: 3 }, ... }), and the
+// mode descriptor (src/modes/) owns both the shape (`defaults`) and the
+// arithmetic (`record`/`recordAbandon`). This layer only persists it.
 
 /**
- * `correctCount`/`totalCount` are credited even if the round was abandoned
- * partway through (exiting to menu mid-round) -- only `roundsCompleted`
- * requires `completed: true`, mirroring how Wordscapes credits bonus words
- * found before a give-up separately from the "puzzles completed" counter.
+ * Loads one mode's stats for a profile, field-by-field over `defaults`: a
+ * stored field of the wrong shape (or a field added to the mode after the
+ * player's last save) falls back to its default rather than poisoning the
+ * whole record.
  */
-export function recordSentenceQuestRound(
+export function getModeStats<TStats extends Record<string, Record<string, number>>>(
+  statsKey: string,
   profile: string,
-  category: string,
-  correctCount: number,
-  totalCount: number,
-  completed: boolean,
-): SentenceQuestStats {
-  const stats = getSentenceQuestStats(profile);
-  if (completed) {
-    stats.roundsCompleted[category] = (stats.roundsCompleted[category] ?? 0) + 1;
+  defaults: TStats,
+): TStats {
+  const stored = readJSON<Record<string, unknown>>(modeStatsKey(statsKey, profile), {}, isPlainObject);
+  const result: Record<string, Record<string, number>> = {};
+  for (const field of Object.keys(defaults)) {
+    const value = stored[field];
+    result[field] = isNumberRecord(value) ? { ...value } : { ...defaults[field] };
   }
-  stats.correctAnswers[category] = (stats.correctAnswers[category] ?? 0) + correctCount;
-  stats.questionsAnswered[category] = (stats.questionsAnswered[category] ?? 0) + totalCount;
-  writeJSON(sentenceQuestStatsKey(profile), stats);
-  return stats;
+  return result as TStats;
 }
 
-// --- Synonym Safari stats (per profile) -------------------------------------
+export function saveModeStats(statsKey: string, profile: string, stats: Record<string, Record<string, number>>): void {
+  writeJSON(modeStatsKey(statsKey, profile), stats);
+}
+
+// --- Menu selection (per profile) -------------------------------------------
 //
-// Same no-legacy-migration situation as Sentence Quest: this feature was
-// added after profiles already existed, so it's profile-scoped from day one.
+// The menu's last picks (mode, difficulty, each mode's options), so a
+// player returns to the setup they were using. Per profile for the same
+// reason stats are: siblings sharing a device play different things. This
+// layer only checks "is it an object"; src/modes/menuSelection.ts does the
+// mode-aware validation, since storage.ts must not know about MODES.
 
-export function getSynonymSafariStats(profile: string): SynonymSafariStats {
-  return { ...DEFAULT_SYNONYM_SAFARI_STATS, ...readJSON(synonymSafariStatsKey(profile), DEFAULT_SYNONYM_SAFARI_STATS) };
+function menuSelectionKey(profile: string): string {
+  return `wordventure:menuSelection:${profile}`;
 }
 
-/**
- * `solved` gates "rounds completed" only -- an assisted round (any hint
- * used) still credits every pair genuinely locked in, it just doesn't count
- * as a real, unaided completion. Mirrors recordWordscapesCompletion, not
- * recordSentenceQuestRound: there's no wrong-pair outcome here to weigh
- * pairsMatched against the way questionsAnswered weighs correctAnswers.
- */
-export function recordSynonymSafariRound(
-  profile: string,
-  category: string,
-  pairsMatchedCount: number,
-  solved: boolean,
-): SynonymSafariStats {
-  const stats = getSynonymSafariStats(profile);
-  if (solved) {
-    stats.roundsCompleted[category] = (stats.roundsCompleted[category] ?? 0) + 1;
-  }
-  if (pairsMatchedCount > 0) {
-    stats.pairsMatched[category] = (stats.pairsMatched[category] ?? 0) + pairsMatchedCount;
-  }
-  writeJSON(synonymSafariStatsKey(profile), stats);
-  return stats;
+export function getMenuSelection(profile: string): Record<string, unknown> | null {
+  return readJSON<Record<string, unknown> | null>(menuSelectionKey(profile), null, isPlainObject);
+}
+
+export function saveMenuSelection(profile: string, selection: object): void {
+  writeJSON(menuSelectionKey(profile), selection);
 }
 
 // --- Free Play word list (device-wide) --------------------------------------
 
 export function getFreeplayWords(): WordEntry[] {
-  return readJSON<WordEntry[]>(KEYS.freeplayWords, []);
+  return readJSON<WordEntry[]>(KEYS.freeplayWords, [], isWordEntryArray);
 }
 
 export function saveFreeplayWords(words: WordEntry[]): void {

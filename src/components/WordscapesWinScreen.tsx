@@ -1,24 +1,16 @@
 import { motion } from 'framer-motion';
-import type { WordscapesConfig, WordscapesStats } from '../types';
-import { WORD_BANKS } from '../data/wordBanks';
+import type { WordscapesConfig, WordscapesResult, WordscapesStats } from '../types';
+import type { ModeWinScreenProps } from '../modes/types';
+import { WORD_BANK_LABELS } from '../data/wordBankLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
 import Confetti from './Confetti';
 import styles from './WinScreen.module.css';
 
-interface Props {
-  config: WordscapesConfig;
-  bonusWordsFound: number;
-  /** True if the player used any reveal help (single-letter hints and/or
-   * Give Up) anywhere in this puzzle. */
-  assisted: boolean;
-  stats: WordscapesStats;
-  onNextPuzzle: () => void;
-  onMenu: () => void;
-  reduceMotion: boolean;
-}
+type Props = ModeWinScreenProps<WordscapesConfig, WordscapesResult, WordscapesStats>;
 
-export default function WordscapesWinScreen({ config, bonusWordsFound, assisted, stats, onNextPuzzle, onMenu, reduceMotion }: Props) {
-  const bank = WORD_BANKS[config.category];
+export default function WordscapesWinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+  const { bonusWordsFound, assisted } = result;
+  const label = WORD_BANK_LABELS[config.category];
   const totalCompleted = stats.puzzlesCompleted[config.category] ?? 0;
 
   return (
@@ -45,10 +37,10 @@ export default function WordscapesWinScreen({ config, bonusWordsFound, assisted,
 
       <div className={styles.stats}>
         <p>
-          {bank.label} · {config.difficulty}
+          {label} · {config.difficulty}
         </p>
         <p>
-          🧩 Puzzles completed in {bank.label}: <strong>{totalCompleted}</strong>
+          🧩 Puzzles completed in {label}: <strong>{totalCompleted}</strong>
         </p>
       </div>
 
@@ -57,7 +49,7 @@ export default function WordscapesWinScreen({ config, bonusWordsFound, assisted,
           className={styles.primaryButton}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onNextPuzzle}
+          onClick={onPlayAgain}
         >
           Next Puzzle
         </motion.button>

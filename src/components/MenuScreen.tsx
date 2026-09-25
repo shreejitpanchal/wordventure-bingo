@@ -1,40 +1,21 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import type {
-  CategoryId,
-  Difficulty,
-  GameConfig,
-  GameMode,
-  SentenceQuestCategoryId,
-  SentenceQuestConfig,
-  SentenceQuestStats,
-  Streaks,
-  SynonymSafariCategoryId,
-  SynonymSafariConfig,
-  SynonymSafariStats,
-  WordscapesConfig,
-  WordscapesStats,
-} from '../types';
-import { WORD_BANKS, CATEGORY_ORDER } from '../data/wordBanks';
-import { SENTENCE_QUEST_BANKS, SENTENCE_QUEST_CATEGORY_ORDER } from '../data/sentenceQuestBanks';
-import { SYNONYM_SAFARI_BANKS, SYNONYM_SAFARI_CATEGORY_ORDER } from '../data/synonymSafariBanks';
+import type { Difficulty, GameMode } from '../types';
+import type { AnyMode, MenuSelection, ModeConfigBase, ModeStatsRecord } from '../modes/types';
+import { MODES, modeById } from '../modes';
 import { screenVariants, withReducedMotion } from '../lib/motion';
-import { DEFAULT_WORD_COUNT, MAX_WORD_COUNT, MIN_WORD_COUNT } from '../lib/wordscapes/gridGeneration';
-import { DEFAULT_QUESTION_COUNT, QUESTION_COUNT_OPTIONS } from '../lib/sentenceQuest';
-import { DEFAULT_PAIR_COUNT, PAIR_COUNT_OPTIONS } from '../lib/synonymSafari';
-import { CALL_SECONDS_OPTIONS, DEFAULT_CALL_SECONDS } from '../lib/caller';
+import OptionSection from './OptionSection';
 import styles from './MenuScreen.module.css';
 
 interface Props {
   playerName: string;
-  streaks: Streaks;
-  wordscapesStats: WordscapesStats;
-  sentenceQuestStats: SentenceQuestStats;
-  synonymSafariStats: SynonymSafariStats;
-  onStartBingo: (config: GameConfig) => void;
-  onStartWordscapes: (config: WordscapesConfig) => void;
-  onStartSentenceQuest: (config: SentenceQuestConfig) => void;
-  onStartSynonymSafari: (config: SynonymSafariConfig) => void;
+  statsByMode: Record<GameMode, ModeStatsRecord>;
+  /** Controlled: every pick reports up through onSelectionChange and App.tsx
+   * persists it per profile, which is what makes the menu come back to the
+   * same setup after a game (this screen unmounts in between) and after a
+   * restart. */
+  selection: MenuSelection;
+  onSelectionChange: (selection: MenuSelection) => void;
+  onStart: (mode: AnyMode, config: ModeConfigBase) => void;
   onOpenSettings: () => void;
   onSwitchProfile: () => void;
   reduceMotion: boolean;
@@ -46,42 +27,36 @@ const DIFFICULTIES: { id: Difficulty; label: string }[] = [
   { id: 'hard', label: 'Hard' },
 ];
 
-const MODES: { id: GameMode; label: string; emoji: string }[] = [
-  { id: 'bingo', label: 'Bingo', emoji: '🎯' },
-  { id: 'wordscapes', label: 'Wordscapes', emoji: '🧩' },
-  { id: 'sentence-quest', label: 'Sentence Quest', emoji: '📝' },
-  { id: 'synonym-safari', label: 'Synonym Safari', emoji: '🔗' },
-];
+const MODE_OPTIONS = MODES.map((m) => ({ id: m.id, label: `${m.emoji} ${m.label}` }));
 
+/**
+ * Mode selection lives here, not on a separate screen. Everything
+ * mode-specific (categories, extra options, the progress line) comes from
+ * the mode's descriptor (src/modes/), so this component is the same for
+ * one mode or ten.
+ */
 export default function MenuScreen({
   playerName,
-  streaks,
-  wordscapesStats,
-  sentenceQuestStats,
-  synonymSafariStats,
-  onStartBingo,
-  onStartWordscapes,
-  onStartSentenceQuest,
-  onStartSynonymSafari,
+  statsByMode,
+  selection,
+  onSelectionChange,
+  onStart,
   onOpenSettings,
   onSwitchProfile,
   reduceMotion,
 }: Props) {
-  const [mode, setMode] = useState<GameMode>('bingo');
-  const [category, setCategory] = useState<CategoryId>('spelling');
-  const [sentenceQuestCategory, setSentenceQuestCategory] = useState<SentenceQuestCategoryId>('verbTense');
-  const [synonymSafariCategory, setSynonymSafariCategory] = useState<SynonymSafariCategoryId>('synonyms');
-  const [difficulty, setDifficulty] = useState<Difficulty>('easy');
-  const [players, setPlayers] = useState<1 | 2>(1);
-  const [callSeconds, setCallSeconds] = useState<number>(DEFAULT_CALL_SECONDS);
-  const [wordCount, setWordCount] = useState<number>(DEFAULT_WORD_COUNT);
-  const [questionCount, setQuestionCount] = useState<number>(DEFAULT_QUESTION_COUNT);
-  const [pairCount, setPairCount] = useState<number>(DEFAULT_PAIR_COUNT);
+  const { modeId, difficulty, configs } = selection;
+  const mode = modeById(modeId);
+  const config = configs[modeId];
+  const stats = statsByMode[modeId];
+  const statLine = mode.menuStatLine(config, stats);
 
-  const bestStreak = streaks.bestStreak[category] ?? 0;
-  const puzzlesCompleted = wordscapesStats.puzzlesCompleted[category] ?? 0;
-  const roundsCompleted = sentenceQuestStats.roundsCompleted[sentenceQuestCategory] ?? 0;
-  const synonymSafariRoundsCompleted = synonymSafariStats.roundsCompleted[synonymSafariCategory] ?? 0;
+  // Difficulty is shared across modes on purpose (a kid who plays on Easy
+  // plays everything on Easy), so it's held once at the top level and
+  // merged into the chosen mode's config at start time.
+  function updateConfig(next: ModeConfigBase) {
+    onSelectionChange({ ...selection, configs: { ...configs, [modeId]: next } });
+  }
 
   return (
     <motion.main
@@ -101,197 +76,36 @@ export default function MenuScreen({
       <h1 className={styles.title}>Wordventure Bingo</h1>
       <p className={styles.subtitle}>Pick a mode, category, and difficulty to start!</p>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Mode</h2>
-        <div className={styles.grid}>
-          {MODES.map((m) => (
-            <button
-              key={m.id}
-              className={`${styles.chip} ${mode === m.id ? styles.chipActive : ''}`}
-              onClick={() => setMode(m.id)}
-            >
-              {m.emoji} {m.label}
-            </button>
-          ))}
-        </div>
-      </section>
+      <OptionSection
+        title="Mode"
+        options={MODE_OPTIONS}
+        value={modeId}
+        onChange={(nextModeId) => onSelectionChange({ ...selection, modeId: nextModeId })}
+      />
 
-      {mode === 'sentence-quest' ? (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Category</h2>
-          <div className={styles.grid}>
-            {SENTENCE_QUEST_CATEGORY_ORDER.map((id) => (
-              <button
-                key={id}
-                className={`${styles.chip} ${sentenceQuestCategory === id ? styles.chipActive : ''}`}
-                onClick={() => setSentenceQuestCategory(id)}
-              >
-                {SENTENCE_QUEST_BANKS[id].label}
-              </button>
-            ))}
-          </div>
-        </section>
-      ) : mode === 'synonym-safari' ? (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Category</h2>
-          <div className={styles.grid}>
-            {SYNONYM_SAFARI_CATEGORY_ORDER.map((id) => (
-              <button
-                key={id}
-                className={`${styles.chip} ${synonymSafariCategory === id ? styles.chipActive : ''}`}
-                onClick={() => setSynonymSafariCategory(id)}
-              >
-                {SYNONYM_SAFARI_BANKS[id].label}
-              </button>
-            ))}
-          </div>
-        </section>
-      ) : (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Category</h2>
-          <div className={styles.grid}>
-            {CATEGORY_ORDER.map((id) => (
-              <button
-                key={id}
-                className={`${styles.chip} ${category === id ? styles.chipActive : ''}`}
-                onClick={() => setCategory(id)}
-              >
-                {WORD_BANKS[id].label}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
+      <OptionSection
+        title="Category"
+        options={mode.categories}
+        value={config.category}
+        onChange={(category) => updateConfig({ ...config, category })}
+      />
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Difficulty</h2>
-        <div className={styles.grid}>
-          {DIFFICULTIES.map((d) => (
-            <button
-              key={d.id}
-              className={`${styles.chip} ${difficulty === d.id ? styles.chipActive : ''}`}
-              onClick={() => setDifficulty(d.id)}
-            >
-              {d.label}
-            </button>
-          ))}
-        </div>
-      </section>
+      <OptionSection
+        title="Difficulty"
+        options={DIFFICULTIES}
+        value={difficulty}
+        onChange={(nextDifficulty) => onSelectionChange({ ...selection, difficulty: nextDifficulty })}
+      />
 
-      {mode === 'bingo' && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Players</h2>
-          <div className={styles.grid}>
-            <button className={`${styles.chip} ${players === 1 ? styles.chipActive : ''}`} onClick={() => setPlayers(1)}>
-              Solo vs. Computer
-            </button>
-            <button className={`${styles.chip} ${players === 2 ? styles.chipActive : ''}`} onClick={() => setPlayers(2)}>
-              Pass & Play (2)
-            </button>
-          </div>
-        </section>
-      )}
+      <mode.MenuOptions config={config} stats={stats} onChange={updateConfig} />
 
-      {mode === 'bingo' && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Call Speed</h2>
-          <div className={styles.grid}>
-            {CALL_SECONDS_OPTIONS.map((s) => (
-              <button
-                key={s}
-                className={`${styles.chip} ${callSeconds === s ? styles.chipActive : ''}`}
-                onClick={() => setCallSeconds(s)}
-              >
-                {s}s
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {mode === 'wordscapes' && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Word Count</h2>
-          <div className={styles.grid}>
-            {Array.from({ length: MAX_WORD_COUNT - MIN_WORD_COUNT + 1 }, (_, i) => MIN_WORD_COUNT + i).map((n) => (
-              <button
-                key={n}
-                className={`${styles.chip} ${wordCount === n ? styles.chipActive : ''}`}
-                onClick={() => setWordCount(n)}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {mode === 'sentence-quest' && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Question Count</h2>
-          <div className={styles.grid}>
-            {QUESTION_COUNT_OPTIONS.map((n) => (
-              <button
-                key={n}
-                className={`${styles.chip} ${questionCount === n ? styles.chipActive : ''}`}
-                onClick={() => setQuestionCount(n)}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {mode === 'synonym-safari' && (
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Pair Count</h2>
-          <div className={styles.grid}>
-            {PAIR_COUNT_OPTIONS.map((n) => (
-              <button
-                key={n}
-                className={`${styles.chip} ${pairCount === n ? styles.chipActive : ''}`}
-                onClick={() => setPairCount(n)}
-              >
-                {n}
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {mode === 'bingo' && bestStreak > 0 && (
-        <p className={styles.streak}>🔥 Best streak in {WORD_BANKS[category].label}: {bestStreak}</p>
-      )}
-      {mode === 'wordscapes' && puzzlesCompleted > 0 && (
-        <p className={styles.streak}>🧩 Puzzles completed in {WORD_BANKS[category].label}: {puzzlesCompleted}</p>
-      )}
-      {mode === 'sentence-quest' && roundsCompleted > 0 && (
-        <p className={styles.streak}>
-          📝 Rounds completed in {SENTENCE_QUEST_BANKS[sentenceQuestCategory].label}: {roundsCompleted}
-        </p>
-      )}
-      {mode === 'synonym-safari' && synonymSafariRoundsCompleted > 0 && (
-        <p className={styles.streak}>
-          🔗 Rounds completed in {SYNONYM_SAFARI_BANKS[synonymSafariCategory].label}: {synonymSafariRoundsCompleted}
-        </p>
-      )}
+      {statLine && <p className={styles.streak}>{statLine}</p>}
 
       <motion.button
         className={styles.startButton}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => {
-          if (mode === 'bingo') {
-            onStartBingo({ category, difficulty, players, callSeconds });
-          } else if (mode === 'wordscapes') {
-            onStartWordscapes({ category, difficulty, wordCount });
-          } else if (mode === 'sentence-quest') {
-            onStartSentenceQuest({ category: sentenceQuestCategory, difficulty, questionCount });
-          } else {
-            onStartSynonymSafari({ category: synonymSafariCategory, difficulty, pairCount });
-          }
-        }}
+        onClick={() => onStart(mode, { ...config, difficulty })}
       >
         Start Game
       </motion.button>

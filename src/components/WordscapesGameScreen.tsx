@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import type { WordscapesConfig } from '../types';
+import type { WordscapesConfig, WordscapesResult } from '../types';
+import type { ModeGameScreenProps } from '../modes/types';
 import { WORD_BANKS } from '../data/wordBanks';
 import {
   generateLevel,
@@ -11,26 +12,16 @@ import {
   revealWord,
   selectWordscapesPool,
 } from '../lib/wordscapes/gridGeneration';
-import { getFreeplayWords } from '../lib/storage';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import CrosswordGrid from './CrosswordGrid';
 import LetterWheel from './LetterWheel';
 import styles from './WordscapesGameScreen.module.css';
 
-interface Props {
-  config: WordscapesConfig;
-  /** Words the *previous* puzzle (in this session) placed, if any -- passed
-   * back up via `onPuzzleStart` so `App.tsx` can hand it to the next
-   * puzzle, keeping consecutive puzzles from reusing the same words. */
-  excludeWords: string[];
-  onPuzzleStart: (words: string[]) => void;
-  /** `assisted` is true if the player used any reveal help (a single-letter
-   * hint and/or Give Up) at any point -- even if they went on to finish the
-   * rest of the puzzle themselves. */
-  onComplete: (bonusWordsFound: number, assisted: boolean) => void;
-  onExit: () => void;
-  reduceMotion: boolean;
-}
+// excludeItems/onRoundStart carry the previous puzzle's *placed words* --
+// see generateLevel's excludeWords param. `assisted` in the result is true
+// if the player used any reveal help (a single-letter hint and/or Give Up)
+// at any point -- even if they went on to finish the rest themselves.
+type Props = ModeGameScreenProps<WordscapesConfig, WordscapesResult>;
 
 interface Feedback {
   key: number;
@@ -43,11 +34,11 @@ interface ClueHint {
   lines: string[];
 }
 
-export default function WordscapesGameScreen({ config, excludeWords, onPuzzleStart, onComplete, onExit, reduceMotion }: Props) {
+export default function WordscapesGameScreen({ config, context, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
   const bank = WORD_BANKS[config.category];
   const wordEntries = useMemo(
-    () => (config.category === 'freeplay' ? [...bank.words, ...getFreeplayWords()] : bank.words),
-    [bank, config.category],
+    () => (config.category === 'freeplay' ? [...bank.words, ...context.freeplayWords] : bank.words),
+    [bank, config.category, context.freeplayWords],
   );
   const pool = useMemo(
     () => selectWordscapesPool(wordEntries, config.category, config.difficulty),
@@ -55,7 +46,7 @@ export default function WordscapesGameScreen({ config, excludeWords, onPuzzleSta
   );
 
   const [level, setLevel] = useState(() =>
-    generateLevel(pool, Math.random, config.wordCount, new Set(excludeWords)),
+    generateLevel(pool, Math.random, config.wordCount, new Set(excludeItems)),
   );
   const [foundBonusWords, setFoundBonusWords] = useState<Set<string>>(new Set());
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -77,8 +68,8 @@ export default function WordscapesGameScreen({ config, excludeWords, onPuzzleSta
   // after generation (reveal actions only replace `cells`, not
   // `placedWords`), so this only ever fires once per puzzle.
   useEffect(() => {
-    onPuzzleStart(level.grid.placedWords.map((p) => p.word));
-  }, [level.grid.placedWords, onPuzzleStart]);
+    onRoundStart(level.grid.placedWords.map((p) => p.word));
+  }, [level.grid.placedWords, onRoundStart]);
 
   function showFeedback(kind: Feedback['kind'], word: string) {
     setFeedback({ key: Date.now(), kind, word });
@@ -235,7 +226,7 @@ export default function WordscapesGameScreen({ config, excludeWords, onPuzzleSta
             className={styles.continueButton}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => onComplete(foundBonusWords.size, assisted)}
+            onClick={() => onComplete({ bonusWordsFound: foundBonusWords.size, assisted })}
           >
             Continue
           </motion.button>

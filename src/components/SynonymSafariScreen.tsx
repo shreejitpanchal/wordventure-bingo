@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import type { SynonymSafariConfig } from '../types';
+import type { SynonymSafariConfig, SynonymSafariResult } from '../types';
+import type { ModeGameScreenProps } from '../modes/types';
 import { SYNONYM_SAFARI_BANKS } from '../data/synonymSafariBanks';
 import { checkMatch, generateRound, pickHintPair, selectSynonymSafariPool } from '../lib/synonymSafari';
 import { shuffle } from '../lib/random';
@@ -13,20 +14,9 @@ import styles from './SynonymSafariScreen.module.css';
 // stays consistent with that rather than introducing the app's first image.
 const INTRO_EMOJIS = '🦁 🦒 🐘';
 
-interface Props {
-  config: SynonymSafariConfig;
-  /** Words the *previous* round (in this session) used, if any -- passed
-   * back up via `onRoundStart` so `App.tsx` can hand it to the next round,
-   * keeping consecutive rounds from dealing the same small handful of
-   * words back to back. */
-  excludeWords: string[];
-  onRoundStart: (words: string[]) => void;
-  /** `assisted` is true if the player used the hint button at any point --
-   * even if they went on to match the rest of the pairs themselves. */
-  onComplete: (pairsMatched: number, assisted: boolean) => void;
-  onExit: () => void;
-  reduceMotion: boolean;
-}
+// excludeItems/onRoundStart carry the previous round's left-column *words*
+// -- see generateRound's excludeWords param.
+type Props = ModeGameScreenProps<SynonymSafariConfig, SynonymSafariResult>;
 
 interface Selection {
   side: 'left' | 'right';
@@ -39,12 +29,10 @@ interface WrongFlash {
   match: string;
 }
 
-export default function SynonymSafariScreen({ config, excludeWords, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
-  const pool = useMemo(
-    () => selectSynonymSafariPool(config.category, config.difficulty),
-    [config.category, config.difficulty],
-  );
-  const [round] = useState(() => generateRound(pool, Math.random, config.pairCount, new Set(excludeWords)));
+export default function SynonymSafariScreen({ config, excludeItems, onRoundStart, onComplete, onExit, reduceMotion }: Props) {
+  const bank = SYNONYM_SAFARI_BANKS[config.category];
+  const pool = useMemo(() => selectSynonymSafariPool(bank.pairs, config.difficulty), [bank, config.difficulty]);
+  const [round] = useState(() => generateRound(pool, Math.random, config.pairCount, new Set(excludeItems)));
   const [rightColumn] = useState(() => shuffle(round, Math.random));
 
   // Gates the matching grid behind a brief "get ready" beat shown before
@@ -161,7 +149,7 @@ export default function SynonymSafariScreen({ config, excludeWords, onRoundStart
             </p>
             <h1 className={styles.introTitle}>Synonym Safari</h1>
             <p className={styles.introSubtitle}>
-              {SYNONYM_SAFARI_BANKS[config.category].label} · {config.difficulty}
+              {bank.label} · {config.difficulty}
             </p>
             <p className={styles.introDetail}>
               Match {round.length} pair{round.length === 1 ? '' : 's'} of words!
@@ -183,7 +171,7 @@ export default function SynonymSafariScreen({ config, excludeWords, onRoundStart
               ← Menu
             </button>
             <span className={styles.categoryLabel}>
-              {SYNONYM_SAFARI_BANKS[config.category].label} · {config.difficulty}
+              {bank.label} · {config.difficulty}
             </span>
             <span className={styles.progress}>
               {matchedWords.size} / {round.length}
@@ -226,7 +214,7 @@ export default function SynonymSafariScreen({ config, excludeWords, onRoundStart
                 className={styles.continueButton}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => onComplete(round.length, assisted)}
+                onClick={() => onComplete({ pairsMatched: round.length, assisted })}
               >
                 Continue
               </motion.button>

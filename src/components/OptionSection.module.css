@@ -1,0 +1,58 @@
+.section {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: var(--space-5);
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* A real grid (like a borderless table), not flex-wrap -- flex-wrap sized
+   each chip to its own text, so rows broke unevenly (e.g. 2 chips fit one
+   row, a lone 3rd/5th chip stranded on the next) and nothing lined up
+   column-to-column between sections. Every option chip sits in a fixed
+   2-column grid, equal width, so rows are always aligned. When a section
+   has an odd number of options, the last one spans both columns instead
+   of being stranded to one side -- see .chip's :last-child rule below. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: var(--touch-target-min);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-border);
+  background: var(--color-card-bg);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+/* Only matches when this chip is BOTH the last child AND an odd-numbered
+   one (nth-child(odd) with no sibling after it) -- i.e. exactly the "extra"
+   trailing chip left over from an odd-count section. An even-count section
+   never matches this, so it's a no-op there. */
+.chip:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+}
+
+.chipActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}

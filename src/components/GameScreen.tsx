@@ -1,31 +1,25 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import type { BingoCard as BingoCardType, GameConfig, WinPattern } from '../types';
+import type { BingoCard as BingoCardType, BingoResult, GameConfig } from '../types';
+import type { ModeGameScreenProps } from '../modes/types';
 import { WORD_BANKS } from '../data/wordBanks';
 import { generateCard, markWord, selectWordPool } from '../lib/cardGeneration';
 import { checkWin } from '../lib/winDetection';
 import { buildCallQueue, clueForWord } from '../lib/caller';
-import { getFreeplayWords } from '../lib/storage';
 import { screenVariants, withReducedMotion } from '../lib/motion';
 import BingoCard from './BingoCard';
 import ClueBanner from './ClueBanner';
 import styles from './GameScreen.module.css';
 
-interface Props {
-  config: GameConfig;
-  onWin: (patterns: WinPattern[], winnerLabel?: string) => void;
-  onExit: () => void;
-  reduceMotion: boolean;
-  soundEnabled: boolean;
-}
+// Bingo has no "avoid last round's words" concept (a fresh 24-word card from
+// a 24+ pool is already varied), so excludeItems/onRoundStart go unused.
+type Props = ModeGameScreenProps<GameConfig, BingoResult>;
 
-// soundEnabled is threaded through from Settings for when audio assets are
-// added; v1 ships no sound files, so it's accepted but not yet used.
-export default function GameScreen({ config, onWin, onExit, reduceMotion, soundEnabled: _soundEnabled }: Props) {
+export default function GameScreen({ config, context, onComplete, onExit, reduceMotion }: Props) {
   const bank = WORD_BANKS[config.category];
   const wordEntries = useMemo(
-    () => (config.category === 'freeplay' ? [...bank.words, ...getFreeplayWords()] : bank.words),
-    [bank, config.category],
+    () => (config.category === 'freeplay' ? [...bank.words, ...context.freeplayWords] : bank.words),
+    [bank, config.category, context.freeplayWords],
   );
   const pool = useMemo(
     () => selectWordPool(wordEntries, config.category, config.difficulty),
@@ -67,7 +61,10 @@ export default function GameScreen({ config, onWin, onExit, reduceMotion, soundE
     setCards((prev) => prev.map((c, i) => (i === cardIndex ? updatedCard : c)));
 
     if (result.won) {
-      onWin(result.patterns, config.players === 2 ? `Player ${cardIndex + 1}` : undefined);
+      onComplete({
+        patterns: result.patterns,
+        winnerLabel: config.players === 2 ? `Player ${cardIndex + 1}` : undefined,
+      });
       return;
     }
     setCallIndex((i) => (i + 1) % callQueue.length);

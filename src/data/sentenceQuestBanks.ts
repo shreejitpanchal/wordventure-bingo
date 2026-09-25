@@ -5,6 +5,7 @@ import synonymsAntonyms from './sentenceQuestBanks/synonymsAntonyms.json';
 import idioms from './sentenceQuestBanks/idioms.json';
 import grammarBasics from './sentenceQuestBanks/grammarBasics.json';
 
+// Content only -- see sentenceQuestLabels.ts for menu order/labels.
 export const SENTENCE_QUEST_BANKS: Record<SentenceQuestCategoryId, SentenceQuestBank> = {
   verbTense: verbTense as SentenceQuestBank,
   prepositions: prepositions as SentenceQuestBank,
@@ -12,11 +13,3 @@ export const SENTENCE_QUEST_BANKS: Record<SentenceQuestCategoryId, SentenceQuest
   idioms: idioms as SentenceQuestBank,
   grammarBasics: grammarBasics as SentenceQuestBank,
 };
-
-export const SENTENCE_QUEST_CATEGORY_ORDER: SentenceQuestCategoryId[] = [
-  'verbTense',
-  'prepositions',
-  'synonymsAntonyms',
-  'idioms',
-  'grammarBasics',
-];

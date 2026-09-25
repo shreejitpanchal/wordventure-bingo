@@ -1,19 +1,12 @@
 import { motion } from 'framer-motion';
-import type { SentenceQuestConfig, SentenceQuestStats } from '../types';
-import { SENTENCE_QUEST_BANKS } from '../data/sentenceQuestBanks';
+import type { SentenceQuestConfig, SentenceQuestResult, SentenceQuestStats } from '../types';
+import type { ModeWinScreenProps } from '../modes/types';
+import { SENTENCE_QUEST_LABELS } from '../data/sentenceQuestLabels';
 import { screenVariants, zoomInVariants, withReducedMotion } from '../lib/motion';
 import Confetti from './Confetti';
 import styles from './WinScreen.module.css';
 
-interface Props {
-  config: SentenceQuestConfig;
-  correctCount: number;
-  totalCount: number;
-  stats: SentenceQuestStats;
-  onPlayAgain: () => void;
-  onMenu: () => void;
-  reduceMotion: boolean;
-}
+type Props = ModeWinScreenProps<SentenceQuestConfig, SentenceQuestResult, SentenceQuestStats>;
 
 // A round doesn't need to be perfect to feel like a win -- 70%+ correct
 // gets the celebratory tone/confetti, matching how Wordscapes only skips
@@ -21,16 +14,9 @@ interface Props {
 // demanding perfection.
 const PASS_RATIO = 0.7;
 
-export default function SentenceQuestWinScreen({
-  config,
-  correctCount,
-  totalCount,
-  stats,
-  onPlayAgain,
-  onMenu,
-  reduceMotion,
-}: Props) {
-  const bank = SENTENCE_QUEST_BANKS[config.category];
+export default function SentenceQuestWinScreen({ config, result, stats, onPlayAgain, onMenu, reduceMotion }: Props) {
+  const { correctCount, totalCount } = result;
+  const label = SENTENCE_QUEST_LABELS[config.category];
   const passed = totalCount > 0 && correctCount / totalCount >= PASS_RATIO;
   const roundsCompleted = stats.roundsCompleted[config.category] ?? 0;
 
@@ -58,10 +44,10 @@ export default function SentenceQuestWinScreen({
 
       <div className={styles.stats}>
         <p>
-          {bank.label} · {config.difficulty}
+          {label} · {config.difficulty}
         </p>
         <p>
-          📝 Rounds completed in {bank.label}: <strong>{roundsCompleted}</strong>
+          📝 Rounds completed in {label}: <strong>{roundsCompleted}</strong>
         </p>
       </div>
 

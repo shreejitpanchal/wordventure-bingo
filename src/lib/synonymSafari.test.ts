@@ -20,10 +20,11 @@ function makePairs(count: number, difficulty: WordPair['difficulty'] = 'easy'): 
 }
 
 describe('selectSynonymSafariPool', () => {
-  it('filters synonyms and antonyms by difficulty independently', () => {
-    expect(selectSynonymSafariPool('synonyms', 'easy').length).toBeGreaterThan(0);
-    expect(selectSynonymSafariPool('synonyms', 'easy').every((p) => p.difficulty === 'easy')).toBe(true);
-    expect(selectSynonymSafariPool('antonyms', 'hard').every((p) => p.difficulty === 'hard')).toBe(true);
+  it('filters a bank pairs list by difficulty', () => {
+    const pairs = [...makePairs(3, 'easy'), ...makePairs(2, 'hard')];
+    expect(selectSynonymSafariPool(pairs, 'easy')).toHaveLength(3);
+    expect(selectSynonymSafariPool(pairs, 'hard')).toHaveLength(2);
+    expect(selectSynonymSafariPool(pairs, 'medium')).toHaveLength(0);
   });
 });
 
