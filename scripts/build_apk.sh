@@ -49,17 +49,33 @@ fi
 # ANDROID_HOME to point at a real local install. Trust an explicitly set
 # env var only if it actually resolves (a stale/wrong export, like pointing
 # at a Sdk directory that was never created, shouldn't silently pass and
-# then fail confusingly deep inside the Gradle build); otherwise fall back
-# to this machine's known SDK location as a last resort, the same way
-# coding-adventure's build_apk.sh falls back to a known Flutter install
-# path when FLUTTER_HOME isn't set.
-KNOWN_SDK_FALLBACK="$HOME/Android/sdk"
+# then fail confusingly deep inside the Gradle build); otherwise probe the
+# places Android Studio installs the SDK by default, in order: Windows
+# (%LOCALAPPDATA%/Android/Sdk -- what this machine has), macOS
+# (~/Library/Android/sdk), Linux (~/Android/Sdk), plus the legacy
+# lowercase ~/Android/sdk this script used to hardcode as its only fallback.
+find_sdk() {
+    local candidate
+    for candidate in \
+        "${LOCALAPPDATA:-$HOME/AppData/Local}/Android/Sdk" \
+        "$HOME/Library/Android/sdk" \
+        "$HOME/Android/Sdk" \
+        "$HOME/Android/sdk"; do
+        if [ -d "$candidate/platform-tools" ] || [ -d "$candidate/platforms" ]; then
+            printf '%s' "$candidate"
+            return 0
+        fi
+    done
+    return 1
+}
+
 if [ -n "${ANDROID_HOME:-}" ] && [ -d "$ANDROID_HOME" ]; then
     :
 elif [ -n "${ANDROID_SDK_ROOT:-}" ] && [ -d "$ANDROID_SDK_ROOT" ]; then
     export ANDROID_HOME="$ANDROID_SDK_ROOT"
-elif [ -d "$KNOWN_SDK_FALLBACK" ]; then
-    export ANDROID_HOME="$KNOWN_SDK_FALLBACK"
+elif FOUND_SDK="$(find_sdk)"; then
+    export ANDROID_HOME="$FOUND_SDK"
+    echo "Using Android SDK at $ANDROID_HOME (set ANDROID_HOME to override)."
 else
     echo "ANDROID_HOME (or ANDROID_SDK_ROOT) isn't set to a real directory."
     echo

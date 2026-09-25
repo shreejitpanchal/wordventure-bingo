@@ -342,7 +342,9 @@ Prerequisites:
   or [Adoptium](https://adoptium.net).
 - The Android SDK, with `ANDROID_HOME` (or `ANDROID_SDK_ROOT`) pointing at
   it — Android Studio's SDK Manager installs this. The script also falls
-  back to `~/Android/sdk` if neither env var resolves to a real directory,
+  back to Android Studio's default install location (`%LOCALAPPDATA%AndroidSdk`
+  on Windows, `~/Library/Android/sdk` on macOS, `~/Android/Sdk` on Linux) if
+  neither env var resolves to a real directory,
   so it needs no manual setup on a machine that already has an SDK there
   (e.g. installed by another project's toolchain).
 

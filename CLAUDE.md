@@ -929,7 +929,11 @@ data is the daily-challenge record and the per-name avatar map.
   proper release keystore, deliberately not set up until actually needed.
   `build_apk.sh` resolves `ANDROID_HOME` itself (env var if it points at a
   real directory, else `ANDROID_SDK_ROOT`, else this machine's known SDK
-  install at `~/Android/sdk`) rather than trusting a possibly-stale export,
+  install: `%LOCALAPPDATA%AndroidSdk` on Windows, `~/Library/Android/sdk`
+  on macOS, `~/Android/Sdk` or `~/Android/sdk` on Linux -- probed in that
+  order, accepting only a directory that actually contains
+  `platform-tools/` or `platforms/`) rather than trusting a possibly-stale
+  export,
   and — Git Bash/MSYS only — runs the result through `cygpath -w` before
   exporting it: Gradle's `java.exe` is a native Windows process that can't
   resolve a POSIX-style path like `/c/Users/.../sdk`, and (unlike a

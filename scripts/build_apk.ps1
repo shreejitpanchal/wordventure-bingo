@@ -48,16 +48,29 @@ if (-not (Get-Command java -ErrorAction SilentlyContinue)) {
 # ANDROID_HOME to point at a real local install. Trust an explicitly set
 # env var only if it actually resolves (a stale/wrong value shouldn't
 # silently pass and then fail confusingly deep inside the Gradle build);
-# otherwise fall back to this machine's known SDK location as a last
-# resort, the same way coding-adventure's build_apk.sh falls back to a
-# known Flutter install path when FLUTTER_HOME isn't set.
-$KnownSdkFallback = "$env:USERPROFILE\Android\sdk"
+# otherwise probe the places Android Studio installs the SDK by default,
+# in order: Windows (%LOCALAPPDATA%\Android\Sdk -- what this machine has),
+# macOS (~/Library/Android/sdk), Linux (~/Android/Sdk), plus the legacy
+# lowercase ~/Android/sdk this script used to hardcode as its only
+# fallback. A candidate only counts if it actually contains
+# platform-tools\ or platforms\ -- an empty leftover folder shouldn't win.
+$SdkCandidates = @(
+    (Join-Path $env:LOCALAPPDATA 'Android\Sdk'),
+    (Join-Path $env:USERPROFILE 'Library\Android\sdk'),
+    (Join-Path $env:USERPROFILE 'Android\Sdk'),
+    (Join-Path $env:USERPROFILE 'Android\sdk')
+)
+$FoundSdk = $SdkCandidates | Where-Object {
+    (Test-Path (Join-Path $_ 'platform-tools')) -or (Test-Path (Join-Path $_ 'platforms'))
+} | Select-Object -First 1
+
 if ($env:ANDROID_HOME -and (Test-Path $env:ANDROID_HOME)) {
     # use as-is
 } elseif ($env:ANDROID_SDK_ROOT -and (Test-Path $env:ANDROID_SDK_ROOT)) {
     $env:ANDROID_HOME = $env:ANDROID_SDK_ROOT
-} elseif (Test-Path $KnownSdkFallback) {
-    $env:ANDROID_HOME = $KnownSdkFallback
+} elseif ($FoundSdk) {
+    $env:ANDROID_HOME = $FoundSdk
+    Write-Host "Using Android SDK at $env:ANDROID_HOME (set ANDROID_HOME to override)."
 } else {
     Write-Host "ANDROID_HOME (or ANDROID_SDK_ROOT) isn't set to a real directory." -ForegroundColor Red
     Write-Host ''
