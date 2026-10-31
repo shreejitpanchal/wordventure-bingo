@@ -5,7 +5,7 @@ PWA — Windows (Chrome/Edge) and Android (installed to home screen). No backend
 no accounts, no ads, no network calls after first load. (Named local player
 profiles exist — see "Player profiles" below — but they're just labeled
 localStorage buckets on-device, not accounts: no auth, no network, nothing
-that leaves the device.) Four modes, chosen from
+that leaves the device.) Five modes, chosen from
 the main menu: **Bingo** (the original word-bingo game), **Wordscapes**
 (a word-connect crossword puzzle, in the style of PeopleFun's Wordscapes/Word
 Cross — named "Wordscapes" as an in-app mode label only; that name is a
@@ -13,7 +13,8 @@ third party's trademark, so it must not appear in any app-store listing,
 package id, or branding if this is ever published), **Sentence Quest**
 (a fill-in-the-blank grammar quiz — see "Sentence Quest mode" below), and
 **Synonym Safari** (a two-column tap-to-connect synonym/antonym matching
-game — see "Synonym Safari mode" below).
+game — see "Synonym Safari mode" below), and **Word Scramble** (unscramble
+letter tiles from a definition clue — see "Word Scramble mode" below).
 
 For a diagram-first map of module boundaries, data flow, and the screen
 state machine, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — this file
@@ -154,7 +155,7 @@ they are; keep both in sync when either changes.
   card per mode, each a small aggregate across every category** (total
   games/wins/best streak for Bingo, puzzles/bonus words for Wordscapes,
   rounds/correct answers for Sentence Quest, rounds/pairs for Synonym
-  Safari), not a category-by-category breakdown (that granularity already
+  Safari, rounds/words for Word Scramble), not a category-by-category breakdown (that granularity already
   exists contextually on each mode's own `MenuScreen` streak line and win
   screen). The cards are rendered from `MODES`, each mode's
   `stats.summary` providing its lines — a new mode gets its card for free. This does **not** contradict "Settings stays device-wide" above
@@ -797,6 +798,39 @@ they are; keep both in sync when either changes.
   *non-consecutive* rounds (which pool size does control) before growing
   content further.
 
+## Word Scramble mode
+
+- **Reuses Bingo/Wordscapes' word banks and `CategoryId` categories — no
+  new content.** Every word-bank entry already has a `definition`, the only
+  clue this mode needs; the other clue fields (`synonym`/`fillBlank`/
+  `riddle`) are nearly empty across the banks, which is why this mode was
+  picked first over ideas that would need them.
+- **`selectScramblePool` caps word length per difficulty (easy ≤6,
+  medium ≤10, hard ≤12) on top of `selectWordPool`, and drops anything not
+  plain A-Z.** The caps are looser than Wordscapes' because the animals/
+  geography/science medium/hard tiers hold only 24 words each — tighter
+  caps (≤8/≤10) left as few as 14, too few for a 10-word round to avoid
+  back-to-back repeats. If those tiers grow, the caps can tighten. The A-Z
+  filter is for the parent-edited Free Play list, which can contain spaces,
+  hyphens or digits that can't be tiles. `banks.test.ts` asserts every
+  category/difficulty fills `MAX_SCRAMBLE_WORDS`.
+- **Grading is by the spelled string, not tile ids** (`isCorrect`), so
+  swapping two identical letters (the two Ls in LLAMA) still counts.
+  Duplicate letters get separate tile ids, the same as Wordscapes' wheel.
+- **Three help buttons, mirroring Wordscapes' assisted shape:** ✕ Clear
+  (removes unlocked letters, free), 💡 Hint (locks in the next correct
+  letter; stops one short of the whole word so the player still places the
+  last tile), ⏭️ Skip (fills in the answer, holds it on screen, then moves
+  on). Hint and Skip set the sticky `assisted` flag, which gates only
+  `roundsCompleted`; `wordsSolved` counts every word the player spelled
+  themselves (hint letters allowed, skipped words not) either way.
+  Used tiles stay in place, faded, rather than leaving the row, so the
+  remaining tiles don't jump under the player's finger. As in LetterWheel,
+  there's no tap-to-undo on a placed letter; ✕ is the way to remove one.
+- **Same no-`onComplete`-from-gameplay rule as Wordscapes/Synonym
+  Safari:** finishing the last word flips the derived `roundOver` and shows
+  a Continue panel; only that button calls `onComplete`.
+
 ## Engagement layer (animation, colour, rewards, sound)
 
 Added in one pass to make the app feel alive for a 10-year-old. Every
@@ -880,8 +914,8 @@ data is the daily-challenge record and the per-name avatar map.
   `src/lib/` (including `src/lib/wordscapes/`), `src/modes/` and
   `src/data/`, using Vitest. They cover the correctness-critical logic
   only (card generation, win detection, clue selection/formatting,
-  Wordscapes grid generation, Sentence Quest/Synonym Safari round
-  generation, the mode registry's stats arithmetic and manifest invariants
+  Wordscapes grid generation, Sentence Quest/Synonym Safari/Word Scramble
+  round generation, the mode registry's stats arithmetic and manifest invariants
   in `src/modes/modes.test.ts`, and the shipped content banks' structural
   invariants in `src/data/banks.test.ts` — word counts per tier, unique
   words, one blank/4 options/answer present per question, static-label ↔

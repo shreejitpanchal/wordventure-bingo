@@ -162,3 +162,17 @@ html[data-mode='synonym-safari'] {
   --shadow-soft: 0 4px 14px rgba(217, 119, 6, 0.18);
   --shadow-lift: 0 8px 24px rgba(217, 119, 6, 0.28);
 }
+
+/* Word Scramble: grape violet + bubblegum pink */
+html[data-mode='word-scramble'] {
+  --color-primary: #7c3aed;
+  --color-primary-dark: #5b21b6;
+  --color-accent: #db2777;
+  --color-accent-dark: #9d174d;
+  --color-cell-marked: #a855f7;
+  --color-blob-1: #ddd6fe;
+  --color-blob-2: #fbcfe8;
+  --color-blob-3: #c7d2fe;
+  --shadow-soft: 0 4px 14px rgba(124, 58, 237, 0.18);
+  --shadow-lift: 0 8px 24px rgba(124, 58, 237, 0.28);
+}

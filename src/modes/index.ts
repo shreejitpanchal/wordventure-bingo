@@ -4,6 +4,7 @@ import { bingoMode } from './bingo';
 import { wordscapesMode } from './wordscapes';
 import { sentenceQuestMode } from './sentenceQuest';
 import { synonymSafariMode } from './synonymSafari';
+import { wordScrambleMode } from './wordScramble';
 
 /**
  * The mode manifest. Order here is the menu's mode-chip order. To add a
@@ -12,7 +13,7 @@ import { synonymSafariMode } from './synonymSafari';
  * MenuScreen and SettingsScreen pick it up from here with no other change.
  * To disable one, comment its line out.
  */
-export const MODES: readonly AnyMode[] = [bingoMode, wordscapesMode, sentenceQuestMode, synonymSafariMode];
+export const MODES: readonly AnyMode[] = [bingoMode, wordscapesMode, sentenceQuestMode, synonymSafariMode, wordScrambleMode];
 
 export function modeById(id: GameMode): AnyMode {
   const mode = MODES.find((m) => m.id === id);

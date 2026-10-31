@@ -39,7 +39,9 @@ describe('badges', () => {
       'sentence-quest': { roundsCompleted: { a: 1 }, correctAnswers: {}, questionsAnswered: {} },
     });
     expect(computeBadges(almost).find((b) => b.id === 'explorer')?.earned).toBe(false);
-    const all = withStats({ ...almost, 'synonym-safari': { roundsCompleted: {}, pairsMatched: { a: 1 } } });
+    const noScramble = withStats({ ...almost, 'synonym-safari': { roundsCompleted: {}, pairsMatched: { a: 1 } } });
+    expect(computeBadges(noScramble).find((b) => b.id === 'explorer')?.earned).toBe(false);
+    const all = withStats({ ...noScramble, 'word-scramble': { roundsCompleted: {}, wordsSolved: { a: 1 } } });
     expect(computeBadges(all).find((b) => b.id === 'explorer')?.earned).toBe(true);
   });
 });
@@ -59,7 +61,8 @@ describe('level', () => {
     const info = computeLevel(
       withStats({
         bingo: { gamesPlayed: {}, wins: { a: 4 }, currentStreak: {}, bestStreak: {} },
-        'synonym-safari': { roundsCompleted: { a: 3 }, pairsMatched: {} },
+        'synonym-safari': { roundsCompleted: { a: 2 }, pairsMatched: {} },
+        'word-scramble': { roundsCompleted: { a: 1 }, wordsSolved: { a: 40 } },
       }),
     );
     // 7 wins: level 2 spans 5..15, so 2/10 of the way.

@@ -14,7 +14,7 @@ device/tablet each keep their own streaks/stats for every mode, all
 still stored only on-device. Tap the name button on the main menu (next to
 the settings gear) to switch player at any time. The settings gear also
 shows a "🏆 {name}'s Stats" summary — games played, wins, best streaks,
-puzzles/rounds completed, and so on across all four modes — for whoever's
+puzzles/rounds completed, and so on across all five modes — for whoever's
 currently playing.
 
 The app is built to keep kids engaged: each mode has its own colour
@@ -27,7 +27,7 @@ fireworks for the big ones, streak trophies), and short synthesised sound
 effects (toggle in Settings; no audio files are downloaded). Everything
 respects the Reduce Motion setting and the OS preference.
 
-Four modes, picked from the main menu:
+Five modes, picked from the main menu:
 - **Bingo** — the original word-bingo game (clues, auto-caller, win patterns).
   The menu's **Call Speed** setting picks how many seconds the auto-caller
   waits between clues (10-60s, default 20s) — independent of difficulty, so
@@ -58,6 +58,15 @@ Four modes, picked from the main menu:
   same small handful of pairs. Every round opens on a brief "get ready"
   intro panel (a safari-themed graphic and the round's category/difficulty)
   before the words themselves are revealed.
+- **Word Scramble** — read a definition, then tap the jumbled letter tiles
+  in order to spell the word. Uses the same word banks and categories as
+  Bingo/Wordscapes, with a length cap per difficulty (easy ≤6 letters,
+  medium ≤10, hard ≤12). **✕ Clear** removes your letters, **💡 Hint**
+  locks in the next correct letter, and **⏭️ Skip** shows the answer and
+  moves on. Using a hint or Skip means the round doesn't count toward
+  "rounds completed", but every word you spelled still counts. Pick how
+  many words make up a round (5/8/10) in the menu. Consecutive rounds avoid
+  repeating the previous round's words where possible.
 
 ## Tech stack
 
@@ -382,7 +391,8 @@ npm run test:coverage # with coverage report
 
 Unit tests cover the correctness-critical logic — card generation, win
 detection, clue selection/formatting, Wordscapes grid generation, Sentence
-Quest round generation, and Synonym Safari round generation/matching
+Quest round generation, Synonym Safari round generation/matching, and
+Word Scramble round generation/grading
 (`src/lib/*.test.ts`, including `src/lib/wordscapes/`) — plus the mode
 registry's stats arithmetic (`src/modes/modes.test.ts`) and the shipped
 content banks' structural invariants (`src/data/banks.test.ts`). UI and

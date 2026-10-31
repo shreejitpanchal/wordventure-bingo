@@ -110,6 +110,20 @@ const BADGE_RULES: BadgeRule[] = [
     earned: (s) => sumValues(field(s, 'synonym-safari', 'roundsCompleted')) >= 10,
   },
   {
+    id: 'scramble-50',
+    emoji: '🔤',
+    title: 'Letter Juggler',
+    description: 'Unscramble 50 words in Word Scramble.',
+    earned: (s) => sumValues(field(s, 'word-scramble', 'wordsSolved')) >= 50,
+  },
+  {
+    id: 'scramble-rounds-10',
+    emoji: '🔀',
+    title: 'Mix Master',
+    description: 'Finish 10 Word Scramble rounds with no hints or skips.',
+    earned: (s) => sumValues(field(s, 'word-scramble', 'roundsCompleted')) >= 10,
+  },
+  {
     id: 'explorer',
     emoji: '🧭',
     title: 'Explorer',
@@ -118,7 +132,8 @@ const BADGE_RULES: BadgeRule[] = [
       sumValues(field(s, 'bingo', 'gamesPlayed')) >= 1 &&
       sumValues(field(s, 'wordscapes', 'puzzlesCompleted')) + sumValues(field(s, 'wordscapes', 'bonusWordsFound')) >= 1 &&
       sumValues(field(s, 'sentence-quest', 'roundsCompleted')) >= 1 &&
-      sumValues(field(s, 'synonym-safari', 'pairsMatched')) >= 1,
+      sumValues(field(s, 'synonym-safari', 'pairsMatched')) >= 1 &&
+      sumValues(field(s, 'word-scramble', 'wordsSolved')) >= 1,
   },
 ];
 
@@ -165,7 +180,8 @@ export function totalWins(stats: StatsByMode): number {
     sumValues(field(stats, 'bingo', 'wins')) +
     sumValues(field(stats, 'wordscapes', 'puzzlesCompleted')) +
     sumValues(field(stats, 'sentence-quest', 'roundsCompleted')) +
-    sumValues(field(stats, 'synonym-safari', 'roundsCompleted'))
+    sumValues(field(stats, 'synonym-safari', 'roundsCompleted')) +
+    sumValues(field(stats, 'word-scramble', 'roundsCompleted'))
   );
 }
 

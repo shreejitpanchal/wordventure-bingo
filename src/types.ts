@@ -52,7 +52,7 @@ export interface WinResult {
 export type ScreenName = 'profile' | 'menu' | 'settings' | 'trophies' | 'game' | 'win';
 
 /** One id per mode descriptor registered in src/modes/index.ts. */
-export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest' | 'synonym-safari';
+export type GameMode = 'bingo' | 'wordscapes' | 'sentence-quest' | 'synonym-safari' | 'word-scramble';
 
 /** 'system' follows the OS/browser's own light/dark preference; 'light'/'dark'
  * force it regardless -- see theme.css's [data-theme] selectors. */
@@ -78,7 +78,7 @@ export interface DailyRecord {
   streak: number;
 }
 
-// The four per-mode stats records are `type` aliases, not interfaces, on
+// The per-mode stats records are `type` aliases, not interfaces, on
 // purpose: each must satisfy src/modes/types.ts's ModeStatsRecord
 // (Record<string, Record<string, number>>) so storage.ts can persist any
 // mode's stats generically, and only a type alias gets the implicit index
@@ -261,4 +261,28 @@ export type SynonymSafariStats = {
    * correctAnswers -- there's no "wrong pair" outcome here to weigh it
    * against). */
   pairsMatched: Record<string, number>;
+};
+
+// --- Word Scramble (unscramble-the-letters mode) -------------------------
+
+export interface WordScrambleConfig {
+  category: CategoryId;
+  difficulty: Difficulty;
+  /** How many words make up one round. */
+  wordCount: number;
+}
+
+export interface WordScrambleResult {
+  /** Words the player spelled themselves (hint letters allowed). */
+  wordsSolved: number;
+  totalCount: number;
+  /** True if a hint or Skip was used anywhere in this round. */
+  assisted: boolean;
+}
+
+export type WordScrambleStats = {
+  roundsCompleted: Record<string, number>;
+  /** Every word unscrambled ever, per category -- credited whether or not
+   * the round was assisted (mirrors Wordscapes' bonusWordsFound). */
+  wordsSolved: Record<string, number>;
 };

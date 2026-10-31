@@ -6,6 +6,7 @@ import { DEFAULT_STREAKS, recordBingoLoss, recordBingoWin } from './bingo';
 import { DEFAULT_WORDSCAPES_STATS, recordWordscapesCompletion } from './wordscapes';
 import { DEFAULT_SENTENCE_QUEST_STATS, recordSentenceQuestRound } from './sentenceQuest';
 import { DEFAULT_SYNONYM_SAFARI_STATS, recordSynonymSafariRound } from './synonymSafari';
+import { DEFAULT_WORD_SCRAMBLE_STATS, recordWordScrambleRound } from './wordScramble';
 import { defaultMenuSelection, resolveMenuSelection } from './menuSelection';
 
 describe('menu selection', () => {
@@ -115,6 +116,8 @@ function sampleResult(id: GameMode): unknown {
       return { correctCount: 9, totalCount: 10 };
     case 'synonym-safari':
       return { pairsMatched: 6, assisted: false };
+    case 'word-scramble':
+      return { wordsSolved: 5, totalCount: 5, assisted: false };
   }
 }
 
@@ -204,5 +207,24 @@ describe('Synonym Safari stats', () => {
     const s = recordSynonymSafariRound(DEFAULT_SYNONYM_SAFARI_STATS, 'antonyms', { pairsMatched: 4, assisted: true });
     expect(s.roundsCompleted.antonyms).toBeUndefined();
     expect(s.pairsMatched.antonyms).toBe(4);
+  });
+});
+
+describe('Word Scramble stats', () => {
+  it('an unassisted round credits the round and the words', () => {
+    const s = recordWordScrambleRound(DEFAULT_WORD_SCRAMBLE_STATS, 'animals', { wordsSolved: 8, totalCount: 8, assisted: false });
+    expect(s.roundsCompleted.animals).toBe(1);
+    expect(s.wordsSolved.animals).toBe(8);
+  });
+
+  it('an assisted round credits the words spelled but not the round', () => {
+    const s = recordWordScrambleRound(DEFAULT_WORD_SCRAMBLE_STATS, 'science', { wordsSolved: 3, totalCount: 5, assisted: true });
+    expect(s.roundsCompleted.science).toBeUndefined();
+    expect(s.wordsSolved.science).toBe(3);
+  });
+
+  it('an all-skipped round leaves wordsSolved untouched', () => {
+    const s = recordWordScrambleRound(DEFAULT_WORD_SCRAMBLE_STATS, 'science', { wordsSolved: 0, totalCount: 5, assisted: true });
+    expect(s.wordsSolved).toBe(DEFAULT_WORD_SCRAMBLE_STATS.wordsSolved);
   });
 });

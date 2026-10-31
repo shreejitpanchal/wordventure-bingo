@@ -50,6 +50,7 @@ src/
     wordscapes.ts
     sentenceQuest.ts
     synonymSafari.ts
+    wordScramble.ts
     menuSelection.ts     -- per-profile "remember my menu picks" + repair
     badges.ts            -- badges + level, derived from statsByMode (nothing stored)
     daily.ts             -- daily challenge (date-seeded) + streak record logic
@@ -71,6 +72,7 @@ src/
     caller.ts                -- Bingo: auto-caller queue + pace constants
     sentenceQuest.ts           -- Sentence Quest: round generation + grading
     synonymSafari.ts             -- Synonym Safari: round generation + matching
+    wordScramble.ts              -- Word Scramble: round generation + grading/hints
     random.ts                      -- shared shuffle() + seededRng, injectable rng
     sound.ts                         -- Web Audio synthesised effects (SoundPlayer factory)
     storage.ts                       -- the only localStorage access point
@@ -216,8 +218,8 @@ sequenceDiagram
     App->>App: setStatsByMode(...); setSession({..., result}); setScreen('win')
 ```
 
-The same sequence serves every mode — Bingo, Wordscapes, Sentence Quest and
-Synonym Safari differ only in their `TConfig`/`TResult`/`TStats` shapes and
+The same sequence serves every mode — Bingo, Wordscapes, Sentence Quest,
+Synonym Safari and Word Scramble differ only in their `TConfig`/`TResult`/`TStats` shapes and
 in what their descriptor's `record` does with them. Leaving `game` early
 runs the same path through `stats.recordAbandon` when the mode defines one
 (Bingo counts it as a loss). Profile selection (`ProfileScreen` →
@@ -245,7 +247,7 @@ a corrupted or hand-edited value.
 | Avatar emoji per profile name | device-wide map | `wordventure:avatars` |
 
 The per-mode key segments are `streaks` (Bingo), `wordscapesStats`,
-`sentenceQuestStats` and `synonymSafariStats` — the first two are pinned to
+`sentenceQuestStats`, `synonymSafariStats` and `wordScrambleStats` — the first two are pinned to
 their pre-registry names so existing players' data still loads.
 
 **Player profiles are local labels, not accounts** — no auth, no server,
@@ -265,7 +267,7 @@ lives in the mode descriptors, not in `storage.ts`, which only persists.
 
 ## Game logic
 
-All four modes share the same shape: pure functions in `src/lib/` that
+All five modes share the same shape: pure functions in `src/lib/` that
 take an explicit `rng: () => number = Math.random` parameter, so tests can
 pass a seeded/sequenced generator (`src/test/rng.ts`) instead of mocking
 `Math.random` globally. None of them import content — the screen passes
@@ -336,8 +338,21 @@ from every other mode's content:
    within a round; `pickHintPair` uniformly picks a random still-unmatched
    pair for the repeatable hint button.
 
+**Word Scramble** (`wordScramble.ts`) reuses Bingo/Wordscapes' word banks
+and categories — every entry's `definition` is the clue:
+1. `selectScramblePool` applies `selectWordPool`'s category/difficulty
+   filter plus a per-difficulty length cap and an A-Z-only filter (the
+   parent-edited Free Play list can contain spaces or digits).
+2. `generateRound` picks `wordCount` distinct words, preferring ones not
+   in `excludeWords` (the previous round's, same pattern as the other
+   modes), and scrambles each into id'd tiles via `clueMatching`'s
+   `makeAnagram`.
+3. `isCorrect` grades by the spelled string, not tile ids, so swapping
+   two identical letters still counts; `correctPrefix` gives the tile ids
+   for the first n letters, used by both the hint and Skip.
+
 See `CLAUDE.md`'s "Bingo mode", "Wordscapes mode", "Sentence Quest mode",
-and "Synonym Safari mode" sections for the detailed *why* behind each of
+"Synonym Safari mode" and "Word Scramble mode" sections for the detailed *why* behind each of
 these (bugs they fixed, tradeoffs made).
 
 ## Build & packaging

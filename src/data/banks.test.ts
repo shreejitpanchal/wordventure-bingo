@@ -10,6 +10,7 @@ import { WORDS_NEEDED, generateCard, selectWordPool } from '../lib/cardGeneratio
 import { MAX_WORD_COUNT, MIN_WORD_COUNT, generateLevel, selectWordscapesPool } from '../lib/wordscapes/gridGeneration';
 import { MAX_QUESTION_COUNT, generateRound as generateQuestRound, selectQuestionPool } from '../lib/sentenceQuest';
 import { MAX_PAIR_COUNT, generateRound as generateSafariRound, selectSynonymSafariPool } from '../lib/synonymSafari';
+import { MAX_SCRAMBLE_WORDS, generateRound as generateScrambleRound, selectScramblePool } from '../lib/wordScramble';
 import { seededRng } from '../test/rng';
 
 /**
@@ -86,6 +87,13 @@ describe('word banks (Bingo + Wordscapes)', () => {
           expect(() => generateLevel(pool, seededRng(seed), wordCount), `${id}/${difficulty}/${wordCount}`).not.toThrow();
         }
       }
+    }
+  });
+
+  it.each(WORD_BANK_IDS)('%s: Word Scramble fills its largest round at every difficulty', (id) => {
+    for (const difficulty of DIFFICULTIES) {
+      const pool = selectScramblePool(WORD_BANKS[id].words, id, difficulty);
+      expect(() => generateScrambleRound(pool, seededRng(1), MAX_SCRAMBLE_WORDS), `${id}/${difficulty}`).not.toThrow();
     }
   });
 });
